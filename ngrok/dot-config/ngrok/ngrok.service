@@ -1,0 +1,17 @@
+# Install (or update if exists)  to /etc/systemd/system/
+# Note the two configuration files added by twid
+[Unit]
+Description=ngrok secure tunnel client
+ConditionFileIsExecutable=/usr/bin/ngrok
+
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+# ExecStart=/usr/bin/ngrok "service" "run" "--config" "/home/twidxuga/.config/ngrok/ngrok.yml"
+ExecStart=/usr/bin/ngrok "start" "--all" "--config" "/home/twidxuga/.config/ngrok/auth.yml,/home/twidxuga/.config/ngrok/twid.yml"
+
+Restart=always
+RestartSec=15
+EnvironmentFile=-/etc/sysconfig/ngrok
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+# authtoken: <imported from auth.yml> 
+version: 2
+# web_addr: localhost:4040
+tunnels:
+  twidxuga:
+    domain: twidxuga.eu.ngrok.io
+    addr: localhost:9000
+    proto: http
+    inspect: true
+
+  twidxugaback:
+    domain: twidxugaback.eu.ngrok.io
+    addr: localhost:8000
+    proto: http
+    inspect: true

@@ -1,0 +1,26 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 4,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1072,
+       "width": 1912,
+       "x": 4,
+       "y": 4
+    },
+    "marks": [],
+    "name": "YouTube Music",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^YouTube\\ Music$"
+       // "instance": "^youtube\\ music$",
+       // "machine": "^twidarch$",
+       // "title": "^YouTube\\ Music$",
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+

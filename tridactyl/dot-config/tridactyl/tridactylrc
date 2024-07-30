@@ -1,0 +1,18 @@
+" General Settings
+set update.lastchecktime 1721999332243
+set configversion 2.0
+set newtab about:blank
+set smoothscroll true
+set scrollduration 50
+set modeindicator false
+
+" Binds
+bind n findnext 1
+bind N findnext -1
+bind / fillcmdline find
+bind . find
+bind ? fillcmdline find -?
+bind ,<Space> nohlsearch
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl

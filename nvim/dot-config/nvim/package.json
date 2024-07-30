@@ -1,0 +1,24 @@
+{
+  "name": "personal-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
+        "path": "./gitcommit.json"
+      },
+      {
+        "language": [
+          "json",
+          "jsons"
+        ],
+        "path": "./gitcommit.json"
+      }
+    ]
+  }
+}

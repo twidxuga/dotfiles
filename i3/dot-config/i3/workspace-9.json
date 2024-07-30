@@ -1,0 +1,118 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 758,
+               "width": 1282,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "WhatsApp for Linux",
+            "percent": 1,
+            "swallows": [
+               {
+               "class": "^Whatsapp\\-for\\-linux$"
+               // "instance": "^whatsapp\\-for\\-linux$",
+               // "machine": "^twidarch$",
+               // "title": "^WhatsApp\\ for\\ Linux$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            // splith split container with 1 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "marks": [],
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 4,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1054,
+                       "width": 952,
+                       "x": 964,
+                       "y": 22
+                    },
+                    "marks": [],
+                    "name": "Signal Beta",
+                    "percent": null,
+                    "swallows": [
+                       {
+                       "class": "^Signal\\ Beta$"
+                       // "instance": "^signal\\ beta$",
+                       // "machine": "^twidarch$",
+                       // "title": "^Signal\\ Beta$",
+                       // "window_role": "^browser\\-window$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            // splith split container with 1 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "marks": [],
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 4,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 800,
+                       "width": 1280,
+                       "x": 320,
+                       "y": 140
+                    },
+                    "marks": [],
+                    "name": "Messenger",
+                    "percent": null,
+                    "swallows": [
+                       {
+                       "class": "^facebookmessenger\\-nativefier\\-7ab88e$"
+                       // "instance": "^facebookmessenger\\-nativefier\\-7ab88e$",
+                       // "machine": "^twidarch$",
+                       // "title": "^Messenger$",
+                       // "window_role": "^browser\\-window$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+

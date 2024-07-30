@@ -1,0 +1,9 @@
+! force dpi for 1080p monitors
+Xft.dpi: 96
+! Additional settings
+! Xft.autohint: 0
+! Xft.lcdfilter:  lcddefault
+! Xft.hintstyle:  hintfull
+! Xft.hinting: 1
+! Xft.antialias: 1
+! Xft.rgba: rgb

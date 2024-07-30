@@ -1,0 +1,43 @@
+mpd_host = localhost
+mpd_port = 6600
+mpd_music_dir = "~/Audio/Music"
+
+
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "+|"
+
+# Available values: artist, album_artist, date, genre, composer, performer.
+media_library_primary_tag = album_artist
+
+####colors####
+colors_enabled = "yes"
+empty_tag_color = "blue"
+#header_window_color = "red"
+volume_color = "black"
+state_line_color = "black"
+color1 = "blue"
+color2 = "blue"
+current_item_prefix = "$(green)$r"
+current_item_suffix = "$/r$(end)"
+current_item_inactive_column_prefix = "$(white)$r"
+current_item_inactive_column_suffix = "$/r$(end)"
+main_window_color = "blue"
+progressbar_color = "magenta" 
+progressbar_elapsed_color = "cyan"
+statusbar_color = "green"
+alternative_ui_separator_color = "red"
+window_border_color = "green"
+active_window_border = "cyan"
+discard_colors_if_item_is_selected = "no"
+
+execute_on_song_change = "~/.config/ncmpcpp/cover_obs.sh"
+startup_screen = visualizer
+
+
+header_visibility = no
+header_text_scrolling = yes
+statusbar_visibility = no
+titles_visibility = no

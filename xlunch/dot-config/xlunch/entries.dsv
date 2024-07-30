@@ -1,0 +1,70 @@
+About Xfce;/usr/share/icons/hicolor/48x48/apps/org.xfce.about.png;xfce4-about
+Advanced Network Configuration;/usr/share/icons/Paper/48x48/categories/preferences-system-network.png;nm-connection-editor
+Alacritty;svgicons/Alacritty.png;alacritty
+Android File Transfer (MTP);/usr/share/icons/hicolor/512x512/apps/android-file-transfer.png;android-file-transfer
+ARandR;/usr/share/icons/Paper/48x48/devices/display.png;arandr
+Ardour;/usr/share/icons/hicolor/48x48/apps/ardour8.png;ardour8
+Avahi SSH Server Browser;svgicons/network-wired.png;/usr/bin/bssh
+Avahi VNC Server Browser;svgicons/network-wired.png;/usr/bin/bvnc
+Avahi Zeroconf Browser;svgicons/network-wired.png;/usr/bin/avahi-discover
+Bulk Rename;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar --bulk-rename
+CMake;/usr/share/icons/Paper/48x48/apps/CMakeSetup.png;cmake-gui
+CopyQ;/usr/share/icons/hicolor/48x48/apps/copyq.png;copyq --start-server show
+Customize Look and Feel;/usr/share/icons/Paper/48x48/apps/preferences-desktop-theme.png;lxappearance
+Discord;/usr/share/icons/Paper/48x48/apps/discord.png;/usr/bin/discord
+Document Scanner;svgicons/org.gnome.SimpleScan.png;simple-scan
+DroidCam;/usr/share/pixmaps/droidcam.png;droidcam
+Dropbox;/usr/share/icons/Paper/48x48/web/dropbox.png;dropbox
+Easy Effects;svgicons/com.github.wwmm.easyeffects.png;easyeffects
+Electron 30;/usr/share/pixmaps/electron30.png;electron30
+Electron 31;/usr/share/pixmaps/electron31.png;electron31
+File Manager Settings;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar-settings
+Firefox Web Browser;/usr/share/icons/Paper/48x48/apps/firefox.png;/usr/lib/firefox/firefox
+gedit;/usr/share/icons/Paper/48x48/apps/org.gnome.gedit.png;gedit
+GNU Image Manipulation Program;/usr/share/icons/Paper/48x48/apps/gimp.png;gimp-2.10
+Google Chrome;/usr/share/icons/Paper/48x48/apps/google-chrome.png;/usr/bin/google-chrome-stable
+guitarix;/usr/share/pixmaps/gx_head.png;guitarix
+Hardware Locality lstopo;;lstopo
+Helvum;svgicons/org.pipewire.Helvum.png;helvum
+Htop;/usr/share/icons/Paper/48x48/apps/htop.png;screen-256color -e htop
+Inkscape;/usr/share/icons/Paper/48x48/apps/org.inkscape.Inkscape.png;inkscape
+ipython;/usr/share/icons/Paper/48x48/apps/ipython.png;screen-256color -e ipython
+LibreOffice Base;/usr/share/icons/Paper/48x48/apps/libreoffice-base.png;libreoffice --base
+LibreOffice Calc;/usr/share/icons/Paper/48x48/apps/libreoffice-calc.png;libreoffice --calc
+LibreOffice Draw;/usr/share/icons/Paper/48x48/apps/libreoffice-draw.png;libreoffice --draw
+LibreOffice Impress;/usr/share/icons/Paper/48x48/apps/libreoffice-impress.png;libreoffice --impress
+LibreOffice Math;/usr/share/icons/Paper/48x48/apps/libreoffice-math.png;libreoffice --math
+LibreOffice;/usr/share/icons/Paper/48x48/apps/libreoffice-startcenter.png;libreoffice
+LibreOffice Writer;/usr/share/icons/Paper/48x48/apps/libreoffice-writer.png;libreoffice --writer
+LightDM GTK Greeter settings;/usr/share/icons/Paper/48x48/apps/lightdm-gtk-greeter-settings.png;lightdm-gtk-greeter-settings-pkexec
+Messenger;/usr/share/icons/hicolor/48x48/apps/messenger-nativefier.png;messenger-nativefier
+mpv Media Player;/usr/share/icons/Paper/48x48/apps/mpv.png;mpv --player-operation-mode=pseudo-gui --
+MusicBrainz Picard;/usr/share/icons/hicolor/48x48/apps/org.musicbrainz.Picard.png;picard
+Neovim;/usr/share/icons/hicolor/128x128/apps/nvim.png;screen-256color -e nvim
+NVIDIA X Server Settings;/usr/share/icons/Paper/48x48/apps/nvidia-settings.png;/usr/bin/nvidia-settings
+nvtop;svgicons/nvtop.png;screen-256color -e nvtop
+OpenJDK Java 22 Console;;/usr/lib/jvm/java-22-openjdk/bin/jconsole
+OpenJDK Java 22 Shell;;screen-256color -e /usr/lib/jvm/java-22-openjdk/bin/jshell
+PulseAudio Volume Control;/usr/share/icons/Paper/48x48/apps/multimedia-volume-control.png;pavucontrol
+Qt V4L2 test Utility;/usr/share/icons/hicolor/64x64/apps/qv4l2.png;qv4l2
+Qt V4L2 video capture utility;/usr/share/icons/hicolor/64x64/apps/qvidcap.png;qvidcap
+ranger;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;screen-256color -e ranger
+razerCommander;svgicons/org.gabmus.razercommander.png;/usr/bin/razercommander
+Regenerate entries for xlunch;/usr/share/icons/hicolor/48x48/apps/xlunch.png;genentries.desktop.sh
+Rofi;svgicons/rofi.png;rofi -show
+Rofi Theme Selector;svgicons/rofi.png;rofi-theme-selector
+R;/usr/share/pixmaps/r.png;screen-256color -e R
+scrcpy (console);/usr/share/icons/hicolor/256x256/apps/scrcpy.png;screen-256color -e /bin/sh -c "\\$SHELL -i -c 'scrcpy --pause-on-exit=if-error'"
+scrcpy;/usr/share/icons/hicolor/256x256/apps/scrcpy.png;/bin/sh -c "\\$SHELL -i -c scrcpy"
+Signal Beta;/usr/share/icons/hicolor/48x48/apps/signal-desktop-beta.png;"/opt/Signal Beta/signal-desktop-beta" --no-sandbox
+Sonic Visualiser;svgicons/sonic-visualiser.png;sonic-visualiser
+Tenacity;/usr/share/icons/hicolor/48x48/tenacity.png;env UBUNTU_MENUPROXY=0 tenacity
+Thunar File Manager;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar
+Tweaks;/usr/share/icons/Paper/48x48/apps/org.gnome.tweaks.png;gnome-tweaks
+urxvt (client);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvtc
+urxvt (tabbed);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt-tabbed
+urxvt;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt
+VLC media player;/usr/share/icons/Paper/48x48/apps/vlc.png;/usr/bin/vlc --started-from-file
+WhatsApp for Linux;/usr/share/icons/hicolor/64x64/apps/com.github.eneshecan.WhatsAppForLinux.png;whatsapp-for-linux
+YouTube Music;/usr/share/icons/hicolor/48x48/apps/youtube-music.png;youtube-music
+Zathura;/usr/share/icons/hicolor/64x64/apps/org.pwmt.zathura.png;zathura
