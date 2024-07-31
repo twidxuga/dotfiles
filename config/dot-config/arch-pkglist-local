@@ -17,6 +17,7 @@ neovim-git
 neovim-nvim-treesitter
 ngrok
 nodejs-nativefier
+nodejs-neovim
 nodenv
 nodenv-node-build
 nordic-bluish-accent-standard-buttons-theme
