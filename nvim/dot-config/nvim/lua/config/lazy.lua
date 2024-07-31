@@ -49,3 +49,5 @@ require("lazy").setup({
     },
   },
 })
+-- run config after lazy
+require("config.post")

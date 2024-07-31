@@ -3,6 +3,8 @@
 export PATH=~/Apps/rofi-sound:$PATH
 export PATH=~/.local/bin:$PATH
 
+export GOPATH=~/.go
+
 # Source monadd environment variables (used by monadd aliases) 
 source ~/Monadd/.env/environment
 

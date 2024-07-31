@@ -36,6 +36,8 @@ exec_always --no-startup-id ~/.config/i3/alternating_layouts.py
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+# Bluetooth applet
+exec --no-startup-id blueman-applet
 
 # Start copyq
 exec --no-startup-id copyq
@@ -43,11 +45,8 @@ exec --no-startup-id copyq
 #for_window [instance="copyq"] border pixel 5
 #bindsym $mod+Shift+f exec --no-startup-id copyq show
 
-# Stat network manager
-exec --no-startup-id nm-applet
-
 # Start automatic disk driving app
-exec --no-startup-id udiskie --automount --notify --tray
+exec --no-startup-id udiskie --automount --notify --tray &
 
 # Start dropbox automatically
 exec --no-startup-id dropbox

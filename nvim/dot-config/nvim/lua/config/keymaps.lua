@@ -174,6 +174,11 @@ vim.keymap.set("n", "<leader>yy", "vip<Plug>(REPLSendVisual)<esc>", { silent = t
 vim.keymap.set("n", "<leader>yc", "<Plug>(REPLClose)", { silent = true, desc = "Yarepl close" })
 require("which-key").add({ "<leader>y", group = "REPLs in vim (Yarepl)" })
 
+-- Lua repls
+vim.keymap.set("n", "<leader>ip", ":Luapad<cr>", { silent = true, desc = "Luapad start" })
+vim.keymap.set("n", "<leader>ir", ":LuaRun<cr>", { silent = true, desc = "Luapad run current file" })
+require("which-key").add({ "<leader>i", group = "Embedded lua REPL" })
+
 -- toggle color column
 -- vim.cmd([[ let &colorcolumn=join(range(81,999),",") ]])
 vim.keymap.set("n", "<leader>ut", 
@@ -186,3 +191,4 @@ vim.keymap.set("n", "<leader>ut",
   end,
   { desc = "Toggle color column" }
 )
+
