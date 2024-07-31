@@ -14,6 +14,7 @@ function pskill() {
 alias dum='du -h --max-depth=1 | sort -h'
 alias pgoo='ping google.com'
 alias qvim='cd ~/Documents/QuickAccess && nvim -S Session.vim'
+alias twidback="${HOME}/Scripts/backup.sh"
 
 # tmux aliases
 alias mux='tmuxinator'
