@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>7", "7gt:pwd<cr>", { silent = true, desc = "which_k
 vim.keymap.set("n", "<leader>8", "8gt:pwd<cr>", { silent = true, desc = "which_key_ignore" })
 vim.keymap.set("n", "<leader>9", "9gt:pwd<cr>", { silent = true, desc = "which_key_ignore" })
 -- new tab workspace
-vim.keymap.set("n", "<leader><tab>n", ":tabnew<cr>:tcd ", { silent = true, desc = "New tab workspace" })
+vim.keymap.set("n", "<leader><tab>n", ":tabnew<cr>:tcd ", { desc = "New tab workspace" })
 
 -- Tmux navigation keymaps
 vim.keymap.set(

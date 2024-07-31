@@ -21,5 +21,7 @@ return {
     vim.g.db_ui_disable_progress_bar = 1
     vim.g.db_ui_execute_on_save = 0
     vim.g.db_ui_disable_mappings = 0
+    vim.g.db_ui_disable_mappings = 0
+    vim.g.db_ui_save_location = '~/Projects/DadbodDBQueries'
   end,
 }
