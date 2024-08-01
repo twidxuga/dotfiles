@@ -61,6 +61,7 @@ lightdm-gtk-greeter-settings
 linux
 linux-firmware
 linux-headers
+lsp-plugins
 luarocks
 lvm2
 lxappearance-gtk3
@@ -112,6 +113,7 @@ scrcpy
 scrot
 simple-scan
 sonic-visualiser
+sox
 speech-dispatcher
 sshfs
 stow
