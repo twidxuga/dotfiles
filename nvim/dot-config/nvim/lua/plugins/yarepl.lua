@@ -15,13 +15,21 @@ return {
       wincmd = 'belowright 15 split',
       -- The available REPL palattes that `yarepl` can create REPL based on
       metas = {
-          aichat = { cmd = 'aichat', formatter = yarepl.formatter.bracketed_pasting },
-          -- radian = { cmd = 'radian', formatter = yarepl.formatter.bracketed_pasting },
+          zsh = { cmd = 'zsh', formatter = yarepl.formatter.bracketed_pasting },
           ipython = { cmd = 'ipython', formatter = yarepl.formatter.bracketed_pasting },
+          aichat = { cmd = 'aichat', formatter = yarepl.formatter.bracketed_pasting },
+          zsh_tmux = {
+              cmd = 'tmux attach -t nvim_zsh || tmux new -s nvim_zsh',
+              formatter = yarepl.formatter.bracketed_pasting,
+          },
+          ipy_tmux = {
+              cmd = 'tmux attach -t nvim_ipython || tmux new -s nvim_ipython ipython',
+              formatter = yarepl.formatter.bracketed_pasting,
+          },
+          radian = { cmd = 'radian', formatter = yarepl.formatter.bracketed_pasting },
+          bash = { cmd = 'bash', formatter = yarepl.formatter.trim_empty_lines },
           python = { cmd = 'python', formatter = yarepl.formatter.trim_empty_lines },
           R = { cmd = 'R', formatter = yarepl.formatter.trim_empty_lines },
-          bash = { cmd = 'bash', formatter = yarepl.formatter.trim_empty_lines },
-          zsh = { cmd = 'zsh', formatter = yarepl.formatter.bracketed_pasting },
       },
       -- when a REPL process exits, should the window associated with those REPLs closed?
       close_on_exit = true,

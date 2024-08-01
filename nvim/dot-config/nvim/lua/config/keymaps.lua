@@ -168,6 +168,7 @@ vim.keymap.set("n", "<leader>~", ":pwd<cr>", { silent = true, desc = "Show root 
 -- Yarepl
 vim.keymap.set("n", "<leader>ys", "<Plug>(REPLStart)", { silent = true, desc = "Yarepl start" })
 vim.keymap.set("n", "<leader>yt", "<Plug>(REPLHideOrFocus)", { silent = true, desc = "Yarepl toggle focus" })
+vim.keymap.set("n", "<leader>yz", ":REPLStart zsh_tmux<cr>", { silent = true, desc = "Yarepl start zsh (tmux)" })
 vim.keymap.set("n", "<leader>yl", "<Plug>(REPLSendLine)", { silent = true, desc = "Yarepl send line" })
 vim.keymap.set("v", "<leader>yy", "<Plug>(REPLSendVisual)", { silent = true, desc = "Yarepl send visual selection" })
 vim.keymap.set("n", "<leader>yy", "vip<Plug>(REPLSendVisual)<esc>", { silent = true, desc = "Yarepl send paragraph" })
