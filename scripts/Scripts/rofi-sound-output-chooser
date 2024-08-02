@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# MIT License
+#
+# Copyright (c) 2022 Alex Kelly
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# # rofi-sound-output-chooser
+#
+# ## Introduction
+# I wanted a way to quickly switch between my bluetooth headset, and my on-board
+# speakers.  After a little bit of poking around (and getting some inspiration
+# from [rofi-bluetooth](https://github.com/nickclyde/rofi-bluetooth), I came up
+# with this.  I have not done any extensive testing.  I don't know if this even
+# works anywhere other than my computer.  I also don't know long-term if I am even
+# sticking with I3.  I simply built this to scratch a curiosity itch with I3 and
+# pactl.
+#
+# ![demo](images/sound_change.gif)
+#
+# ## Installation
+#
+# ### Dependencies
+#
+# This script requires two additional commands
+#
+# 1. pactl - This is the main requirement for determining the devices
+# 2. dunstify - Used for notifications when the device is changed.  Technically
+#    not needed, but currently there are no checks or config options to not use
+#    it.
+#
+# For Fedora this would be done with the following:
+#
+# `dnf install pulseaudio-utils dunst`
+#
+# I don't know where any other distros keep those things, but it's probably pretty
+# similar to those.
+#
+# ### Installing this script
+#
+# 1. Clone this repo
+# 2. Copy rofi-sound-output-chooser to somewhere in your $PATH
+#
+#
+# # I3wm keybinding
+#
+# I have this bound within a mode, but you could do something like 
+#
+# `bindsym $mod+0 exec --no-startup-id rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"`
+
+LANG="en_US.utf8"
+# Outputs have spaces in them, so let's make \n the IFS
+IFS=$'\n'
+
+# Make script independent on particular implementation of send client
+if command -v notify-send > /dev/null 2>&1; then
+    SEND="notify-send"
+elif command -v dunstify > /dev/null 2>&1; then
+    SEND="dunstify"
+else
+    SEND="/bin/false"
+fi
+
+# An option was passed, so let's check it
+if [ "$@" ]
+then
+    # the output from the selection will be the desciption.  Save that for alerts
+    desc="$*"
+    # Figure out what the device name is based on the description passed
+    device=$(pactl list sinks|grep -C2 -F "Description: $desc"|grep Name|cut -d: -f2|xargs)
+    # Try to set the default to the device chosen
+    if pactl set-default-sink "$device"
+    then
+        # if it worked, alert the user
+        $SEND -t 2000 -r 2 -u low "Activated: $desc"
+    else
+        # didn't work, critically alert the user
+        $SEND -t 2000 -r 2 -u critical "Error activating $desc"
+    fi
+else
+    echo -en "\x00prompt\x1fSelect Output\n"
+    # Get the list of outputs based on the description, which is what makes sense to a human
+    # and is what we want to show in the menu
+    for x in $(pactl list sinks | grep -ie "description:"|cut -d: -f2|sort)
+    do
+        # outputs with cut may have spaces, so use empty xargs to remove them, and output that to the rofi list
+        echo "$x"|xargs
+    done
+fi
