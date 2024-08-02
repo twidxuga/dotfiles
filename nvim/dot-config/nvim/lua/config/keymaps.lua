@@ -193,3 +193,9 @@ vim.keymap.set("n", "<leader>ut",
   { desc = "Toggle color column" }
 )
 
+
+-- Copy current file name
+vim.keymap.set("n", "<leader>cp", ":let @+=expand('%')<cr>", { silent = true, desc = "Copy relative file path" })
+vim.keymap.set("n", "<leader>ct", ":let @+=expand('%:t')<cr>", { silent = true, desc = "Copy only file name" })
+vim.keymap.set("n", "<leader>cP", ":let @+=expand('%:p')<cr>", { silent = true, desc = "Copy full file path" })
+
