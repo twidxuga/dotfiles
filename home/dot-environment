@@ -5,6 +5,12 @@ export PATH=~/.local/bin:$PATH
 
 export GOPATH=~/.go
 
+# mpd host
+export MPD_HOST="/tmp/mpd-socket"
+
+# Prevent ranger from loading default rc files
+RANGER_LOAD_DEFAULT_RC=false
+
 # Source monadd environment variables (used by monadd aliases) 
 source ~/Monadd/.env/environment
 

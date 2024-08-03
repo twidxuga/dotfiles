@@ -16,6 +16,7 @@ alias pgoo='ping google.com'
 alias qvim='cd ~/Documents/QuickAccess && nvim -S Session.vim'
 alias twidback="${HOME}/Scripts/backup.sh"
 alias piperestart='systemctl --user restart pipewire.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire'
+alias brn='brn2'
 
 # tmux aliases
 alias mux='tmuxinator'

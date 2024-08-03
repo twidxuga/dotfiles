@@ -3,10 +3,13 @@ menu_child	Right
 menu_down	Down
 menu_up		Up
 
-scroll_left	h
-scroll_right	l
-scroll_up	k
-scroll_down	j
+scroll_left	H
+scroll_right L
+scroll_up	K
+scroll_down	J
+
+prev_img	h	less
+next_img	l	greater
 
 scroll_left_page	C-h
 scroll_right_page	C-l
@@ -18,11 +21,9 @@ toggle_filenames	d
 toggle_pointer		o
 toggle_fullscreen	f
 
-zoom_in		plus 	equal
-zoom_out	minus
+zoom_in		plus 	equal	k
+zoom_out	minus	j
 
-next_img	greater
-prev_img	less
 reload_image	r
 size_to_image	w
 next_dir	bracketright

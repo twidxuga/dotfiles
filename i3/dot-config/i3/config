@@ -252,7 +252,7 @@ bindsym $mod+x exec --no-startup-id thunar
 bindsym $mod+p exec --no-startup-id pavucontrol
 bindsym --release Print exec --no-startup-id "scrot -s - | xclip -selection clipboard -target image/png"
 # bindsym Shift+Print exec --no-startup-id "scrot - | xclip -selection clipboard -target image/png"
-bindsym Shift+Print exec --no-startup-id ~/Scripts/scrot-to-gimp.sh
+bindsym $mod+Print exec --no-startup-id ~/Scripts/scrot-to-gimp.sh
 bindsym $mod+o exec --no-startup-id rofi -show rofi-sound -modi "rofi-sound:~/Scripts/rofi-sound-output-chooser"
 bindsym $mod+i exec --no-startup-id rofi -show rofi-playerctl -modi "rofi-playerctl:~/Scripts/rofi-playerctl.sh"
 bindsym Ctrl+Shift+s exec --no-startup-id rofi -show rofi-screen-layout -modi "rofi-screen-layout:~/Scripts/rofi-screen.sh"

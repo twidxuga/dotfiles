@@ -2,6 +2,7 @@ aichat-bin
 autojump
 aws-cli-v2-bin
 bashmount
+brn2-git
 camlidl
 cppo
 droidcam
@@ -42,6 +43,7 @@ ocamlfuse
 openrazer-meta-git
 paper-icon-theme-git
 paru-bin
+postman-bin
 pulseaudio-ctl
 python-rchitect
 r-renv
