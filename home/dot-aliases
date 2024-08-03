@@ -49,8 +49,8 @@ function nodenv() {
   nodenv "$@"
 }
 
-# stow stow
-alias stst='stow -d ~/.dotfiles --dotfiles -v'
+# stow stow (note that the target is the parent of the stow directory)
+alias st='stow -d ~/.dotfiles --dotfiles -v'
 
 
 #===============================================================================

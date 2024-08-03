@@ -33,7 +33,7 @@ window_border_color = "green"
 active_window_border = "cyan"
 discard_colors_if_item_is_selected = "no"
 
-execute_on_song_change = "~/.config/ncmpcpp/cover_obs.sh"
+# execute_on_song_change = "~/.config/ncmpcpp/cover_obs.sh"
 startup_screen = visualizer
 
 

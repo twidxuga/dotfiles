@@ -52,6 +52,7 @@ intel-ucode
 ipython
 java-runtime-common
 jdk-openjdk
+kitty
 lazygit
 libreoffice-fresh
 libva-mesa-driver
@@ -125,6 +126,7 @@ timidity++
 tmux
 tree
 tree-sitter-cli
+ttf-dejavu
 ttf-dejavu-nerd
 tumbler
 udiskie
