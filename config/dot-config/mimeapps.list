@@ -3,3 +3,4 @@ inode/directory=thunar.desktop
 application/pdf=org.pwmt.zathura.desktop
 inode/directoryy=Thunar.desktop
 text/csv=libreoffice-calc.desktop
+x-scheme-handler/postman=Postman.desktop

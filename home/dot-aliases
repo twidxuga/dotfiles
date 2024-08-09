@@ -53,8 +53,8 @@ function nodenv() {
 
 # Lazy loading pyenv based on github.com/davidparsson/zsh-pyenv-lazy
 if type pyenv > /dev/null; then
-    export PATH="${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
     function pyenv() {
+        # export PATH="${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
         unset -f pyenv
         eval "$(command pyenv init -)"
         # set ZSH_PYENV_LAZY_VIRTUALENV to true to initialize virtualenv 
