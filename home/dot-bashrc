@@ -12,3 +12,7 @@ PS1='[\u@\h \W]\$ '
 alias ll='ls -ltrah'
 alias vi='nvim'
 alias vim='nvim'
+
+source ~/.environment
+
+source ~/.aliases

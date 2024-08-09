@@ -17,6 +17,7 @@ alias qvim='cd ~/Documents/QuickAccess && nvim -S Session.vim'
 alias twidback="${HOME}/Scripts/backup.sh"
 alias piperestart='systemctl --user restart pipewire.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire'
 alias brn='brn2'
+alias j='z'
 
 # tmux aliases
 alias mux='tmuxinator'
@@ -36,21 +37,37 @@ function tma() {
   then
     tmux attach
   else 
+    echo "No sessions to attach to"
     #tmux new-session
   fi
 }
 
 # Nodenv lazy loading
 function nodenv() {
-  if [[ $(which nodenv | grep "UNIQUEXPTOFOO") != "" ]]
+  if [[ $(which nodenv | grep "UNIQUENODEENVXPTOFOO") != "" ]]
   then
     eval "$("/usr/bin/nodenv" init -)"
   fi
   nodenv "$@"
 }
 
+# Lazy loading pyenv based on github.com/davidparsson/zsh-pyenv-lazy
+if type pyenv > /dev/null; then
+    export PATH="${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+    function pyenv() {
+        unset -f pyenv
+        eval "$(command pyenv init -)"
+        # set ZSH_PYENV_LAZY_VIRTUALENV to true to initialize virtualenv 
+        if [[ -n "${ZSH_PYENV_LAZY_VIRTUALENV}" ]]; then
+            eval "$(command pyenv virtualenv-init -)"
+        fi
+        pyenv $@
+    }
+fi
+
 # stow stow (note that the target is the parent of the stow directory)
 alias st='stow -d ~/.dotfiles --dotfiles -v'
+
 
 
 #===============================================================================
@@ -70,5 +87,31 @@ function mpdb() {
   PGPASSWORD=$pass psql -h localhost -p 6544 -U $MPDBUSER -d $MPDBNAME --no-password
   kill -9 $(ps -efww | grep  $MPBASTION | grep -v grep | awk '{print $2}')
 }
+
+function mb() {
+  pushd $MBACKENDDIR
+}
+
+function mdb() {
+  mb
+  if [[ ! $PIPENV_ACTIVE == "1" ]]
+  then
+    pipenv shell "./manage.py dbshell"
+  else
+    ./manage.py dbshell
+  fi
+}
+
+function ms() {
+  mb
+  if [[ ! $PIPENV_ACTIVE == "1" ]]
+  then
+    pipenv shell "./manage.py runserver"
+  else
+    ./manage.py runserver
+  fi
+}
+
+alias mps='~/Monadd/code/devenv/docker-postgres/postgresql.sh run'
 
 #===============================================================================

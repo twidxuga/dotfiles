@@ -1,5 +1,4 @@
 aichat-bin
-autojump
 aws-cli-v2-bin
 bashmount
 brn2-git
@@ -53,9 +52,12 @@ ruby-xdg5
 signal-desktop-beta-bin
 tiny_httpd
 tmuxinator
+turbo-base64
+ueberzugpp
 v4l2loopback-dc-dkms
 wakeup-triggers
 whatsapp-for-linux
 xlunch-git
 youtube-dl
 youtube-music
+zoom

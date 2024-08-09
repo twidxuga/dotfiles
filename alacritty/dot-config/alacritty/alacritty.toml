@@ -61,7 +61,7 @@ bold_italic           = { family = "DejaVuSansM Nerd Font Mono", style = "Bold I
 
 [selection]
 #semantic_escape_chars = ",│‘|:"' ()[]{}<>t"
-#save_to_clipboard     = true
+save_to_clipboard     = true
 
 [cursor.style]
 #shape                 = "Beam"

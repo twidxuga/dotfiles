@@ -22,7 +22,9 @@ local autocmds = {
     { "TermOpen", "*", "if &buftype == 'terminal' | :startinsert | endif" },
     { "BufEnter", "*", "if &buftype == 'terminal' | :startinsert | endif" },
     { "BufLeave", "*", "if &buftype == 'terminal' | :stopinsert | endif" },
-    { "BufEnter", "*", "if &filetype == 'markdown' | :startinsert | endif" },
+  },
+  markdown = {
+    { "BufEnter", "*.md", "silent! lua vim.diagnostic.disable(0)" },
   },
 }
 
