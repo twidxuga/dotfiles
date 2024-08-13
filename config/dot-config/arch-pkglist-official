@@ -1,3 +1,4 @@
+age
 alacritty
 android-file-transfer
 android-tools
@@ -89,6 +90,8 @@ nvidia-utils
 nvtop
 openssh
 openvpn
+otf-codenewroman-nerd
+otf-commit-mono-nerd
 pamixer
 pavucontrol
 perl-anyevent-i3
@@ -124,6 +127,7 @@ sshfs
 stow
 sway
 tenacity
+termshark
 testdisk
 texlive-binextra
 the_silver_searcher
@@ -139,8 +143,10 @@ udiskie
 udisks2
 vlc
 vulkan-icd-loader
+wezterm
 wget
 wireplumber
+wireshark-qt
 xclip
 xdg-user-dirs
 xdotool
