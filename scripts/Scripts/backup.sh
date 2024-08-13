@@ -30,7 +30,7 @@ then
   rsync -av --delete "${HOME}/Documents/" "${BACKUP}/Documents/"
   rsync -av --delete "${HOME}/.dotfiles/" "${BACKUP}/dot-dotfiles/"
   rsync -av --delete "${HOME}/Scripts/" "${BACKUP}/Scripts/"
-  rsync -av --delete "${HOME}/Projects/" "${BACKUP}/Projects/"
+  sudo rsync -av --delete "${HOME}/Projects/" "${BACKUP}/Projects/"
   rsync -av --delete "${HOME}/Desktop/" "${BACKUP}/Desktop/"
   rsync -av --delete "${HOME}/Books/" "${BACKUP}/Books/"
   rsync -av --delete "${HOME}/Photos/" "${BACKUP}/Photos/"
