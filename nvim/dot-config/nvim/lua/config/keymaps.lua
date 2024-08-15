@@ -142,17 +142,27 @@ vim.api.nvim_create_user_command("Test", 'echo "It works!"', {})
 vim.keymap.set("n", "<leader>bR", ":SudaRead ", { desc = "Read file as sudo" })
 
 -- Twidxuga's Slimux
-vim.keymap.set("n", "<leader>rl", ":SlimuxREPLSendLine<CR>", { silent = true, desc = "Send line to REPL" })
-vim.keymap.set(
-  "v",
-  "<leader>rr",
-  ":SlimuxREPLSendSelection<CR>",
-  { silent = true, desc = "Send visual selection to REPL" }
-)
-vim.keymap.set("n", "<leader>rr", "vip:SlimuxREPLSendSelection<CR>", { silent = true, desc = "Send paragraph to REPL" })
-vim.keymap.set("n", "<leader>rb", ":SlimuxREPLSendBuffer<CR>", { silent = true, desc = "Send paragraph to REPL" })
-vim.keymap.set("n", "<leader>rc", ":SlimuxREPLConfigure<CR>", { silent = true, desc = "Configure REPL" })
-require("which-key").add({ "<leader>r", group = "REPLs in tmux (Slimux)" })
+-- vim.keymap.set("n", "<leader>rl", ":SlimuxREPLSendLine<CR>", { silent = true, desc = "Send line to REPL" })
+-- vim.keymap.set(
+--   "v",
+--   "<leader>rr",
+--   ":SlimuxREPLSendSelection<CR>",
+--   { silent = true, desc = "Send visual selection to REPL" }
+-- )
+-- vim.keymap.set("n", "<leader>rr", "vip:SlimuxREPLSendSelection<CR>", { silent = true, desc = "Send paragraph to REPL" })
+-- vim.keymap.set("n", "<leader>rb", ":SlimuxREPLSendBuffer<CR>", { silent = true, desc = "Send paragraph to REPL" })
+-- vim.keymap.set("n", "<leader>rc", ":SlimuxREPLConfigure<CR>", { silent = true, desc = "Configure REPL" })
+-- require("which-key").add({ "<leader>r", group = "REPLs in tmux (Slimux)" })
+
+-- Vim-slime
+-- xmap <c-c><c-c> <Plug>SlimeRegionSend
+-- nmap <c-c><c-c> <Plug>SlimeParagraphSend
+-- nmap <c-c>v     <Plug>SlimeConfig
+vim.keymap.set("n", "<leader>rr", "<Plug>SlimeParagraphSend", { silent = true, desc = "Send paragraph to REPL" })
+vim.keymap.set("x", "<leader>rr", "<Plug>SlimeRegionSend", { silent = true, desc = "Send visual selection to REPL" })
+vim.keymap.set("n", "<leader>rl", "V<Plug>SlimeRegionSend", { silent = true, desc = "Send line to REPL" })
+vim.keymap.set("n", "<leader>rc", "<Plug>SlimeConfig", { silent = true, desc = "Configure REPL" })
+require("which-key").add({ "<leader>r", group = "REPLs in tmux (Vim-Slime)" })
 
 -- C-a in command mode
 vim.keymap.set("c", "<c-a>", "<Home>", { desc = "which_key_ignore" })
@@ -193,9 +203,59 @@ vim.keymap.set("n", "<leader>ut",
   { desc = "Toggle color column" }
 )
 
-
 -- Copy current file name
 vim.keymap.set("n", "<leader>cp", ":let @+=expand('%')<cr>", { silent = true, desc = "Copy relative file path" })
 vim.keymap.set("n", "<leader>ct", ":let @+=expand('%:t')<cr>", { silent = true, desc = "Copy only file name" })
 vim.keymap.set("n", "<leader>cP", ":let @+=expand('%:p')<cr>", { silent = true, desc = "Copy full file path" })
+
+-- venv-selector keymaps
+vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>", { silent = true, desc = "Select Python Venv for LSP" })
+vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { silent = true, desc = "Use Cached Python Venv for LSP" })
+require("which-key").add({ "<leader>v", group = "Venv Selector for Python" })
+
+-- nvim-dap keymaps
+vim.keymap.set('n', '<leader>nc', function()
+  local dap, dapui = require("dap"), require("dapui")
+  dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+  end
+  dap.continue()
+end, { silent = true, desc = "Debug Start/Continue" })
+vim.keymap.set('n', '<leader>ns', function() require('dap').step_over() end, { silent = true, desc = "Step Over" })
+vim.keymap.set('n', '<leader>ni', function() require('dap').step_into() end, { silent = true, desc = "Step Into" })
+vim.keymap.set('n', '<leader>no', function() require('dap').step_out() end, { silent = true, desc = "Step Out" })
+vim.keymap.set('n', '<leader>nb', function() require('dap').toggle_breakpoint() end, { silent = true, desc = "Toggle Breakpoint" })
+vim.keymap.set('n', '<leader>nB', function() require('dap').set_breakpoint() end, { silent = true, desc = "Set Breakpoint" })
+vim.keymap.set('n', '<Leader>nP', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { silent = true, desc = "Set Breakpoint with Message" })
+vim.keymap.set('n', '<Leader>nr', function() require('dap').repl.open() end, { silent = true, desc = "Open REPL" })
+vim.keymap.set('n', '<Leader>nl', function() require('dap').run_last() end, { silent = true, desc = "Run Last" })
+vim.keymap.set({'n', 'v'}, '<Leader>nh', function()
+  require('dap.ui.widgets').hover()
+end, { silent = true, desc = "Hover (:q to dismiss)" })
+vim.keymap.set({'n', 'v'}, '<Leader>np', function()
+  require('dap.ui.widgets').preview()
+end, { silent = true, desc = "Preview (:q to dismiss)" })
+vim.keymap.set('n', '<Leader>nf', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end, { silent = true, desc = "Frames (:q to dismiss)" })
+vim.keymap.set('n', '<Leader>nS', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end, { silent = true, desc = "Scopes (:q to dismiss)" })
+vim.keymap.set('n', '<leader>nu', function() require('dapui').toggle() end, { silent = true, desc = "Toggle Debug UI (dapui e o d r t)"})
+-- Test methods
+vim.keymap.set('n', '<leader>ntm', function() require('dap-python').test_method() end, { silent = true, desc = "Debug Method" })
+vim.keymap.set('n', '<leader>ntc', function() require('dap-python').test_class() end, { silent = true, desc = "Debug Class" })
+require("which-key").add({ "<leader>nt", group = "Debug test method/class" })
+require("which-key").add({ "<leader>n", group = "Debug (nvim-dap)" })
 

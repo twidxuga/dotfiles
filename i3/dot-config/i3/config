@@ -44,6 +44,7 @@ exec --no-startup-id copyq
 #for_window [instance="copyq"] resize set 1000 600
 #for_window [instance="copyq"] border pixel 5
 #bindsym $mod+Shift+f exec --no-startup-id copyq show
+bindsym Ctrl+Shift+h exec --no-startup-id "~/Scripts/rofi-copyq.py"
 
 # Start automatic disk driving app
 exec --no-startup-id udiskie --automount --notify --tray &
@@ -74,7 +75,9 @@ tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec kitty
+bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -244,7 +247,8 @@ exec --no-startup-id i3-msg "workspace 9; append_layout ~/.config/i3/workspace-9
 exec --no-startup-id i3-msg "workspace 9; exec whatsapp-for-linux; exec signal-desktop-beta; exec messenger-nativefier"
 exec --no-startup-id i3-msg "workspace 7; append_layout ~/.config/i3/workspace-7.json"
 # exec --no-startup-id i3-msg "workspace 7; exec firefox; exec alacritty --command tmux new-session -s twid 'cd ~/Documents/QuickAccess && nvim -S Session.vim'"
-exec --no-startup-id i3-msg "workspace 7; exec firefox; exec alacritty --command ~/Scripts/sync_tmuxinator_sessions.sh"
+# exec --no-startup-id i3-msg "workspace 7; exec firefox; exec alacritty --command ~/Scripts/sync_tmuxinator_sessions.sh"
+exec --no-startup-id i3-msg "workspace 7; exec firefox; exec wezterm start ~/Scripts/sync_tmuxinator_sessions.sh"
 exec --no-startup-id i3-msg workspace 7
 
 # custom shortcuts

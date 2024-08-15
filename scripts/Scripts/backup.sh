@@ -27,6 +27,7 @@ BACKUP="${HOME}/Media/warehouse/Backup-latest"
 if [[ -e "${BACKUP}" ]]
 then
   echo "Backup Documents"
+  # Note that sudo commands requires configuration with visudo
   rsync -av --delete "${HOME}/Documents/" "${BACKUP}/Documents/"
   rsync -av --delete "${HOME}/.dotfiles/" "${BACKUP}/dot-dotfiles/"
   rsync -av --delete "${HOME}/Scripts/" "${BACKUP}/Scripts/"

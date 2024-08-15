@@ -65,6 +65,7 @@ lightdm-gtk-greeter-settings
 linux
 linux-firmware
 linux-headers
+lsof
 lsp-plugins
 luarocks
 lvm2
@@ -104,6 +105,7 @@ playerctl
 postgresql
 pyenv
 python-dbus
+python-debugpy
 python-i3ipc
 python-pipenv
 python-psycopg2

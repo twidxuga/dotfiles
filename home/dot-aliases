@@ -37,7 +37,7 @@ function tma() {
   then
     tmux attach
   else 
-    echo "No sessions to attach to"
+    echo "======== No sessions to attach to! ========"
     #tmux new-session
   fi
 }
@@ -102,16 +102,32 @@ function mdb() {
   fi
 }
 
+# debug version
 function ms() {
   mb
   if [[ ! $PIPENV_ACTIVE == "1" ]]
   then
-    pipenv shell "./manage.py runserver"
+    # pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
+    pipenv shell "python manage.py runserver"
   else
-    ./manage.py runserver
+    # python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
+    python manage.py runserver
   fi
 }
 
+# debug version
+function msd() {
+  mb
+  if [[ ! $PIPENV_ACTIVE == "1" ]]
+  then
+    pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
+  else
+    python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
+  fi
+}
+
+
 alias mps='~/Monadd/code/devenv/docker-postgres/postgresql.sh run'
+alias mui='cd ~/Monadd/code/monadd-ui-v2'
 
 #===============================================================================
