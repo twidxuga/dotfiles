@@ -18,4 +18,5 @@ fi
 # Source monadd environment variables (used by monadd aliases) 
 source ~/Monadd/.env/environment
 
+export OPENAI_API_KEY=$(cat $OPENAIKEYFILE)
 

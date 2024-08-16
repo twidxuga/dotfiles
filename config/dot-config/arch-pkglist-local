@@ -4,6 +4,7 @@ bashmount
 brn2-git
 camlidl
 cppo
+dragon-drop
 droidcam
 dropbox
 firefox-tridactyl-native-bin
@@ -44,8 +45,12 @@ paper-icon-theme-git
 paru-bin
 portal-bin
 postman-bin
+proton-ge-custom-bin
+protontricks
 pulseaudio-ctl
 python-rchitect
+python-vdf
+quickemu
 r-renv
 radian
 razercommander-git
@@ -55,6 +60,7 @@ tiny_httpd
 tmuxinator
 turbo-base64
 v4l2loopback-dc-dkms
+vivify
 wakeup-triggers
 whatsapp-for-linux
 xlunch-git

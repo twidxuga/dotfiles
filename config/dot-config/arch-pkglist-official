@@ -126,12 +126,16 @@ sonic-visualiser
 sox
 speech-dispatcher
 sshfs
+steam
 stow
 sway
 tenacity
 termshark
 testdisk
 texlive-binextra
+texlive-latex
+texlive-latexextra
+texlive-plaingeneric
 the_silver_searcher
 thunar
 timidity++

@@ -94,7 +94,8 @@
                                             "percent": 1,
                                             "swallows": [
                                                {
-                                               "class": "^Alacritty$"
+                                               "class": "^org.wezfurlong.wezterm$"
+                                               // "class": "^Alacritty$"
                                                // "instance": "^Alacritty$",
                                                // "machine": "^twidarch$",
                                                // "title": "^tmux\\ attach$"
