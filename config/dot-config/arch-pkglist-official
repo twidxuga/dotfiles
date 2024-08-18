@@ -80,6 +80,7 @@ mpd
 mpv
 ncmpcpp
 neovim-lspconfig
+nethogs
 network-manager-applet
 networkmanager
 networkmanager-openvpn
@@ -129,6 +130,7 @@ sshfs
 steam
 stow
 sway
+sysfsutils
 tenacity
 termshark
 testdisk

@@ -18,6 +18,7 @@ alias twidback="${HOME}/Scripts/backup.sh"
 alias piperestart='systemctl --user restart pipewire.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire'
 alias brn='brn2'
 alias j='z'
+alias nethogs='sudo nethogs'
 
 # tmux aliases
 alias mux='tmuxinator'
@@ -68,7 +69,8 @@ fi
 # stow stow (note that the target is the parent of the stow directory)
 alias st='stow -d ~/.dotfiles --dotfiles -v'
 
-
+# VM aliases
+alias macos="quickemu --vm ~/.config/quickemu//macos-sonoma.conf --mouse usb"
 
 #===============================================================================
 

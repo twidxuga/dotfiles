@@ -16,7 +16,7 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
--- config.warn_about_missing_glyphs = false
+config.warn_about_missing_glyphs = false
 
 -- and finally, return the configuration to wezterm
 return config
