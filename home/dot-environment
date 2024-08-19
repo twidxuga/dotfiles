@@ -23,3 +23,4 @@ export OPENAI_API_KEY=$(cat $OPENAIKEYFILE)
 
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
+
