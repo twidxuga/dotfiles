@@ -18,5 +18,8 @@ fi
 # Source monadd environment variables (used by monadd aliases) 
 source ~/Monadd/.env/environment
 
+# OpenAI API key
 export OPENAI_API_KEY=$(cat $OPENAIKEYFILE)
 
+# Base nix configuration
+export NIX_CONFG_DIR=$HOME/.config/nix

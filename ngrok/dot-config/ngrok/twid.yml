@@ -4,7 +4,7 @@ version: 2
 tunnels:
   twidxuga:
     domain: twidxuga.eu.ngrok.io
-    addr: localhost:9000
+    addr: localhost:3000
     proto: http
     inspect: true
 
