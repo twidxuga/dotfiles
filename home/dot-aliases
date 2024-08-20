@@ -77,6 +77,7 @@ alias macos="quickemu --vm ~/.config/quickemu//macos-sonoma.conf --mouse usb"
 # Monadd's aliases
 if [[ -f ~/Monadd/.env/environment ]]
 then
+  alias awsreset="~/Scripts/awsreset.sh" 
 
   function msdb() {
     ssh -i $MSKEY $MSBASTIONUSER@$MSBASTION -L $MSDBLOCALPORT:$MSRDS:$MSRDSPORT -fN

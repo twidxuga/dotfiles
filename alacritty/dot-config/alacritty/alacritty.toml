@@ -8,7 +8,7 @@
 #]
 
 [shell]
-program               = "/usr/bin/zsh"
+program               = "zsh"
 args                  = [ "--login", ]
 
 #working_directory     = "None"
