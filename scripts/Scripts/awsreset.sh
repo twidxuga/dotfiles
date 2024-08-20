@@ -3,6 +3,7 @@
 
 PROFILE="arn:aws:iam::465543865382:mfa/ricardo.santos"
 
+# requires yubikey manager
 oathcode=$(ykman oath accounts code $PROFILE  | awk '{print $2}')
 
 echo $oathcode

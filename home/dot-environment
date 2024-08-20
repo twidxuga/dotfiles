@@ -16,7 +16,10 @@ then
 fi
 
 # Source monadd environment variables (used by monadd aliases) 
-source ~/Monadd/.env/environment
+if [[ -f ~/Monadd/.env/environment ]]
+then
+  source ~/Monadd/.env/environment
+fi
 
 # OpenAI API key
 export OPENAI_API_KEY=$(cat $OPENAIKEYFILE)
