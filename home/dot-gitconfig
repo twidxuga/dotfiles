@@ -1,0 +1,12 @@
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+[alias]
+	st = status
+	cho = checkout
+[user]
+	email = twidxuga@gmail.com
+	name = Ricardo Santos
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
