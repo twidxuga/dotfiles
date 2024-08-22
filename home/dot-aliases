@@ -47,7 +47,13 @@ function tma() {
 function nodenv() {
   if [[ $(which nodenv | grep "UNIQUENODEENVXPTOFOO") != "" ]]
   then
-    eval "$("/usr/bin/nodenv" init -)"
+    nodenvcmd="/usr/bin/nodenv"
+    macnodenvcmd="/run/current-system/sw/bin/nodenv"
+    if [[ -f $macnodenvcmd ]]
+    then
+      nodenvcmd=$macnodenvcmd
+    fi 
+    eval "$("${nodenvcmd}" init -)"
   fi
   nodenv "$@"
 }
