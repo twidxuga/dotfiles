@@ -16,6 +16,7 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+config.window_decorations = "NONE"
 config.warn_about_missing_glyphs = false
 -- macos normal alt behaviour
 config.send_composed_key_when_left_alt_is_pressed = true

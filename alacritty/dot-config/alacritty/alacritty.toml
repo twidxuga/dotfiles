@@ -23,7 +23,7 @@ TERM                  = "xterm-256color"
 #position              = { x = 0, y = 0 }
 #padding               = { x = 2, y = 2 }
 #dynamic_padding       = true
-#decorations           = "None"
+decorations           = "None"
 #opacity               = 1.0
 #blur                  = true
 #startup_mode          = "Windowed"
