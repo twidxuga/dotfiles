@@ -17,6 +17,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-
+-- macos normal alt behaviour
+config.send_composed_key_when_left_alt_is_pressed = true
 -- and finally, return the configuration to wezterm
 return config
