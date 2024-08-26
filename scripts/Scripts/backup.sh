@@ -29,6 +29,7 @@ then
   echo "Backup Documents"
   # Note that sudo commands requires configuration with visudo
   rsync -av --delete "${HOME}/Documents/" "${BACKUP}/Documents/"
+  rsync -av --delete "${HOME}/Dropbox/QuickAccess/" "${BACKUP}/QuickAccess/"
   rsync -av --delete "${HOME}/.dotfiles/" "${BACKUP}/dot-dotfiles/"
   rsync -av --delete "${HOME}/Scripts/" "${BACKUP}/Scripts/"
   sudo rsync -av --delete "${HOME}/Projects/" "${BACKUP}/Projects/"
