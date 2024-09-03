@@ -259,3 +259,6 @@ vim.keymap.set('n', '<leader>ntc', function() require('dap-python').test_class()
 require("which-key").add({ "<leader>nt", group = "Debug test method/class" })
 require("which-key").add({ "<leader>n", group = "Debug (nvim-dap)" })
 
+-- rename.vim shortcut
+vim.keymap.set('n', '<F2>', ":let @r=expand('%:t')<cr>:Rename <c-r>r", { silent = false, desc = "which_key_ignore"})
+
