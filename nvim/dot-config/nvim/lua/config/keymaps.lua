@@ -2,6 +2,11 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- --- Cell text objects
+vim.api.nvim_set_keymap('o', "ie", ':<C-u>normal! /^###<cr>kvNj<cr>', { noremap = false, silent = true, desc = "Inner cell text object" })
+vim.api.nvim_set_keymap('x', "ie", ':<C-u>normal! /^###<cr>kvNj<cr>', { noremap = false, silent = true, desc = "Inner cell text object" })
+-- vim.api.nvim_set_keymap(mode, "a" .. char, string.format(':<C-u>normal! F%svf%s<CR>', char, char, char), { noremap = true, silent = true })
+
 -- Toggle maximize with leader>m
 LazyVim.toggle.map("<leader>m", LazyVim.toggle.maximize)
 
