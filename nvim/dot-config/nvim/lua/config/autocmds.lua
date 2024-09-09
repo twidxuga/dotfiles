@@ -25,8 +25,12 @@ local autocmds = {
   },
   markdown = {
     { "BufEnter", "*.md", "silent! lua vim.diagnostic.disable(0)" },
+    -- EasyTables mappings for markdown buffers
+    { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>ti",":EasyTablesImportThisTable<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown Edit Table (EasyTables)" })' },
+    { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>tn",":let b:shape=input(\'<Cols>x<Rows>: \') | execute \'EasyTablesCreateNew \'.b:shape<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown New Table (EasyTables)" })' },
   },
 }
+
 
 nvim_create_augroups(autocmds)
 
