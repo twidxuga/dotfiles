@@ -3,9 +3,31 @@
 -- Add any additional keymaps here
 
 -- --- Cell text objects
-vim.api.nvim_set_keymap('o', "ie", ':<C-u>normal! /^###<cr>kvNj<cr>', { noremap = false, silent = true, desc = "Inner cell text object" })
-vim.api.nvim_set_keymap('x', "ie", ':<C-u>normal! /^###<cr>kvNj<cr>', { noremap = false, silent = true, desc = "Inner cell text object" })
--- vim.api.nvim_set_keymap(mode, "a" .. char, string.format(':<C-u>normal! F%svf%s<CR>', char, char, char), { noremap = true, silent = true })
+function select_cell(regex, ia)
+    local prev_matchl = vim.fn.search(regex, 'bcW')
+    local last_line = vim.fn.line('$')
+    if prev_matchl > 0 then
+      if ia == 'i' and (vim.fn.line('.') + 1) <= last_line then
+        vim.cmd('+')
+      end
+      vim.cmd('normal! 0V')
+      local pre_searchl = vim.fn.line('.')
+      local next_matchl = vim.fn.search(regex, 'W')
+      if ia == 'i' then
+        vim.cmd('-')
+      end
+      if next_matchl <= pre_searchl then
+        vim.cmd('normal! 0V')
+      end
+    end
+end
+
+vim.api.nvim_set_keymap('o', "ix", ":<c-u>lua select_cell('^###', 'i')<cr>", { noremap = true, silent = false, desc = "inner cell text object" })
+vim.api.nvim_set_keymap('x', "ix", ":<c-u>lua select_cell('^###', 'i')<cr>", { noremap = true, silent = false, desc = "inner cell text object" })
+vim.api.nvim_set_keymap('o', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { noremap = true, silent = false, desc = "inner cell text object" })
+vim.api.nvim_set_keymap('x', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { noremap = true, silent = false, desc = "inner cell text object" })
+-- vim.api.nvim_set_keymap('x', "ix", '?^###<cr>:<c-u>normal! j<esc>Vnk', { noremap = false, silent = false, desc = "Inner cell text object" })
+
 
 -- Toggle maximize with leader>m
 LazyVim.toggle.map("<leader>m", LazyVim.toggle.maximize)
@@ -166,8 +188,11 @@ vim.keymap.set("n", "<leader>bR", ":SudaRead ", { desc = "Read file as sudo" })
 vim.keymap.set("n", "<leader>rr", "<Plug>SlimeParagraphSend", { silent = true, desc = "Send paragraph to REPL" })
 vim.keymap.set("x", "<leader>rr", "<Plug>SlimeRegionSend", { silent = true, desc = "Send visual selection to REPL" })
 vim.keymap.set("n", "<leader>rl", "V<Plug>SlimeRegionSend", { silent = true, desc = "Send line to REPL" })
+-- vim.keymap.set("n", "<leader>rx", "vix<Plug>SlimeRegionSend", { silent = true, desc = "Send ### delimited cell to REPL" })
+vim.cmd('nmap <silent> <leader>rx vix<Plug>SlimeRegionSend')
+require("which-key").add({ "<leader>rx", desc = "Send ### delimited cell to REPL" })
 vim.keymap.set("n", "<leader>rc", "<Plug>SlimeConfig", { silent = true, desc = "Configure REPL" })
-require("which-key").add({ "<leader>r", group = "REPLs in tmux (Vim-Slime)" })
+require("which-key").add({ "<leader>r", group = "Send ### delimited cell to REPL" })
 
 -- C-a in command mode
 vim.keymap.set("c", "<c-a>", "<Home>", { desc = "which_key_ignore" })
@@ -187,6 +212,9 @@ vim.keymap.set("n", "<leader>yz", ":REPLStart zsh<cr>", { silent = true, desc = 
 vim.keymap.set("n", "<leader>yl", "<Plug>(REPLSendLine)", { silent = true, desc = "Yarepl send line" })
 vim.keymap.set("v", "<leader>yy", "<Plug>(REPLSendVisual)", { silent = true, desc = "Yarepl send visual selection" })
 vim.keymap.set("n", "<leader>yy", "vip<Plug>(REPLSendVisual)<esc>", { silent = true, desc = "Yarepl send paragraph" })
+-- vim.keymap.set("n", "<leader>yx", "vix<Plug>(REPLSendVisual)<esc>", { silent = true, desc = "Yarepl send ### delimited cell" })
+vim.cmd('nmap <silent> <leader>yx vix<Plug>(REPLSendVisual)<esc>')
+require("which-key").add({ "<leader>yx", desc = "Yarepl send ### delimited cell" })
 vim.keymap.set("n", "<leader>yc", "<Plug>(REPLClose)", { silent = true, desc = "Yarepl close" })
 require("which-key").add({ "<leader>y", group = "REPLs in vim (Yarepl)" })
 
