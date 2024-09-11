@@ -8,6 +8,8 @@ rsync -av --delete "${HOME}/Documents/" "${HOME}/Dropbox/Backups/Documents/"
 echo "=================================================================="
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP DOCUMENTS TO DROPBOX"
 echo "=================================================================="
+echo
+echo "=================================================================="
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] START - BACKUP DOTFILES"
 echo "=================================================================="
 echo "Start - Syncing arch packages"
