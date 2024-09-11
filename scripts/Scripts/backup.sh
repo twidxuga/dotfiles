@@ -21,11 +21,11 @@ popd
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP DOTFILES"
 echo "=================================================================="
 
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] START - BACKUP TO EXTERNAL STORAGE"
-echo "=================================================================="
 BACKUP="${HOME}/Media/warehouse/Backup-latest"
 if [[ -e "${BACKUP}" ]]
 then
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] START - BACKUP TO EXTERNAL STORAGE"
+  echo "=================================================================="
   echo "Backup Documents"
   # Note that sudo commands requires configuration with visudo
   rsync -av --delete "${HOME}/Documents/" "${BACKUP}/Documents/"
@@ -41,6 +41,6 @@ then
   rsync -av --delete "${HOME}/Audio/" "${BACKUP}/Audio/"
   rsync -av --delete "${HOME}/Video/" "${BACKUP}/Video/"
   sudo rsync -av --delete "/etc/" "${BACKUP}/etc/"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP TO EXTERNAL STORAGE"
+  echo "=================================================================="
 fi
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP TO EXTERNAL STORAGE"
-echo "=================================================================="
