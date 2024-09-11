@@ -5,7 +5,7 @@
 -- --- Cell text objects
 function select_cell(regex, ia)
     local prev_matchl = vim.fn.search(regex, 'bcW')
-    local last_line = vim.fn.line('$')
+    lolast_line = vim.fn.line('$')
     if prev_matchl > 0 then
       if ia == 'i' and (vim.fn.line('.') + 1) <= last_line then
         vim.cmd('+')
@@ -294,4 +294,10 @@ require("which-key").add({ "<leader>n", group = "Debug (nvim-dap)" })
 
 -- rename.vim shortcut
 vim.keymap.set('n', '<F2>', ":let @r=expand('%:t')<cr>:Rename <c-r>r", { silent = false, desc = "which_key_ignore"})
+
+-- Run copied line in command prompt
+vim.keymap.set('n', '<leader>cv', 'yy:<c-r>"<cr>', { noremap = true, silent = false, desc = "Run line in command prompt" })
+-- send selection to command prompt (e.g. multiline functions, but not good for a sequence of commands) 
+vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = false, desc = "Send selection to command prompt" })
+
 
