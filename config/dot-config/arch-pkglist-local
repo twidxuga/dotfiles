@@ -13,6 +13,7 @@ google-chrome
 googler
 htop-vim-git
 messenger-nativefier
+mlocate
 mpdris2
 neovim-git
 neovim-nvim-treesitter
@@ -51,6 +52,7 @@ pulseaudio-ctl
 python-pytest-runner
 python-rchitect
 python-vdf
+qemu-system-nios2
 quickemu
 r-renv
 razercommander-git

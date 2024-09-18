@@ -5,7 +5,7 @@
 -- --- Cell text objects
 function select_cell(regex, ia)
     local prev_matchl = vim.fn.search(regex, 'bcW')
-    lolast_line = vim.fn.line('$')
+    local last_line = vim.fn.line('$')
     if prev_matchl > 0 then
       if ia == 'i' and (vim.fn.line('.') + 1) <= last_line then
         vim.cmd('+')

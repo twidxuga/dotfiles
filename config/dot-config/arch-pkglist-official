@@ -16,6 +16,8 @@ bluez
 bluez-utils
 brightnessctl
 copyq
+cups
+cups-pdf
 device-mapper
 discord
 dleyna
@@ -47,6 +49,7 @@ grub
 gtk-update-icon-cache
 guitarix
 helvum
+hplip
 i3-wm
 i3blocks
 i3lock
@@ -85,7 +88,6 @@ man-db
 man-pages
 mesa
 mesa-utils
-mlocate
 mpc
 mpd
 mpv
@@ -144,6 +146,7 @@ steam
 stow
 sway
 sysfsutils
+system-config-printer
 systemd-libs
 tenacity
 termshark

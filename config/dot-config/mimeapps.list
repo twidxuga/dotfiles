@@ -4,3 +4,4 @@ application/pdf=org.pwmt.zathura.desktop
 inode/directoryy=Thunar.desktop
 text/csv=libreoffice-calc.desktop
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/mailto=google-chrome.desktop
