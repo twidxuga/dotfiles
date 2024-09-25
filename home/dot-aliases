@@ -19,6 +19,7 @@ alias piperestart='systemctl --user restart pipewire.service pipewire-pulse.sock
 alias brn='brn2'
 alias j='z'
 alias nethogs='sudo nethogs'
+alias psx='ps aux'
 
 # tmux aliases
 alias mux='tmuxinator'
