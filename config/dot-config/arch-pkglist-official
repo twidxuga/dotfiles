@@ -99,6 +99,7 @@ networkmanager
 networkmanager-openvpn
 nmap
 ntfs-3g
+nuspell
 nvidia
 nvidia-settings
 nvidia-utils
@@ -107,6 +108,7 @@ openssh
 openvpn
 otf-codenewroman-nerd
 otf-commit-mono-nerd
+pacman-contrib
 pambase
 pamixer
 pandoc-cli
@@ -118,6 +120,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 playerctl
+plocate
 postgresql
 pyenv
 python-dbus
@@ -182,6 +185,7 @@ xorg-xdpyinfo
 xorg-xev
 xsel
 yarn
+yt-dlp
 yubikey-manager
 zathura
 zathura-cb
