@@ -1,5 +1,4 @@
 #!/bin/bash
-# Uses standard ueberzug
 
 clear
 # source "`ueberzug library`"
@@ -26,11 +25,11 @@ else
   x=0
   y=35
 fi
-# force y=0, required by standard ueberzug
-y=0
 # echo "Pane: $pane, Width: $width, Height: $height, X: $x, Y: $y" #, Offset: $offset"
 
-
+# ueberzugpp uses relative y and x, not absolute like ueberzug
+y=0 
+x=0
 {
   echo "{\"path\": \"$COVER\", \"action\": \"add\", \"identifier\": \"cover\", \"x\": \"$x\", \"y\": \"$y\", \"width\": \"$width\", \"height\": \"$height\"}"
   while ! inotifywait -q -q -e modify "$COVER"; do
@@ -39,5 +38,5 @@ y=0
   done
   echo "{\"action\": \"exit\", \"identifier\": \"cover\"}"
   exit 0
-} | ueberzug layer --silent
+} | ueberzugpp layer --silent --no-cache
 

@@ -11,6 +11,7 @@ google-chrome
 googler
 htop-vim-git
 messenger-nativefier
+mkchromecast-git
 mpdris2
 neovim-git
 neovim-nvim-treesitter
@@ -45,6 +46,8 @@ postman-bin
 proton-ge-custom-bin
 protontricks
 pulseaudio-ctl
+python-casttube
+python-pychromecast
 python-pytest-runner
 python-rchitect
 python-vdf
