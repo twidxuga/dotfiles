@@ -47,6 +47,7 @@ proton-ge-custom-bin
 protontricks
 pulseaudio-ctl
 python-casttube
+python-jupytext
 python-pychromecast
 python-pytest-runner
 python-rchitect

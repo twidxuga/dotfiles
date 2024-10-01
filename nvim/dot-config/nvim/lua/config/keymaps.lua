@@ -300,4 +300,3 @@ vim.keymap.set('n', '<leader>cv', 'yy:<c-r>"<cr>', { noremap = true, silent = fa
 -- send selection to command prompt (e.g. multiline functions, but not good for a sequence of commands) 
 vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = false, desc = "Send selection to command prompt" })
 
-

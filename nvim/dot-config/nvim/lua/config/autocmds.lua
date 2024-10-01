@@ -30,9 +30,15 @@ local autocmds = {
     { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>tn",":let b:shape=input(\'<Cols>x<Rows>: \') | execute \'EasyTablesCreateNew \'.b:shape<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown New Table (EasyTables)" })' },
     { "BufEnter", "*.md", 'silent! lua require("which-key").add({ "<leader>t", group = "Markdown Table Edit/Create (EasyTables)" })' },
   },
+  python = {
+    -- Convert python to ipynb
+    { "BufEnter", "*.py", 'silent! lua vim.keymap.set("n", "<leader>ci", ":!jupytext --to notebook <c-r>%<cr>", { noremap = true, silent = true, desc = "Convert python to ipynb"})' },
+  },
+  json = {
+    -- convert ipynb to python
+    { "BufEnter", "*.ipynb", 'silent! lua vim.keymap.set("n", "<leader>cy", ":!jupyter nbconvert --to python <c-r>%<cr>", { noremap = true, silent = true, desc = "Convert ipynb to python"})' },
+  }
 }
-
-
 
 nvim_create_augroups(autocmds)
 

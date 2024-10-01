@@ -64,6 +64,7 @@ intel-ucode
 ipython
 java-runtime-common
 jdk-openjdk
+jupyter-notebook
 kitty
 kmod
 lazygit
