@@ -106,6 +106,7 @@ nvidia
 nvidia-settings
 nvidia-utils
 nvtop
+obs-studio
 openssh
 openvpn
 otf-codenewroman-nerd
@@ -115,6 +116,7 @@ pambase
 pamixer
 pandoc-cli
 pavucontrol
+peek
 perl-anyevent-i3
 picard
 pipewire

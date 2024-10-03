@@ -189,7 +189,7 @@ vim.keymap.set("n", "<leader>rr", "<Plug>SlimeParagraphSend", { silent = true, d
 vim.keymap.set("x", "<leader>rr", "<Plug>SlimeRegionSend", { silent = true, desc = "Send visual selection to REPL" })
 vim.keymap.set("n", "<leader>rl", "V<Plug>SlimeRegionSend", { silent = true, desc = "Send line to REPL" })
 -- vim.keymap.set("n", "<leader>rx", "vix<Plug>SlimeRegionSend", { silent = true, desc = "Send ### delimited cell to REPL" })
-vim.cmd('nmap <silent> <leader>rx vix<Plug>SlimeRegionSend')
+vim.cmd('nmap <silent> <leader>rx i<esc>vix<Plug>SlimeRegionSend`^')
 require("which-key").add({ "<leader>rx", desc = "Send ### delimited cell to REPL" })
 vim.keymap.set("n", "<leader>rc", "<Plug>SlimeConfig", { silent = true, desc = "Configure REPL" })
 require("which-key").add({ "<leader>r", group = "Send ### delimited cell to REPL" })
