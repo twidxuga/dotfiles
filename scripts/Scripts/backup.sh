@@ -46,7 +46,7 @@ then
   rsync -av --delete "${HOME}/Pictures/" "${BACKUP}/Pictures/"
   rsync -av --delete "${HOME}/Audio/" "${BACKUP}/Audio/"
   rsync -av --delete "${HOME}/Video/" "${BACKUP}/Video/"
-  sudo rsync -av --delete "/etc/" "${BACKUP}/etc/"
+  sudo rsync -av --no-owner --no-group --delete "/etc/" "${BACKUP}/etc/"
   echo "=================================================================="
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP TO EXTERNAL STORAGE"
   echo "=================================================================="
