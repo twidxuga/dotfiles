@@ -26,6 +26,10 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP DOTFILES"
 echo "=================================================================="
 
 BACKUP="${HOME}/Media/warehouse/Backup-latest"
+if ! [[ -e "${BACKUP}" ]]
+then
+  mkdir $BACKUP
+done
 if [[ -e "${BACKUP}" ]]
 then
   echo
@@ -50,4 +54,7 @@ then
   echo "=================================================================="
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP TO EXTERNAL STORAGE"
   echo "=================================================================="
+else
+  echo "ERROR creating or accessing $BACKUP"
 fi
+
