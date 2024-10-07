@@ -16,6 +16,7 @@ blueman
 bluez
 bluez-utils
 brightnessctl
+code
 copyq
 cups
 cups-pdf
@@ -24,6 +25,7 @@ discord
 dleyna
 dmenu
 docker
+docker-compose
 dos2unix
 dosfstools
 dunst
@@ -130,6 +132,7 @@ pyenv
 python-dbus
 python-debugpy
 python-i3ipc
+python-pickleshare
 python-pipenv
 python-psycopg2
 python-pynvim

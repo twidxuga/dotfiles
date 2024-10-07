@@ -12,6 +12,7 @@
   "codeium.nvim": { "branch": "main", "commit": "937667b2cadc7905e6b9ba18ecf84694cf227567" },
   "conform.nvim": { "branch": "master", "commit": "1a99fdc1d3aa9ccdf3021e67982a679a8c5c740c" },
   "dashboard-nvim": { "branch": "master", "commit": "fabf5feec96185817c732d47d363f34034212685" },
+  "distant.nvim": { "branch": "v0.3", "commit": "f3a4a1c87a2a67a08deb472b57148cd55b29d0fc" },
   "dressing.nvim": { "branch": "master", "commit": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2" },
   "easytables.nvim": { "branch": "master", "commit": "ae57fdaad25a5f9ac2773ebdb8782c7bbc7d8932" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
