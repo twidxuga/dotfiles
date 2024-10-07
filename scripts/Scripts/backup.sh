@@ -26,7 +26,7 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP DOTFILES"
 echo "=================================================================="
 
 BACKUP="${HOME}/Media/warehouse/Backup-latest"
-if ! [[ -e "${BACKUP}" ]]; then mkdir $BACKUP fi
+if ! [[ -e "${BACKUP}" ]]; then mkdir $BACKUP; fi
 if [[ -e "${BACKUP}" ]]
 then
   echo
