@@ -300,3 +300,9 @@ vim.keymap.set('n', '<leader>cv', 'yy:<c-r>"<cr>', { noremap = true, silent = fa
 -- send selection to command prompt (e.g. multiline functions, but not good for a sequence of commands) 
 vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = false, desc = "Send selection to command prompt" })
 
+
+-- -- Convert python to ipynb
+-- vim.keymap.set('n', '<leader>ci', ':!jupytext --to notebook <c-r>%<cr>', { noremap = true, silent = true, desc = "Convert python to ipynb"})
+-- -- convert ipynb to python
+-- vim.keymap.set('n', '<leader>cy', ':!jupyter nbconvert --to python <c-r>%<cr>', { noremap = true, silent = true, desc = "Convert ipynb to python"})
+

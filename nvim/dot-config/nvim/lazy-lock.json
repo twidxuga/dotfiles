@@ -84,5 +84,6 @@
   "vivify.vim": { "branch": "main", "commit": "18ba8b46f4cbe6c49c5de0e47cdc51bee1513aa3" },
   "which-key.nvim": { "branch": "main", "commit": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821" },
   "yanky.nvim": { "branch": "main", "commit": "73215b77d22ebb179cef98e7e1235825431d10e4" },
-  "yarepl.nvim": { "branch": "main", "commit": "628303a23bd45f7420968e9c4fa991263b32f61e" }
+  "yarepl.nvim": { "branch": "main", "commit": "628303a23bd45f7420968e9c4fa991263b32f61e" },
+  "zen-mode.nvim": { "branch": "main", "commit": "29b292bdc58b76a6c8f294c961a8bf92c5a6ebd6" }
 }
