@@ -69,6 +69,7 @@ jdk-openjdk
 jupyter-notebook
 kitty
 kmod
+kvantum
 lazygit
 libnghttp3
 libpipewire
@@ -76,6 +77,7 @@ libreoffice-fresh
 librsvg
 libsasl
 libva-mesa-driver
+libvdpau-va-gl
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
@@ -109,6 +111,7 @@ nvidia-settings
 nvidia-utils
 nvtop
 obs-studio
+ollama
 openssh
 openvpn
 otf-codenewroman-nerd
@@ -136,6 +139,8 @@ python-pickleshare
 python-pipenv
 python-psycopg2
 python-pynvim
+qt5ct
+qt6ct
 r
 ranger
 realtime-privileges
@@ -171,7 +176,7 @@ thunar
 timidity++
 tmux
 transmission-cli
-transmission-qt
+transmission-gtk
 tree
 tree-sitter-cli
 ttf-dejavu

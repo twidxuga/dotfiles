@@ -1,34 +1,70 @@
+12 Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x12
+16 Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x16
 About Xfce;/usr/share/icons/hicolor/48x48/apps/org.xfce.about.png;xfce4-about
+A/B Tester x2 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x2-mono
+A/B Tester x2 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x2-stereo
+A/B Tester x4 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x4-mono
+A/B Tester x4 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x4-stereo
+A/B Tester x8 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x8-mono
+A/B Tester x8 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ab-tester-x8-stereo
 Advanced Network Configuration;/usr/share/icons/Paper/48x48/categories/preferences-system-network.png;nm-connection-editor
 Alacritty;svgicons/Alacritty.png;alacritty
 Android File Transfer (MTP);/usr/share/icons/hicolor/512x512/apps/android-file-transfer.png;android-file-transfer
 ARandR;/usr/share/icons/Paper/48x48/devices/display.png;arandr
 Ardour;/usr/share/icons/hicolor/48x48/apps/ardour8.png;ardour8
+Artistic Delay Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-art-delay-mono
+Artistic Delay Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-art-delay-stereo
+Autogain Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-autogain-mono
+Autogain Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-autogain-stereo
 Avahi SSH Server Browser;svgicons/network-wired.png;/usr/bin/bssh
 Avahi VNC Server Browser;svgicons/network-wired.png;/usr/bin/bvnc
 Avahi Zeroconf Browser;svgicons/network-wired.png;/usr/bin/avahi-discover
+Beat Breather;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-beat-breather-mono
+Beat Breather;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-beat-breather-stereo
+Bluetooth Adapters;/usr/share/icons/Paper/48x48/devices/blueman-device.png;blueman-adapters
+Bluetooth Manager;/usr/share/icons/Paper/48x48/apps/blueman.png;blueman-manager
 Bulk Rename;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar --bulk-rename
+Chorus Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-chorus-mono
+Chorus Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-chorus-stereo
+Clipper Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-clipper-mono
+Clipper Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-clipper-stereo
 CMake;/usr/share/icons/Paper/48x48/apps/CMakeSetup.png;cmake-gui
 CopyQ;/usr/share/icons/hicolor/48x48/apps/copyq.png;copyq --start-server show
 Customize Look and Feel;/usr/share/icons/Paper/48x48/apps/preferences-desktop-theme.png;lxappearance
+Direct Out 12 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x12-do
+Direct Out 24 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x24-do
+Direct out 48 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x48-do
 Discord;/usr/share/icons/Paper/48x48/apps/discord.png;/usr/bin/discord
 Document Scanner;svgicons/org.gnome.SimpleScan.png;simple-scan
 DroidCam;/usr/share/pixmaps/droidcam.png;droidcam
 Dropbox;/usr/share/icons/Paper/48x48/web/dropbox.png;dropbox
 Easy Effects;svgicons/com.github.wwmm.easyeffects.png;easyeffects
+Eight Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x8
 Electron 30;/usr/share/pixmaps/electron30.png;electron30
 Electron 31;/usr/share/pixmaps/electron31.png;electron31
 File Manager Settings;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar-settings
-Firefox Web Browser;/usr/share/icons/Paper/48x48/apps/firefox.png;/usr/lib/firefox/firefox
+Firefox;/usr/share/icons/Paper/48x48/apps/firefox.png;/usr/lib/firefox/firefox
+Flanger Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-flanger-mono
+Flanger Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-flanger-stereo
+Four Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x4
 gedit;/usr/share/icons/Paper/48x48/apps/org.gnome.gedit.png;gedit
 GNU Image Manipulation Program;/usr/share/icons/Paper/48x48/apps/gimp.png;gimp-2.10
 Google Chrome;/usr/share/icons/Paper/48x48/apps/google-chrome.png;/usr/bin/google-chrome-stable
+GOTT Compressor LeftRight;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gott-compressor-lr
+GOTT Compressor MidSide;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gott-compressor-ms
+GOTT Compressor Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gott-compressor-mono
+GOTT Compressor Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gott-compressor-stereo
+GParted;/usr/share/icons/Paper/48x48/apps/gparted.png;/usr/bin/gparted
 guitarix;/usr/share/pixmaps/gx_head.png;guitarix
 Hardware Locality lstopo;;lstopo
 Helvum;svgicons/org.pipewire.Helvum.png;helvum
+HP Device Manager;/usr/share/hplip/data/images/128x128/hp_logo.png;hp-toolbox
+hp-uiscan;;/usr/bin/hp-uiscan
 Htop;/usr/share/icons/Paper/48x48/apps/htop.png;screen-256color -e htop
 Inkscape;/usr/share/icons/Paper/48x48/apps/org.inkscape.Inkscape.png;inkscape
 ipython;/usr/share/icons/Paper/48x48/apps/ipython.png;screen-256color -e ipython
+kitty;/usr/share/icons/hicolor/256x256/apps/kitty.png;kitty
+Latency Meter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-latency-meter
 LibreOffice Base;/usr/share/icons/Paper/48x48/apps/libreoffice-base.png;libreoffice --base
 LibreOffice Calc;/usr/share/icons/Paper/48x48/apps/libreoffice-calc.png;libreoffice --calc
 LibreOffice Draw;/usr/share/icons/Paper/48x48/apps/libreoffice-draw.png;libreoffice --draw
@@ -37,15 +73,104 @@ LibreOffice Math;/usr/share/icons/Paper/48x48/apps/libreoffice-math.png;libreoff
 LibreOffice;/usr/share/icons/Paper/48x48/apps/libreoffice-startcenter.png;libreoffice
 LibreOffice Writer;/usr/share/icons/Paper/48x48/apps/libreoffice-writer.png;libreoffice --writer
 LightDM GTK Greeter settings;/usr/share/icons/Paper/48x48/apps/lightdm-gtk-greeter-settings.png;lightdm-gtk-greeter-settings-pkexec
+LSP Mixer x16 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x16-mono
+LSP Mixer x16 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x16-stereo
+LSP Mixer x4 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x4-mono
+LSP Mixer x4 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x4-stereo
+LSP Mixer x8 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x8-mono
+LSP Mixer x8 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x8-stereo
+Manage Printing;/usr/share/icons/Paper/48x48/devices/cups.png;xdg-open http://localhost:631/
 Messenger;/usr/share/icons/hicolor/48x48/apps/messenger-nativefier.png;messenger-nativefier
+Mid-Side Crossover;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-crossover-ms
+Mid-Side Split Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-compressor-ms
+Mid-Side Split Multiband Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-expander-ms
+Mid-Side Split Multiband Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-gate-ms
+Mid-Side Split Multiband Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-expander-ms
+Mid-Side Split Multiband Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-gate-ms
+Mid-Side Split Stereo Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-compressor-ms
+Mid-Side Stereo 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x16-ms
+Mid-Side Stereo 16 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x16-ms
+Mid-Side Stereo 32 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x32-ms
+Mid-Side Stereo 32 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x32-ms
+Mid-Side Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-dyna-processor-ms
+Mid-Side Stereo Dynamic Sidechain Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-dyna-processor-ms
+Mid-Side Stereo Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-expander-ms
+Mid-Side Stereo Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gate-ms
+Mid-Side Stereo Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-expander-ms
+Mid-Side Stereo Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-gate-ms
+Mid-Side Stereo Sidechain Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-compressor-ms
+Mid-Side Stero Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-ms
+Mono 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x16-mono
+Mono 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x32-mono
+Mono 16 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x16-mono
+Mono 32 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x32-mono
+Mono Audio Profiler;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-profiler-mono
+Mono Audio Trigger;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-trigger-mono
+Mono Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-compressor-mono
+Mono Convolution Reverb;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-impulse-reverb-mono
+Mono Crossover;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-crossover-mono
+Mono Delay Compensator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-comp-delay-mono
+Mono Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-dyna-processor-mono
+Mono Dynamic Sidechain Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-dyna-processor-mono
+Mono Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-expander-mono
+Mono Filter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-filter-mono
+Mono Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gate-mono
+Mono Impulse Responses;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-impulse-responses-mono
+Mono Limiter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-limiter-mono
+Mono Loudness Compensator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-loud-comp-mono
+Mono MIDI Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sampler-mono
+Mono MIDI Trigger;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-trigger-midi-mono
+Mono Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-compressor-mono
+Mono Multiband Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-expander-mono
+Mono Multiband Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-gate-mono
+Mono Multiband Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-expander-mono
+Mono Multiband Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-gate-mono
+Mono Room Impulse Response Builder;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-room-builder-mono
+Mono Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-mono
+Mono Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-expander-mono
+Mono Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-gate-mono
+Mono Sidechain Limiter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-limiter-mono
+Mono Sidechain Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-compressor-mono
+Mono Signal Generator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscillator-mono
+Mono Slap Delay;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-slap-delay-mono
+Mono Surge Filter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-surge-filter-mono
 mpv Media Player;/usr/share/icons/Paper/48x48/apps/mpv.png;mpv --player-operation-mode=pseudo-gui --
+Multiband Clipper Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-clipper-mono
+Multiband Clipper Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-clipper-mono
+Multiband Limiter Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-limiter-mono
+Multiband Limiter Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-limiter-stereo
+Multiband Limiter Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-limiter-stereo
+Multiband Mid-Side Split Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-dyna-processor-ms
+Multiband Mid-Side Stero Sidechain Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-dyna-processor-ms
+Multiband Mono Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-dyna-processor-mono
+Multiband Mono Sidechain Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-dyna-processor-mono
+Multiband Sidechain Limiter Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-limiter-mono
+Multiband Split Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-dyna-processor-lr
+Multiband Split Stereo Sidechain Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-dyna-processor-lr
+Multiband Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-dyna-processor-stereo
+Multiband Stero Sidechain Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-dyna-processor-stereo
 MusicBrainz Picard;/usr/share/icons/hicolor/48x48/apps/org.musicbrainz.Picard.png;picard
 Neovim;/usr/share/icons/hicolor/128x128/apps/nvim.png;screen-256color -e nvim
+Noise Generator x1;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-noise-generator-x1
+Noise Generator x2;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-noise-generator-x2
+Noise Generator x4;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-noise-generator-x4
 NVIDIA X Server Settings;/usr/share/icons/Paper/48x48/apps/nvidia-settings.png;/usr/bin/nvidia-settings
 nvtop;svgicons/nvtop.png;screen-256color -e nvtop
+One Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x1
 OpenJDK Java 22 Console;;/usr/lib/jvm/java-22-openjdk/bin/jconsole
 OpenJDK Java 22 Shell;;screen-256color -e /usr/lib/jvm/java-22-openjdk/bin/jshell
-PulseAudio Volume Control;/usr/share/icons/Paper/48x48/apps/multimedia-volume-control.png;pavucontrol
+Oscilloscope 1 Channel;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x1
+Oscilloscope 2 Channels;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x2
+Oscilloscope 4 Channels;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x4
+Phase Detector;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-phase-detector
+Postman;/usr/share/icons/hicolor/128x128/apps/postman.png;/opt/postman/Postman
+Print Settings;/usr/share/icons/Paper/48x48/devices/printer.png;system-config-printer
+Protontricks;/usr/share/icons/Paper/48x48/apps/wine.png;protontricks --no-term --gui
+Qt Assistant (Qt 5);/usr/share/icons/Paper/48x48/apps/assistant.png;assistant
+Qt Designer (Qt 5);/usr/share/icons/Paper/48x48/apps/QtProject-designer.png;designer
+Qt Linguist (Qt 5);/usr/share/icons/hicolor/48x48/apps/linguist.png;linguist
+Qt QDBusViewer (Qt 5);/usr/share/icons/hicolor/128x128/apps/qdbusviewer.png;qdbusviewer
+Qtractor;svgicons/org.rncbc.qtractor.png;qtractor
 Qt V4L2 test Utility;/usr/share/icons/hicolor/64x64/apps/qv4l2.png;qv4l2
 Qt V4L2 video capture utility;/usr/share/icons/hicolor/64x64/apps/qvidcap.png;qvidcap
 ranger;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;screen-256color -e ranger
@@ -56,15 +181,80 @@ Rofi Theme Selector;svgicons/rofi.png;rofi-theme-selector
 R;/usr/share/pixmaps/r.png;screen-256color -e R
 scrcpy (console);/usr/share/icons/hicolor/256x256/apps/scrcpy.png;screen-256color -e /bin/sh -c "\\$SHELL -i -c 'scrcpy --pause-on-exit=if-error'"
 scrcpy;/usr/share/icons/hicolor/256x256/apps/scrcpy.png;/bin/sh -c "\\$SHELL -i -c scrcpy"
+Sidechain Autogain Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-autogain-mono
+Sidechain Autogain Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-autogain-stereo
 Signal Beta;/usr/share/icons/hicolor/48x48/apps/signal-desktop-beta.png;"/opt/Signal Beta/signal-desktop-beta" --no-sandbox
 Sonic Visualiser;svgicons/sonic-visualiser.png;sonic-visualiser
+Split Crossover;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-crossover-lr
+Split Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-compressor-lr
+Split Multiband Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-expander-lr
+Split Multiband Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-gate-lr
+Split Multiband Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-expander-lr
+Split Multiband Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-gate-lr
+Split Stereo 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x16-lr
+Split Stereo 16 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x16-lr
+Split Stereo 32 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x32-lr
+Split Stereo 32 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x32-lr
+Split Stereo Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-compressor-lr
+Split Stereo Delay Compensator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-comp-delay-x2-stereo
+Split Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-dyna-processor-lr
+Split Stereo Dynamic Sidechain Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-dyna-processor-lr
+Split Stereo Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-expander-lr
+Split Stereo Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gate-lr
+Split Stereo Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-lr
+Split Stereo Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-expander-lr
+Split Stereo Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-gate-lr
+Split Stereo Sidechain Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-compressor-lr
+Steam (Runtime);/usr/share/icons/Paper/48x48/apps/steam.png;/usr/bin/steam-runtime
+Stereo 12 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x12
+Stereo 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x16-stereo
+Stereo 16 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x16-stereo
+Stereo 24 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x24
+Stereo 32 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x32-stereo
+Stereo 32 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x32-stereo
+Stereo 48 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x48
+Stereo Audio Profiler;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-profiler-stereo
+Stereo Audio Trigger;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-trigger-stereo
+Stereo Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-compressor-stereo
+Stereo Convolution Reverb;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-impulse-reverb-stereo
+Stereo Crossover;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-crossover-stereo
+Stereo Delay Compensator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-comp-delay-stereo
+Stereo Dynamic Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-dyna-processor-stereo
+Stereo Dynamic Sidechain Processor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-dyna-processor-stereo
+Stereo Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-expander-stereo
+Stereo Filter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-filter-stereo
+Stereo Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-gate-stereo
+Stereo Impulse Responses;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-impulse-responses-stereo
+Stereo Limiter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-limiter-stereo
+Stereo Loudness Compensator;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-loud-comp-stereo
+Stereo MIDI Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sampler-stereo
+Stereo MIDI Trigger;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-trigger-midi-stereo
+Stereo Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-compressor-stereo
+Stereo Multiband Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-expander-stereo
+Stereo Multiband Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mb-gate-stereo
+Stereo Multiband Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-expander-stereo
+Stereo Multiband Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-gate-stereo
+Stereo Room Impulse Response Builder;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-room-builder-stereo
+Stereo Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-expander-stereo
+Stereo Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-gate-stereo
+Stereo Sidechain Limiter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-limiter-stereo
+Stereo Sidechain Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-compressor-stereo
+Stereo Slap Delay;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-slap-delay-stereo
+Stereo Surge Filter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-surge-filter-mono
+Stero Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-stereo
 Tenacity;/usr/share/icons/hicolor/48x48/tenacity.png;env UBUNTU_MENUPROXY=0 tenacity
 Thunar File Manager;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar
 Tweaks;/usr/share/icons/Paper/48x48/apps/org.gnome.tweaks.png;gnome-tweaks
+Two Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x2
 urxvt (client);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvtc
 urxvt (tabbed);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt-tabbed
 urxvt;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt
 VLC media player;/usr/share/icons/Paper/48x48/apps/vlc.png;/usr/bin/vlc --started-from-file
+Volume Control;/usr/share/icons/Paper/48x48/apps/multimedia-volume-control.png;pavucontrol
+WezTerm;/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png;wezterm start --cwd .
 WhatsApp for Linux;/usr/share/icons/hicolor/64x64/apps/com.github.eneshecan.WhatsAppForLinux.png;whatsapp-for-linux
+Winetricks;svgicons/winetricks.png;winetricks --gui
+Wireshark;/usr/share/icons/hicolor/48x48/apps/org.wireshark.Wireshark.png;wireshark
 YouTube Music;/usr/share/icons/hicolor/48x48/apps/youtube-music.png;youtube-music
 Zathura;/usr/share/icons/hicolor/64x64/apps/org.pwmt.zathura.png;zathura
+Zoom Workplace;/usr/share/pixmaps/Zoom.png;/usr/bin/zoom

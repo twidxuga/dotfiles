@@ -2458,10 +2458,10 @@ qt-privacy-ask=0
 [gl] # OpenGL video output
 
 # OpenGL extension (string)
-#gl=
+gl=any
 
 # Open GL/GLES hardware converter (string)
-#glconv=
+glconv=any
 
 [yuv] # YUV video output
 
@@ -3252,10 +3252,10 @@ qt-privacy-ask=0
 #sout-x264-stats=x264_2pass.log
 
 # Default preset setting used (string)
-#sout-x264-preset=
+sout-x264-preset=ultrafast
 
 # Default tune setting used (string)
-#sout-x264-tune=
+sout-x264-tune=film
 
 # x264 advanced options (string)
 #sout-x264-options=
@@ -3960,7 +3960,7 @@ aout=any
 #deinterlace-mode=auto
 
 # Video output module (string)
-vout=any
+vout=xcb_xv
 
 # Video filter module (string)
 #video-filter=
@@ -4233,7 +4233,7 @@ vout=any
 #packetizer=
 
 # VoD server module (string)
-#vod-server=
+vod-server=any
 
 # Use a plugins cache (boolean)
 #plugins-cache=1

@@ -29,6 +29,7 @@ Chorus Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-ch
 Clipper Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-clipper-mono
 Clipper Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-clipper-stereo
 CMake;/usr/share/icons/Paper/48x48/apps/CMakeSetup.png;cmake-gui
+Code - OSS;/usr/share/pixmaps/com.visualstudio.code.oss.png;code-oss
 CopyQ;/usr/share/icons/hicolor/48x48/apps/copyq.png;copyq --start-server show
 Customize Look and Feel;/usr/share/icons/Paper/48x48/apps/preferences-desktop-theme.png;lxappearance
 Direct Out 12 Instrument Sample Player;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-multisampler-x12-do
@@ -42,6 +43,8 @@ Easy Effects;svgicons/com.github.wwmm.easyeffects.png;easyeffects
 Eight Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x8
 Electron 30;/usr/share/pixmaps/electron30.png;electron30
 Electron 31;/usr/share/pixmaps/electron31.png;electron31
+Electron 32;/usr/share/pixmaps/electron32.png;electron32
+Electron 33;/usr/share/pixmaps/electron33.png;electron33
 File Manager Settings;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar-settings
 Firefox;/usr/share/icons/Paper/48x48/apps/firefox.png;/usr/lib/firefox/firefox
 Flanger Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-flanger-mono
@@ -63,7 +66,10 @@ hp-uiscan;;/usr/bin/hp-uiscan
 Htop;/usr/share/icons/Paper/48x48/apps/htop.png;screen-256color -e htop
 Inkscape;/usr/share/icons/Paper/48x48/apps/org.inkscape.Inkscape.png;inkscape
 ipython;/usr/share/icons/Paper/48x48/apps/ipython.png;screen-256color -e ipython
+JupyterLab;svgicons/jupyterlab.png;screen-256color -e jupyter-lab
+Jupyter Notebook;svgicons/notebook.png;screen-256color -e jupyter-notebook
 kitty;/usr/share/icons/hicolor/256x256/apps/kitty.png;kitty
+Kvantum Manager;svgicons/kvantum.png;kvantummanager
 Latency Meter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-latency-meter
 LibreOffice Base;/usr/share/icons/Paper/48x48/apps/libreoffice-base.png;libreoffice --base
 LibreOffice Calc;/usr/share/icons/Paper/48x48/apps/libreoffice-calc.png;libreoffice --calc
@@ -73,6 +79,7 @@ LibreOffice Math;/usr/share/icons/Paper/48x48/apps/libreoffice-math.png;libreoff
 LibreOffice;/usr/share/icons/Paper/48x48/apps/libreoffice-startcenter.png;libreoffice
 LibreOffice Writer;/usr/share/icons/Paper/48x48/apps/libreoffice-writer.png;libreoffice --writer
 LightDM GTK Greeter settings;/usr/share/icons/Paper/48x48/apps/lightdm-gtk-greeter-settings.png;lightdm-gtk-greeter-settings-pkexec
+LM Studio;/usr/share/icons/hicolor/48x48/apps/lm-studio.png;env DESKTOPINTEGRATION=false /usr/bin/lm-studio --no-sandbox
 LSP Mixer x16 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x16-mono
 LSP Mixer x16 Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x16-stereo
 LSP Mixer x4 Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-mixer-x4-mono
@@ -100,6 +107,7 @@ Mid-Side Stereo Sidechain Expander;/usr/share/icons/hicolor/48x48/apps/lsp-plugi
 Mid-Side Stereo Sidechain Gate;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-gate-ms
 Mid-Side Stereo Sidechain Multiband Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-mb-compressor-ms
 Mid-Side Stero Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-ms
+mkchromecast;/usr/share/pixmaps/mkchromecast.xpm;/usr/bin/mkchromecast -t
 Mono 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x16-mono
 Mono 16 Band Graphic Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-graph-equalizer-x32-mono
 Mono 16 Band Parametric Equalizer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-para-equalizer-x16-mono
@@ -156,16 +164,21 @@ Noise Generator x2;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugi
 Noise Generator x4;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-noise-generator-x4
 NVIDIA X Server Settings;/usr/share/icons/Paper/48x48/apps/nvidia-settings.png;/usr/bin/nvidia-settings
 nvtop;svgicons/nvtop.png;screen-256color -e nvtop
+OBS Studio;/usr/share/icons/hicolor/128x128/apps/com.obsproject.Studio.png;obs
 One Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x1
-OpenJDK Java 22 Console;;/usr/lib/jvm/java-22-openjdk/bin/jconsole
-OpenJDK Java 22 Shell;;screen-256color -e /usr/lib/jvm/java-22-openjdk/bin/jshell
+OpenJDK Java 23 Console;;/usr/lib/jvm/java-23-openjdk/bin/jconsole
+OpenJDK Java 23 Shell;;screen-256color -e /usr/lib/jvm/java-23-openjdk/bin/jshell
+Oracle VirtualBox;/usr/share/icons/Paper/48x48/apps/virtualbox.png;VirtualBox
 Oscilloscope 1 Channel;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x1
 Oscilloscope 2 Channels;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x2
 Oscilloscope 4 Channels;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-oscilloscope-x4
+Peek;svgicons/com.uploadedlobster.peek.png;peek
 Phase Detector;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-phase-detector
 Postman;/usr/share/icons/hicolor/128x128/apps/postman.png;/opt/postman/Postman
 Print Settings;/usr/share/icons/Paper/48x48/devices/printer.png;system-config-printer
 Protontricks;/usr/share/icons/Paper/48x48/apps/wine.png;protontricks --no-term --gui
+Qt5 Settings;/usr/share/icons/Paper/48x48/apps/preferences-desktop-theme.png;qt5ct
+Qt6 Settings;/usr/share/icons/Paper/48x48/apps/preferences-desktop-theme.png;qt6ct
 Qt Assistant (Qt 5);/usr/share/icons/Paper/48x48/apps/assistant.png;assistant
 Qt Designer (Qt 5);/usr/share/icons/Paper/48x48/apps/QtProject-designer.png;designer
 Qt Linguist (Qt 5);/usr/share/icons/hicolor/48x48/apps/linguist.png;linguist
@@ -176,11 +189,15 @@ Qt V4L2 video capture utility;/usr/share/icons/hicolor/64x64/apps/qvidcap.png;qv
 ranger;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;screen-256color -e ranger
 razerCommander;svgicons/org.gabmus.razercommander.png;/usr/bin/razercommander
 Regenerate entries for xlunch;/usr/share/icons/hicolor/48x48/apps/xlunch.png;genentries.desktop.sh
+Return Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-return-mono
+Return Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-return-stereo
 Rofi;svgicons/rofi.png;rofi -show
 Rofi Theme Selector;svgicons/rofi.png;rofi-theme-selector
 R;/usr/share/pixmaps/r.png;screen-256color -e R
 scrcpy (console);/usr/share/icons/hicolor/256x256/apps/scrcpy.png;screen-256color -e /bin/sh -c "\\$SHELL -i -c 'scrcpy --pause-on-exit=if-error'"
 scrcpy;/usr/share/icons/hicolor/256x256/apps/scrcpy.png;/bin/sh -c "\\$SHELL -i -c scrcpy"
+Send Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-send-mono
+Send Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-send-stereo
 Sidechain Autogain Mono;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-autogain-mono
 Sidechain Autogain Stereo;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-autogain-stereo
 Signal Beta;/usr/share/icons/hicolor/48x48/apps/signal-desktop-beta.png;"/opt/Signal Beta/signal-desktop-beta" --no-sandbox
@@ -244,6 +261,7 @@ Stereo Surge Filter;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plug
 Stero Sidechain Compressor;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-sc-compressor-stereo
 Tenacity;/usr/share/icons/hicolor/48x48/tenacity.png;env UBUNTU_MENUPROXY=0 tenacity
 Thunar File Manager;/usr/share/icons/hicolor/48x48/apps/org.xfce.thunar.png;thunar
+Transmission;/usr/share/icons/Paper/48x48/apps/transmission.png;transmission-gtk
 Tweaks;/usr/share/icons/Paper/48x48/apps/org.gnome.tweaks.png;gnome-tweaks
 Two Channel Spectrum Analyzer;/usr/share/icons/hicolor/48x48/apps/lsp-plugins.png;lsp-plugins-spectrum-analyzer-x2
 urxvt (client);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvtc
@@ -251,8 +269,8 @@ urxvt (tabbed);/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt-ta
 urxvt;/usr/share/icons/Paper/48x48/apps/utilities-terminal.png;urxvt
 VLC media player;/usr/share/icons/Paper/48x48/apps/vlc.png;/usr/bin/vlc --started-from-file
 Volume Control;/usr/share/icons/Paper/48x48/apps/multimedia-volume-control.png;pavucontrol
+WasIstLos;/usr/share/icons/hicolor/64x64/apps/com.github.xeco23.WasIstLos.png;wasistlos
 WezTerm;/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png;wezterm start --cwd .
-WhatsApp for Linux;/usr/share/icons/hicolor/64x64/apps/com.github.eneshecan.WhatsAppForLinux.png;whatsapp-for-linux
 Winetricks;svgicons/winetricks.png;winetricks --gui
 Wireshark;/usr/share/icons/hicolor/48x48/apps/org.wireshark.Wireshark.png;wireshark
 YouTube Music;/usr/share/icons/hicolor/48x48/apps/youtube-music.png;youtube-music
