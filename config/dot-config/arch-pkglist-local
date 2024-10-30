@@ -29,9 +29,7 @@ ocaml-biniou
 ocaml-compiler-libs-repackaged
 ocaml-cryptokit
 ocaml-easy-format
-ocaml-lwt
 ocaml-ocplib-endian
-ocaml-ounit
 ocaml-ppx_here
 ocaml-ppx_let
 ocaml-ppxlib
