@@ -93,6 +93,7 @@ lvm2
 lxappearance-gtk3
 man-db
 man-pages
+memtest86+-efi
 mesa
 mesa-utils
 mpc
@@ -108,6 +109,7 @@ nmap
 ntfs-3g
 nuspell
 nvidia
+nvidia-prime
 nvidia-settings
 nvidia-utils
 nvtop
@@ -153,6 +155,7 @@ rxvt-unicode
 scrcpy
 scrot
 simple-scan
+smartmontools
 socat
 sonic-visualiser
 sox
@@ -189,6 +192,7 @@ ueberzug
 virtualbox
 vlc
 vulkan-icd-loader
+vulkan-tools
 wezterm
 wget
 wireplumber
