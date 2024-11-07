@@ -52,6 +52,6 @@ then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] END - BACKUP TO EXTERNAL STORAGE"
   echo "=================================================================="
 else
-  echo "ERROR creating or accessing $BACKUP"
+  echo "WARNING: Could not create or access $BACKUP. Not mounted?"
 fi
 
