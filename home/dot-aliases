@@ -21,6 +21,7 @@ alias j='z'
 alias nethogs='sudo nethogs'
 alias psx='ps aux'
 alias ra='ranger'
+alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 
 # tmux aliases
 alias mux='tmuxinator'
