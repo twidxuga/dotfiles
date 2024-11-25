@@ -28,12 +28,6 @@ vim.api.nvim_set_keymap('o', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { n
 vim.api.nvim_set_keymap('x', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { noremap = true, silent = false, desc = "inner cell text object" })
 -- vim.api.nvim_set_keymap('x', "ix", '?^###<cr>:<c-u>normal! j<esc>Vnk', { noremap = false, silent = false, desc = "Inner cell text object" })
 
-
--- Toggle maximize with leader>m
--- LazyVim.toggle.map("<leader>m", LazyVim.toggle.maximize) -- deprecated by snacks.toggle
--- vim.keymap.set("n","<leader>m", ":lua LazyVim.ui.maximize()<cr>", { silent = false, desc = "Maximize pane" })
--- Using <leader>wm for now
-
 -- Telescope keymaps
 vim.keymap.set("n", "<C-p>", ":Telescope buffers<cr>", { silent = true, desc = "Show buffers" })
 -- telescope frecency
