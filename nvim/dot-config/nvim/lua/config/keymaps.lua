@@ -30,7 +30,9 @@ vim.api.nvim_set_keymap('x', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { n
 
 
 -- Toggle maximize with leader>m
-LazyVim.toggle.map("<leader>m", LazyVim.toggle.maximize)
+-- LazyVim.toggle.map("<leader>m", LazyVim.toggle.maximize) -- deprecated by snacks.toggle
+-- vim.keymap.set("n","<leader>m", ":lua LazyVim.ui.maximize()<cr>", { silent = false, desc = "Maximize pane" })
+-- Using <leader>wm for now
 
 -- Telescope keymaps
 vim.keymap.set("n", "<C-p>", ":Telescope buffers<cr>", { silent = true, desc = "Show buffers" })
@@ -301,8 +303,13 @@ vim.keymap.set('n', '<leader>cv', 'yy:<c-r>"<cr>', { noremap = true, silent = fa
 vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = false, desc = "Send selection to command prompt" })
 
 
--- -- Convert python to ipynb
+-- -- Convert python to ipynb (moved to autocommands)
 -- vim.keymap.set('n', '<leader>ci', ':!jupytext --to notebook <c-r>%<cr>', { noremap = true, silent = true, desc = "Convert python to ipynb"})
 -- -- convert ipynb to python
 -- vim.keymap.set('n', '<leader>cy', ':!jupyter nbconvert --to python <c-r>%<cr>', { noremap = true, silent = true, desc = "Convert ipynb to python"})
+
+-- Keybindings to snack notifications
+--lua Snacks.notifier.show_history()
+vim.keymap.set('n', '<leader>m', ":lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Show all notifications (snack)" })
+
 
