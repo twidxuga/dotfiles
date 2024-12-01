@@ -214,4 +214,12 @@ return {
       vim.g.vivify_filetypes = { 'vimwiki', }
     end,
   },
+  {
+    "img-paste-devs/img-paste.vim",
+    init = function()
+      -- keymap autocommand added to the autocomands file
+      vim.g.mdip_imgdir = 'img'
+      vim.g.mdip_imgname = 'image'
+    end,
+  }
 }

@@ -25,6 +25,8 @@ local autocmds = {
   },
   markdown = {
     { "BufEnter", "*.md", "silent! lua vim.diagnostic.disable(0)" },
+    -- img-paste
+    { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>P",":EasyTablesImportThisTable<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown Edit Table (EasyTables)" })' },
     -- EasyTables mappings for markdown buffers
     { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>ti",":EasyTablesImportThisTable<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown Edit Table (EasyTables)" })' },
     { "BufEnter", "*.md", 'silent! lua vim.keymap.set("n","<leader>tn",":let b:shape=input(\'<Cols>x<Rows>: \') | execute \'EasyTablesCreateNew \'.b:shape<cr>", { buffer = vim.fn.bufnr(), silent = true, desc = "Markdown New Table (EasyTables)" })' },
@@ -55,6 +57,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
   once = true,
 })
+
+-- autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
 -- autocommands END
 
