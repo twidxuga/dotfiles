@@ -92,6 +92,7 @@ lvm2
 lxappearance-gtk3
 man-db
 man-pages
+mediainfo
 memtest86+-efi
 mesa
 mesa-utils
