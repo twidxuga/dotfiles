@@ -29,9 +29,9 @@ vim.api.nvim_set_keymap('x', "ax", ":<c-u>lua select_cell('^###', 'a')<cr>", { n
 -- vim.api.nvim_set_keymap('x', "ix", '?^###<cr>:<c-u>normal! j<esc>Vnk', { noremap = false, silent = false, desc = "Inner cell text object" })
 
 -- Telescope keymaps
-vim.keymap.set("n", "<C-p>", ":Telescope buffers<cr>", { silent = true, desc = "Show buffers" })
--- telescope frecency
-vim.keymap.set("n", "<leader>sf", ":Telescope frecency<cr>", { silent = true, desc = "Show buffers" })
+vim.keymap.set("n", "<C-p>", ":FzfLua buffers<cr>", { silent = true, desc = "Show buffers" })
+-- telescope frecency (deprecated, use <leader>fr instead)
+-- vim.keymap.set("n", "<leader>sf", ":Telescope frecency<cr>", { silent = true, desc = "Show buffers" })
 
 -- Remap lsp hover
 vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<cr>", { silent = true, desc = "Show hover info" })
