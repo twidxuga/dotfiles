@@ -1,0 +1,3 @@
+return {
+  "danro/rename.vim",
+}

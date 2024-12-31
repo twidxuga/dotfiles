@@ -1,0 +1,17 @@
+bat
+colima
+composer
+htop
+imagemagick
+ipython
+julia
+lazygit
+luarocks
+mpv
+mysql@8.0
+node-build
+rust
+tree-sitter
+w3m
+wget
+jstkdng/programs/ueberzugpp

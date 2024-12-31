@@ -1,0 +1,152 @@
+#===============================================================================
+# Twid's aliases
+#===============================================================================
+
+# general utility
+alias vi='nvim'
+alias vim='nvim'
+alias ll='ls -ltrah'
+alias xdg-open='open'
+alias xo='open'
+# alias xo='xdg-open'
+alias psgrep='ps -efww | grep -v grep | grep -i'
+function pskill() {
+  # ps -efww | grep -v grep | grep -i $1 | while read line; do echo $line; sudo kill -9 $(echo $line | awk '{print $2}'); done;
+  ps -efww | grep -v grep | grep -i $1 | while read line; do echo $line; kill -9 $(echo $line | awk '{print $2}'); done;
+}
+alias dum='du -h --max-depth=1 | sort -h'
+alias pgoo='ping google.com'
+alias qvim='cd ~/Documents/QuickAccess && nvim -S Session.vim'
+alias twidback="${HOME}/Scripts/backup.sh"
+alias piperestart='systemctl --user restart pipewire.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire'
+alias brn='brn2'
+alias j='z'
+alias nethogs='sudo nethogs'
+alias psx='ps aux'
+alias ra='ranger'
+alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
+
+# tmux aliases
+alias mux='tmuxinator'
+function tma() {
+  if [[ "$#" -eq 1 ]]
+  then
+    # Attaches to or creates a new named sassion
+    if [[ -n "$TMUX" ]]
+    then 
+      tmux new -d "tmuxinator start $1 --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING || tmux new-session -A -s $1"
+    else
+      tmuxinator start $1 --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING || tmux new-session -A -s $1
+    fi
+    return
+  fi
+  if [[ $(tmux list-sessions | wc -l) -gt 0 ]]
+  then
+    tmux attach
+  else 
+    echo "======== No sessions to attach to! ========"
+    #tmux new-session
+  fi
+}
+
+# Nodenv lazy loading
+function nodenv() {
+  if [[ $(which nodenv | grep "UNIQUENODEENVXPTOFOO") != "" ]]
+  then
+    nodenvcmd="/usr/bin/nodenv"
+    macnodenvcmd="/run/current-system/sw/bin/nodenv"
+    if [[ -f $macnodenvcmd ]]
+    then
+      nodenvcmd=$macnodenvcmd
+    fi 
+    eval "$("${nodenvcmd}" init -)"
+  fi
+  nodenv "$@"
+}
+
+# Lazy loading pyenv based on github.com/davidparsson/zsh-pyenv-lazy
+if type pyenv > /dev/null; then
+    function pyenv() {
+        # export PATH="${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+        unset -f pyenv
+        eval "$(command pyenv init -)"
+        # set ZSH_PYENV_LAZY_VIRTUALENV to true to initialize virtualenv 
+        if [[ -n "${ZSH_PYENV_LAZY_VIRTUALENV}" ]]; then
+            eval "$(command pyenv virtualenv-init -)"
+        fi
+        pyenv $@
+    }
+fi
+
+# stow stow (note that the target is the parent of the stow directory)
+alias st='stow -d ~/.dotfiles --dotfiles -v'
+
+# VM aliases
+alias macos="quickemu --vm ~/.config/quickemu//macos-sonoma.conf --mouse usb"
+
+#===============================================================================
+
+# Monadd's aliases
+if [[ -f ~/Monadd/.env/environment ]]
+then
+  alias awsreset="~/Scripts/awsreset.sh" 
+
+  function msdb() {
+    ssh -i $MSKEY $MSBASTIONUSER@$MSBASTION -L $MSDBLOCALPORT:$MSRDS:$MSRDSPORT -fN
+    pass=$(cat $MCFG | grep DB_PASSWORD | head -1 | awk '{print $2}' | sed 's/[",]*//g')
+    PGPASSWORD=$pass psql -h localhost -p 6543 -U $MSDBUSER -d $MSDBNAME --no-password
+    kill -9 $(ps -efww | grep  $MSBASTION | grep -v grep | awk '{print $2}')
+  }
+
+  function mpdb() {
+    ssh -i $MPKEY $MPBASTIONUSER@$MPBASTION -L $MPDBLOCALPORT:$MPRDS:$MPRDSPORT -fN
+    pass=$(cat $MCFG | grep DB_PASSWORD | tail -1 | awk '{print $2}' | sed 's/[",]*//g')
+    PGPASSWORD=$pass psql -h localhost -p 6544 -U $MPDBUSER -d $MPDBNAME --no-password
+    kill -9 $(ps -efww | grep  $MPBASTION | grep -v grep | awk '{print $2}')
+  }
+
+  function mb() {
+    pushd $MBACKENDDIR
+  }
+
+  function mdb() {
+    mb
+    if [[ ! $PIPENV_ACTIVE == "1" ]]
+    then
+      pipenv shell "./manage.py dbshell"
+    else
+      ./manage.py dbshell
+    fi
+  }
+
+# debug version
+  function ms() {
+    mb
+    if [[ ! $PIPENV_ACTIVE == "1" ]]
+    then
+      # pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
+      pipenv shell "python manage.py runserver"
+    else
+      # python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
+      python manage.py runserver
+    fi
+  }
+
+# debug version
+  function msd() {
+    mb
+    if [[ ! $PIPENV_ACTIVE == "1" ]]
+    then
+      pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
+    else
+      python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
+    fi
+  }
+
+
+  alias mps='~/Monadd/code/devenv/docker-postgres/postgresql.sh run'
+  alias mui='cd ~/Monadd/code/monadd-ui-v2'
+
+fi
+
+#===============================================================================
