@@ -198,7 +198,7 @@ return {
     -- config = function() let g:mkdp_theme = 'dark' end,
     config = function()
       vim.g.mkdp_theme = 'light'
-      vim.g.mkdp_image_path = '/home/twidxuga/Documents/QuickAccess/kb/images'
+      vim.g.mkdp_image_path = '/Users/ricardo.santos/Documents/QuickAccess/kb/images'
     end,
   },
   { 

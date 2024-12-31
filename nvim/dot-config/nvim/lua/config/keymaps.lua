@@ -51,6 +51,11 @@ vim.keymap.set({ "i", "n" }, "<M-h>", "<esc>:w<cr>", { noremap = true, silent = 
 vim.keymap.set({ "i", "n" }, "<M-j>", "<esc>:w<cr>j", { noremap = true, silent = true, desc = "which_key_ignore" })
 vim.keymap.set({ "i", "n" }, "<M-k>", "<esc>:w<cr>k", { noremap = true, silent = true, desc = "which_key_ignore" })
 vim.keymap.set({ "i", "n" }, "<M-l>", "<esc>:w<cr>l", { noremap = true, silent = true, desc = "which_key_ignore" })
+-- same but on mac with option key
+vim.keymap.set({ "i", "n" }, "˙", "<esc>:w<cr>", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "∆", "<esc>:w<cr>j", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "˚", "<esc>:w<cr>k", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "¬", "<esc>:w<cr>l", { noremap = true, silent = true, desc = "which_key_ignore" })
 
 -- Remap trouble vim errors inline and hide inline hints
 vim.keymap.set(
@@ -59,6 +64,20 @@ vim.keymap.set(
   ":lua vim.diagnostic.open_float()<CR>",
   { silent = true, desc = "Expand inline diagnostic" }
 )
+
+-- Toggle diagnostics
+vim.g["diagnostics_active"] = true
+function Toggle_diagnostics()
+    if vim.g.diagnostics_active then
+        vim.g.diagnostics_active = false
+        vim.diagnostic.disable()
+    else
+        vim.g.diagnostics_active = true
+        vim.diagnostic.enable()
+    end
+end
+vim.keymap.set('n', '<leader>xe', Toggle_diagnostics, { noremap = true, silent = true, desc = "Toggle vim diagnostics" })
+
 
 -- tab mappings
 vim.keymap.set("n", "<leader>1", "1gt:pwd<cr>", { silent = true, desc = "which_key_ignore" })
@@ -200,6 +219,9 @@ vim.keymap.set("c", "<c-H>", "<S-Left>", { desc = "which_key_ignore" })
 -- Show filename and root folder
 vim.keymap.set("n", "<leader>#", ':echo "<c-r>%"<cr>', { silent = true, desc = "Show current file name" })
 vim.keymap.set("n", "<leader>~", ":pwd<cr>", { silent = true, desc = "Show root dir" })
+-- Show filename 
+vim.keymap.set("n", "<leader>'", ':echo "<c-r>%"<cr>', { silent = true, desc = "Show current file name" })
+vim.keymap.set("n", '<leader>"', ":pwd<cr>", { silent = true, desc = "Show root dir" })
 
 -- Yarepl
 vim.keymap.set("n", "<leader>ys", "<Plug>(REPLStart)", { silent = true, desc = "Yarepl start" })
@@ -305,5 +327,4 @@ vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = fal
 -- Keybindings to snack notifications
 --lua Snacks.notifier.show_history()
 vim.keymap.set('n', '<leader>m', ":lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Show all notifications (snack)" })
-
 

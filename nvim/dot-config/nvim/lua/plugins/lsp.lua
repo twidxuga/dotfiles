@@ -10,20 +10,22 @@ return {
         bashls = {
           filetypes = { "sh", "zsh" },
         },
+        eslint = {
+          settings = {
+        --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+            -- workingDirectories = { mode = "auto" },
+            workingDirectories = { mode = "local" },
+        --     experimental = {
+        --       -- allows to use flat config format
+        --       useFlatConfig = true,
+        --     },
+          },
+          -- root_dir = require('lspconfig.util').find_git_ancestor
+          root_dir = (function() return vim.fs.dirname(vim.fs.find('.git', { path = vim.api.nvim_buf_get_name(0), upward = true })[1])end)
+        },
       },
     },
   },
-  -- formatters, etc
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --     ensure_installed = {
-  --       -- "xmlformatter",
-  --       "eslint_d"
-  --     },
-  --   },
-  -- },
-  -- -- Language servers
   -- {
   --   "williamboman/mason-lspconfig.nvim",
   --   opts = {
@@ -31,41 +33,7 @@ return {
   --     ensure_installed = {},
   --   }
   -- },
-  -- {
-  --   "mfussenegger/nvim-lint",
-  --   event = {
-  --     "BufReadPre",
-  --     "BufNewFile",
-  --   },
-  --   config = function()
-  --     local lint = require("lint")
-  --
-  --     lint.linters_by_ft = {
-  --       javascript = { "eslint_d" },
-  --       typescript = { "eslint_d" },
-  --       javascriptreact = { "eslint_d" },
-  --       typescriptreact = { "eslint_d" },
-  --       -- svelte = { "eslint_d" },
-  --       -- kotlin = { "ktlint" },
-  --       -- terraform = { "tflint" },
-  --     }
-  --
-  --     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-  --
-  --     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-  --       group = lint_augroup,
-  --       callback = function()
-  --         lint.try_lint()
-  --       end,
-  --     })
-  --
-  --     -- vim.keymap.set("n", "<leader>ll", function()
-  --     --   lint.try_lint()
-  --     -- end, { desc = "Trigger linting for current file" })
-  --   end,
-  -- },
-  -- -- lsp virtualenv select
-  {
+  { -- lsp virtualenv select
     "linux-cultist/venv-selector.nvim",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     opts = {
