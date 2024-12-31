@@ -189,19 +189,19 @@ return {
       -- vim.g.instant_markdown_slow = 0
     end,
   },
+  -- {
+  --   -- "iamcco/markdown-preview.nvim",
+  --   "Knyffen/markdown-preview.nvim", -- includes file serving
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   ft = { "markdown" },
+  --   build = function() vim.fn["mkdp#util#install"]() end,
+  --   -- config = function() let g:mkdp_theme = 'dark' end,
+  --   config = function()
+  --     vim.g.mkdp_theme = 'light'
+  --     vim.g.mkdp_image_path = vim.fn.expand('$HOME') + '/Documents/QuickAccess/kb/images'
+  --   end,
+  -- },
   {
-    -- "iamcco/markdown-preview.nvim",
-    "Knyffen/markdown-preview.nvim", -- includes file serving
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-    -- config = function() let g:mkdp_theme = 'dark' end,
-    config = function()
-      vim.g.mkdp_theme = 'light'
-      vim.g.mkdp_image_path = '/Users/ricardo.santos/Documents/QuickAccess/kb/images'
-    end,
-  },
-  { 
     -- Vivify also alows preview markdown notebooks
     -- requires vivify installed separately (AUR vivify)
     "jannis-baum/vivify.vim", 

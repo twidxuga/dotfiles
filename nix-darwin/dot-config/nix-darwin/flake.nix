@@ -64,7 +64,7 @@
       system.stateVersion = 4;
 
       # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "x86_64-darwin";
+      nixpkgs.hostPlatform = "aarch64-darwin";
 
       # System settings
       system.defaults = {
@@ -81,9 +81,9 @@
       homebrew.casks = [
         "firefox"
 	      "wireshark"
-        "google-chrome"
+        #"google-chrome"
         "wezterm" # nix package does not work on x86_64-darwin
-        "copyq" # nix package does not work on x86_64-darwin
+        #"copyq" # nix package does not work on x86_64-darwin
         "dropbox" # nix package does not work on x86_64-darwin
         "font-dejavu-sans-mono-nerd-font"
         "docker"
@@ -96,11 +96,11 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Twids-iMac-Pro
-    darwinConfigurations."Twids-iMac-Pro" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."HX7302" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Twids-iMac-Pro".pkgs;
+    darwinPackages = self.darwinConfigurations."HX7302".pkgs;
   };
 }
