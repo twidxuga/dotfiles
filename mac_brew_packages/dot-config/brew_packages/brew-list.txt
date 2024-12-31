@@ -14,4 +14,5 @@ rust
 tree-sitter
 w3m
 wget
+jannis-baum/tap/vivify
 jstkdng/programs/ueberzugpp

@@ -59,6 +59,8 @@ bdw-gc
 
 brotli
 
+c-ares
+
 ca-certificates
 
 cairo
@@ -3793,6 +3795,8 @@ libunibreak
 libunistring
 
 libusb
+
+libuv
 
 libvidstab
 
@@ -10112,6 +10116,15 @@ vips
         └── zstd
             ├── lz4
             └── xz
+
+jannis-baum/tap/vivify
+├── brotli
+├── c-ares
+├── icu4c@76
+├── libnghttp2
+├── libuv
+└── openssl@3
+    └── ca-certificates
 
 vulkan-headers
 
