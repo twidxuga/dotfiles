@@ -39,8 +39,10 @@ vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<cr>", { silent = true, desc 
 -- Remap J K
 local keys = require("lazyvim.plugins.lsp.keymaps").get()
 keys[#keys + 1] = { "K", false }
-vim.keymap.set({ "n", "x" }, "J", "10jzz", { silent = true, desc = "Scroll down" })
-vim.keymap.set({ "n", "x" }, "K", "10kzz", { silent = true, desc = "Scroll up" })
+-- vim.keymap.set({ "n", "x" }, "J", "15jzz", { silent = true, desc = "Scroll down" })
+vim.keymap.set({ "n", "x" }, "J", "<c-d>", { silent = true, desc = "Scroll down" })
+-- vim.keymap.set({ "n", "x" }, "K", "15kzz", { silent = true, desc = "Scroll up" })
+vim.keymap.set({ "n", "x" }, "K", "<c-u>", { silent = true, desc = "Scroll up" })
 
 -- remap enter to noh
 vim.keymap.set("n", "<cr>", "<esc>:noh<cr>", { noremap = true, silent = true, desc = "which_key_ignore" })

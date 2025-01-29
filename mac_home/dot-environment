@@ -18,6 +18,16 @@ then
     export PATH="${PYENV_ROOT}/bin:${PATH}"
 fi
 
+# JWT pub/private keys for dev services
+export JWT_PRIVATE_KEY=`cat ~/.ssh/id_rsa`
+export JWT_PUBLIC_KEY=`cat ~/.ssh/id_rsa.pub`
+
+# Source HX environment variables (used by HX aliases) 
+if [[ -f ~/HX/.env/environment ]]
+then
+  source ~/HX/.env/environment
+fi
+
 # OpenAI API key
 if [[ ! -z $OPENAIKEYFILE ]]
 then

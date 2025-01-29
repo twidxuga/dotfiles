@@ -25,6 +25,7 @@ alias nethogs='sudo nethogs'
 alias psx='ps aux'
 alias ra='ranger'
 alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
+alias nt='npx ts-node'
 
 # tmux aliases
 alias mux='tmuxinator'
@@ -150,3 +151,4 @@ then
 fi
 
 #===============================================================================
+
