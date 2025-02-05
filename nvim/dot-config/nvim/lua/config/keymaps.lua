@@ -165,20 +165,20 @@ vim.keymap.set("v", "<right>", "<Plug>FreeDragRight", { silent = true, desc = "w
 
 -- DBUI
 vim.keymap.del("n", "<leader>D") -- Remove mapping automatically added by DBUI
-vim.keymap.set("n", "<leader>ds", ":DBUIToggle<cr>", { silent = true, desc = "Toggle DBUI" })
+vim.keymap.set("n", "<leader>ts", ":DBUIToggle<cr>", { silent = true, desc = "Toggle DBUI" })
 vim.keymap.set(
   "v",
-  "<leader>dd",
+  "<leader>tt",
   "<Plug>(DBUI_ExecuteQuery)",
   { silent = true, desc = "Execute visual selection query" }
 )
 vim.keymap.set(
   "n",
-  "<leader>dd",
+  "<leader>tt",
   "vip<Plug>(DBUI_ExecuteQuery)",
   { silent = true, desc = "Execute query in paragraph" }
 )
-require("which-key").add({ "<leader>d", group = "DBUI" })
+require("which-key").add({ "<leader>t", group = "DBUI" })
 
 -- Suda (write/read as sudo)
 vim.keymap.set("n", "<leader>bW", ":SudaWrite<cr>", { silent = true, desc = "Write file as sudo" })
@@ -267,7 +267,7 @@ vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { silent = true, 
 require("which-key").add({ "<leader>v", group = "Venv Selector for Python" })
 
 -- nvim-dap keymaps
-vim.keymap.set('n', '<leader>nc', function()
+vim.keymap.set('n', '<leader>dd', function()
   local dap, dapui = require("dap"), require("dapui")
   dap.listeners.before.attach.dapui_config = function()
     dapui.open()
@@ -283,34 +283,34 @@ vim.keymap.set('n', '<leader>nc', function()
   end
   dap.continue()
 end, { silent = true, desc = "Debug Start/Continue" })
-vim.keymap.set('n', '<leader>ns', function() require('dap').step_over() end, { silent = true, desc = "Step Over" })
-vim.keymap.set('n', '<leader>ni', function() require('dap').step_into() end, { silent = true, desc = "Step Into" })
-vim.keymap.set('n', '<leader>no', function() require('dap').step_out() end, { silent = true, desc = "Step Out" })
-vim.keymap.set('n', '<leader>nb', function() require('dap').toggle_breakpoint() end, { silent = true, desc = "Toggle Breakpoint" })
-vim.keymap.set('n', '<leader>nB', function() require('dap').set_breakpoint() end, { silent = true, desc = "Set Breakpoint" })
-vim.keymap.set('n', '<Leader>nP', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { silent = true, desc = "Set Breakpoint with Message" })
-vim.keymap.set('n', '<Leader>nr', function() require('dap').repl.open() end, { silent = true, desc = "Open REPL" })
-vim.keymap.set('n', '<Leader>nl', function() require('dap').run_last() end, { silent = true, desc = "Run Last" })
-vim.keymap.set({'n', 'v'}, '<Leader>nh', function()
+vim.keymap.set('n', '<leader>ds', function() require('dap').step_over() end, { silent = true, desc = "Step Over" })
+vim.keymap.set('n', '<leader>di', function() require('dap').step_into() end, { silent = true, desc = "Step Into" })
+vim.keymap.set('n', '<leader>do', function() require('dap').step_out() end, { silent = true, desc = "Step Out" })
+vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end, { silent = true, desc = "Toggle Breakpoint" })
+vim.keymap.set('n', '<leader>dB', function() require('dap').set_breakpoint() end, { silent = true, desc = "Set Breakpoint" })
+vim.keymap.set('n', '<Leader>dP', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { silent = true, desc = "Set Breakpoint with Message" })
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end, { silent = true, desc = "Open REPL" })
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end, { silent = true, desc = "Run Last" })
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
   require('dap.ui.widgets').hover()
 end, { silent = true, desc = "Hover (:q to dismiss)" })
-vim.keymap.set({'n', 'v'}, '<Leader>np', function()
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
   require('dap.ui.widgets').preview()
 end, { silent = true, desc = "Preview (:q to dismiss)" })
-vim.keymap.set('n', '<Leader>nf', function()
+vim.keymap.set('n', '<Leader>df', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.frames)
 end, { silent = true, desc = "Frames (:q to dismiss)" })
-vim.keymap.set('n', '<Leader>nS', function()
+vim.keymap.set('n', '<Leader>dS', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end, { silent = true, desc = "Scopes (:q to dismiss)" })
-vim.keymap.set('n', '<leader>nu', function() require('dapui').toggle() end, { silent = true, desc = "Toggle Debug UI (dapui e o d r t)"})
+vim.keymap.set('n', '<leader>du', function() require('dapui').toggle() end, { silent = true, desc = "Toggle Debug UI (dapui e o d r t)"})
 -- Test methods
-vim.keymap.set('n', '<leader>ntm', function() require('dap-python').test_method() end, { silent = true, desc = "Debug Method" })
-vim.keymap.set('n', '<leader>ntc', function() require('dap-python').test_class() end, { silent = true, desc = "Debug Class" })
-require("which-key").add({ "<leader>nt", group = "Debug test method/class" })
-require("which-key").add({ "<leader>n", group = "Debug (nvim-dap)" })
+vim.keymap.set('n', '<leader>dtm', function() require('dap-python').test_method() end, { silent = true, desc = "Debug Method" })
+vim.keymap.set('n', '<leader>dtc', function() require('dap-python').test_class() end, { silent = true, desc = "Debug Class" })
+require("which-key").add({ "<leader>dt", group = "Debug test method/class" })
+require("which-key").add({ "<leader>d", group = "Debug (nvim-dap)" })
 
 -- rename.vim shortcut
 vim.keymap.set('n', '<F2>', ":let @r=expand('%:t')<cr>:Rename <c-r>r", { silent = false, desc = "which_key_ignore"})
@@ -328,5 +328,6 @@ vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = fal
 
 -- Keybindings to snack notifications
 --lua Snacks.notifier.show_history()
-vim.keymap.set('n', '<leader>m', ":lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Show all notifications (snack)" })
+-- Bound to <leader>n by default
+-- vim.keymap.set('n', '<leader>n', ":lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Show all notifications (snack)" })
 

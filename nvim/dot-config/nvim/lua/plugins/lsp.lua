@@ -26,13 +26,24 @@ return {
       },
     },
   },
-  -- {
-  --   "williamboman/mason-lspconfig.nvim",
-  --   opts = {
-  --     -- required by venv-selector
-  --     ensure_installed = {},
-  --   }
-  -- },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "js-debug-adapter",
+        "prettier",
+      },
+    }
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "eslint", -- "eslint-lsp",
+        "ts_ls" -- "typescript-language-server"
+      },
+    }
+  },
   { -- lsp virtualenv select
     "linux-cultist/venv-selector.nvim",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },

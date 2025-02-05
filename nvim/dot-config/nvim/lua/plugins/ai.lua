@@ -1,7 +1,8 @@
 return {
     {
       "Exafunction/codeium.nvim",
-      enabled = (vim.fn.has('macunix') == 0),
+      -- enabled = (vim.fn.has('macunix') == 0),
+      enabled = false,
       dependencies = {
           "nvim-lua/plenary.nvim",
           "hrsh7th/nvim-cmp",

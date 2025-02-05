@@ -1,73 +1,184 @@
+local js_based_languages = {
+  "typescript",
+  "javascript",
+  "typescriptreact",
+  "javascriptreact",
+  "vue",
+}
+
+--- Gets a path to a package in the Mason registry.
+--- Prefer this to `get_package`, since the package might not always be
+--- available yet and trigger errors.
+---@param pkg string
+---@param path? string
+local function get_pkg_path(pkg, path)
+  pcall(require, 'mason')
+  local root = vim.env.MASON or (vim.fn.stdpath('data') .. '/mason')
+  path = path or ''
+  local ret = root .. '/packages/' .. pkg .. '/' .. path
+  return ret
+end
+
 return {
+  { "nvim-neotest/nvim-nio" },
   {
     "mfussenegger/nvim-dap",
-    config = function() end
-    --   local dap = require("dap")
-    --   -- local Config = require("lazyvim.config")
-    --   -- vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-    --   -- for name, sign in pairs(Config.icons.dap) do
-    --   --   sign = type(sign) == "table" and sign or { sign }
-    --   --   vim.fn.sign_define(
-    --   --     "Dap" .. name,
-    --   --     { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
-    --   --   )
-    --   -- end
-    --
-    --   -- Setup javascript debugging also here
-    --   for _, language in ipairs(js_based_languages) do
-    --     dap.configurations[language] = {
-    --       -- Debug single nodejs files
-    --       {
-    --         type = "pwa-node",
-    --         request = "launch",
-    --         name = "Launch nodejs file",
-    --         program = "${file}",
-    --         cwd = vim.fn.getcwd(),
-    --         sourceMaps = true,
-    --       },
-    --       -- Debug nodejs processes (make sure to add --inspect when you run the process)
-    --       {
-    --         type = "pwa-node",
-    --         request = "attach",
-    --         name = "Attach nodejs process",
-    --         processId = require("dap.utils").pick_process,
-    --         cwd = vim.fn.getcwd(),
-    --         sourceMaps = true,
-    --       },
-    --       -- Debug web applications (client side)
-    --       {
-    --         type = "pwa-chrome",
-    --         request = "launch",
-    --         name = "Launch & Debug node web apps in Chrome",
-    --         url = function()
-    --           local co = coroutine.running()
-    --           return coroutine.create(function()
-    --             vim.ui.input({
-    --               prompt = "Enter URL: ",
-    --               default = "http://localhost:3000",
-    --             }, function(url)
-    --               if url == nil or url == "" then
-    --                 return
-    --               else
-    --                 coroutine.resume(co, url)
-    --               end
-    --             end)
-    --           end)
-    --         end,
-    --         webRoot = vim.fn.getcwd(),
-    --         protocol = "inspector",
-    --         sourceMaps = true,
-    --         userDataDir = false,
-    --       },
-    --       -- Divider for the launch.json derived configs
-    --       {
-    --         name = "----- ↓ launch.json configs ↓ -----",
-    --         type = "",
-    --         request = "launch",
-    --       },
-    --     }
-    --   end
-    -- end,
+  dependencies = {
+  -- Install the vscode-js-debug adapter
+  -- {
+  --   "microsoft/vscode-js-debug",
+  --   -- After install, build it and rename the dist directory to out
+  --   build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+  --   version = "1.*",
+  -- },
+   },
+    config = function()
+      local dap = require("dap")
+
+      dap.set_log_level(vim.log.levels.DEBUG)
+
+      local Config = require("lazyvim.config")
+      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
+      for name, sign in pairs(Config.icons.dap) do
+        sign = type(sign) == "table" and sign or { sign }
+        vim.fn.sign_define(
+          "Dap" .. name,
+          { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+        )
+      end
+
+      dap.adapters['pwa-node'] = {
+        type = 'server',
+        host = 'localhost',
+        port = '${port}',
+        executable = {
+          command = 'node',
+          args = {
+            get_pkg_path('js-debug-adapter', '/js-debug/src/dapDebugServer.js'),
+            '${port}',
+          },
+        },
+      }
+
+      for _, language in ipairs(js_based_languages) do
+        dap.configurations[language] = {
+          -- -- Debug single nodejs files
+          -- {
+          --   type = "pwa-node",
+          --   request = "launch",
+          --   name = "Launch file",
+          --   program = "${file}",
+          --   cwd = vim.fn.getcwd(),
+          --   sourceMaps = true,
+          -- },
+          -- Start node js process in cwd WIP
+          -- {
+          --   type = "pwa-node",
+          --   request = "launch",
+          --   name = "Launch CWD ./src/server.ts",
+          --   cwd = vim.fn.getcwd(),
+          --   runtimeArgs = {
+          --     -- "--loader",
+          --     -- "ts-node/esm"
+          --     "-r ts-node/register",
+          --   },
+          --   runtimeExecutable = "node",
+          --   args = {
+          --       -- "${file}"
+          --       vim.fn.getcwd() .. "/src/server.ts"
+          --   },
+          --   sourceMaps = true,
+          --   protocol = "inspector",
+          --   skipFiles = {
+          --       -- "<node_internals>/**",
+          --       "node_modules/**"
+          --   },
+          --   resolveSourceMapLocations = {
+          --       vim.fn.getcwd() .. "/**",
+          --       "!**/node_modules/**"
+          --   }
+          -- },
+          -- -- Debug nodejs processes (make sure to add --inspect when you run the process)
+          -- {
+          --   type = "pwa-node",
+          --   request = "attach",
+          --   name = "Attach to process",
+          --   processId = require("dap.utils").pick_process,
+          --   cwd = vim.fn.getcwd(),
+          --   sourceMaps = true,
+          -- },
+          -- Debug nodejs processes WIP (make sure to add --inspect when you run the process)
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach to Websocket on 9223",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            -- address = "127.0.0.1",
+            -- host = "127.0.0.1",
+            port = "9223",
+            -- url = 'ws://127.0.0.1:9223/4adfd37f-3e14-49d9-8cd3-7f0a34933426',
+            protocol = "inspector",
+            skipFiles = {
+                -- "<node_internals>/**",
+                "node_modules/**"
+            },
+            resolveSourceMapLocations = {
+                vim.fn.getcwd() .. "/**",
+                "!**/node_modules/**"
+            }
+            -- adapter = function()
+            --   return {
+            --       host = '127.0.0.1',
+            --       port = 9223
+            --   }
+            -- end,
+            -- port = function()
+            --   return vim.fn.input("Select port: ", 9223)
+            -- end,
+          },
+          -- Debug web applications (client side)
+          -- {
+          --   type = "pwa-chrome",
+          --   request = "launch",
+          --   name = "Launch & Debug Chrome",
+          --   url = function()
+          --     local co = coroutine.running()
+          --     return coroutine.create(function()
+          --       vim.ui.input({
+          --         prompt = "Enter URL: ",
+          --         default = "http://localhost:13000",
+          --       }, function(url)
+          --         if url == nil or url == "" then
+          --           return
+          --         else
+          --           coroutine.resume(co, url)
+          --         end
+          --       end)
+          --     end)
+          --   end,
+          --   webRoot = vim.fn.getcwd(),
+          --   protocol = "inspector",
+          --   sourceMaps = true,
+          --   userDataDir = false,
+          -- },
+          -- --- Attach to chrome with port selection
+          -- {
+          --   type = "pwa-chrome",
+          --   request = "attach",
+          --   name = "Attach Program (pwa-chrome, select port)",
+          --   program = "${file}",
+          --   cwd = vim.fn.getcwd(),
+          --   sourceMaps = true,
+          --   port = function()
+          --     return vim.fn.input("Select port: ", 9222)
+          --   end,
+          --   webRoot = "${workspaceFolder}",
+          -- },
+        }
+      end
+    end,
   },
 	{ -- debug configuration for python
 		'mfussenegger/nvim-dap-python',
