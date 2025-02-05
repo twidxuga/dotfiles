@@ -1,6 +1,7 @@
 bat
 colima
 composer
+coreutils
 htop
 imagemagick
 ipython
@@ -13,6 +14,8 @@ node-build
 rust
 tree-sitter
 w3m
+watchman
 wget
+zeromq
 jannis-baum/tap/vivify
 jstkdng/programs/ueberzugpp
