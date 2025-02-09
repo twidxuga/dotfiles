@@ -77,6 +77,11 @@ config.keys = {
    mods = 'CMD',
    action = wezterm.action { SendString = "\x1bw" },
  },
+ {
+   key = 'I',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bI" },
+ },
  -- shell forwar/backward/delete workd
  {
    key = 'b',
