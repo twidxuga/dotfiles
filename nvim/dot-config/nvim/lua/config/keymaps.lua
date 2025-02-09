@@ -58,6 +58,11 @@ vim.keymap.set({ "i", "n" }, "˙", "<esc>:w<cr>", { noremap = true, silent = tru
 vim.keymap.set({ "i", "n" }, "∆", "<esc>:w<cr>j", { noremap = true, silent = true, desc = "which_key_ignore" })
 vim.keymap.set({ "i", "n" }, "˚", "<esc>:w<cr>k", { noremap = true, silent = true, desc = "which_key_ignore" })
 vim.keymap.set({ "i", "n" }, "¬", "<esc>:w<cr>l", { noremap = true, silent = true, desc = "which_key_ignore" })
+-- same but on mac with command key
+vim.keymap.set({ "i", "n" }, "<D-h>", "<esc>:w<cr>", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "<D-j>", "<esc>:w<cr>j", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "<D-k>", "<esc>:w<cr>k", { noremap = true, silent = true, desc = "which_key_ignore" })
+vim.keymap.set({ "i", "n" }, "<D-l>", "<esc>:w<cr>l", { noremap = true, silent = true, desc = "which_key_ignore" })
 
 -- Remap trouble vim errors inline and hide inline hints
 vim.keymap.set(

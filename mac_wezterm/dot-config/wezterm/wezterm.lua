@@ -21,5 +21,79 @@ config.window_padding = {
 config.warn_about_missing_glyphs = false
 -- macos normal alt behaviour
 config.send_composed_key_when_left_alt_is_pressed = true
+
+-- Aditional maps for mac
+config.keys = {
+ -- vim moving in insert mode
+ {
+   key = 'h',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="h", mods='ALT' },
+ },
+ {
+   key = 'j',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="j", mods='ALT' },
+ },
+ {
+   key = 'k',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="k", mods='ALT' },
+ },
+ {
+   key = 'l',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="l", mods='ALT' },
+ },
+ -- vim new line after/before (NOTE \x1b is the ALT key, equivalent to the above)
+ {
+   key = 'o',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bo" },
+ },
+ {
+   key = 'O',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bO" },
+ },
+ --  vim additional actions
+ {
+   key = 'a',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1ba" },
+ },
+ {
+   key = 'A',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bA" },
+ },
+ {
+   key = 'e',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1ba" },
+ },
+ {
+   key = 'w',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bw" },
+ },
+ -- shell forwar/backward/delete workd
+ {
+   key = 'b',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bb" },
+ },
+ {
+   key = 'f',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bf" },
+ },
+ {
+   key = 'd',
+   mods = 'CMD',
+   action = wezterm.action { SendString = "\x1bd" },
+ },
+}
+
 -- and finally, return the configuration to wezterm
 return config
