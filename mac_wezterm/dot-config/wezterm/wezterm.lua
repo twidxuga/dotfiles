@@ -24,6 +24,12 @@ config.send_composed_key_when_left_alt_is_pressed = true
 
 -- Aditional maps for mac
 config.keys = {
+ -- consistency with Karabiner's remaps
+ {
+   key = '3',
+   mods = 'OPT',
+   action = wezterm.action { SendString = "#" },
+ },
  -- vim moving in insert mode
  {
    key = 'h',
