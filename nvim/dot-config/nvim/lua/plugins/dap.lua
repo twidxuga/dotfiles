@@ -115,10 +115,8 @@ return {
             name = "Attach to Websocket on 9223",
             cwd = vim.fn.getcwd(),
             sourceMaps = true,
-            -- address = "127.0.0.1",
             -- host = "127.0.0.1",
-            port = "9223",
-            -- url = 'ws://127.0.0.1:9223/4adfd37f-3e14-49d9-8cd3-7f0a34933426',
+            -- port = "9223",
             protocol = "inspector",
             skipFiles = {
                 -- "<node_internals>/**",
@@ -127,16 +125,10 @@ return {
             resolveSourceMapLocations = {
                 vim.fn.getcwd() .. "/**",
                 "!**/node_modules/**"
-            }
-            -- adapter = function()
-            --   return {
-            --       host = '127.0.0.1',
-            --       port = 9223
-            --   }
-            -- end,
-            -- port = function()
-            --   return vim.fn.input("Select port: ", 9223)
-            -- end,
+            },
+            port = function()
+              return vim.fn.input("Select port: ", 9223)
+            end,
           },
           -- Debug web applications (client side)
           -- {

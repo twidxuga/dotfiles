@@ -28,6 +28,15 @@ return {
   {
     "ibhagwan/fzf-lua",
     opts = {
+      winopts = {
+        preview = {
+          vertical       = "up:45%",      -- up|down:size
+          horizontal     = "right:60%",     -- right|left:size
+        },
+      },
+      fzf_opts = {
+        ["--layout"]         = "default", --reverse
+      },
       oldfiles = {
         -- In Telescope, when I used <leader>fr, it would load old buffers.
         -- fzf lua does the same, but by default buffers visited in the current
