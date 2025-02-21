@@ -34,6 +34,12 @@ then
   export OPENAI_API_KEY=$(cat $OPENAIKEYFILE)
 fi
 
+# Tavily API key
+if [[ ! -z $TAVILYKEYFILE ]]
+then
+  export TAVILY_API_KEY=$(cat $TAVILYKEYFILE)
+fi
+
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 

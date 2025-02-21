@@ -30,6 +30,17 @@ config.keys = {
    mods = 'OPT',
    action = wezterm.action { SendString = "#" },
  },
+ -- vim pasting in insert mode
+ {
+   key = 'p',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="p", mods='ALT' },
+ },
+ {
+   key = 'P',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="P", mods='ALT' },
+ },
  -- vim moving in insert mode
  {
    key = 'h',
