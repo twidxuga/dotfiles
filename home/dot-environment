@@ -15,6 +15,12 @@ then
     export PATH="${PYENV_ROOT}/bin:${PATH}"
 fi
 
+# Source local environment 
+if [[ -f ~/.env ]]
+then
+  source ~/.env
+fi
+
 # Source monadd environment variables (used by monadd aliases) 
 if [[ -f ~/Monadd/.env/environment ]]
 then

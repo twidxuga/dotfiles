@@ -22,6 +22,12 @@ fi
 export JWT_PRIVATE_KEY=`cat ~/.ssh/id_rsa`
 export JWT_PUBLIC_KEY=`cat ~/.ssh/id_rsa.pub`
 
+# Source local environment 
+if [[ -f ~/.env ]]
+then
+  source ~/.env
+fi
+
 # Source HX environment variables (used by HX aliases) 
 if [[ -f ~/HX/.env/environment ]]
 then
