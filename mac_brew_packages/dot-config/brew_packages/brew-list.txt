@@ -8,10 +8,13 @@ ipython
 julia
 lazygit
 luarocks
+m-cli
 mpv
 mysql@8.0
 node-build
+redis
 rust
+showkey
 tree-sitter
 w3m
 watchman
@@ -19,3 +22,4 @@ wget
 zeromq
 jannis-baum/tap/vivify
 jstkdng/programs/ueberzugpp
+nodenv/nodenv/nodenv-default-packages

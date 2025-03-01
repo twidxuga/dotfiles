@@ -26,6 +26,7 @@ alias psx='ps aux'
 alias ra='ranger'
 alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias nt='npx ts-node'
+alias nix-refresh='nix run nix-darwin -- switch --flake ~/.config/nix-darwi'
 
 # tmux aliases
 alias mux='tmuxinator'
@@ -82,73 +83,4 @@ fi
 # stow stow (note that the target is the parent of the stow directory)
 alias st='stow -d ~/.dotfiles --dotfiles -v'
 
-# VM aliases
-alias macos="quickemu --vm ~/.config/quickemu//macos-sonoma.conf --mouse usb"
-
-#===============================================================================
-
-# Monadd's aliases
-if [[ -f ~/Monadd/.env/environment ]]
-then
-  alias awsreset="~/Scripts/awsreset.sh" 
-
-  function msdb() {
-    ssh -i $MSKEY $MSBASTIONUSER@$MSBASTION -L $MSDBLOCALPORT:$MSRDS:$MSRDSPORT -fN
-    pass=$(cat $MCFG | grep DB_PASSWORD | head -1 | awk '{print $2}' | sed 's/[",]*//g')
-    PGPASSWORD=$pass psql -h localhost -p 6543 -U $MSDBUSER -d $MSDBNAME --no-password
-    kill -9 $(ps -efww | grep  $MSBASTION | grep -v grep | awk '{print $2}')
-  }
-
-  function mpdb() {
-    ssh -i $MPKEY $MPBASTIONUSER@$MPBASTION -L $MPDBLOCALPORT:$MPRDS:$MPRDSPORT -fN
-    pass=$(cat $MCFG | grep DB_PASSWORD | tail -1 | awk '{print $2}' | sed 's/[",]*//g')
-    PGPASSWORD=$pass psql -h localhost -p 6544 -U $MPDBUSER -d $MPDBNAME --no-password
-    kill -9 $(ps -efww | grep  $MPBASTION | grep -v grep | awk '{print $2}')
-  }
-
-  function mb() {
-    pushd $MBACKENDDIR
-  }
-
-  function mdb() {
-    mb
-    if [[ ! $PIPENV_ACTIVE == "1" ]]
-    then
-      pipenv shell "./manage.py dbshell"
-    else
-      ./manage.py dbshell
-    fi
-  }
-
-# debug version
-  function ms() {
-    mb
-    if [[ ! $PIPENV_ACTIVE == "1" ]]
-    then
-      # pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
-      pipenv shell "python manage.py runserver"
-    else
-      # python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
-      python manage.py runserver
-    fi
-  }
-
-# debug version
-  function msd() {
-    mb
-    if [[ ! $PIPENV_ACTIVE == "1" ]]
-    then
-      pipenv shell "python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload"
-    else
-      python -Xfrozen_modules=off -m debugpy --listen 8989 --wait-for-client manage.py runserver --noreload
-    fi
-  }
-
-
-  alias mps='~/Monadd/code/devenv/docker-postgres/postgresql.sh run'
-  alias mui='cd ~/Monadd/code/monadd-ui-v2'
-
-fi
-
-#===============================================================================
 
