@@ -10,7 +10,7 @@
   "clangd_extensions.nvim": { "branch": "main", "commit": "db28f29be928d18cbfb86fbfb9f83f584f658feb" },
   "codeium.nvim": { "branch": "main", "commit": "27d2b1ce8c7ba14dbf6e4504bdea8e5548be5476" },
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
-  "copilot.lua": { "branch": "master", "commit": "826e46850ce0c33e39bcd78e474bc993d8e0fa84" },
+  "copilot.lua": { "branch": "master", "commit": "4a557e74514fd5918e8aabb55b8cfd10535a9a33" },
   "distant.nvim": { "branch": "v0.3", "commit": "67d6b066e8490725718b79f643966f4eafc7da3c" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "easytables.nvim": { "branch": "master", "commit": "ae57fdaad25a5f9ac2773ebdb8782c7bbc7d8932" },
