@@ -25,18 +25,54 @@ return {
       -- add any opts here
       -- for example
       provider = "openai",
+      auto_suggestions_provider = "openai",
       openai = {
         endpoint = "https://api.openai.com/v1",
         -- model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        -- model = "gpt-4o-2024-08-06",
         model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
         timeout = 30000, -- timeout in milliseconds
         temperature = 0, -- adjust if needed
         -- max_tokens = 4096,
-        max_tokens = 16384, -- max for 4o
-        reasoning_effort = "high" -- only supported for "o" models
+        -- max_tokens = 16384, -- max for 4o
+        max_completion_tokens = 16384, -- max for o3-mini
+        -- reasoning_effort = "high" -- only supported for "o" models
+        reasoning_effort = "medium" -- only supported for "o" models
       },
       web_search_engine = {
        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
+      },
+      mappings = {
+        --- @class AvanteConflictMappings
+        diff = {
+          ours = "co",
+          theirs = "ct",
+          all_theirs = "ca",
+          both = "cb",
+          cursor = "cc",
+          next = "]x",
+          prev = "[x",
+        },
+        suggestion = {
+          accept = "<M-a>",
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-]>",
+        },
+        jump = {
+          next = "]]",
+          prev = "[[",
+        },
+        submit = {
+          normal = "<CR>",
+          insert = "<C-s>",
+        },
+        sidebar = {
+          apply_all = "A",
+          apply_cursor = "a",
+          switch_windows = "<Tab>",
+          reverse_switch_windows = "<S-Tab>",
+        },
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -80,5 +116,25 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
-  }
+  },
+  -- {
+  --   -- Enabled via lazy extras 
+  --   "zbirenbaum/copilot.lua",
+  --   opts = {
+  --     suggestion = {
+  --       enabled = true,
+  --       auto_trigger = false,
+  --       hide_during_completion = true,
+  --       debounce = 75,
+  --       keymap = {
+  --         accept = "<M-l>",
+  --         accept_word = false,
+  --         accept_line = false,
+  --         next = "<M-]>",
+  --         prev = "<M-[>",
+  --         dismiss = "<C-]>",
+  --       }
+  --     }
+  --   }
+  -- }
 }

@@ -4,7 +4,7 @@
 
 -- This function is taken from https://github.com/norcalli/nvim_utils
 -- Creates augroups automatially
-function nvim_create_augroups(definitions)
+local function nvim_create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     vim.api.nvim_command("augroup " .. group_name)
     vim.api.nvim_command("autocmd!")

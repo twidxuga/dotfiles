@@ -325,7 +325,6 @@ vim.keymap.set('n', '<leader>cv', 'yy:<c-r>"<cr>', { noremap = true, silent = fa
 -- send selection to command prompt (e.g. multiline functions, but not good for a sequence of commands) 
 vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = false, desc = "Send selection to command prompt" })
 
-
 -- -- Convert python to ipynb (moved to autocommands)
 -- vim.keymap.set('n', '<leader>ci', ':!jupytext --to notebook <c-r>%<cr>', { noremap = true, silent = true, desc = "Convert python to ipynb"})
 -- -- convert ipynb to python
@@ -336,3 +335,9 @@ vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = fal
 -- Bound to <leader>n by default
 -- vim.keymap.set('n', '<leader>n', ":lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Show all notifications (snack)" })
 
+
+vim.keymap.set('n', '<leader>apt', ":Copilot toggle<cr>", { silent = false, desc = "Copilot toggle" })
+vim.keymap.set('n', '<leader>app', ":Copilot panel<cr>", { silent = false, desc = "Copilot panel" })
+vim.keymap.set('n', '<leader>aps', ":Copilot status<cr>", { silent = false, desc = "Copilot status" })
+require("which-key").add({ "<leader>a", group = "AI" })
+require("which-key").add({ "<leader>ap", group = "Copilot" })
