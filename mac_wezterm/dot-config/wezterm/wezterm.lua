@@ -62,6 +62,23 @@ config.keys = {
    mods = 'CMD',
    action = wezterm.action.SendKey { key="l", mods='ALT' },
  },
+ -- Shell repeat last command 
+ {
+   key = '.',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key=".", mods='ALT' },
+ },
+ -- tmux vertical and horizontal zoom 
+ {
+   key = 'y',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="y", mods='ALT' },
+ },
+ {
+   key = 'x',
+   mods = 'CMD',
+   action = wezterm.action.SendKey { key="x", mods='ALT' },
+ },
  -- vim new line after/before (NOTE \x1b is the ALT key, equivalent to the above)
  {
    key = 'o',
