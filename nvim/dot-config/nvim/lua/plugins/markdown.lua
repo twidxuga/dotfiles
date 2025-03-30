@@ -1,11 +1,25 @@
 -- All markdonw related plugins
 return {
+  -- {
+  --     'MeanderingProgrammer/render-markdown.nvim',
+  --     opts = {},
+  --     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+  --     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+  --     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  -- },
   {
-      'MeanderingProgrammer/render-markdown.nvim',
-      opts = {},
-      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    -- For blink.cmp's completion
+    dependencies = {
+        "saghen/blink.cmp"
+    },
+    opts = {
+      preview = {
+          -- icon_provider = "internal", -- "mini" or "devicons"
+          icon_provider = "devicons", -- "mini" or "devicons"
+      }
+    }
   },
   {
     "Kicamon/markdown-table-mode.nvim",
@@ -189,23 +203,24 @@ return {
       -- vim.g.instant_markdown_slow = 0
     end,
   },
-  -- {
-  --   -- "iamcco/markdown-preview.nvim",
-  --   "Knyffen/markdown-preview.nvim", -- includes file serving
-  --   enabled = vim.fn.has('macunix') == 0,
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   ft = { "markdown" },
-  --   build = function() vim.fn["mkdp#util#install"]() end,
-  --   -- config = function() let g:mkdp_theme = 'dark' end,
-  --   config = function()
-  --     vim.g.mkdp_theme = 'light'
-  --     vim.g.mkdp_image_path = vim.fn.expand('$HOME') + '/Documents/QuickAccess/kb/images'
-  --   end,
-  -- },
+  {
+    -- "iamcco/markdown-preview.nvim",
+    "Knyffen/markdown-preview.nvim", -- includes file serving
+    -- enabled = vim.fn.has('macunix') == 0,
+    enabled = false,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+    -- config = function() let g:mkdp_theme = 'dark' end,
+    config = function()
+      vim.g.mkdp_theme = 'light'
+      vim.g.mkdp_image_path = vim.fn.expand('$HOME') + '/Documents/QuickAccess/kb/images'
+    end,
+    },
   {
     -- Vivify also alows preview markdown notebooks
     -- requires vivify installed separately (AUR vivify)
-    "jannis-baum/vivify.vim", 
+    "jannis-baum/vivify.vim",
     init = function()
       -- Refresh page contents on CursorHold and CursorHoldI
       vim.g.vivify_instant_refresh = 1

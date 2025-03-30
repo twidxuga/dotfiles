@@ -22,15 +22,17 @@ return {
     lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
-      -- add any opts here
-      -- for example
-      provider = "openai",
-      auto_suggestions_provider = "openai",
+      -- provider = "openai",
+      provider = "gemini",
+      -- auto_suggestions_provider = "openai",
+      auto_suggestions_provider = "gemini",
+      cursor_applying_provider = "gemini",
+			memory_summary_provider = "gemini",
       openai = {
         endpoint = "https://api.openai.com/v1",
-        -- model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
         -- model = "gpt-4o-2024-08-06",
-        model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
+        -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
         timeout = 30000, -- timeout in milliseconds
         temperature = 0, -- adjust if needed
         -- max_tokens = 4096,
@@ -39,8 +41,17 @@ return {
         -- reasoning_effort = "high" -- only supported for "o" models
         reasoning_effort = "medium" -- only supported for "o" models
       },
+      gemini = {
+        -- @see https://ai.google.dev/gemini-api/docs/models/gemini
+        model = "gemini-2.5-pro-exp-03-25",
+        -- model = "gemini-1.5-flash",
+        temperature = 0,
+        -- max_tokens = 4096,
+        max_tokens = 16384,
+      },
       web_search_engine = {
        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
+       -- provider = "google", -- tavily, serpapi, searchapi, google or kagi
       },
       mappings = {
         --- @class AvanteConflictMappings

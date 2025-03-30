@@ -20,7 +20,7 @@ vim.api.nvim_create_user_command(
 )
 vim.api.nvim_create_user_command(
   "Monadd",
-  ":source ~/Monadd/Session.vim",
+  ":source ~/Projects/Monadd/Session.vim",
   { desc = "Start Monadd's session" }
 )
 vim.api.nvim_create_user_command(

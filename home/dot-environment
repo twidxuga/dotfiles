@@ -22,9 +22,9 @@ then
 fi
 
 # Source monadd environment variables (used by monadd aliases) 
-if [[ -f ~/Monadd/.env/environment ]]
+if [[ -f ~/Projects/Monadd/.env/environment ]]
 then
-  source ~/Monadd/.env/environment
+  source ~/Projects/Monadd/.env/environment
 fi
 
 # OpenAI API key
@@ -37,6 +37,12 @@ fi
 if [[ ! -z $TAVILYKEYFILE ]]
 then
   export TAVILY_API_KEY=$(cat $TAVILYKEYFILE)
+fi
+
+# Gemini API key
+if [[ ! -z $GEMINIKEYFILE ]]
+then
+  export GEMINI_API_KEY=$(cat $GEMINIKEYFILE)
 fi
 
 # Base nix configuration
