@@ -48,6 +48,12 @@ then
   export TAVILY_API_KEY=$(cat $TAVILYKEYFILE)
 fi
 
+# Gemini API key
+if [[ ! -z $GEMINIKEYFILE ]]
+then
+  export GEMINI_API_KEY=$(cat $GEMINIKEYFILE)
+fi
+
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 

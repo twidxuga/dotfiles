@@ -18,6 +18,14 @@ return {
       preview = {
           -- icon_provider = "internal", -- "mini" or "devicons"
           icon_provider = "devicons", -- "mini" or "devicons"
+      },
+      markdown = {
+        code_blocks = {
+          range = {
+            row_start = 0,
+            row_end = 0
+          }
+        }
       }
     }
   },
