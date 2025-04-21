@@ -10,6 +10,7 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
+    branch = "main",
     -- For blink.cmp's completion
     dependencies = {
         "saghen/blink.cmp"
@@ -18,7 +19,12 @@ return {
       preview = {
           -- icon_provider = "internal", -- "mini" or "devicons"
           icon_provider = "devicons", -- "mini" or "devicons"
+          filetypes = { "md", "rmd", "quarto", "markdown", "Avante" },
+          -- filetypes = { "md", "rmd", "quarto", "markdown" },
+          -- ignore_buftypes = { "nofile" },
+          ignore_buftypes = {},
       },
+      max_length = 99999,
       markdown = {
         code_blocks = {
           range = {
