@@ -1,4 +1,15 @@
 -- All markdonw related plugins
+
+-- Markview variables
+-- local presets = require("markview.presets");
+local heading_setting = {
+  style = "simple",
+}
+local setext_setting = {
+  sign = '',
+  icon = ' ',
+}
+
 return {
   -- {
   --     'MeanderingProgrammer/render-markdown.nvim',
@@ -17,21 +28,80 @@ return {
     },
     opts = {
       preview = {
-          -- icon_provider = "internal", -- "mini" or "devicons"
-          icon_provider = "devicons", -- "mini" or "devicons"
-          filetypes = { "md", "rmd", "quarto", "markdown", "Avante" },
-          -- filetypes = { "md", "rmd", "quarto", "markdown" },
-          -- ignore_buftypes = { "nofile" },
-          ignore_buftypes = {},
+        -- icon_provider = "internal", -- "mini" or "devicons"
+        icon_provider = "devicons", -- "mini" or "devicons"
+        filetypes = { "md", "rmd", "quarto", "markdown", "Avante" },
+        -- filetypes = { "md", "rmd", "quarto", "markdown" },
+        -- ignore_buftypes = { "nofile" },
+        ignore_buftypes = {},
+        modes = {
+          "n", "i", "c"
+        },
+        hybrid_modes = {
+          "n", "i"
+        },
+        ignore_previews = {
+          markdown = {
+            "!code_blocks",
+            "!block_quote",
+            "!headings",
+          },
+          -- markdown_inline = {
+          -- 	"inline_codes",
+          -- }
+        },
       },
       max_length = 99999,
       markdown = {
         code_blocks = {
           range = {
-            row_start = 0,
-            row_end = 0
+            -- row_start = 0,
+            -- row_end = 0,
+            style = "block",
+            pad_amount= 2,
+            pad_char = " ",
+            sign = false,
+            min_width = 30,
           }
-        }
+        },
+        headings = {
+          heading_1 = heading_setting,
+		      heading_2 = heading_setting,
+          heading_3 = heading_setting,
+          heading_4 = heading_setting,
+          heading_5 = heading_setting,
+          heading_6 = heading_setting,
+          setext_1 = setext_setting,
+          setext_2 = setext_setting,
+        },
+        list_items = {
+          indent_size = vim.opt_local.ts:get(),
+          shift_width = vim.opt_local.sw:get(),
+          -- marker_plus = {
+          --   text = '+'
+          -- },
+          -- marker_minus = {
+          --   text = '-'
+          -- },
+          -- marker_star = {
+          --   text = '*'
+          -- },
+        },
+	      -- horizontal_rules = presets.horizontal_rules.thick,
+	      -- tables = presets.tables.single
+	      horizontal_rules = {
+          enable = true,
+          parts = {
+            {
+              type = "repeating",
+              repeat_amount = function ()
+                return vim.o.columns;
+              end,
+              text = "━",
+              hl = "Comment"
+            }
+          }
+        },
       }
     }
   },
