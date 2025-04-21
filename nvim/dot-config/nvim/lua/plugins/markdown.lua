@@ -76,7 +76,7 @@ return {
         },
         list_items = {
           indent_size = vim.opt_local.ts:get(),
-          shift_width = vim.opt_local.sw:get(),
+          shift_width = 1, vim.opt_local.sw:get(),
           -- marker_plus = {
           --   text = '+'
           -- },
