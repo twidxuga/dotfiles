@@ -9,6 +9,7 @@ dropbox
 firefox-tridactyl-native-bin
 google-chrome
 googler
+haskell-data-array-byte
 htop-vim-git
 lazydocker
 lmstudio-appimage
@@ -47,6 +48,7 @@ postman-bin
 proton-ge-custom-bin
 protontricks
 pulseaudio-ctl
+python-async-timeout
 python-casttube
 python-jupytext
 python-pychromecast
