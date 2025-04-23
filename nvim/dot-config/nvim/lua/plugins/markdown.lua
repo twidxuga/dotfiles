@@ -76,16 +76,16 @@ return {
         },
         list_items = {
           indent_size = vim.opt_local.ts:get(),
-          shift_width = 1, vim.opt_local.sw:get(),
-          -- marker_plus = {
-          --   text = '+'
-          -- },
-          -- marker_minus = {
-          --   text = '-'
-          -- },
-          -- marker_star = {
-          --   text = '*'
-          -- },
+          shift_width = 1, -- vim.opt_local.sw:get(),
+          marker_plus = {
+            text = '+'
+          },
+          marker_minus = {
+            text = '-'
+          },
+          marker_star = {
+            text = '*'
+          },
         },
 	      -- horizontal_rules = presets.horizontal_rules.thick,
 	      -- tables = presets.tables.single
