@@ -27,6 +27,15 @@ return {
         "saghen/blink.cmp"
     },
     opts = {
+      modes = { "n", "c" },
+      hybrid_modes = { "n" },
+      callbacks = {
+        on_enable = function (_, win)
+          vim.wo[win].conceallevel = 2;
+          -- This will prevent Tree-sitter concealment being disabled on the cmdline mode
+          vim.wo[win].concealcursor = "c";
+        end
+      },
       preview = {
         -- icon_provider = "internal", -- "mini" or "devicons"
         icon_provider = "devicons", -- "mini" or "devicons"
@@ -54,26 +63,42 @@ return {
       max_length = 99999,
       markdown = {
         code_blocks = {
-          range = {
-            -- row_start = 0,
-            -- row_end = 0,
-            style = "block",
-            pad_amount= 2,
-            pad_char = " ",
-            sign = false,
-            min_width = 30,
+          enable = true,
+          style = "block",
+          label_direction = "right",
+          border_hl = "MarkviewCode",
+          info_hl = "MarkviewCodeInfo",
+          min_width = 60,
+          pad_amount = 2,
+          pad_char = " ",
+          sign = true,
+          default = {
+              block_hl = "MarkviewCode",
+              pad_hl = "MarkviewCode"
+          },
+          ["diff"] = {
+            block_hl = function (_, line)
+                if line:match("^%+") then
+                    return "MarkviewPalette4";
+                elseif line:match("^%-") then
+                    return "MarkviewPalette1";
+                else
+                    return "MarkviewCode";
+                end
+            end,
+            pad_hl = "MarkviewCode"
           }
         },
-        headings = {
-          heading_1 = heading_setting,
-		      heading_2 = heading_setting,
-          heading_3 = heading_setting,
-          heading_4 = heading_setting,
-          heading_5 = heading_setting,
-          heading_6 = heading_setting,
-          setext_1 = setext_setting,
-          setext_2 = setext_setting,
-        },
+        -- headings = {
+        --   heading_1 = heading_setting,
+        --   heading_2 = heading_setting,
+        --   heading_3 = heading_setting,
+        --   heading_4 = heading_setting,
+        --   heading_5 = heading_setting,
+        --   heading_6 = heading_setting,
+        --   setext_1 = setext_setting,
+        --   setext_2 = setext_setting,
+        -- },
         list_items = {
           indent_size = vim.opt_local.ts:get(),
           shift_width = 1, -- vim.opt_local.sw:get(),
@@ -87,9 +112,9 @@ return {
             text = '*'
           },
         },
-	      -- horizontal_rules = presets.horizontal_rules.thick,
-	      -- tables = presets.tables.single
-	      horizontal_rules = {
+       -- horizontal_rules = presets.horizontal_rules.thick,
+       -- tables = presets.tables.single
+       horizontal_rules = {
           enable = true,
           parts = {
             {
