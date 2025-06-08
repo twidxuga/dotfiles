@@ -58,7 +58,7 @@ bat
 bdw-gc
 
 boost
-├── icu4c@76
+├── icu4c@77
 ├── xz
 └── zstd
     ├── lz4
@@ -411,7 +411,7 @@ chafa
 │   │       │   └── gettext
 │   │       │       └── libunistring
 │   │       ├── graphite2
-│   │       └── icu4c@76
+│   │       └── icu4c@77
 │   ├── fontconfig
 │   │   └── freetype
 │   │       └── libpng
@@ -472,7 +472,7 @@ chafa
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
+│   │   └── icu4c@77
 │   └── libpng
 ├── libtiff
 │   ├── jpeg-turbo
@@ -607,12 +607,12 @@ composer
     ├── gettext
     │   └── libunistring
     ├── gmp
-    ├── icu4c@76
+    ├── icu4c@77
     ├── krb5
     │   └── openssl@3
     │       └── ca-certificates
     ├── libpq
-    │   ├── icu4c@76
+    │   ├── icu4c@77
     │   ├── krb5
     │   │   └── openssl@3
     │   │       └── ca-certificates
@@ -671,7 +671,7 @@ dropbox
 
 edencommon
 ├── boost
-│   ├── icu4c@76
+│   ├── icu4c@77
 │   ├── xz
 │   └── zstd
 │       ├── lz4
@@ -684,7 +684,7 @@ edencommon
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -718,7 +718,7 @@ edencommon
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -752,7 +752,7 @@ edencommon
 │   │   │   │   ├── fmt
 │   │   │   │   ├── folly
 │   │   │   │   │   ├── boost
-│   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │       ├── lz4
@@ -786,7 +786,7 @@ edencommon
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -829,7 +829,7 @@ edencommon
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -863,7 +863,7 @@ edencommon
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -897,7 +897,7 @@ edencommon
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -931,7 +931,7 @@ edencommon
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -965,7 +965,7 @@ edencommon
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -999,7 +999,7 @@ edencommon
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -1040,7 +1040,7 @@ edencommon
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -1076,7 +1076,7 @@ fb303
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -1110,7 +1110,7 @@ fb303
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -1144,7 +1144,7 @@ fb303
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -1178,7 +1178,7 @@ fb303
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -1221,7 +1221,7 @@ fb303
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -1255,7 +1255,7 @@ fb303
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -1290,7 +1290,7 @@ fbthrift
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -1324,7 +1324,7 @@ fbthrift
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -1358,7 +1358,7 @@ fbthrift
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -1392,7 +1392,7 @@ fbthrift
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -1547,7 +1547,7 @@ ffmpeg
 │   │   └── gettext
 │   │       └── libunistring
 │   ├── graphite2
-│   └── icu4c@76
+│   └── icu4c@77
 ├── jpeg-xl
 │   ├── brotli
 │   ├── giflib
@@ -1634,7 +1634,7 @@ ffmpeg
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
+│   │   └── icu4c@77
 │   └── libunibreak
 ├── libbluray
 │   ├── fontconfig
@@ -1834,8 +1834,8 @@ ffmpeg
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
-│   ├── icu4c@76
+│   │   └── icu4c@77
+│   ├── icu4c@77
 │   ├── leptonica
 │   │   ├── giflib
 │   │   ├── jpeg-turbo
@@ -1988,7 +1988,7 @@ ffmpeg
 │   │       │   └── gettext
 │   │       │       └── libunistring
 │   │       ├── graphite2
-│   │       └── icu4c@76
+│   │       └── icu4c@77
 │   ├── freetype
 │   │   └── libpng
 │   └── gettext
@@ -2069,7 +2069,7 @@ fizz
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -2108,7 +2108,7 @@ fmt
 
 folly
 ├── boost
-│   ├── icu4c@76
+│   ├── icu4c@77
 │   ├── xz
 │   └── zstd
 │       ├── lz4
@@ -2433,8 +2433,8 @@ ghostscript
     │   │   └── gettext
     │   │       └── libunistring
     │   ├── graphite2
-    │   └── icu4c@76
-    ├── icu4c@76
+    │   └── icu4c@77
+    ├── icu4c@77
     ├── leptonica
     │   ├── giflib
     │   ├── jpeg-turbo
@@ -2587,7 +2587,7 @@ ghostscript
     │       │   └── gettext
     │       │       └── libunistring
     │       ├── graphite2
-    │       └── icu4c@76
+    │       └── icu4c@77
     ├── freetype
     │   └── libpng
     └── gettext
@@ -2809,7 +2809,7 @@ harfbuzz
 │   └── gettext
 │       └── libunistring
 ├── graphite2
-└── icu4c@76
+└── icu4c@77
 
 hdf5
 ├── gcc
@@ -2836,6 +2836,8 @@ htop
 hwloc
 
 icu4c@76
+
+icu4c@77
 
 imagemagick
 ├── fontconfig
@@ -3032,8 +3034,8 @@ imagemagick
 │       │   │   └── gettext
 │       │   │       └── libunistring
 │       │   ├── graphite2
-│       │   └── icu4c@76
-│       ├── icu4c@76
+│       │   └── icu4c@77
+│       ├── icu4c@77
 │       ├── leptonica
 │       │   ├── giflib
 │       │   ├── jpeg-turbo
@@ -3186,7 +3188,7 @@ imagemagick
 │       │       │   └── gettext
 │       │       │       └── libunistring
 │       │       ├── graphite2
-│       │       └── icu4c@76
+│       │       └── icu4c@77
 │       ├── freetype
 │       │   └── libpng
 │       └── gettext
@@ -3407,7 +3409,6 @@ julia
 │   └── libssh2
 │       └── openssl@3
 │           └── ca-certificates
-├── mbedtls@2
 ├── ca-certificates
 ├── gmp
 ├── libblastrampoline
@@ -3572,7 +3573,7 @@ libass
 │   │   └── gettext
 │   │       └── libunistring
 │   ├── graphite2
-│   └── icu4c@76
+│   └── icu4c@77
 └── libunibreak
 
 libassuan
@@ -3815,7 +3816,7 @@ libplacebo
 libpng
 
 libpq
-├── icu4c@76
+├── icu4c@77
 ├── krb5
 │   └── openssl@3
 │       └── ca-certificates
@@ -4038,7 +4039,7 @@ librsvg
 │       │   └── gettext
 │       │       └── libunistring
 │       ├── graphite2
-│       └── icu4c@76
+│       └── icu4c@77
 ├── fontconfig
 │   └── freetype
 │       └── libpng
@@ -4099,7 +4100,7 @@ librsvg
 │   │   └── gettext
 │   │       └── libunistring
 │   ├── graphite2
-│   └── icu4c@76
+│   └── icu4c@77
 └── libpng
 
 libsamplerate
@@ -4192,7 +4193,7 @@ libxext
 └── xorgproto
 
 libxml2
-├── icu4c@76
+├── icu4c@77
 └── readline
 
 libxrender
@@ -4222,16 +4223,8 @@ little-cms2
         ├── lz4
         └── xz
 
-llvm
-├── python@3.13
-│   ├── mpdecimal
-│   ├── openssl@3
-│   │   └── ca-certificates
-│   ├── sqlite
-│   │   └── readline
-│   └── xz
+llvm@19
 ├── xz
-├── z3
 └── zstd
     ├── lz4
     └── xz
@@ -4443,8 +4436,8 @@ mactex
         │   │   └── gettext
         │   │       └── libunistring
         │   ├── graphite2
-        │   └── icu4c@76
-        ├── icu4c@76
+        │   └── icu4c@77
+        ├── icu4c@77
         ├── leptonica
         │   ├── giflib
         │   ├── jpeg-turbo
@@ -4597,15 +4590,13 @@ mactex
         │       │   └── gettext
         │       │       └── libunistring
         │       ├── graphite2
-        │       └── icu4c@76
+        │       └── icu4c@77
         ├── freetype
         │   └── libpng
         └── gettext
             └── libunistring
 
 mbedtls
-
-mbedtls@2
 
 metis
 
@@ -4738,7 +4729,7 @@ mpv
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
+│   │   └── icu4c@77
 │   ├── jpeg-xl
 │   │   ├── brotli
 │   │   ├── giflib
@@ -4825,7 +4816,7 @@ mpv
 │   │   │   │   └── gettext
 │   │   │   │       └── libunistring
 │   │   │   ├── graphite2
-│   │   │   └── icu4c@76
+│   │   │   └── icu4c@77
 │   │   └── libunibreak
 │   ├── libbluray
 │   │   ├── fontconfig
@@ -5025,8 +5016,8 @@ mpv
 │   │   │   │   └── gettext
 │   │   │   │       └── libunistring
 │   │   │   ├── graphite2
-│   │   │   └── icu4c@76
-│   │   ├── icu4c@76
+│   │   │   └── icu4c@77
+│   │   ├── icu4c@77
 │   │   ├── leptonica
 │   │   │   ├── giflib
 │   │   │   ├── jpeg-turbo
@@ -5179,7 +5170,7 @@ mpv
 │   │   │       │   └── gettext
 │   │   │       │       └── libunistring
 │   │   │       ├── graphite2
-│   │   │       └── icu4c@76
+│   │   │       └── icu4c@77
 │   │   ├── freetype
 │   │   │   └── libpng
 │   │   └── gettext
@@ -5279,7 +5270,7 @@ mpv
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
+│   │   └── icu4c@77
 │   └── libunibreak
 ├── libbluray
 │   ├── fontconfig
@@ -5349,7 +5340,7 @@ mujs
 
 mysql@8.0
 ├── abseil
-├── icu4c@76
+├── icu4c@77
 ├── libevent
 │   └── openssl@3
 │       └── ca-certificates
@@ -5360,7 +5351,7 @@ mysql@8.0
 ├── lz4
 ├── openssl@3
 │   └── ca-certificates
-├── protobuf
+├── protobuf@29
 │   └── abseil
 ├── zlib
 └── zstd
@@ -5561,7 +5552,7 @@ openslide
 │       ├── lz4
 │       └── xz
 ├── libxml2
-│   ├── icu4c@76
+│   ├── icu4c@77
 │   └── readline
 ├── openjpeg
 │   ├── libpng
@@ -5706,7 +5697,7 @@ pango
     │   └── gettext
     │       └── libunistring
     ├── graphite2
-    └── icu4c@76
+    └── icu4c@77
 
 pcre2
 
@@ -5799,12 +5790,12 @@ php
 ├── gettext
 │   └── libunistring
 ├── gmp
-├── icu4c@76
+├── icu4c@77
 ├── krb5
 │   └── openssl@3
 │       └── ca-certificates
 ├── libpq
-│   ├── icu4c@76
+│   ├── icu4c@77
 │   ├── krb5
 │   │   └── openssl@3
 │   │       └── ca-certificates
@@ -6009,7 +6000,7 @@ poppler
         └── gettext
             └── libunistring
 
-protobuf
+protobuf@29
 └── abseil
 
 python-packaging
@@ -6064,16 +6055,8 @@ rust
 ├── libssh2
 │   └── openssl@3
 │       └── ca-certificates
-├── llvm
-│   ├── python@3.13
-│   │   ├── mpdecimal
-│   │   ├── openssl@3
-│   │   │   └── ca-certificates
-│   │   ├── sqlite
-│   │   │   └── readline
-│   │   └── xz
+├── llvm@19
 │   ├── xz
-│   ├── z3
 │   └── zstd
 │       ├── lz4
 │       └── xz
@@ -6242,8 +6225,8 @@ tesseract
 │   │   └── gettext
 │   │       └── libunistring
 │   ├── graphite2
-│   └── icu4c@76
-├── icu4c@76
+│   └── icu4c@77
+├── icu4c@77
 ├── leptonica
 │   ├── giflib
 │   ├── jpeg-turbo
@@ -6396,7 +6379,7 @@ tesseract
 │       │   └── gettext
 │       │       └── libunistring
 │       ├── graphite2
-│       └── icu4c@76
+│       └── icu4c@77
 ├── freetype
 │   └── libpng
 └── gettext
@@ -6702,7 +6685,7 @@ jstkdng/programs/ueberzugpp
 │   │   │       │   └── gettext
 │   │   │       │       └── libunistring
 │   │   │       ├── graphite2
-│   │   │       └── icu4c@76
+│   │   │       └── icu4c@77
 │   │   ├── fontconfig
 │   │   │   └── freetype
 │   │   │       └── libpng
@@ -6763,7 +6746,7 @@ jstkdng/programs/ueberzugpp
 │   │   │   │   └── gettext
 │   │   │   │       └── libunistring
 │   │   │   ├── graphite2
-│   │   │   └── icu4c@76
+│   │   │   └── icu4c@77
 │   │   └── libpng
 │   ├── libtiff
 │   │   ├── jpeg-turbo
@@ -7098,8 +7081,8 @@ jstkdng/programs/ueberzugpp
     │   │       │   │   └── gettext
     │   │       │   │       └── libunistring
     │   │       │   ├── graphite2
-    │   │       │   └── icu4c@76
-    │   │       ├── icu4c@76
+    │   │       │   └── icu4c@77
+    │   │       ├── icu4c@77
     │   │       ├── leptonica
     │   │       │   ├── giflib
     │   │       │   ├── jpeg-turbo
@@ -7252,7 +7235,7 @@ jstkdng/programs/ueberzugpp
     │   │       │       │   └── gettext
     │   │       │       │       └── libunistring
     │   │       │       ├── graphite2
-    │   │       │       └── icu4c@76
+    │   │       │       └── icu4c@77
     │   │       ├── freetype
     │   │       │   └── libpng
     │   │       └── gettext
@@ -7703,7 +7686,7 @@ jstkdng/programs/ueberzugpp
     │   │       │   └── gettext
     │   │       │       └── libunistring
     │   │       ├── graphite2
-    │   │       └── icu4c@76
+    │   │       └── icu4c@77
     │   ├── fontconfig
     │   │   └── freetype
     │   │       └── libpng
@@ -7764,7 +7747,7 @@ jstkdng/programs/ueberzugpp
     │   │   │   └── gettext
     │   │   │       └── libunistring
     │   │   ├── graphite2
-    │   │   └── icu4c@76
+    │   │   └── icu4c@77
     │   └── libpng
     ├── libspng
     ├── libtiff
@@ -7878,7 +7861,7 @@ jstkdng/programs/ueberzugpp
     │   │       ├── lz4
     │   │       └── xz
     │   ├── libxml2
-    │   │   ├── icu4c@76
+    │   │   ├── icu4c@77
     │   │   └── readline
     │   ├── openjpeg
     │   │   ├── libpng
@@ -8009,7 +7992,7 @@ jstkdng/programs/ueberzugpp
     │       │   └── gettext
     │       │       └── libunistring
     │       ├── graphite2
-    │       └── icu4c@76
+    │       └── icu4c@77
     ├── poppler
     │   ├── cairo
     │   │   ├── fontconfig
@@ -8493,8 +8476,8 @@ vips
 │   │       │   │   └── gettext
 │   │       │   │       └── libunistring
 │   │       │   ├── graphite2
-│   │       │   └── icu4c@76
-│   │       ├── icu4c@76
+│   │       │   └── icu4c@77
+│   │       ├── icu4c@77
 │   │       ├── leptonica
 │   │       │   ├── giflib
 │   │       │   ├── jpeg-turbo
@@ -8647,7 +8630,7 @@ vips
 │   │       │       │   └── gettext
 │   │       │       │       └── libunistring
 │   │       │       ├── graphite2
-│   │       │       └── icu4c@76
+│   │       │       └── icu4c@77
 │   │       ├── freetype
 │   │       │   └── libpng
 │   │       └── gettext
@@ -9098,7 +9081,7 @@ vips
 │   │       │   └── gettext
 │   │       │       └── libunistring
 │   │       ├── graphite2
-│   │       └── icu4c@76
+│   │       └── icu4c@77
 │   ├── fontconfig
 │   │   └── freetype
 │   │       └── libpng
@@ -9159,7 +9142,7 @@ vips
 │   │   │   └── gettext
 │   │   │       └── libunistring
 │   │   ├── graphite2
-│   │   └── icu4c@76
+│   │   └── icu4c@77
 │   └── libpng
 ├── libspng
 ├── libtiff
@@ -9273,7 +9256,7 @@ vips
 │   │       ├── lz4
 │   │       └── xz
 │   ├── libxml2
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   └── readline
 │   ├── openjpeg
 │   │   ├── libpng
@@ -9404,7 +9387,7 @@ vips
 │       │   └── gettext
 │       │       └── libunistring
 │       ├── graphite2
-│       └── icu4c@76
+│       └── icu4c@77
 ├── poppler
 │   ├── cairo
 │   │   ├── fontconfig
@@ -9598,7 +9581,7 @@ wangle
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -9632,7 +9615,7 @@ wangle
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -9670,7 +9653,7 @@ wangle
 watchman
 ├── edencommon
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -9683,7 +9666,7 @@ watchman
 │   │   │   │   ├── fmt
 │   │   │   │   ├── folly
 │   │   │   │   │   ├── boost
-│   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │       ├── lz4
@@ -9717,7 +9700,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -9751,7 +9734,7 @@ watchman
 │   │   │   │   │   ├── fmt
 │   │   │   │   │   ├── folly
 │   │   │   │   │   │   ├── boost
-│   │   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │   │       ├── lz4
@@ -9785,7 +9768,7 @@ watchman
 │   │   │   │   ├── fmt
 │   │   │   │   ├── folly
 │   │   │   │   │   ├── boost
-│   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │       ├── lz4
@@ -9828,7 +9811,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -9862,7 +9845,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -9896,7 +9879,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -9930,7 +9913,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -9964,7 +9947,7 @@ watchman
 │   │   │   │   ├── fmt
 │   │   │   │   ├── folly
 │   │   │   │   │   ├── boost
-│   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │       ├── lz4
@@ -9998,7 +9981,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -10039,7 +10022,7 @@ watchman
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -10074,7 +10057,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -10108,7 +10091,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -10142,7 +10125,7 @@ watchman
 │   │   │   │   ├── fmt
 │   │   │   │   ├── folly
 │   │   │   │   │   ├── boost
-│   │   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   │   ├── xz
 │   │   │   │   │   │   └── zstd
 │   │   │   │   │   │       ├── lz4
@@ -10176,7 +10159,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -10219,7 +10202,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -10253,7 +10236,7 @@ watchman
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -10287,7 +10270,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -10321,7 +10304,7 @@ watchman
 │   ├── fmt
 │   ├── folly
 │   │   ├── boost
-│   │   │   ├── icu4c@76
+│   │   │   ├── icu4c@77
 │   │   │   ├── xz
 │   │   │   └── zstd
 │   │   │       ├── lz4
@@ -10355,7 +10338,7 @@ watchman
 │   │   │   ├── fmt
 │   │   │   ├── folly
 │   │   │   │   ├── boost
-│   │   │   │   │   ├── icu4c@76
+│   │   │   │   │   ├── icu4c@77
 │   │   │   │   │   ├── xz
 │   │   │   │   │   └── zstd
 │   │   │   │   │       ├── lz4
@@ -10389,7 +10372,7 @@ watchman
 │   │   ├── fmt
 │   │   ├── folly
 │   │   │   ├── boost
-│   │   │   │   ├── icu4c@76
+│   │   │   │   ├── icu4c@77
 │   │   │   │   ├── xz
 │   │   │   │   └── zstd
 │   │   │   │       ├── lz4
@@ -10430,7 +10413,7 @@ watchman
 ├── fmt
 ├── folly
 │   ├── boost
-│   │   ├── icu4c@76
+│   │   ├── icu4c@77
 │   │   ├── xz
 │   │   └── zstd
 │   │       ├── lz4
@@ -10517,8 +10500,6 @@ yt-dlp
     ├── sqlite
     │   └── readline
     └── xz
-
-z3
 
 zeromq
 └── libsodium
