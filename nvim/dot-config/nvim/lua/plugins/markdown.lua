@@ -27,16 +27,16 @@ return {
         "saghen/blink.cmp"
     },
     opts = {
-      modes = { "n", "c" },
-      hybrid_modes = { "n" },
-      callbacks = {
-        on_enable = function (_, win)
-          vim.wo[win].conceallevel = 2;
-          -- This will prevent Tree-sitter concealment being disabled on the cmdline mode
-          vim.wo[win].concealcursor = "c";
-        end
-      },
       preview = {
+        modes = { "n", "c" },
+        hybrid_modes = { "n" },
+        callbacks = {
+          on_enable = function (_, win)
+            vim.wo[win].conceallevel = 2;
+            -- This will prevent Tree-sitter concealment being disabled on the cmdline mode
+            vim.wo[win].concealcursor = "c";
+          end
+        },
         -- icon_provider = "internal", -- "mini" or "devicons"
         icon_provider = "devicons", -- "mini" or "devicons"
         filetypes = { "md", "rmd", "quarto", "markdown", "Avante" },
@@ -49,7 +49,7 @@ return {
         hybrid_modes = {
           "n", "i"
         },
-        ignore_previews = {
+        raw_previews = {
           markdown = {
             "!code_blocks",
             "!block_quote",
@@ -312,20 +312,20 @@ return {
       -- vim.g.instant_markdown_slow = 0
     end,
   },
-  {
-    -- "iamcco/markdown-preview.nvim",
-    "Knyffen/markdown-preview.nvim", -- includes file serving
-    -- enabled = vim.fn.has('macunix') == 0,
-    enabled = false,
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-    -- config = function() let g:mkdp_theme = 'dark' end,
-    config = function()
-      vim.g.mkdp_theme = 'light'
-      vim.g.mkdp_image_path = vim.fn.expand('$HOME') + '/Documents/QuickAccess/kb/images'
-    end,
-    },
+  -- {
+  --   -- "iamcco/markdown-preview.nvim",
+  --   "Knyffen/markdown-preview.nvim", -- includes file serving
+  --   -- enabled = vim.fn.has('macunix') == 0,
+  --   enabled = false,
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   ft = { "markdown" },
+  --   build = function() vim.fn["mkdp#util#install"]() end,
+  --   -- config = function() let g:mkdp_theme = 'dark' end,
+  --   config = function()
+  --     vim.g.mkdp_theme = 'light'
+  --     vim.g.mkdp_image_path = vim.fn.expand('$HOME') + '/Documents/QuickAccess/kb/images'
+  --   end,
+  -- },
   {
     -- Vivify also alows preview markdown notebooks
     -- requires vivify installed separately (AUR vivify)

@@ -24,11 +24,6 @@ vim.api.nvim_create_user_command(
   { desc = "Start Monadd's session" }
 )
 vim.api.nvim_create_user_command(
-  "HX",
-  ":source ~/HX/Session.vim",
-  { desc = "Start HX's session" }
-)
-vim.api.nvim_create_user_command(
   "HXCFAFilter", 
   ":execute 'r !grep -ip \"cfa-\\d\\d\\d\" ~/Documents/QuickAccess/HX.md' | %s/\\(^.*\\(cfa-\\d\\d\\d\\).*$\\)/\\U\\2\\E - \\1/gi | %sort u",
   { desc = "Filter CFAs from HX.md and compile a sorted list of all cases reference in there. Finally merge them into the current buffer" }

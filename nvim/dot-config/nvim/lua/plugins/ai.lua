@@ -1,20 +1,56 @@
 return {
-  {
-    "Exafunction/codeium.nvim",
-    -- enabled = (vim.fn.has('macunix') == 0),
-    enabled = false,
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-    },
-    opts = {
-      enable_chat = true,
-    },
-    -- config = function()
-    --     require("codeium").setup({
-    --     })
-    -- end
-  },
+  -- {
+  --   "Exafunction/windsurf.nvim",
+  --   -- enabled = (vim.fn.has('macunix') == 0),
+  --   enabled = false,
+  --   dependencies = {
+  --       "nvim-lua/plenary.nvim",
+  --       -- "hrsh7th/cmp-nvim-lsp",
+  --       -- "hrsh7th/nvim-cmp",
+  --   },
+  --   -- opts = {
+  --   --   enable_chat = true,
+  --   --   -- enable_cmp_source = false -- virtual text only
+  --   -- },
+  --   config = function()
+  --       require("codeium").setup({
+  --         enable_chat = true,
+  --         enable_cmp_source = true
+  --       })
+  --   end
+  -- },
+  -- {
+  --   "Exafunction/windsurf.nvim",
+  --   -- enabled = (vim.fn.has('macunix') == 0),
+  --   cmd = "Codeium",
+  --   event = "InsertEnter",
+  --   build = ":Codeium Auth",
+  --   -- opts = {
+  --   --   enable_cmp_source = vim.g.ai_cmp,
+  --   --   virtual_text = {
+  --   --     enabled = not vim.g.ai_cmp,
+  --   --     -- key_bindings = {
+  --   --     --   accept = false, -- handled by nvim-cmp / blink.cmp
+  --   --     --   next = "<M-]>",
+  --   --     --   prev = "<M-[>",
+  --   --     -- },
+  --   --   },
+  --   -- },
+  --   config = function()
+  --       require("codeium").setup({
+  --         enable_chat = true,
+  --         enable_cmp_source = vim.g.ai_cmp,
+  --         virtual_text = {
+  --           enabled = not vim.g.ai_cmp,
+  --           -- key_bindings = {
+  --           --   accept = false, -- handled by nvim-cmp / blink.cmp
+  --           --   next = "<M-]>",
+  --           --   prev = "<M-[>",
+  --           -- },
+  --         },
+  --       })
+  --   end
+  -- },
   -- copilot can be enabled in lazy extras
   {
     "yetone/avante.nvim",
@@ -28,27 +64,31 @@ return {
       auto_suggestions_provider = "gemini",
       cursor_applying_provider = "gemini",
 			memory_summary_provider = "gemini",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        -- model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-        -- model = "gpt-4o-2024-08-06",
-        model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000, -- timeout in milliseconds
-        temperature = 0, -- adjust if needed
-        -- max_tokens = 4096,
-        -- max_tokens = 16384, -- max for 4o
-        max_completion_tokens = 16384, -- max for o3-mini
-        -- reasoning_effort = "high" -- only supported for "o" models
-        reasoning_effort = "medium" -- only supported for "o" models
-      },
-      gemini = {
-        -- @see https://ai.google.dev/gemini-api/docs/models/gemini
-        -- model = "gemini-2.5-pro-exp-03-25",
-        model = "gemini-2.5-pro-preview-05-06",
-        -- model = "gemini-1.5-flash",
-        temperature = 0,
-        -- max_tokens = 4096,
-        max_tokens = 16384,
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+          -- model = "gpt-4o-2024-08-06",
+          -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
+          timeout = 30000, -- timeout in milliseconds
+          extra_request_body = {
+            temperature = 0, -- adjust if needed
+            -- max_tokens = 4096,
+            -- max_tokens = 16384, -- max for 4o
+            max_completion_tokens = 16384, -- max for o3-mini
+            -- reasoning_effort = "high" -- only supported for "o" models
+            reasoning_effort = "medium" -- only supported for "o" models
+          }
+        },
+        gemini = {
+          -- @see https://ai.google.dev/gemini-api/docs/models/gemini
+          -- model = "gemini-2.5-pro-exp-03-25",
+          model = "gemini-2.5-pro-preview-05-06",
+          -- model = "gemini-1.5-flash",
+          temperature = 0,
+          -- max_tokens = 4096,
+          max_tokens = 16384,
+        },
       },
       web_search_engine = {
        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
@@ -98,7 +138,7 @@ return {
       --- The below dependencies are optional,
       -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
       -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions -- replaced by blink.cmp
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       -- "zbirenbaum/copilot.lua", -- for providers='copilot'
