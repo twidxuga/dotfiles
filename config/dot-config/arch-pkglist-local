@@ -31,15 +31,15 @@ ocaml-biniou
 ocaml-compiler-libs-repackaged
 ocaml-cryptokit
 ocaml-easy-format
+ocaml-hmap
+ocaml-iostream
 ocaml-ocplib-endian
 ocaml-ppx_here
 ocaml-ppx_let
 ocaml-ppxlib
 ocaml-react
-ocaml-seq
 ocaml-sqlite3
 ocaml-yojson
-ocamlfuse
 openrazer-meta-git
 paper-icon-theme-git
 paru-bin
@@ -60,6 +60,7 @@ r-renv
 razercommander-git
 ruby-xdg5
 signal-desktop-beta-bin
+snixembed
 tiny_httpd
 tmuxinator
 turbo-base64

@@ -175,6 +175,7 @@ texlive-binextra
 texlive-fontsrecommended
 texlive-latex
 texlive-latexextra
+texlive-luatex
 texlive-plaingeneric
 the_silver_searcher
 thunar
