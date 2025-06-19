@@ -1,56 +1,38 @@
 return {
-  -- {
-  --   "Exafunction/windsurf.nvim",
-  --   -- enabled = (vim.fn.has('macunix') == 0),
-  --   enabled = false,
-  --   dependencies = {
-  --       "nvim-lua/plenary.nvim",
-  --       -- "hrsh7th/cmp-nvim-lsp",
-  --       -- "hrsh7th/nvim-cmp",
-  --   },
-  --   -- opts = {
-  --   --   enable_chat = true,
-  --   --   -- enable_cmp_source = false -- virtual text only
-  --   -- },
-  --   config = function()
-  --       require("codeium").setup({
-  --         enable_chat = true,
-  --         enable_cmp_source = true
-  --       })
-  --   end
-  -- },
-  -- {
-  --   "Exafunction/windsurf.nvim",
-  --   -- enabled = (vim.fn.has('macunix') == 0),
-  --   cmd = "Codeium",
-  --   event = "InsertEnter",
-  --   build = ":Codeium Auth",
-  --   -- opts = {
-  --   --   enable_cmp_source = vim.g.ai_cmp,
-  --   --   virtual_text = {
-  --   --     enabled = not vim.g.ai_cmp,
-  --   --     -- key_bindings = {
-  --   --     --   accept = false, -- handled by nvim-cmp / blink.cmp
-  --   --     --   next = "<M-]>",
-  --   --     --   prev = "<M-[>",
-  --   --     -- },
-  --   --   },
-  --   -- },
-  --   config = function()
-  --       require("codeium").setup({
-  --         enable_chat = true,
-  --         enable_cmp_source = vim.g.ai_cmp,
-  --         virtual_text = {
-  --           enabled = not vim.g.ai_cmp,
-  --           -- key_bindings = {
-  --           --   accept = false, -- handled by nvim-cmp / blink.cmp
-  --           --   next = "<M-]>",
-  --           --   prev = "<M-[>",
-  --           -- },
-  --         },
-  --       })
-  --   end
-  -- },
+  {
+    "Exafunction/windsurf.nvim",
+    -- enabled = (vim.fn.has('macunix') == 0),
+    enabled = true,
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        -- "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/nvim-cmp",
+    },
+    -- opts = {
+    --   enable_chat = true,
+    --   -- enable_cmp_source = false -- virtual text only
+    -- },
+    config = function()
+        -- Dynamically check if nvim-cmp is available.
+        -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
+        local has_cmp, _ = pcall(require, "cmp")
+
+        require("codeium").setup({
+          enable_chat = true,
+          -- Only enable the cmp source if nvim-cmp is loaded.
+          enable_cmp_source = has_cmp,
+          -- If nvim-cmp is not available, use virtual text for suggestions.
+          virtual_text = {
+            enabled = not has_cmp,
+            -- key_bindings = {
+            --   accept = false, -- handled by nvim-cmp / blink.cmp
+            --   next = "<M-]>",
+            --   prev = "<M-[>",
+            -- },
+          },
+        })
+      end
+    },
   -- copilot can be enabled in lazy extras
   {
     "yetone/avante.nvim",
@@ -58,6 +40,8 @@ return {
     lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
+      -- temporary fix for error calling tool
+      mode = 'legacy', -- default is 'agentic' 
       -- provider = "openai",
       provider = "gemini",
       -- auto_suggestions_provider = "openai",
@@ -83,7 +67,8 @@ return {
         gemini = {
           -- @see https://ai.google.dev/gemini-api/docs/models/gemini
           -- model = "gemini-2.5-pro-exp-03-25",
-          model = "gemini-2.5-pro-preview-05-06",
+          -- model = "gemini-2.5-pro-preview-05-06",
+          model = "gemini-2.5-pro",
           -- model = "gemini-1.5-flash",
           temperature = 0,
           -- max_tokens = 4096,
