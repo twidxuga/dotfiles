@@ -17,6 +17,7 @@ blueman
 bluez
 bluez-utils
 brightnessctl
+cheese
 code
 copyq
 cups
@@ -102,6 +103,7 @@ mpd
 mpv
 ncmpcpp
 neovim-lspconfig
+nethack
 nethogs
 network-manager-applet
 networkmanager
