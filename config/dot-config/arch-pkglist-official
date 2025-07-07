@@ -86,6 +86,7 @@ lightdm-gtk-greeter-settings
 linux
 linux-firmware
 linux-headers
+llm-manager
 lmdb
 lsof
 lsp-plugins
@@ -118,6 +119,7 @@ nvidia-utils
 nvtop
 obs-studio
 ollama
+ollama-cuda
 openssh
 openvpn
 otf-codenewroman-nerd

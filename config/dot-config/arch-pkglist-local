@@ -7,7 +7,9 @@ dragon-drop
 droidcam
 droidcam-debug
 dropbox
+elecwhat-bin
 firefox-tridactyl-native-bin
+gemini-cli-git
 google-chrome
 googler
 haskell-data-array-byte
@@ -62,6 +64,7 @@ razercommander-git
 ruby-xdg5
 signal-desktop-beta-bin
 snixembed
+sudachi-bin
 tiny_httpd
 tmuxinator
 turbo-base64
