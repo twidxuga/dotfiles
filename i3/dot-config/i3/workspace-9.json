@@ -19,11 +19,12 @@
                "y": 0
             },
             "marks": [],
-            "name": "Wasistlos (WhatsApp for Linux)",
+            "name": "Elecwhat - WhatsApp",
             "percent": 1,
             "swallows": [
                {
-               "class": "^Wasistlos$"
+               "class": "^elecwhat$"
+               //"class": "^Wasistlos$"
                // "instance": "^whatsapp\\-for\\-linux$",
                // "machine": "^twidarch$",
                // "title": "^WhatsApp\\ for\\ Linux$"

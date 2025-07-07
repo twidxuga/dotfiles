@@ -27,6 +27,8 @@ return {
         "saghen/blink.cmp"
     },
     opts = {
+      -- prevents synthax highlighting issues
+      experimental = { check_rtp_message = false },
       preview = {
         modes = { "n", "c" },
         hybrid_modes = { "n" },

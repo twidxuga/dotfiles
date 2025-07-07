@@ -201,6 +201,12 @@ bindsym Ctrl+$mod+Shift+j move container to output down; focus output down
 bindsym Ctrl+$mod+Shift+k move container to output up; focus output up
 bindsym Ctrl+$mod+Shift+l move container to output right; focus output right
 
+# move workspace to screen
+bindsym Ctrl+Mod1+Shift+h move workspace to output left; focus output left
+bindsym Ctrl+Mod1+Shift+j move workspace to output down; focus output down
+bindsym Ctrl+Mod1+Shift+k move workspace to output up; focus output up
+bindsym Ctrl+Mod1+Shift+l move workspace to output right; focus output right
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode
@@ -251,7 +257,8 @@ exec --no-startup-id i3-msg "workspace 10; append_layout ~/.config/i3/workspace-
 exec --no-startup-id i3-msg "workspace 10; exec youtube-music"
 exec --no-startup-id i3-msg "workspace 9; append_layout ~/.config/i3/workspace-9.json"
 # exec --no-startup-id i3-msg "workspace 9; exec whatsapp-for-linux; exec signal-desktop-beta; exec messenger-nativefier"
-exec --no-startup-id i3-msg "workspace 9; exec wasistlos; exec signal-desktop-beta; exec messenger-nativefier"
+# exec --no-startup-id i3-msg "workspace 9; exec wasistlos; exec signal-desktop-beta; exec messenger-nativefier"
+exec --no-startup-id i3-msg "workspace 9; exec elecwhat; exec signal-desktop-beta; exec messenger-nativefier"
 exec --no-startup-id i3-msg "workspace 7; append_layout ~/.config/i3/workspace-7.json"
 # exec --no-startup-id i3-msg "workspace 7; exec firefox; exec alacritty --command tmux new-session -s twid 'cd ~/Documents/QuickAccess && nvim -S Session.vim'"
 # exec --no-startup-id i3-msg "workspace 7; exec firefox; exec alacritty --command ~/Scripts/sync_tmuxinator_sessions.sh"

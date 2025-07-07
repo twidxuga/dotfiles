@@ -41,7 +41,7 @@ return {
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       -- temporary fix for error calling tool
-      mode = 'legacy', -- default is 'agentic' 
+      -- mode = 'legacy', -- default is 'agentic' 
       -- provider = "openai",
       provider = "gemini",
       -- auto_suggestions_provider = "openai",
