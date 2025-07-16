@@ -4,9 +4,9 @@ return {
     -- enabled = (vim.fn.has('macunix') == 0),
     enabled = true,
     dependencies = {
-        "nvim-lua/plenary.nvim",
-        -- "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/nvim-cmp",
+      "nvim-lua/plenary.nvim",
+      -- "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/nvim-cmp",
     },
     -- opts = {
     --   enable_chat = true,
@@ -16,7 +16,6 @@ return {
       -- Dynamically check if nvim-cmp is available.
       -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
       local has_cmp, _ = pcall(require, "cmp")
-
       require("codeium").setup({
         enable_chat = true,
         -- Only enable the cmp source if nvim-cmp is loaded.
@@ -31,14 +30,14 @@ return {
           -- },
         },
       })
-    end
+    end,
   },
   {
     "ravitemer/mcphub.nvim",
     dependencies = {
-        "nvim-lua/plenary.nvim",
+      "nvim-lua/plenary.nvim",
     },
-    build = "bundled_build.lua",  -- Bundles `mcp-hub` binary along with the neovim plugin
+    build = "bundled_build.lua", -- Bundles `mcp-hub` binary along with the neovim plugin
     config = function()
       require("mcphub").setup({
         --- `mcp-hub` binary related options-------------------
@@ -51,59 +50,59 @@ return {
         auto_approve = true, -- Auto approve mcp tool calls
         auto_toggle_mcp_servers = true, -- Let LLMs start and stop MCP servers automatically
         extensions = {
-            avante = {
-                make_slash_commands = true, -- make /slash commands from MCP server prompts
-            }
+          avante = {
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
+          },
         },
         --- Plugin specific options-------------------
         native_servers = {}, -- add your custom lua native servers here
         builtin_tools = {
-            edit_file = {
-                parser = {
-                    track_issues = true,
-                    extract_inline_content = true,
-                },
-                locator = {
-                    fuzzy_threshold = 0.8,
-                    enable_fuzzy_matching = true,
-                },
-                ui = {
-                    go_to_origin_on_complete = true,
-                    keybindings = {
-                        accept = ".",
-                        reject = ",",
-                        next = "n",
-                        prev = "p",
-                        accept_all = "ga",
-                        reject_all = "gr",
-                    },
-                },
+          edit_file = {
+            parser = {
+              track_issues = true,
+              extract_inline_content = true,
             },
+            locator = {
+              fuzzy_threshold = 0.8,
+              enable_fuzzy_matching = true,
+            },
+            ui = {
+              go_to_origin_on_complete = true,
+              keybindings = {
+                accept = ".",
+                reject = ",",
+                next = "n",
+                prev = "p",
+                accept_all = "ga",
+                reject_all = "gr",
+              },
+            },
+          },
         },
         ui = {
-            window = {
-                width = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
-                height = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
-                align = "center", -- "center", "top-left", "top-right", "bottom-left", "bottom-right", "top", "bottom", "left", "right"
-                relative = "editor",
-                zindex = 50,
-                border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
-            },
-            wo = { -- window-scoped options (vim.wo)
-                winhl = "Normal:MCPHubNormal,FloatBorder:MCPHubBorder",
-            },
+          window = {
+            width = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+            height = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+            align = "center", -- "center", "top-left", "top-right", "bottom-left", "bottom-right", "top", "bottom", "left", "right"
+            relative = "editor",
+            zindex = 50,
+            border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
+          },
+          wo = { -- window-scoped options (vim.wo)
+            winhl = "Normal:MCPHubNormal,FloatBorder:MCPHubBorder",
+          },
         },
         on_ready = function(hub)
-            -- Called when hub is ready
+          -- Called when hub is ready
         end,
         on_error = function(err)
-            -- Called on errors
+          -- Called on errors
         end,
         log = {
-            level = vim.log.levels.WARN,
-            to_file = false,
-            file_path = nil,
-            prefix = "MCPHub",
+          level = vim.log.levels.WARN,
+          to_file = false,
+          file_path = nil,
+          prefix = "MCPHub",
         },
       })
     end,
@@ -116,14 +115,14 @@ return {
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       -- temporary fix for error calling tool
-      -- mode = 'legacy', -- default is 'agentic' 
+      -- mode = 'legacy', -- default is 'agentic'
       -- provider = "openai",
       provider = "gemini",
       -- provider = "ollama",
       -- auto_suggestions_provider = "openai",
       auto_suggestions_provider = "gemini",
       cursor_applying_provider = "gemini",
-		  memory_summary_provider = "gemini",
+      memory_summary_provider = "gemini",
       providers = {
         openai = {
           endpoint = "https://api.openai.com/v1",
@@ -137,7 +136,7 @@ return {
             -- max_tokens = 16384, -- max for 4o
             max_completion_tokens = 16384, -- max for o3-mini
             -- reasoning_effort = "high" -- only supported for "o" models
-            reasoning_effort = "medium" -- only supported for "o" models
+            reasoning_effort = "medium", -- only supported for "o" models
           },
         },
         gemini = {
@@ -162,8 +161,8 @@ return {
         },
       },
       web_search_engine = {
-       provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
-       -- provider = "google", -- tavily, serpapi, searchapi, google or kagi
+        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
+        -- provider = "google", -- tavily, serpapi, searchapi, google or kagi
       },
       -- system_prompt as function ensures LLM always has latest MCP server state
       -- This is evaluated for every message, even in existing chats
@@ -174,12 +173,12 @@ return {
       -- Using function prevents requiring mcphub before it's loaded
       custom_tools = function()
         return {
-            require("mcphub.extensions.avante").mcp_tool(),
+          require("mcphub.extensions.avante").mcp_tool(),
         }
       end,
-      -- tools disabled becuase they are provided by mcphub 
+      -- tools disabled becuase they are provided by mcphub
       disabled_tools = {
-        "list_files",    -- Built-in file operations
+        "list_files", -- Built-in file operations
         "search_files",
         "read_file",
         "create_file",
@@ -188,7 +187,7 @@ return {
         "create_dir",
         "rename_dir",
         "delete_dir",
-        "bash",         -- Built-in terminal access
+        "bash", -- Built-in terminal access
       },
       mappings = {
         --- @class AvanteConflictMappings
@@ -299,7 +298,7 @@ return {
     },
   },
   -- {
-  --   -- Enabled via lazy extras 
+  --   -- Enabled via lazy extras
   --   "zbirenbaum/copilot.lua",
   --   opts = {
   --     suggestion = {
