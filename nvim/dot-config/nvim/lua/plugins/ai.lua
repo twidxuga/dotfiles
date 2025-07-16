@@ -13,26 +13,101 @@ return {
     --   -- enable_cmp_source = false -- virtual text only
     -- },
     config = function()
-        -- Dynamically check if nvim-cmp is available.
-        -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
-        local has_cmp, _ = pcall(require, "cmp")
+      -- Dynamically check if nvim-cmp is available.
+      -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
+      local has_cmp, _ = pcall(require, "cmp")
 
-        require("codeium").setup({
-          enable_chat = true,
-          -- Only enable the cmp source if nvim-cmp is loaded.
-          enable_cmp_source = has_cmp,
-          -- If nvim-cmp is not available, use virtual text for suggestions.
-          virtual_text = {
-            enabled = not has_cmp,
-            -- key_bindings = {
-            --   accept = false, -- handled by nvim-cmp / blink.cmp
-            --   next = "<M-]>",
-            --   prev = "<M-[>",
-            -- },
-          },
-        })
-      end
+      require("codeium").setup({
+        enable_chat = true,
+        -- Only enable the cmp source if nvim-cmp is loaded.
+        enable_cmp_source = has_cmp,
+        -- If nvim-cmp is not available, use virtual text for suggestions.
+        virtual_text = {
+          enabled = not has_cmp,
+          -- key_bindings = {
+          --   accept = false, -- handled by nvim-cmp / blink.cmp
+          --   next = "<M-]>",
+          --   prev = "<M-[>",
+          -- },
+        },
+      })
+    end
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
     },
+    build = "bundled_build.lua",  -- Bundles `mcp-hub` binary along with the neovim plugin
+    config = function()
+      require("mcphub").setup({
+        --- `mcp-hub` binary related options-------------------
+        config = vim.fn.expand("~/.config/mcphub/servers.json"), -- Absolute path to MCP Servers config file (will create if not exists)
+        port = 37373, -- The port `mcp-hub` server listens to
+        shutdown_delay = 60 * 10 * 000, -- Delay in ms before shutting down the server when last instance closes (default: 10 minutes)
+        use_bundled_binary = true, -- Use local `mcp-hub` binary (set this to true when using build = "bundled_build.lua")
+        mcp_request_timeout = 60000, --Max time allowed for a MCP tool or resource to execute in milliseconds, set longer for long running tasks
+        ---Chat-plugin related options-----------------
+        auto_approve = true, -- Auto approve mcp tool calls
+        auto_toggle_mcp_servers = true, -- Let LLMs start and stop MCP servers automatically
+        extensions = {
+            avante = {
+                make_slash_commands = true, -- make /slash commands from MCP server prompts
+            }
+        },
+        --- Plugin specific options-------------------
+        native_servers = {}, -- add your custom lua native servers here
+        builtin_tools = {
+            edit_file = {
+                parser = {
+                    track_issues = true,
+                    extract_inline_content = true,
+                },
+                locator = {
+                    fuzzy_threshold = 0.8,
+                    enable_fuzzy_matching = true,
+                },
+                ui = {
+                    go_to_origin_on_complete = true,
+                    keybindings = {
+                        accept = ".",
+                        reject = ",",
+                        next = "n",
+                        prev = "p",
+                        accept_all = "ga",
+                        reject_all = "gr",
+                    },
+                },
+            },
+        },
+        ui = {
+            window = {
+                width = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+                height = 0.8, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+                align = "center", -- "center", "top-left", "top-right", "bottom-left", "bottom-right", "top", "bottom", "left", "right"
+                relative = "editor",
+                zindex = 50,
+                border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
+            },
+            wo = { -- window-scoped options (vim.wo)
+                winhl = "Normal:MCPHubNormal,FloatBorder:MCPHubBorder",
+            },
+        },
+        on_ready = function(hub)
+            -- Called when hub is ready
+        end,
+        on_error = function(err)
+            -- Called on errors
+        end,
+        log = {
+            level = vim.log.levels.WARN,
+            to_file = false,
+            file_path = nil,
+            prefix = "MCPHub",
+        },
+      })
+    end,
+  },
   -- copilot can be enabled in lazy extras
   {
     "yetone/avante.nvim",
@@ -44,10 +119,11 @@ return {
       -- mode = 'legacy', -- default is 'agentic' 
       -- provider = "openai",
       provider = "gemini",
+      -- provider = "ollama",
       -- auto_suggestions_provider = "openai",
       auto_suggestions_provider = "gemini",
       cursor_applying_provider = "gemini",
-			memory_summary_provider = "gemini",
+		  memory_summary_provider = "gemini",
       providers = {
         openai = {
           endpoint = "https://api.openai.com/v1",
@@ -62,7 +138,7 @@ return {
             max_completion_tokens = 16384, -- max for o3-mini
             -- reasoning_effort = "high" -- only supported for "o" models
             reasoning_effort = "medium" -- only supported for "o" models
-          }
+          },
         },
         gemini = {
           -- @see https://ai.google.dev/gemini-api/docs/models/gemini
@@ -74,10 +150,45 @@ return {
           -- max_tokens = 4096,
           max_tokens = 16384,
         },
+        ollama = {
+          endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+          -- model = "qwq:32b",
+          -- model = "deepseek-r1:8b",
+          -- model = "huihui_ai/deepseek-r1-abliterated:8b",
+          -- model = "gemma3n:latest",
+          -- model = "phi4-mini-reasoning:latest",
+          model = "codellama:latest",
+          temperature = 0,
+        },
       },
       web_search_engine = {
        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
        -- provider = "google", -- tavily, serpapi, searchapi, google or kagi
+      },
+      -- system_prompt as function ensures LLM always has latest MCP server state
+      -- This is evaluated for every message, even in existing chats
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ""
+      end,
+      -- Using function prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+            require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+      -- tools disabled becuase they are provided by mcphub 
+      disabled_tools = {
+        "list_files",    -- Built-in file operations
+        "search_files",
+        "read_file",
+        "create_file",
+        "rename_file",
+        "delete_file",
+        "create_dir",
+        "rename_dir",
+        "delete_dir",
+        "bash",         -- Built-in terminal access
       },
       mappings = {
         --- @class AvanteConflictMappings
@@ -109,6 +220,37 @@ return {
           apply_cursor = "a",
           switch_windows = "<Tab>",
           reverse_switch_windows = "<S-Tab>",
+        },
+      },
+      windows = {
+        ---@alias AvantePosition "right" | "left" | "top" | "bottom" | "smart"
+        ---@type AvantePosition
+        position = "right",
+        fillchars = "eob: ",
+        wrap = true, -- similar to vim.o.wrap
+        width = 30, -- default % based on available width in vertical layout
+        height = 30, -- default % based on available height in horizontal layout
+        sidebar_header = {
+          enabled = true, -- true, false to enable/disable the header
+          align = "center", -- left, center, right for title
+          rounded = true,
+        },
+        input = {
+          prefix = "> ",
+          -- height = 6
+          height = 20, -- Height of the input window in vertical layout
+        },
+        edit = {
+          border = { " ", " ", " ", " ", " ", " ", " ", " " },
+          start_insert = true, -- Start insert mode when opening the edit window
+        },
+        ask = {
+          floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+          border = { " ", " ", " ", " ", " ", " ", " ", " " },
+          start_insert = true, -- Start insert mode when opening the ask window
+          ---@alias AvanteInitialDiff "ours" | "theirs"
+          ---@type AvanteInitialDiff
+          focus_on_apply = "ours", -- which diff to focus after applying
         },
       },
     },

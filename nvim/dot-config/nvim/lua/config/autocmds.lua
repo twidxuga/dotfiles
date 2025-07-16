@@ -60,5 +60,38 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
 -- autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
+-- Avante input navigation keymaps
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "AvanteInput",
+  callback = function(args)
+    -- the following keymaps require tmux.nvim to be installed
+    vim.keymap.set("i", "<C-k>", function() require('tmux').move_top() end, {
+      buffer = args.buf,
+      silent = true,
+      noremap = true,
+      desc = "Avante: switch to pane above",
+    })
+    vim.keymap.set("i", "<C-j>", function() require('tmux').move_bottom() end, {
+      buffer = args.buf,
+      silent = true,
+      noremap = true,
+      desc = "Avante: switch to pane below",
+    })
+    vim.keymap.set("i", "<C-h>", function() require('tmux').move_left() end, {
+      buffer = args.buf,
+      silent = true,
+      noremap = true,
+      desc = "Avante: switch to pane left",
+    })
+    vim.keymap.set("i", "<C-l>", function() require('tmux').move_right() end, {
+      buffer = args.buf,
+      silent = true,
+      noremap = true,
+      desc = "Avante: switch to pane right",
+    })
+  end,
+  desc = "Custom Avante keymap for input buffer",
+})
+
 -- autocommands END
 
