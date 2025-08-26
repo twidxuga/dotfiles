@@ -1,4 +1,42 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "fetch": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/fetch"
+      ],
+      "command": "docker"
+    },
+    "memory": {
+      "args": [
+        "run",
+        "-i",
+        "-v",
+        "claude-memory:/app/dist",
+        "--rm",
+        "mcp/memory"
+      ],
+      "command": "docker"
+    },
+    "time": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/time"
+      ],
+      "command": "docker"
+    }
+  },
+  "nativeMCPServers": {
+    "neovim": {
+      "autoApprove": [],
+      "custom_instructions": {
+        "disabled": false
+      },
+      "disabled_tools": []
+    }
+  }
 }
-

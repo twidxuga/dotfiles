@@ -13,6 +13,7 @@ base-devel
 bash-completion
 bat
 biber
+bind
 blueman
 bluez
 bluez-utils
@@ -74,6 +75,7 @@ kitty
 kmod
 kvantum
 lazygit
+ldns
 libnghttp3
 libpipewire
 libreoffice-fresh
@@ -161,6 +163,7 @@ scrcpy
 scrot
 simple-scan
 smartmontools
+snixembed
 socat
 sonic-visualiser
 sox
@@ -195,6 +198,7 @@ tumbler
 udiskie
 udisks2
 ueberzug
+uv
 virtualbox
 vlc
 vulkan-icd-loader

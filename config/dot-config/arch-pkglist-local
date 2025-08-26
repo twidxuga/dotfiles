@@ -7,6 +7,7 @@ dragon-drop
 droidcam
 droidcam-debug
 dropbox
+electron38-bin
 elecwhat-bin
 firefox-tridactyl-native-bin
 gemini-cli-git
@@ -16,6 +17,7 @@ haskell-data-array-byte
 htop-vim-git
 lazydocker
 lmstudio-appimage
+mcphost
 messenger-nativefier
 mkchromecast-git
 mpdris2
@@ -61,9 +63,9 @@ python-vdf
 quickemu
 r-renv
 razercommander-git
+rfc-reader-git
 ruby-xdg5
 signal-desktop-beta-bin
-snixembed
 sudachi-bin
 tiny_httpd
 tmuxinator
