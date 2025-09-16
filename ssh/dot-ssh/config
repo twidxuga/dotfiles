@@ -1,3 +1,5 @@
+Include ~/.colima/ssh_config
+
 host *
   # reuse connections
   ControlMaster auto
