@@ -46,7 +46,7 @@
         ];
 
       # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
+      #services.nix-daemon.enable = true; # DEPRECATED
       # nix.package = pkgs.nix;
 
       # Necessary for using flakes on this system.
@@ -61,17 +61,19 @@
 
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
-      system.stateVersion = 4;
+      system.stateVersion = 5;
+      #ids.gids.nixbld = 350;
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       # System settings
+      system.primaryUser = "rs";
       system.defaults = {
         dock.autohide = true;
         # dock.autohide-delay = 0.24;
         dock.autohide-delay = 0.17;
-        dock.orientation = "left";
+        dock.orientation = "bottom";
         NSGlobalDomain.InitialKeyRepeat = 200;
         NSGlobalDomain.KeyRepeat = 75;
       };
@@ -80,7 +82,7 @@
       homebrew.enable = true;
       homebrew.casks = [
         "firefox"
-	      "wireshark"
+	"wireshark"
         #"google-chrome"
         "wezterm" # nix package does not work on x86_64-darwin
         #"copyq" # nix package does not work on x86_64-darwin
@@ -89,18 +91,20 @@
         "docker"
       ];
       homebrew.brews = [
-	      "imagemagick"
+        "imagemagick"
       ];
     };
   in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Twids-iMac-Pro
-    darwinConfigurations."HX7302" = nix-darwin.lib.darwinSystem {
+    #darwinConfigurations."HX7302" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Ricardos-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."HX7302".pkgs;
+    #darwinPackages = self.darwinConfigurations."HX7302".pkgs;
+    darwinPackages = self.darwinConfigurations."Ricardos-MacBook-Pro".pkgs;
   };
 }

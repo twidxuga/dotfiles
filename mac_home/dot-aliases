@@ -83,4 +83,6 @@ fi
 # stow stow (note that the target is the parent of the stow directory)
 alias st='stow -d ~/.dotfiles --dotfiles -v'
 
+# bunch aliases
+source "${HOME}/.bunch_aliases"
 
