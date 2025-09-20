@@ -254,7 +254,8 @@ bar {
 # exec_always --no-startup-id xset r rate 200 30; # replaced by /etc/X11/xorg.conf.d/00-keyboard.conf 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/droplets-rainy-day.jpg;
 exec --no-startup-id i3-msg "workspace 10; append_layout ~/.config/i3/workspace-0.json"
-exec --no-startup-id i3-msg "workspace 10; exec youtube-music"
+# exec --no-startup-id i3-msg "workspace 10; exec youtube-music"
+exec --no-startup-id i3-msg "workspace 10; exec spotify"
 exec --no-startup-id i3-msg "workspace 9; append_layout ~/.config/i3/workspace-9.json"
 # exec --no-startup-id i3-msg "workspace 9; exec whatsapp-for-linux; exec signal-desktop-beta; exec messenger-nativefier"
 # exec --no-startup-id i3-msg "workspace 9; exec wasistlos; exec signal-desktop-beta; exec messenger-nativefier"

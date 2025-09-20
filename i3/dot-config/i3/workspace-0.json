@@ -10,11 +10,12 @@
        "y": 4
     },
     "marks": [],
-    "name": "YouTube Music",
+    "name": "Spotify",
     "percent": 1,
     "swallows": [
        {
-       "class": "^com.github.th_ch.youtube_music$"
+       class": "^Spotify$"
+       //"class": "^com.github.th_ch.youtube_music$"
        //"class": "^YouTube\\ Music$"
        // "instance": "^youtube\\ music$",
        // "machine": "^twidarch$",
