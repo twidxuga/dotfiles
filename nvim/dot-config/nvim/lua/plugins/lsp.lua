@@ -32,7 +32,8 @@ return {
   -- { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
   -- https://github.com/LazyVim/LazyVim/issues/6039
   {
-    "williamboman/mason.nvim",
+    -- "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "js-debug-adapter",
@@ -41,7 +42,8 @@ return {
     }
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    -- "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
         "eslint", -- "eslint-lsp",
