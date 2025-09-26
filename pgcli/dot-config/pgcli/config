@@ -69,6 +69,7 @@ alias_map_file =
 # In Unix/Linux: ~/.config/pgcli/log
 # In Windows: %USERPROFILE%\AppData\Local\dbcli\pgcli\log
 # %USERPROFILE% is typically C:\Users\{username}
+; log_file = default 
 log_file = ~/.pgcli.log
 
 # keyword casing preference. Possible values: "lower", "upper", "auto"
@@ -91,7 +92,8 @@ case_column_headers = True
 # In Unix/Linux: ~/.config/pgcli/history
 # In Windows: %USERPROFILE%\AppData\Local\dbcli\pgcli\history
 # %USERPROFILE% is typically C:\Users\{username}
-history_file = default
+; history_file = default
+history_file = ~/.pgcli-history.log
 
 # Default log level. Possible values: "CRITICAL", "ERROR", "WARNING", "INFO"
 # and "DEBUG". "NONE" disables logging.
@@ -218,8 +220,8 @@ search-toolbar.text = 'nobold'
 system-toolbar = 'noinherit bold'
 arg-toolbar = 'noinherit bold'
 arg-toolbar.text = 'nobold'
-; bottom-toolbar.transaction.valid = 'bg:#222222 #00ff5f bold'
-; bottom-toolbar.transaction.failed = 'bg:#222222 #ff005f bold'
+# bottom-toolbar.transaction.valid = 'bg:#222222 #00ff5f bold'
+# bottom-toolbar.transaction.failed = 'bg:#222222 #ff005f bold'
 bottom-toolbar.transaction.valid = 'bg:#434c5e #00ff5f bold'
 bottom-toolbar.transaction.failed = 'bg:#434c5e #ff005f bold'
 # These three values can be used to further refine the syntax highlighting.
