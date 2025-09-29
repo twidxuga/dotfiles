@@ -2,6 +2,7 @@ bat
 colima
 composer
 coreutils
+gemini-cli
 htop
 imagemagick
 ipython
@@ -9,13 +10,18 @@ julia
 lazygit
 luarocks
 m-cli
+mcphost
 mpv
 mysql@8.0
 node-build
+opencode
+pgcli
+postgresql@16
 redis
 rust
 showkey
 tree-sitter
+uv
 w3m
 watchman
 wget

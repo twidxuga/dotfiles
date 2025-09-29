@@ -339,7 +339,22 @@ vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = fal
 vim.keymap.set('n', '<leader>apt', ":Copilot toggle<cr>", { silent = true, desc = "Copilot toggle" })
 vim.keymap.set('n', '<leader>app', ":Copilot panel<cr>", { silent = true, desc = "Copilot panel" })
 vim.keymap.set('n', '<leader>aps', ":Copilot status<cr>", { silent = true, desc = "Copilot status" })
-require("which-key").add({ "<leader>a", group = "AI" })
-require("which-key").add({ "<leader>ap", group = "Copilot" })
+require("which-key").add({ "<leader>a", group = "Avante" })
+-- require("which-key").add({ "<leader>ap", group = "Copilot" })
 
 vim.keymap.set('n', '<leader>um', ":Markview Toggle<cr>", { silent = true, desc = "Markview Toggle" })
+
+-- Open code keymaps
+vim.keymap.set('n', '<leader>ot', function() require('opencode').toggle() end, { desc = 'Toggle opencode' })
+vim.keymap.set('n', '<leader>oA', function() require('opencode').ask() end, { desc = 'Ask opencode' })
+vim.keymap.set('n', '<leader>oa', function() require('opencode').ask('@cursor: ') end, { desc = 'Ask opencode about this' })
+vim.keymap.set('v', '<leader>oa', function() require('opencode').ask('@selection: ') end, { desc = 'Ask opencode about selection' })
+vim.keymap.set('n', '<leader>on', function() require('opencode').command('session_new') end, { desc = 'New opencode session' })
+vim.keymap.set('n', '<leader>oy', function() require('opencode').command('messages_copy') end, { desc = 'Copy last opencode response' })
+vim.keymap.set('n', '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, { desc = 'Messages half page up' })
+vim.keymap.set('n', '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, { desc = 'Messages half page down' })
+vim.keymap.set({ 'n', 'v' }, '<leader>os', function() require('opencode').select() end, { desc = 'Select opencode prompt' })
+-- Example: keymap for custom prompt
+vim.keymap.set('n', '<leader>oe', function() require('opencode').prompt('Explain @cursor and its context') end, { desc = 'Explain this code' })
+require("which-key").add({ "<leader>o", group = "Opencode" })
+
