@@ -3,6 +3,7 @@ colima
 composer
 coreutils
 gemini-cli
+gtk+3
 htop
 imagemagick
 ipython
