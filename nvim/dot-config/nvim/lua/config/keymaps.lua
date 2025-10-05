@@ -339,7 +339,7 @@ vim.keymap.set('v', '<leader>cv', 'y:<c-r>"<cr>', { noremap = true, silent = fal
 vim.keymap.set('n', '<leader>apt', ":Copilot toggle<cr>", { silent = true, desc = "Copilot toggle" })
 vim.keymap.set('n', '<leader>app', ":Copilot panel<cr>", { silent = true, desc = "Copilot panel" })
 vim.keymap.set('n', '<leader>aps', ":Copilot status<cr>", { silent = true, desc = "Copilot status" })
-require("which-key").add({ "<leader>a", group = "Avante" })
+require("which-key").add({ "<leader>a", group = "AI - Avante/CodeCompanion" })
 -- require("which-key").add({ "<leader>ap", group = "Copilot" })
 
 vim.keymap.set('n', '<leader>um', ":Markview Toggle<cr>", { silent = true, desc = "Markview Toggle" })
@@ -358,3 +358,14 @@ vim.keymap.set({ 'n', 'v' }, '<leader>os', function() require('opencode').select
 vim.keymap.set('n', '<leader>oe', function() require('opencode').prompt('Explain @cursor and its context') end, { desc = 'Explain this code' })
 require("which-key").add({ "<leader>o", group = "Opencode" })
 
+-- CodeCompanionChat
+vim.keymap.set('n', '<leader>acc', '<cmd>CodeCompanion<cr>', {
+  desc = 'Start CodeCompanion',
+  noremap = true,
+  silent = true,
+})
+vim.keymap.set('n', '<leader>act', '<cmd>CodeCompanionChat<cr>', {
+  desc = 'Start CodeCompanionChat',
+  noremap = true,
+  silent = true,
+})
