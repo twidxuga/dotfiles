@@ -135,24 +135,28 @@ return {
       -- provider = "openai",
       provider = "gemini",
       -- provider = "ollama",
-      -- auto_suggestions_provider = "openai",
       auto_suggestions_provider = "gemini",
       cursor_applying_provider = "gemini",
       memory_summary_provider = "gemini",
+      -- auto_suggestions_provider = "openai",
+      -- cursor_applying_provider = "openai",
+      -- memory_summary_provider = "openai",
       providers = {
         openai = {
-          endpoint = "https://api.openai.com/v1",
-          model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+          -- endpoint = "https://api.openai.com/v1",
+          -- model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+          model = "gpt-5", -- your desired model (or use gpt-4o, etc.)
           -- model = "gpt-4o-2024-08-06",
           -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
           timeout = 30000, -- timeout in milliseconds
           extra_request_body = {
-            temperature = 0, -- adjust if needed
+            temperature = 1, -- adjust if needed
+            -- stream = false,
             -- max_tokens = 4096,
             -- max_tokens = 16384, -- max for 4o
-            max_completion_tokens = 16384, -- max for o3-mini
+            -- max_completion_tokens = 16384, -- max for o3-mini
             -- reasoning_effort = "high" -- only supported for "o" models
-            reasoning_effort = "medium", -- only supported for "o" models
+            -- reasoning_effort = "medium", -- only supported for "o" models
           },
         },
         gemini = {
