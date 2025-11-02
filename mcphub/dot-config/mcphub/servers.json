@@ -33,6 +33,11 @@
       "command": "docker",
       "args": ["run", "-i", "--rm", "--init", "--pull=always", "mcr.microsoft.com/playwright/mcp"],
       "disabled": false
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest","--headless"],
+      "disabled": false
     }
   },
   "nativeMCPServers": {

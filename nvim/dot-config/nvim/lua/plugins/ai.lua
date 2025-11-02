@@ -36,7 +36,7 @@ return {
     'NickvanDyke/opencode.nvim',
     dependencies = {
       -- Recommended for better prompt input, and required to use `opencode.nvim`'s embedded terminal — otherwise optional
-      { 'folke/snacks.nvim', opts = { input = { enabled = true } } },
+      { 'folke/snacks.nvim', opts = { input = { enabled = true }, picker = { enabled = true } } },
     },
     config = function()
       vim.g.opencode_opts = {
@@ -132,8 +132,8 @@ return {
     opts = {
       -- temporary fix for error calling tool
       -- mode = 'legacy', -- default is 'agentic'
-      -- provider = "openai",
-      provider = "gemini",
+      provider = "openai",
+      -- provider = "gemini",
       -- provider = "ollama",
       auto_suggestions_provider = "gemini",
       cursor_applying_provider = "gemini",

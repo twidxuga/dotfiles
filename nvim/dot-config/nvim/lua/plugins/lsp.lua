@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-lspconfig",
+    "neovim/nvim-lspconfig",
     opts = {
       diagnostics = {
         virtual_text = false,
@@ -22,6 +22,12 @@ return {
           },
           -- root_dir = require('lspconfig.util').find_git_ancestor
           root_dir = (function() return vim.fs.dirname(vim.fs.find('.git', { path = vim.api.nvim_buf_get_name(0), upward = true })[1])end)
+        },
+        -- unmap K, since I have it for page up
+        ['*'] = {
+          keys = {
+            { "K", false },
+          },
         },
       },
     },

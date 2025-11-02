@@ -14,5 +14,8 @@ vim.opt.listchars = { eol = "↵", space = "_", nbsp = "␣", tab = "» ", trail
 -- Disable listchars by default
 vim.opt.list = false
 
+-- enable wrap by defaul
+vim.opt.wrap = true
+
 -- Create a custom highlight for Flash 
 vim.api.nvim_set_hl(0, 'FlashAlternative',  { foreground = '#ffffff', background = '#0000ff' })
