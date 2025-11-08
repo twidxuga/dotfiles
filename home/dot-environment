@@ -45,6 +45,12 @@ then
   export GEMINI_API_KEY=$(cat $GEMINIKEYFILE)
 fi
 
+# Anthropic API key
+if [[ ! -z $ANTHROPICKEYFILE ]]
+then
+  export ANTHROPIC_API_KEY=$(cat $ANTHROPICKEYFILE)
+fi
+
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 
