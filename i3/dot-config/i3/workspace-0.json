@@ -14,7 +14,8 @@
     "percent": 1,
     "swallows": [
        {
-       class": "^spotify$"
+       "window_role": "^spotify$"
+       //class": "^Spotify$"
        //"class": "^com.github.th_ch.youtube_music$"
        //"class": "^YouTube\\ Music$"
        // "instance": "^youtube\\ music$",
