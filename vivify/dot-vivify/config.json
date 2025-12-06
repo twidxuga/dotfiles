@@ -1,6 +1,5 @@
 {
   "pageTitle": "components.slice(-1)",
-  "styles": "~/.vivify/styles.css",
   "scripts": "~/.vivify/scripts/toggle-hidden-files.js",
   "tocOptions": {
     "includeLevel": [1, 2, 3]

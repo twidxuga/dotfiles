@@ -28,6 +28,10 @@ alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias nt='npx ts-node'
 alias nix-refresh='nix run nix-darwin -- switch --flake ~/.config/nix-darwi'
 
+# mac copy/paste current path 
+alias cpwd='pwd | tr -d "\r\n" | pbcopy'
+alias pcd='cd "$(pbpaste)"'
+
 # tmux aliases
 alias mux='tmuxinator'
 function tma() {

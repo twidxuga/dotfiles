@@ -38,6 +38,51 @@
           "vertical" : 0
         }
       }
+    },
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xd03f",
+          "productName" : "Keychron M6 ",
+          "vendorID" : "0x3434"
+        }
+      },
+      "scrolling" : {
+        "modifiers" : {
+          "vertical" : {
+            "command" : {
+              "type" : "pinchZoom"
+            },
+            "option" : {
+              "type" : "pinchZoom"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if" : {
+        "app" : "com.lujjjh.LinearMouse",
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xd03f",
+          "productName" : "Keychron M6 ",
+          "vendorID" : "0x3434"
+        }
+      },
+      "scrolling" : {
+        "modifiers" : {
+          "vertical" : {
+            "command" : {
+              "type" : "zoom"
+            },
+            "option" : {
+              "type" : "pinchZoom"
+            }
+          }
+        }
+      }
     }
   ]
 }

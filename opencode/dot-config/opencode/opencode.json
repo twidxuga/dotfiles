@@ -1,32 +1,38 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  // Theme configuration
-  // "theme": "system",
   "theme": "nord",
-  //"model": "google/gemini-2.5-pro",
   "model": "anthropic/claude-sonnet-4-5",
   "autoupdate": false,
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
-      //"model": "google/gemini-2.5-pro",
       "model": "anthropic/claude-sonnet-4-5",
       "prompt": "You are a code reviewer. Focus on functionality first, and then security, performance, and maintainability.",
       "tools": {
-        // Disable file modification tools for review-only agent
         "write": false,
-        "edit": false,
-      },
+        "edit": false
+      }
     },
+    "reflection": {
+      "description": "Personal coach for career reflections, workplace challenges, and professional growth, and all life challenges.",
+      "model": "google/gemini-3-pro-preview",
+      "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject.",
+      "tools": {
+        "tavily_search": true,
+        "tavily_extract": true,
+        "tavily_crawl": true,
+        "tavily_map": true
+      }
+    }
   },
- "mcp": {
+  "mcp": {
     "mcp_hub": {
       "type": "remote",
-      "url": "http://localhost:37373/mcp",
+      "url": "http://localhost:37373/mcp"
     },
     "tavily": {
       "type": "remote",
-      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}",
+      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={env:TAVILY_API_KEY}"
     }
   }
 }
