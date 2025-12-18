@@ -38,6 +38,16 @@
       "command": "npx",
       "args": ["-y", "chrome-devtools-mcp@latest","--headless"],
       "disabled": false
+    },
+    "postgres": {
+      "command": "docker",
+      "args": [  
+        "run",  
+        "-i",  
+        "--rm",  
+        "mcp/postgres",  
+        "${POSTGRESQL_URL}"
+      ]
     }
   },
   "nativeMCPServers": {
