@@ -49,7 +49,6 @@ github-cli
 glib2
 gnome-themes-extra
 gnome-tweaks
-gnu-netcat
 go
 gparted
 grub
@@ -74,8 +73,10 @@ jupyter-notebook
 kitty
 kmod
 kvantum
+lazydocker
 lazygit
 ldns
+libaacs
 libnghttp3
 libpipewire
 libreoffice-fresh
@@ -94,7 +95,7 @@ lsof
 lsp-plugins
 luarocks
 lvm2
-lxappearance-gtk3
+lxappearance
 man-db
 man-pages
 mediainfo
@@ -133,6 +134,7 @@ pandoc-cli
 pavucontrol
 peek
 perl-anyevent-i3
+pgcli
 picard
 pipewire
 pipewire-alsa
@@ -201,6 +203,7 @@ ueberzug
 uv
 virtualbox
 vlc
+vlc-plugins-all
 vulkan-icd-loader
 vulkan-tools
 wezterm
@@ -218,6 +221,7 @@ xsel
 yarn
 yt-dlp
 yubikey-manager
+zaproxy
 zathura
 zathura-cb
 zathura-djvu
