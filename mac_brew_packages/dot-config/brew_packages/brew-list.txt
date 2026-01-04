@@ -10,6 +10,7 @@ htop
 imagemagick
 ipython
 julia
+kubernetes-cli
 lazydocker
 lazygit
 luarocks

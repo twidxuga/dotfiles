@@ -81,7 +81,7 @@ htop: ncurses
 hwloc: 
 icu4c@77: 
 icu4c@78: 
-imagemagick: aom brotli fontconfig freetype gettext giflib glib highway imath jasper jpeg-turbo jpeg-xl libde265 libdeflate libheif liblqr libomp libpng libraw libtiff libtool libultrahdr libunistring libvmaf libzip little-cms2 lz4 m4 openexr openjpeg openjph pcre2 shared-mime-info webp x265 xz zstd
+imagemagick: aom brotli cairo fontconfig freetype fribidi gdk-pixbuf gettext giflib glib graphite2 harfbuzz highway icu4c@78 imath jasper jpeg-turbo jpeg-xl libde265 libdeflate libheif liblqr libomp libpng libraw librsvg libtiff libtool libultrahdr libunistring libvmaf libx11 libxau libxcb libxdmcp libxext libxrender libzip little-cms2 lz4 lzo m4 openexr openjpeg openjph pango pcre2 pixman shared-mime-info webp x265 xorgproto xz zstd
 imath: 
 inkscape: 
 ipython: ca-certificates lz4 mpdecimal openssl@3 python@3.14 readline sqlite xz zstd
@@ -91,6 +91,7 @@ jpeg-turbo:
 jpeg-xl: brotli giflib highway imath jpeg-turbo libdeflate libpng libtiff little-cms2 lz4 openexr openjph webp xz zstd
 julia: brotli ca-certificates curl gcc gmp isl libblastrampoline libgit2 libmpc libnghttp2 libnghttp3 libngtcp2 libomp libssh2 lz4 mpfr openblas64 openlibm openssl@3 p7zip pcre2 rtmpdump suite-sparse utf8proc xz zstd
 krb5: ca-certificates openssl@3
+kubernetes-cli: 
 lame: 
 lazydocker: 
 lazygit: 
@@ -113,9 +114,8 @@ libexif: gettext libunistring
 libfido2: ca-certificates libcbor openssl@3
 libgcrypt: gettext libgpg-error libunistring
 libgit2: ca-certificates libssh2 openssl@3
-libgit2@1.8: ca-certificates libssh2 openssl@3
 libgpg-error: gettext libunistring
-libheif: aom brotli gettext giflib glib highway imath jpeg-turbo jpeg-xl libde265 libdeflate libpng libtiff libunistring libvmaf little-cms2 lz4 openexr pcre2 shared-mime-info webp x265 xz zstd
+libheif: aom brotli gettext giflib glib highway imath jpeg-turbo jpeg-xl libde265 libdeflate libpng libtiff libunistring libvmaf little-cms2 lz4 openexr openjph pcre2 shared-mime-info webp x265 xz zstd
 libidn2: gettext libunistring
 libimagequant: 
 libksba: gettext libgpg-error libunistring
@@ -171,7 +171,6 @@ lima:
 linearmouse: 
 little-cms2: jpeg-turbo libtiff lz4 xz zstd
 llvm: ca-certificates lz4 mpdecimal openssl@3 python@3.14 readline sqlite xz z3 zstd
-llvm@20: lz4 xz zstd
 lua: 
 luajit: 
 luarocks: lua
@@ -179,7 +178,6 @@ lz4:
 lzo: 
 m-cli: 
 m4: 
-mbedtls: 
 mbedtls@3: 
 mcphost: 
 molten-vk: 
@@ -187,7 +185,7 @@ mozjpeg: libpng
 mpdecimal: 
 mpfr: gmp
 mpg123: 
-mpv: aom aribb24 brotli ca-certificates cairo certifi cjson dav1d deno ffmpeg flac fontconfig freetype frei0r fribidi gettext giflib glib gmp gnutls graphite2 harfbuzz highway icu4c@78 imath jpeg-turbo jpeg-xl lame leptonica libarchive libass libb2 libbluray libdeflate libevent libidn2 libmicrohttpd libnghttp2 libogg libplacebo libpng librist libsamplerate libsndfile libsodium libsoxr libssh libtasn1 libtiff libudfread libunibreak libunistring libvidstab libvmaf libvorbis libvpx libx11 libxau libxcb libxdmcp libxext libxrender little-cms2 luajit lz4 lzo mbedtls molten-vk mpdecimal mpg123 mujs nettle opencore-amr openexr openjpeg openjph openssl@3 opus p11-kit pango pcre2 pixman python@3.14 rav1e readline rubberband sdl2 shaderc snappy speex sqlite srt svt-av1 tesseract theora uchardet unbound vapoursynth vulkan-headers vulkan-loader webp x264 x265 xorgproto xvid xz yt-dlp zeromq zimg zstd
+mpv: aom aribb24 brotli ca-certificates cairo certifi cjson dav1d deno ffmpeg flac fontconfig freetype frei0r fribidi gettext giflib glib gmp gnutls graphite2 harfbuzz highway icu4c@78 imath jpeg-turbo jpeg-xl lame leptonica libarchive libass libb2 libbluray libdeflate libevent libidn2 libmicrohttpd libnghttp2 libogg libplacebo libpng librist libsamplerate libsndfile libsodium libsoxr libssh libtasn1 libtiff libudfread libunibreak libunistring libvidstab libvmaf libvorbis libvpx libx11 libxau libxcb libxdmcp libxext libxrender little-cms2 luajit lz4 lzo mbedtls@3 molten-vk mpdecimal mpg123 mujs nettle opencore-amr openexr openjpeg openjph openssl@3 opus p11-kit pango pcre2 pixman python@3.14 rav1e readline rubberband sdl2 shaderc snappy speex sqlite srt svt-av1 tesseract theora uchardet unbound vapoursynth vulkan-headers vulkan-loader webp x264 x265 xorgproto xvid xz yt-dlp zeromq zimg zstd
 mujs: 
 mysql@8.0: abseil ca-certificates icu4c@78 libcbor libevent libfido2 lz4 openssl@3 protobuf xz zlib zstd
 ncurses: 
@@ -206,9 +204,8 @@ nspr:
 nss: nspr
 oniguruma: 
 open-mpi: ca-certificates gcc gmp hwloc isl libevent libmpc lz4 mpfr openssl@3 pmix xz zstd
-openblas: gcc gmp isl libmpc lz4 mpfr xz zstd
 openblas64: gcc gmp isl libmpc lz4 mpfr xz zstd
-opencode: brotli c-ares ca-certificates icu4c@78 libnghttp2 libnghttp3 libngtcp2 libuv lz4 node openssl@3 readline simdjson sqlite uvwasi xz zstd
+opencode: brotli c-ares ca-certificates icu4c@78 libnghttp2 libnghttp3 libngtcp2 libuv lz4 node openssl@3 pcre2 readline ripgrep simdjson sqlite uvwasi xz zstd
 opencore-amr: 
 openexr: imath jpeg-turbo libdeflate libtiff lz4 openjph xz zstd
 openjpeg: jpeg-turbo libpng libtiff little-cms2 lz4 xz zstd
@@ -224,7 +221,7 @@ p7zip:
 pandoc: gmp
 pango: cairo fontconfig freetype fribidi gettext glib graphite2 harfbuzz icu4c@78 libpng libunistring libx11 libxau libxcb libxdmcp libxext libxrender lzo pcre2 pixman xorgproto
 pcre2: 
-pgcli: ca-certificates icu4c@77 krb5 libpq mpdecimal openssl@3 python@3.13 readline sqlite xz
+pgcli: ca-certificates icu4c@78 krb5 libpq lz4 mpdecimal openssl@3 python@3.14 readline sqlite xz zstd
 php: aom apr apr-util argon2 autoconf brotli ca-certificates curl dav1d fontconfig freetds freetype gd gettext giflib gmp highway icu4c@78 imath jpeg-turbo jpeg-xl krb5 libavif libdeflate libnghttp2 libnghttp3 libngtcp2 libpng libpq libsodium libssh2 libtiff libtool libunistring libvmaf libzip little-cms2 lz4 m4 net-snmp oniguruma openexr openjph openldap openssl@3 pcre2 readline rtmpdump sqlite tidy-html5 unixodbc webp xz zstd
 pinentry: gettext libassuan libgpg-error libunistring
 pixman: 
@@ -234,7 +231,6 @@ poppler: ca-certificates cairo fontconfig freetype gettext glib gmp gnupg gnutls
 postgresql@16: ca-certificates gettext icu4c@78 krb5 libunistring lz4 openssl@3 readline xz zstd
 prince: 
 protobuf: abseil
-protobuf@29: abseil
 python@3.12: ca-certificates mpdecimal openssl@3 readline sqlite xz
 python@3.13: ca-certificates mpdecimal openssl@3 readline sqlite xz
 python@3.14: ca-certificates lz4 mpdecimal openssl@3 readline sqlite xz zstd
@@ -242,6 +238,7 @@ range-v3:
 rav1e: 
 readline: 
 redis: ca-certificates openssl@3
+ripgrep: pcre2
 rtmpdump: ca-certificates openssl@3
 rubberband: flac lame libogg libsamplerate libsndfile libvorbis mpg123 opus
 rust: ca-certificates libgit2 libssh2 llvm lz4 mpdecimal openssl@3 pkgconf python@3.14 readline sqlite xz z3 zstd
@@ -272,7 +269,7 @@ uthash:
 uv: 
 uvwasi: libuv
 vapoursynth: ca-certificates lz4 mpdecimal openssl@3 python@3.14 readline sqlite xz zimg zstd
-vips: aom brotli ca-certificates cairo cfitsio cgif fftw fontconfig freetype fribidi gcc gdk-pixbuf gettext giflib glib gmp gnupg gnutls gpgme gpgmepp graphite2 harfbuzz hdf5 highway hwloc icu4c@78 imagemagick imath isl jasper jpeg-turbo jpeg-xl libaec libarchive libassuan libb2 libde265 libdeflate libdicom libevent libexif libgcrypt libgpg-error libheif libidn2 libimagequant libksba liblqr libmatio libmpc libnghttp2 libomp libpng libraw librsvg libspng libtasn1 libtiff libtool libunistring libusb libvmaf libx11 libxau libxcb libxdmcp libxext libxml2 libxrender libzip little-cms2 lz4 lzo m4 mozjpeg mpfr nettle npth nspr nss open-mpi openexr openjpeg openjph openslide openssl@3 p11-kit pango pcre2 pinentry pixman pkgconf pmix poppler readline shared-mime-info sqlite unbound uthash webp x265 xorgproto xz zstd
+vips: aom brotli ca-certificates cairo cfitsio cgif fftw fontconfig freetype fribidi gcc gdk-pixbuf gettext giflib glib gmp gnupg gnutls gpgme gpgmepp graphite2 harfbuzz hdf5 highway hwloc icu4c@78 imagemagick imath isl jasper jpeg-turbo jpeg-xl libaec libarchive libassuan libb2 libde265 libdeflate libdicom libevent libexif libgcrypt libgpg-error libheif libidn2 libimagequant libksba liblqr libmatio libmpc libnghttp2 libomp libpng libraw librsvg libtasn1 libtiff libtool libultrahdr libunistring libusb libvmaf libx11 libxau libxcb libxdmcp libxext libxml2 libxrender libzip little-cms2 lz4 lzo m4 mozjpeg mpfr nettle npth nspr nss open-mpi openexr openjpeg openjph openslide openssl@3 p11-kit pango pcre2 pinentry pixman pkgconf pmix poppler readline shared-mime-info sqlite unbound uthash webp x265 xorgproto xz zstd
 jannis-baum/tap/vivify: 
 vulkan-headers: 
 vulkan-loader: vulkan-headers
