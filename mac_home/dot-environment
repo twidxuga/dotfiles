@@ -93,3 +93,10 @@ if [[ ! -z $GITHUBPACKAGETOKENKEYFILE ]]
 then
   export GITHUB_PACKAGE_TOKEN=$(cat $GITHUBPACKAGETOKENKEYFILE)
 fi
+
+# bun completions
+[ -s "/Users/rs/.bun/_bun" ] && source "/Users/rs/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

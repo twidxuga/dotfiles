@@ -1,0 +1,5 @@
+{
+  "template": "ulw refactor the following: $ARGUMENTS. Use LSP tools for safe refactoring, run diagnostics before and after, ensure all tests pass. Consult oracle if architectural changes are needed. Apply best practices and maintain code quality.",
+  "description": "Safe refactoring with LSP tools, tests, and diagnostics",
+  "agent": "Sisyphus"
+}

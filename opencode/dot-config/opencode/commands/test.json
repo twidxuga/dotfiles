@@ -1,0 +1,5 @@
+{
+  "template": "ulw run tests and fix any failures for: $ARGUMENTS. First run the test suite, analyze failures, then fix issues one by one. Use LSP diagnostics to catch errors early. Re-run tests after each fix to ensure no regressions. Report final results.",
+  "description": "Run tests with automatic failure fixing and regression prevention",
+  "agent": "Sisyphus"
+}

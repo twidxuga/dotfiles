@@ -1,0 +1,5 @@
+{
+  "template": "ulw perform a comprehensive codebase analysis for: $ARGUMENTS. Use parallel background agents (explore, librarian) to search for patterns, dependencies, and potential issues. Provide architectural insights and recommendations.",
+  "description": "Deep codebase analysis with ultrawork mode and parallel agents",
+  "agent": "Sisyphus"
+}
