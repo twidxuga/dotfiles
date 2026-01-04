@@ -62,7 +62,7 @@
       "permission": {
         "edit": "allow",
         "write": "allow",
-        "bash": "ask",
+        "bash": "allow",
         "webfetch": "allow"
       }
     }
