@@ -77,7 +77,7 @@
     "preemptive_compaction_threshold": 0.85,
     "truncate_all_tool_outputs": true,
     "aggressive_truncation": true,
-    "auto_resume": true
+    "auto_resume": false
   },
   "claude_code": {
     "mcp": true,
