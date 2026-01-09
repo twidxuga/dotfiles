@@ -12,6 +12,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 # Dotnet (non-homebrew) path
 export PATH="$PATH:/usr/local/share/dotnet"
 export PATH="$PATH:/Users/rs/.dotnet/tools"
+export PATH="$PATH:/Users/rs/.go/bin"
 
 export GOPATH=~/.go
 

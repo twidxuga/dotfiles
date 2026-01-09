@@ -55,7 +55,8 @@
   },
   "plugin": [
     "oh-my-opencode",
-    "opencode-openai-codex-auth"
+    "opencode-openai-codex-auth",
+    "@franlol/opencode-md-table-formatter@0.0.3"
   ],
   "provider": {
     "openai": {
