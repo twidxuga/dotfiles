@@ -32,21 +32,48 @@ return {
       })
     end,
   },
+  -- {
+  --   'NickvanDyke/opencode.nvim',
+  --   dependencies = {
+  --     -- Recommended for better prompt input, and required to use `opencode.nvim`'s embedded terminal — otherwise optional
+  --     { 'folke/snacks.nvim', opts = { input = { enabled = true }, picker = { enabled = true } } },
+  --   },
+  --   config = function()
+  --     vim.g.opencode_opts = {
+  --       -- Your configuration, if any — see `lua/opencode/config.lua`
+  --     }
+  --
+  --     -- Required for `opts.auto_reload`
+  --     vim.opt.autoread = true
+  --
+  --   end,
+  -- },
+  -- New opencode.nvim (sudo-tee/opencode.nvim)
   {
-    'NickvanDyke/opencode.nvim',
-    dependencies = {
-      -- Recommended for better prompt input, and required to use `opencode.nvim`'s embedded terminal — otherwise optional
-      { 'folke/snacks.nvim', opts = { input = { enabled = true }, picker = { enabled = true } } },
+    "sudo-tee/opencode.nvim",
+    main = "opencode",
+    opts = {
+      default_global_keymaps = false, -- Keymaps defined in keymaps.lua
+      default_mode = "build",
+      ui = {
+        position = "right",
+        window_width = 0.40,
+        icons = {
+          preset = "nerdfonts",
+        },
+      },
     },
-    config = function()
-      vim.g.opencode_opts = {
-        -- Your configuration, if any — see `lua/opencode/config.lua`
-      }
-
-      -- Required for `opts.auto_reload`
-      vim.opt.autoread = true
-
-    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          anti_conceal = { enabled = false },
+          file_types = { "markdown", "opencode_output" },
+        },
+        ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
+      },
+    },
   },
   {
     "ravitemer/mcphub.nvim",
