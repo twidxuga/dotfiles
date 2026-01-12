@@ -351,11 +351,11 @@ vim.keymap.set('n', '<leader>um', ":Markview Toggle<cr>", { silent = true, desc 
 -- vim.keymap.set("n", "<C-U>", function() require("opencode").command("session.half.page.up") end, { desc = "opencode half page up" })
 -- vim.keymap.set("n", "<C-D>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
 require("which-key").add({ "<leader>o", group = "Opencode" })
-vim.keymap.set("n", "<leader>og", function() require("opencode.api").toggle() end, { desc = "Toggle Opencode" })
+vim.keymap.set("n", "<leader>ot", function() require("opencode.api").toggle() end, { desc = "Toggle Opencode" })
 vim.keymap.set("n", "<leader>oi", function() require("opencode.api").open_input() end, { desc = "Open input" })
 vim.keymap.set("n", "<leader>oI", function() require("opencode.api").open_input_new_session() end, { desc = "Open input (new session)" })
 vim.keymap.set("n", "<leader>oo", function() require("opencode.api").open_output() end, { desc = "Open output" })
-vim.keymap.set("n", "<leader>ot", function() require("opencode.api").toggle_focus() end, { desc = "Toggle focus" })
+vim.keymap.set("n", "<leader>og", function() require("opencode.api").toggle_focus() end, { desc = "Toggle focus" })
 vim.keymap.set("n", "<leader>oT", function() require("opencode.api").timeline() end, { desc = "Timeline picker" })
 vim.keymap.set("n", "<leader>oq", function() require("opencode.api").close() end, { desc = "Close" })
 vim.keymap.set("n", "<leader>os", function() require("opencode.api").select_session() end, { desc = "Select session" })
@@ -376,6 +376,21 @@ vim.keymap.set("n", "<leader>orA", function() require("opencode.api").diff_rever
 vim.keymap.set("n", "<leader>orT", function() require("opencode.api").diff_revert_this_session() end, { desc = "Revert this (session)" })
 vim.keymap.set("n", "<leader>orr", function() require("opencode.api").diff_restore_snapshot_file() end, { desc = "Restore file snapshot" })
 vim.keymap.set("n", "<leader>orR", function() require("opencode.api").diff_restore_snapshot_all() end, { desc = "Restore all snapshots" })
+vim.keymap.set("n", "<leader>oS", function()
+  local state = require("opencode.state")
+  local ui = require("opencode.ui.ui")
+  local core = require("opencode.core")
+  state.api_client:list_sessions():and_then(function(sessions)
+    if not sessions or #sessions == 0 then
+      vim.notify("No sessions found", vim.log.levels.INFO)
+      return
+    end
+    table.sort(sessions, function(a, b) return a.time.updated > b.time.updated end)
+    ui.select_session(sessions, function(selected)
+      if selected then core.switch_session(selected.id) end
+    end)
+  end)
+end, { desc = "All sessions (global)" })
 
 -- CodeCompanionChat
 vim.keymap.set('n', '<leader>acc', '<cmd>CodeCompanion<cr>', {

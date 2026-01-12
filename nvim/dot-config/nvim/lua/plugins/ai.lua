@@ -62,6 +62,57 @@ return {
           preset = "nerdfonts",
         },
       },
+      debug = {
+        enabled = true,
+      },
+      keymap = {
+        input_window = {
+          ["<leader>oS"] = {
+            function()
+              local state = require("opencode.state")
+              local ui = require("opencode.ui.ui")
+              local core = require("opencode.core")
+              state.api_client:list_sessions():and_then(function(sessions)
+                if not sessions or #sessions == 0 then
+                  vim.notify("No sessions found", vim.log.levels.INFO)
+                  return
+                end
+                table.sort(sessions, function(a, b) return a.time.updated > b.time.updated end)
+                ui.select_session(sessions, function(selected)
+                  if selected then core.switch_session(selected.id) end
+                end)
+              end)
+            end,
+            mode = "n",
+            desc = "All sessions (global)",
+          },
+          ["<leader>oD"] = { "debug_message", desc = "Debug message" },
+          ["<leader>oO"] = { "debug_output", desc = "Debug output" },
+        },
+        output_window = {
+          ["<leader>oS"] = {
+            function()
+              local state = require("opencode.state")
+              local ui = require("opencode.ui.ui")
+              local core = require("opencode.core")
+              state.api_client:list_sessions():and_then(function(sessions)
+                if not sessions or #sessions == 0 then
+                  vim.notify("No sessions found", vim.log.levels.INFO)
+                  return
+                end
+                table.sort(sessions, function(a, b) return a.time.updated > b.time.updated end)
+                ui.select_session(sessions, function(selected)
+                  if selected then core.switch_session(selected.id) end
+                end)
+              end)
+            end,
+            mode = "n",
+            desc = "All sessions (global)",
+          },
+          ["<leader>oD"] = { "debug_message", desc = "Debug message" },
+          ["<leader>oO"] = { "debug_output", desc = "Debug output" },
+        },
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -73,6 +124,15 @@ return {
         },
         ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
       },
+      -- Optional, for file mentions and commands completion, pick only one
+      'saghen/blink.cmp',
+      -- 'hrsh7th/nvim-cmp',
+
+      -- Optional, for file mentions picker, pick only one
+      'folke/snacks.nvim',
+      -- 'nvim-telescope/telescope.nvim',
+      -- 'ibhagwan/fzf-lua',
+      -- 'nvim_mini/mini.nvim',
     },
   },
   {
