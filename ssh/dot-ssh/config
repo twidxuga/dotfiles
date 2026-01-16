@@ -15,6 +15,6 @@ Host github-personal
 host *
   # reuse connections
   ControlMaster auto
-  ControlPath ~/.ssh/ssh_mux_%h_%p_%r
+  ControlPath ~/.ssh/ssh_mux_%n_%p_%r
   # disconnect if inactive after 15 minutes
   ControlPersist 900
