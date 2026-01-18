@@ -1,0 +1,27 @@
+{
+  // Storage configuration
+  "storagePath": "~/.opencode-mem/data",
+  
+  // SQLite configuration for Apple Silicon Mac
+  "sqlitePath": "/opt/homebrew/opt/sqlite/lib/libsqlite3.dylib",
+  
+  // Embedding model for vector search (local, no API needed)
+  "embeddingModel": "Xenova/nomic-embed-text-v1",
+  
+  // Web UI configuration
+  "webServerEnabled": true,
+  "webServerPort": 4747,
+  
+  // Memory capture settings
+  "autoCaptureEnabled": true,
+  
+  // AI provider for memory analysis (uses OpenAI)
+  "memoryProvider": "openai-chat",
+  "memoryModel": "gpt-4o",
+  
+  // User profile analysis interval (analyze every 10 memories)
+  "userProfileAnalysisInterval": 10,
+  
+  // Maximum memories to retrieve in context
+  "maxMemories": 10
+}
