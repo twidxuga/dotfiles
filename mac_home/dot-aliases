@@ -90,3 +90,7 @@ alias st='stow -d ~/.dotfiles --dotfiles -v'
 # bunch aliases
 source "${HOME}/.bunch_aliases"
 
+# aws sso login
+function asl() {
+  aws sso login --profile "bunch-2${1}"
+}

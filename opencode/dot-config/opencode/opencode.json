@@ -47,13 +47,12 @@
     "mcp_hub": {
       "type": "remote",
       "url": "http://localhost:37373/mcp"
-    },
+    }
   },
   "plugin": [
-    "oh-my-opencode",
-    "opencode-openai-codex-auth",
+    "oh-my-opencode@3.0.0",
     "@franlol/opencode-md-table-formatter@0.0.3",
-    "opencode-mem"
+    "opencode-mem@2.7.2"
   ],
   "provider": {
     "openai": {

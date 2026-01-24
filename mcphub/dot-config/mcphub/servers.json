@@ -51,7 +51,7 @@
     },
     "notion": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.notion.com/sse"],
+      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp", "--transport", "http-first"],
       "disabled": false
     },
     "linear": {
@@ -64,7 +64,8 @@
       "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
       "env": {
         "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
-        "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}"
+        "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       },
       "disabled": false
     }

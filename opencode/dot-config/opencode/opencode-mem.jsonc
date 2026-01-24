@@ -15,14 +15,17 @@
   // Memory capture settings
   "autoCaptureEnabled": true,
   
-  // AI provider for memory analysis (uses OpenAI)
-  "memoryProvider": "openai-chat",
-  "memoryModel": "gpt-4o-mini",
-  "memoryApiUrl": "https://api.openai.com/v1",
-  "memoryApiKey": "env://OPENAI_API_KEY",
+  // AI provider for memory analysis
+  // Using Anthropic Claude 3.5 Haiku: 200K context (vs OpenAI's 128K)
+  // Cheaper than gpt-4o-mini AND handles larger conversation batches
+  "memoryProvider": "anthropic",
+  "memoryModel": "claude-3-5-haiku-20241022",
+  "memoryApiUrl": "https://api.anthropic.com/v1",
+  "memoryApiKey": "env://ANTHROPIC_API_KEY",
   
-  // User profile analysis interval (analyze every 10 memories)
-  "userProfileAnalysisInterval": 10,
+  // User profile analysis interval (analyze every N prompts)
+  // Can safely use 3 with Claude's 200K context (vs gpt-4o-mini's 128K)
+  "userProfileAnalysisInterval": 3,
   
   // Maximum memories to retrieve in context
   "maxMemories": 10
