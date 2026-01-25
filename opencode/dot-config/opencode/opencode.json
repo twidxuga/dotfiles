@@ -50,7 +50,7 @@
     }
   },
   "plugin": [
-    "oh-my-opencode@3.0.0",
+    "oh-my-opencode@3.0.1",
     "@franlol/opencode-md-table-formatter@0.0.3",
     "opencode-mem@2.7.2"
   ],
