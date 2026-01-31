@@ -50,9 +50,9 @@
     }
   },
   "plugin": [
-    "oh-my-opencode@3.1.8",
+    "oh-my-opencode@3.1.10",
     "@franlol/opencode-md-table-formatter@0.0.3",
-    "opencode-mem@2.7.2"
+    "opencode-mem@2.7.3"
   ],
   "provider": {
     "openai": {
@@ -67,11 +67,9 @@
         },
         "o3": {
           "name": "o3",
-          "thinking": true
         },
         "o4-mini": {
           "name": "o4-mini",
-          "thinking": true
         },
         "codex-1": {
           "name": "Codex-1"
