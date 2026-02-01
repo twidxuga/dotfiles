@@ -54,3 +54,5 @@ fi
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 
+# OpenClaw Completion
+# source <(openclaw completion --shell zsh)
