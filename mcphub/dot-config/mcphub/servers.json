@@ -31,7 +31,7 @@
     },
     "playwright": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "--init", "--pull=always", "mcr.microsoft.com/playwright/mcp"],
+      "args": ["run", "-i", "--rm", "--init", "-e", "BROWSER=firefox", "--pull=always", "mcr.microsoft.com/playwright/mcp"],
       "disabled": false
     },
     "chrome-devtools": {
