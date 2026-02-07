@@ -19,7 +19,7 @@
   // Switched to OpenAI due to Anthropic max_tokens bug in opencode-mem
   // See: https://github.com/tickernelz/opencode-mem (unfiled issue)
   "memoryProvider": "openai-chat",
-  "memoryModel": "gpt-5-mini",
+  "memoryModel": "gpt-4.1-mini",
   "memoryApiUrl": "https://api.openai.com/v1",
   "memoryApiKey": "env://OPENAI_API_KEY",
   
