@@ -50,9 +50,9 @@
     }
   },
   "plugin": [
-    "oh-my-opencode@3.2.3",
-    "@franlol/opencode-md-table-formatter@0.0.3",
-    "opencode-mem@2.7.3"
+    "oh-my-opencode",
+    "@franlol/opencode-md-table-formatter",
+    "opencode-mem"
   ],
   "provider": {
     "openai": {
