@@ -51,6 +51,12 @@ then
   export ANTHROPIC_API_KEY=$(cat $ANTHROPICKEYFILE)
 fi
 
+# Openrouter API key
+if [[ ! -z $OPENROUTERKEYFILE ]]
+then
+  export OPENROUTER_API_KEY=$(cat $OPENROUTERKEYFILE)
+fi
+
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 
