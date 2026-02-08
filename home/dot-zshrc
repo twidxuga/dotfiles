@@ -119,3 +119,6 @@ source ~/.environment
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliases
+
+# OpenClaw Completion
+source "/home/twidxuga/.openclaw/completions/openclaw.zsh"
