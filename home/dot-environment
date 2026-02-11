@@ -57,6 +57,12 @@ then
   export OPENROUTER_API_KEY=$(cat $OPENROUTERKEYFILE)
 fi
 
+# GOG Keyring
+if [[ ! -z $GOGKEYFILE ]]
+then
+  export GOG_KEYRING_PASSWORD=$(cat $GOGKEYFILE)
+fi
+
 # Base nix configuration
 export NIX_CONFG_DIR=$HOME/.config/nix
 
