@@ -52,7 +52,7 @@
         "modifiers" : {
           "vertical" : {
             "command" : {
-              "type" : "pinchZoom"
+              "type" : "zoom"
             },
             "option" : {
               "type" : "pinchZoom"
