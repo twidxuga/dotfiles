@@ -132,3 +132,6 @@ bindkey "∫" backward-word
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ricardo.santos/.cache/lm-studio/bin"
+
+# bun completions
+[ -s "/Users/rs/.bun/_bun" ] && source "/Users/rs/.bun/_bun"
