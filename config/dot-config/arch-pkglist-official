@@ -18,7 +18,6 @@ blueman
 bluez
 bluez-utils
 brightnessctl
-cheese
 code
 copyq
 cups
@@ -143,6 +142,7 @@ pipewire-pulse
 playerctl
 plocate
 postgresql
+protontricks
 pyenv
 python-dbus
 python-debugpy
