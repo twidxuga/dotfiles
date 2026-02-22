@@ -2,9 +2,6 @@
   // Storage configuration
   "storagePath": "~/.opencode-mem/data",
   
-  // SQLite configuration for Apple Silicon Mac
-  "customSqlitePath": "/opt/homebrew/opt/sqlite/lib/libsqlite3.dylib",
-  
   // Embedding model for vector search (local, no API needed)
   "embeddingModel": "Xenova/nomic-embed-text-v1",
   

@@ -2,38 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
   "agents": {
     "librarian": {
-      "model": "opencode/big-pickle",
       "permission": {
         "edit": "deny",
-        "write": "deny",
         "bash": "deny",
         "webfetch": "allow"
       }
     },
     "explore": {
-      "model": "opencode/big-pickle",
       "permission": {
         "edit": "deny",
-        "write": "deny",
         "bash": "ask",
-        "webfetch": "allow"
-      }
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "anthropic/claude-sonnet-4-6",
-      "permission": {
-        "edit": "allow",
-        "write": "allow",
-        "bash": "ask",
-        "webfetch": "allow"
-      }
-    },
-    "document-writer": {
-      "model": "anthropic/claude-sonnet-4-6",
-      "permission": {
-        "edit": "allow",
-        "write": "allow",
-        "bash": "deny",
         "webfetch": "allow"
       }
     },
@@ -41,7 +19,6 @@
       "model": "anthropic/claude-sonnet-4-6",
       "permission": {
         "edit": "deny",
-        "write": "deny",
         "bash": "deny",
         "webfetch": "allow"
       }
@@ -51,17 +28,15 @@
       "temperature": 0.3,
       "permission": {
         "edit": "allow",
-        "write": "allow",
         "bash": "ask",
         "webfetch": "allow"
       }
     },
     "sisyphus": {
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "anthropic/claude-opus-4-6",
       "temperature": 0.3,
       "permission": {
         "edit": "allow",
-        "write": "allow",
         "bash": "allow",
         "webfetch": "allow"
       }
@@ -85,5 +60,8 @@
     "skills": true,
     "agents": true,
     "hooks": true
-  }
+  },
+  "_migrations": [
+    "model-version:anthropic/claude-opus-4-5->anthropic/claude-opus-4-6"
+  ]
 }

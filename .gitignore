@@ -2,3 +2,6 @@
 
 mac_karabiner/dot-config/karabiner/automatic_backups/*
 nvim/dot-config/nvim/lazy-lock.json
+
+pgcli/dot-config/pgcli/history
+pgcli/dot-config/pgcli/log
