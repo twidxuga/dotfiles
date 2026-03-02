@@ -233,59 +233,59 @@ return {
   --   }
   -- }
   --
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      -- needed to install additional parsers
-      { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-      { "nvim-lua/plenary.nvim" },
-      { "ravitemer/mcphub.nvim" },
-      -- Test with blink.cmp (delete if not required)
-      {
-        "saghen/blink.cmp",
-        lazy = false,
-        version = "*",
-        opts = {
-          keymap = {
-            preset = "enter",
-            ["<C-p>"] = { "select_prev", "fallback" },
-            ["<C-n>"] = { "select_next", "fallback" },
-          },
-          cmdline = { sources = { "cmdline" } },
-          sources = {
-            default = { "lsp", "path", "buffer", "codecompanion" },
-          },
-        },
-      },
-      -- Test with nvim-cmp
-      -- { "hrsh7th/nvim-cmp" },
-    },
-    opts = {
-      --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
-      strategies = {
-        --NOTE: Change the adapter as required
-        chat = { 
-          adapter = {
-            name = "gemini",
-            model = "gemini-2.5-pro",
-          }
-        },
-        inline = { adapter = "gemini" },
-        cmd = { adapter = "gemini" },
-      },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true
-          }
-        }
-      }
-      -- opts = {
-      --   log_level = "DEBUG",
-      -- },
-    },
-  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     -- needed to install additional parsers
+  --     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  --     { "nvim-lua/plenary.nvim" },
+  --     { "ravitemer/mcphub.nvim" },
+  --     -- Test with blink.cmp (delete if not required)
+  --     {
+  --       "saghen/blink.cmp",
+  --       lazy = false,
+  --       version = "*",
+  --       opts = {
+  --         keymap = {
+  --           preset = "enter",
+  --           ["<C-p>"] = { "select_prev", "fallback" },
+  --           ["<C-n>"] = { "select_next", "fallback" },
+  --         },
+  --         cmdline = { sources = { "cmdline" } },
+  --         sources = {
+  --           default = { "lsp", "path", "buffer", "codecompanion" },
+  --         },
+  --       },
+  --     },
+  --     -- Test with nvim-cmp
+  --     -- { "hrsh7th/nvim-cmp" },
+  --   },
+  --   opts = {
+  --     --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
+  --     strategies = {
+  --       --NOTE: Change the adapter as required
+  --       chat = { 
+  --         adapter = {
+  --           name = "gemini",
+  --           model = "gemini-2.5-pro",
+  --         }
+  --       },
+  --       inline = { adapter = "gemini" },
+  --       cmd = { adapter = "gemini" },
+  --     },
+  --     extensions = {
+  --       mcphub = {
+  --         callback = "mcphub.extensions.codecompanion",
+  --         opts = {
+  --           make_vars = true,
+  --           make_slash_commands = true,
+  --           show_result_in_chat = true
+  --         }
+  --       }
+  --     }
+  --     -- opts = {
+  --     --   log_level = "DEBUG",
+  --     -- },
+  --   },
+  -- },
 }
