@@ -35,6 +35,7 @@
     "sisyphus": {
       "model": "anthropic/claude-sonnet-4-6",
       "temperature": 0.3,
+      "prompt_append": "SPECIALIST AGENTS: You have 68+ domain-specific agents in ~/.config/opencode/agent/ beyond the standard oh-my-opencode roster. Before defaulting to a generic category, check if a specialist exists. Load the discovery protocol with skill(name=\"agent-directory\") to see how to find and invoke them. Invoke via task(subagent_type=\"<name field>\", ...) — use the name: value from the agent's frontmatter (e.g. \"Senior Developer\", \"Backend Architect\"), NOT the filename.",
       "permission": {
         "edit": "allow",
         "bash": "allow",
