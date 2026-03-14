@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# ueberzug-wrapper: runs ueberzug under pyenv Python 3.8 to avoid Python 3.10+ asyncio breakage
+
+PYENV_PYTHON="$HOME/.pyenv/versions/3.8.19/bin/python"
+PYENV_PIP="$HOME/.pyenv/versions/3.8.19/bin/pip"
+
+if [[ ! -x "$PYENV_PYTHON" ]]; then
+    echo "ueberzug-wrapper: pyenv python 3.8.19 not found at $PYENV_PYTHON" >&2
+    exit 1
+fi
+
+# Install ueberzug into pyenv 3.8 if not already present
+if ! "$PYENV_PYTHON" -c "import ueberzug" 2>/dev/null; then
+    echo "ueberzug-wrapper: installing ueberzug into pyenv 3.8.19..." >&2
+    "$PYENV_PIP" install ueberzug --quiet
+fi
+
+# Patch layer.py to use sys.executable in the tmux hook command instead of the bare
+# "ueberzug" name. This ensures tmux hooks use the full path to this Python binary
+# regardless of tmux's PATH (which typically excludes ~/.local/bin), and guarantees
+# the hook process has the same /proc/comm as the layer process for is_same_command().
+LAYER_PY=$("$PYENV_PYTHON" -c "import ueberzug.layer as m; import inspect; print(inspect.getfile(m))" 2>/dev/null)
+if [[ -n "$LAYER_PY" ]]; then
+    if grep -q '"ueberzug query_windows "' "$LAYER_PY" 2>/dev/null; then
+        sed -i 's|command_template = "ueberzug query_windows "|command_template = sys.executable + " -m ueberzug query_windows "|' "$LAYER_PY"
+    fi
+fi
+
+# Clean stale PIDs from ueberzug lock files to prevent ghost hook accumulation.
+# ueberzug registers tmux hooks with a list of PIDs; dead PIDs accumulate across
+# sessions and cause images to bleed into wrong windows on focus change.
+if [[ -n "$TMUX" ]]; then
+    XDG_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}"
+    LOCK_DIR="$XDG_CACHE/ueberzug"
+    if [[ -d "$LOCK_DIR" ]]; then
+        for lock_file in "$LOCK_DIR"/*.lock; do
+            [[ -f "$lock_file" ]] || continue
+            live_pids=()
+            for pid in $(cat "$lock_file" 2>/dev/null); do
+                kill -0 "$pid" 2>/dev/null && live_pids+=("$pid")
+            done
+            printf '%s ' "${live_pids[@]}" > "$lock_file"
+        done
+    fi
+fi
+
+exec "$PYENV_PYTHON" -m ueberzug "$@"
