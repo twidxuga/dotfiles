@@ -21,17 +21,8 @@
     ]
   },
   "agent": {
-    "code-reviewer": {
-      "description": "Reviews code for best practices and potential issues",
-      "model": "anthropic/claude-sonnet-4-6",
-      "prompt": "You are a code reviewer. Focus on functionality first, and then security, performance, and maintainability.",
-      "tools": {
-        "write": false,
-        "edit": false
-      }
-    },
     "reflection": {
-      "description": "Personal coach for career reflections, workplace challenges, and professional growth, and all life challenges.",
+      "description": "Personal coach for career reflections, workplace challenges, professional growth, and all life challenges.",
       "model": "google/gemini-3-pro-preview",
       "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject.",
       "tools": {

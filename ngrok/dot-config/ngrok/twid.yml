@@ -13,3 +13,9 @@ tunnels:
     addr: localhost:8000
     proto: http
     inspect: true
+
+  twidxugaopco:
+    domain: twidxugaopco.eu.ngrok.io
+    addr: localhost:4096
+    proto: http
+    inspect: false
