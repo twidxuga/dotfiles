@@ -24,11 +24,11 @@
       }
     },
     "oracle": {
-      "model": "openai/gpt-5.2",
+      "model": "anthropic/claude-sonnet-4-6",
       "temperature": 0.3,
       "permission": {
-        "edit": "allow",
-        "bash": "ask",
+        "edit": "deny",
+        "bash": "allow",
         "webfetch": "allow"
       }
     },
