@@ -1,0 +1,5 @@
+{
+  "template": "ulw Load the evolve skill with skill(name=\"evolve\") and run a full configuration evolution loop. Arguments: $ARGUMENTS\n\nYou are running /evolve — a self-improvement loop for the opencode agent configuration. The evolve skill contains your full instructions. Follow them precisely:\n\n1. Load skill: skill(name=\"evolve\")\n2. Follow the 5-phase process: Session Analysis → Pattern Classification → Scoring → Apply Changes → Log\n3. Use session_list, session_read, session_search to gather data\n4. Read all relevant config files before proposing changes\n5. Apply only high-confidence improvements (score > 3)\n6. Log everything to ~/.config/opencode/EVOLUTION_LOG.md\n7. Report a summary of what changed and why\n\nThis is a ulw-loop — continue until all phases are complete and changes are applied. Do not stop early.",
+  "description": "Self-improvement loop: analyses sessions and evolves AGENTS.md, rules, skills, and commands based on real usage patterns",
+  "agent": "Sisyphus"
+}

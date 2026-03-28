@@ -1,28 +1,45 @@
 {
   // Storage configuration
   "storagePath": "~/.opencode-mem/data",
-  
+
   // Embedding model for vector search (local, no API needed)
   "embeddingModel": "Xenova/nomic-embed-text-v1",
-  
+
   // Web UI configuration
   "webServerEnabled": true,
   "webServerPort": 4747,
-  
+
   // Memory capture settings
   "autoCaptureEnabled": true,
-  
+
+  // Toast notifications for memory activity visibility
+  "showAutoCaptureToasts": true,
+  "showUserProfileToasts": true,
+  "showErrorToasts": true,
+
   // AI provider for memory analysis
-  // Switched to OpenAI due to Anthropic max_tokens bug in opencode-mem
-  // See: https://github.com/tickernelz/opencode-mem (unfiled issue)
-  "memoryProvider": "openai-chat",
-  "memoryModel": "gpt-4.1-mini",
-  "memoryApiUrl": "https://api.openai.com/v1",
-  "memoryApiKey": "env://OPENAI_API_KEY",
-  
+  // Using opencode's built-in Anthropic provider (faster, avoids OpenAI timeout issues)
+  // Previous: openai-chat / gpt-4.1-mini was causing "API request timeout (30000ms)" errors
+  "opencodeProvider": "anthropic",
+  "opencodeModel": "claude-haiku-4-5",
+
   // User profile analysis interval (analyze every N prompts)
-  "userProfileAnalysisInterval": 3,
-  
+  "userProfileAnalysisInterval": 5,
+
   // Maximum memories to retrieve in context
-  "maxMemories": 10
+  "maxMemories": 10,
+
+  // Compaction: summarize old memories when limit exceeded
+  "compaction": {
+    "enabled": true,
+    "memoryLimit": 15
+  },
+
+  // Chat message injection: inject relevant memories at session start
+  "chatMessage": {
+    "enabled": true,
+    "maxMemories": 5,
+    "excludeCurrentSession": true,
+    "injectOn": "first"
+  }
 }
