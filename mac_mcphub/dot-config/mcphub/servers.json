@@ -49,6 +49,16 @@
         "${POSTGRESQL_URL}"
       ]
     },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp", "--transport", "http-first"],
+      "disabled": false
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.linear.app/sse"],
+      "disabled": false
+    },
     "slack": {
       "command": "npx",
       "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
@@ -57,6 +67,16 @@
         "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}",
         "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       },
+      "disabled": false
+    },
+    "datadog": {
+      "command": "/Users/rs/.local/bin/datadog_mcp_cli",
+      "args": ["--site", "eu1"],
+      "disabled": false
+    },
+    "pencil": {
+      "command": "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+      "args": ["--app", "desktop"],
       "disabled": false
     }
   },
