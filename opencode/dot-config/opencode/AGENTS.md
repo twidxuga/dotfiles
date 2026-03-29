@@ -40,7 +40,21 @@ Run `/evolve` to trigger a structured analysis of recent sessions and apply impr
 - IaC: Terraform with remote state
 - Container orchestration: Kubernetes via Helm
 - Auth: Keycloak (migrating from Cognito)
-- Observability: Datadog (MCP connected)
+- Observability: Datadog (MCP connected via `datadog_mcp_cli` at `~/.local/bin/datadog_mcp_cli`, OAuth token in `~/Library/Application Support/Datadog/`)
+
+## MCP Architecture
+
+- MCPs are managed by **mcphub** (runs at `http://localhost:37373/mcp`, started by opening nvim)
+- All MCP tools are accessible via the single `mcp_hub` remote endpoint in opencode.json
+- mcphub servers: fetch, time, tavily-remote, playwright, chrome-devtools, postgres, notion, linear, slack, datadog, pencil
+- **Never reference mcphub-specific tool names** (`mcp_hub_*`) in opencode agent configs — remove the `tools` field to grant all tools instead
+- Datadog OAuth: if tools stop working, run `~/.local/bin/datadog_mcp_cli login` to re-authenticate
+
+## Active Plugins & Rules
+
+- `opencode-rules`: auto-injects markdown rules from `~/.config/opencode/rules/` into every session
+- `opencode-mem`: captures and injects project memories automatically
+- Rules files: `rules/global.md` (always active), `rules/terraform.md` (active on .tf files)
 
 ## Communication Style
 

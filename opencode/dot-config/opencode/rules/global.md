@@ -44,6 +44,8 @@ description: Global coding standards and workflow rules applied to all sessions
 - Never set `server.port` in the global opencode.json config — it conflicts with any running `opencode web` or `opencode serve` process
 - Always validate oh-my-opencode.json fields against the schema before writing — `dynamic_context_pruning` is an object not a boolean
 - When switching a provider in opencode-mem, check the GitHub changelog to confirm the target provider's bugs are fixed first
+- Never reference mcphub-specific tool names (`mcp_hub_*`) in opencode agent `tools` config — remove the `tools` field entirely to grant all tools instead
+- mcp-remote always sends `"openid email profile"` scope as fallback when a server's `scopes_supported` is empty — use the provider's official CLI binary for OAuth instead (e.g. `datadog_mcp_cli`)
 
 ## Self-Improvement
 - Run `/evolve` after any session that revealed config gaps, repeated errors, or new patterns
