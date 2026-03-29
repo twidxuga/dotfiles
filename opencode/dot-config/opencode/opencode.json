@@ -24,32 +24,13 @@
     "reflection": {
       "description": "Personal coach for career reflections, workplace challenges, professional growth, and all life challenges.",
       "model": "google/gemini-3-pro-preview",
-      "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject.",
-      "tools": {
-        "mcp_hub_tavily_remote__tavily_search": true,
-        "mcp_hub_tavily_remote__tavily_extract": true,
-        "mcp_hub_tavily_remote__tavily_crawl": true,
-        "mcp_hub_tavily_remote__tavily_map": true
-      }
+      "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject."
     }
   },
   "mcp": {
     "mcp_hub": {
       "type": "remote",
       "url": "http://localhost:37373/mcp"
-    },
-    "datadog": {
-      "type": "remote",
-      "url": "https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp"
-    },
-    "pencil": {
-      "command": [
-        "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
-        "--app",
-        "desktop"
-      ],
-      "enabled": true,
-      "type": "local"
     }
   },
   "plugin": [
