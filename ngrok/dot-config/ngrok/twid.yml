@@ -19,3 +19,9 @@ tunnels:
     addr: localhost:4096
     proto: http
     inspect: false
+
+  twidxugassh:
+    remote_addr: 10.tcp.eu.ngrok.io:27093
+    addr: localhost:22
+    proto: tcp
+    inspect: false
