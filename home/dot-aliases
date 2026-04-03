@@ -24,6 +24,7 @@ alias ra='ranger'
 alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias ol='ollama'
 alias sshgrok="ssh ${NGROKTCPADDR} -p ${NGROKTCPPORT} -l rs"
+alias mountmac="sshfs -p ${NGROKTCPPORT} ${MACUSER}@${NGROKTCPADDR}:/Users/${MACUSER} ~/Mac"
 
 # tmux aliases
 alias mux='tmuxinator'
