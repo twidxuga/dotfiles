@@ -69,6 +69,13 @@
         }
       },
       "models": {
+        "claude-opus-4-6": {
+          "name": "Claude Opus 4.6 (1M)",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          }
+        },
         "claude-sonnet-4-6": {
           "name": "Claude Sonnet 4.6 (1M)",
           "limit": {
