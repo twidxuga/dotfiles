@@ -23,6 +23,7 @@ alias psx='ps aux'
 alias ra='ranger'
 alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias ol='ollama'
+alias sshgrok="ssh ${NGROKTCPADDR} -p ${NGROKTCPPORT} -l rs"
 
 # tmux aliases
 alias mux='tmuxinator'
