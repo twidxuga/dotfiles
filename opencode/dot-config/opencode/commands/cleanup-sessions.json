@@ -1,0 +1,5 @@
+{
+  "template": "Find and kill all stale opencode processes that are not the current session. Steps: 1) Run `ps aux -m` to list all opencode processes sorted by memory. 2) Identify which PIDs are stale (not the current session — check the current session's PID if possible, or identify by age/uptime). 3) Show the user a table of stale processes with PID, uptime, version, and memory usage. 4) Ask the user to confirm before killing. 5) Kill confirmed PIDs with `kill`, then `kill -9` for any that don't respond to SIGTERM. 6) Verify all targeted PIDs are dead. 7) Run `vm_stat` and report free memory before and after.",
+  "description": "Kill stale opencode processes to free memory",
+  "agent": "Sisyphus"
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "librarian": {
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
+    "explore": {
+      "permission": {
+        "edit": "deny",
+        "bash": "ask",
+        "webfetch": "allow"
+      }
+    },
+    "multimodal-looker": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
+    "oracle": {
+      "model": "anthropic/claude-opus-4-6",
+      "temperature": 0.3,
+      "permission": {
+        "edit": "deny",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "sisyphus": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "temperature": 0.3,
+      "prompt_append": "SPECIALIST AGENTS: You have 68+ domain-specific agents in ~/.config/opencode/agent/ beyond the standard oh-my-openagent roster. Before defaulting to a generic category, check if a domain expert exists. Load the discovery protocol with skill(name=\"agent-directory\") to see how to find and invoke them. Invoke via task(subagent_type=\"<name field>\", ...) — use the name: value from the agent's frontmatter (e.g. \"Senior Developer\", \"Backend Architect\"), NOT the filename.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    }
+  },
+  "sisyphus_agent": {
+    "disabled": false,
+    "default_builder_enabled": false,
+    "planner_enabled": true,
+    "replace_plan": true
+  },
+  "experimental": {
+    "preemptive_compaction_threshold": 0.85,
+    "truncate_all_tool_outputs": true,
+    "aggressive_truncation": true,
+    "auto_resume": true,
+    "dynamic_context_pruning": {
+      "enabled": true,
+      "notification": "detailed",
+      "turn_protection": {
+        "enabled": true,
+        "turns": 3
+      },
+      "strategies": {
+        "deduplication": { "enabled": true },
+        "supersede_writes": { "enabled": true },
+        "purge_errors": { "enabled": true, "turns": 5 }
+      }
+    }
+  },
+  "background_task": {
+    "defaultConcurrency": 5,
+    "providerConcurrency": {
+      "anthropic": 8
+    },
+    "staleTimeoutMs": 300000
+  },
+  "ralph_loop": {
+    "enabled": true,
+    "default_max_iterations": 100
+  },
+  "notification": {
+    "force_enable": true
+  },
+  "git_master": {
+    "commit_footer": true,
+    "include_co_authored_by": true
+  },
+  "claude_code": {
+    "mcp": true,
+    "commands": true,
+    "skills": true,
+    "agents": true,
+    "hooks": true
+  },
+  "_migrations": [
+    "model-version:anthropic/claude-opus-4-5->anthropic/claude-opus-4-6",
+    "model-version:anthropic/claude-opus-4-6->anthropic/claude-sonnet-4-6"
+  ]
+}

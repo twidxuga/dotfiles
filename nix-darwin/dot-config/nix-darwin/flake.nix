@@ -20,8 +20,8 @@
           #pkgs.wezterm # no luck on x86_64-darwin
           #pkgs.copyq # no luck on x86_64-darwin 
           #pkgs.dropbox
-          pkgs.neovim
-          pkgs.ranger
+          #pkgs.neovim
+          #pkgs.ranger
           pkgs.alacritty
           pkgs.kitty
           pkgs.mpd
@@ -82,15 +82,17 @@
       homebrew.enable = true;
       homebrew.casks = [
         "firefox"
-	"wireshark"
+	      "wireshark-app"
         #"google-chrome"
         "wezterm" # nix package does not work on x86_64-darwin
         #"copyq" # nix package does not work on x86_64-darwin
         "dropbox" # nix package does not work on x86_64-darwin
         "font-dejavu-sans-mono-nerd-font"
-        "docker"
+        "docker-desktop"
       ];
       homebrew.brews = [
+        "nvim"
+        "ranger"
         "imagemagick"
       ];
     };
