@@ -5,3 +5,5 @@ nvim/dot-config/nvim/lazy-lock.json
 
 pgcli/dot-config/pgcli/history
 pgcli/dot-config/pgcli/log
+
+opencode/dot-config/opencode/package-lock.json
