@@ -37,6 +37,9 @@ description: Global coding standards and workflow rules applied to all sessions
 - Never bypass pipeline checks without explicit user approval
 - Before triggering any deploy pipeline (including `workflow_dispatch`), explicitly state: which branch, which environment, and why — the user needs to know before it runs
 - After deploying any internet-accessible service (dynamic environment, CloudFront distribution, new Helm service), always proactively report the external URL(s) to the user without being asked
+- CI steps that only run on **apply** (post-merge) are invisible during PR plan runs — shell scripts in those steps must be tested locally with `set -euo pipefail` before merging; broken-pipe bugs and other runtime errors won't surface in PR CI
+- When generating passwords/random strings in `pipefail` shell scripts from `/dev/urandom`, always use `|| true` in the pipeline: `PASSWORD=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 32 || true)` — both `head` and `dd` cause SIGPIPE in `tr`, which `pipefail` treats as fatal
+- When triggering multiple `workflow_dispatch` runs on the same branch/ref simultaneously, they share the same concurrency group and cancel each other — trigger sequentially (wait for each to start before firing the next)
 
 ## Security
 - Never commit secrets, API keys, or credentials
@@ -49,6 +52,12 @@ description: Global coding standards and workflow rules applied to all sessions
 - Packages that must be available at runtime in Docker production images need to be in the ROOT workspace `package.json` dependencies, not just the service's own `package.json` — Bun may not hoist workspace-only packages to root `node_modules`, making them invisible to Docker COPY
 - Dynamically-imported packages (e.g., `playwright`, `@aws-sdk/client-bedrock-runtime`, `@aws-sdk/client-sesv2`) are especially vulnerable to this hoisting gap — always add them to root package.json if they're needed in production
 
+## Reports & Diagrams
+- When producing any report or documentation that requires diagrams, use Mermaid by default
+- Exception: folder/directory trees must always use ASCII art, never Mermaid
+- Never include raw `\n` escape sequences inside Mermaid node labels or box text — use `<br>` for line breaks within labels instead
+- This applies equally to Markdown output and Notion pages
+
 ## Communication
 - Be concise and direct — no preamble or flattery
 - Start work immediately without status announcements
@@ -59,11 +68,17 @@ description: Global coding standards and workflow rules applied to all sessions
 - Always test TUI startup (`opencode --print-logs &; sleep 8; kill $!`) — never only test `opencode run` (different port behaviour)
 - Before adding a plugin to opencode.json, verify it has an `exports["."].import` field in package.json — plugins without it are silently dropped
 - Never set `server.port` in the global opencode.json config — it conflicts with any running `opencode web` or `opencode serve` process
-- Always validate oh-my-opencode.json fields against the schema before writing — `dynamic_context_pruning` is an object not a boolean
+- Always validate oh-my-openagent.json fields against the schema before writing — `dynamic_context_pruning` is an object not a boolean
 - When switching a provider in opencode-mem, check the GitHub changelog to confirm the target provider's bugs are fixed first
 - Never reference mcphub-specific tool names (`mcp_hub_*`) in opencode agent `tools` config — remove the `tools` field entirely to grant all tools instead
 - mcp-remote always sends `"openid email profile"` scope as fallback when a server's `scopes_supported` is empty — use the provider's official CLI binary for OAuth instead (e.g. `datadog_mcp_cli`)
 
+## macOS CLI Differences
+- macOS uses BSD `ps`, not GNU — `ps aux --sort=-%mem` is invalid; use `ps aux -m` to sort by memory (descending) or `ps aux -r` for CPU
+- macOS uses BSD `du` — use `-d 1` for max-depth instead of GNU's `--max-depth=1`
+- macOS `sort` does not support `-h` (human-readable) by default — pipe through `gsort -h` (from coreutils) if needed
+
 ## Self-Improvement
 - Run `/evolve` after any session that revealed config gaps, repeated errors, or new patterns
 - Log what changed and why in `~/.config/opencode/EVOLUTION_LOG.md`
+- Do not call Oracle to verify trivial tasks (CLI queries, single-command lookups, factual lookups) — Oracle is for architecture, debugging, and multi-system tradeoffs; calling it for trivial tasks wastes tokens and breaks ulw-loop verification

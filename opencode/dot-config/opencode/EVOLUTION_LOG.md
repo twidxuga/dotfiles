@@ -176,3 +176,139 @@ Tracks changes made by `/evolve` runs and manual configuration improvements.
 - Watch for: Keycloak configuration errors caused by missing doc-lookup
 
 *This log is maintained by `/evolve` and manual sessions. Run `/evolve` to add a new entry.*
+
+---
+
+## 2026-04-09 — Evolution Run (via /evolve) — Confirmation Run
+
+### Sessions Analysed
+- 2 sessions, focusing on activity **after** the April 8 evolution run
+- `ses_2b768a670ffeVUDd9sY1Bybxpm` (2077 msgs, April 1–9): post-April 8 activity covered sift PR implementation, hellobill rebase, cross-repo document handoff (`~/Desktop/sift-apps-changes-required.md`)
+- `ses_29cf80d7effelD6L6WZVFAH0BN` (726 msgs, April 6–9): infra pipeline CI debugging (tr/pipefail, ALB anchor ingress)
+
+### Assessment
+The April 8 evolution run was thorough. Post-April 8 activity:
+- Confirmed the `tr | head || true` rule (PR #365 fixed it correctly)
+- Confirmed the `workflow_dispatch` sequential triggering rule (rds-roles concurrent dispatch caused cancellation, then fixed)
+- Confirmed `action=create|destroy` + `namespace_id` dynamic env inputs (already updated)
+- Confirmed IRSA `preview-*` pattern (already in terraform.md)
+- Confirmed SCP check for S3 resources (already in terraform.md)
+
+### New Patterns Evaluated — None Applied
+
+| Pattern | Decision | Reason |
+|---------|----------|--------|
+| `feature/` branch naming for infra PRs | ❌ Skip | CLAUDE.md says required but CI doesn't enforce — `project/sift`, `fix/*` all passed without issue. CLAUDE.md is likely aspirational not enforced. |
+| rds-roles secret lifecycle (module creates shell, CI writes password) | ❌ Skip | Too project-specific; self-documented in code |
+| Permanent anchor ingress for ALB stability | ❌ Skip | Architectural decision captured in code comments, not config |
+| Desktop markdown handoff pattern for cross-repo communication | ❌ Skip | One-off pattern, not recurring enough to warrant a command |
+| `--no-verify` for pre-existing branch errors | ✅ Already captured | In AGENTS.md from prior run |
+
+### Changes Applied
+None — the April 8 evolution run captured all relevant patterns.
+
+### Next Evolution Focus
+- Watch for: patterns in longer sift app deployment work (when apps team implements `sift-apps-changes-required.md`)
+- Watch for: any new Terraform module patterns from UAT/prod sift rollout
+- Watch for: hellobill branch CI issues (coverage thresholds still failing)
+
+---
+
+## 2026-04-08 — Evolution Run (via /evolve)
+
+### Sessions Analysed
+- 2 substantive sessions from 2026-04-01 to 2026-04-08
+- `ses_2b768a670ffeVUDd9sY1Bybxpm` (2065 msgs): Dynamic environment end-to-end work — sift infrastructure PR (#344), ALB zombie cleanup, IRSA fix, rds-roles credential init debugging
+- `ses_29cf80d7effelD6L6WZVFAH0BN` (332 msgs): PR #365 CI pipeline failures — tr/pipefail, workflow_dispatch concurrency
+
+### Key Patterns Found
+
+| Pattern | Type | Source |
+|---|---|---|
+| `s3:PutBucketPublicAccessBlock` blocked by SCP `DenyPublicS3Buckets` for all workload roles | Missing Terraform rule | sift PR #344 merge CI failure |
+| IRSA trust: namespace must be `bunch-platform`, SA names follow Helm fullname prefix | Missing Terraform rule | sift PR review (finding #1, #2) |
+| Bedrock model ARN versions must match app code defaults or get `AccessDeniedException` | Missing Terraform rule | sift PR review (finding #3) |
+| Apply-only CI steps invisible in PR plan runs — shell scripts can't be tested via PR CI | New rule | 3 consecutive CI failures (tr/pipefail bug) |
+| `tr \| head` with `set -o pipefail` causes SIGPIPE — need `\|\| true`, not `dd` | New rule | CI runs 24096348952, 24097886660, 24098535349 |
+| Multiple simultaneous `workflow_dispatch` on same ref cancel each other (concurrency group) | New rule | rds-roles apply with 3 simultaneous dispatches |
+| Dynamic env workflow uses `action=create` not `action=deploy` | Outdated context | AGENTS.md had wrong input name |
+| `gh workflow run terraform.yml --field component=<name>` pattern used repeatedly | Missing context | Used 6+ times without being documented |
+
+### Changes Applied
+
+**`rules/terraform.md`** — Added 2 new sections:
+- `## AWS Service Control Policies (SCPs)`: Check SCPs before creating S3/IAM resources; `aws_s3_bucket_public_access_block` blocked by org SCP — omit with comment (email-service pattern)
+- `## IRSA Trust Policies`: namespace must be `bunch-platform`; SA names follow Helm fullname pattern; use `preview-*` not `preview-bun-*`; verify Bedrock ARN versions against app code
+
+**`rules/global.md`** — Added 3 rules to `## CI/CD`:
+- Apply-only CI steps can't be tested in PR CI — test shell scripts locally with `set -euo pipefail` before merging
+- `|| true` required for `tr | head -c 32` pipelines with `set -o pipefail` — both `head` and `dd` cause SIGPIPE
+- Multiple simultaneous `workflow_dispatch` on same ref cancel each other — trigger sequentially
+
+**`AGENTS.md`** — Updated `## Infrastructure Context`:
+- Fixed dynamic env workflow input: `action=create|destroy` and `namespace_id=<name>` (was incorrectly `action=deploy|destroy` with `id=<name>`)
+- Added `gh workflow run terraform.yml --field component=<name>` pattern for triggering specific Terraform components
+
+### Root Causes
+
+| Bug | Root Cause | Rule Added |
+|-----|-----------|------------|
+| sift module had `aws_s3_bucket_public_access_block` | Didn't check SCP before writing | SCP check required before S3 resources |
+| IRSA trust used `sift-api-sa` and `bunch-apps` namespace | Didn't check existing patterns | IRSA conventions rule |
+| Bedrock Sonnet ARN `20250929` vs code default `20251001` | Didn't verify against app code | Bedrock ARN verification rule |
+| `tr \| head` broken pipe failed 3 CI runs | `dd` was incorrect fix; `|| true` is correct; apply-only steps untestable in PR | Two rules: test apply-only scripts + `|| true` pattern |
+| UAT rds-roles apply cancelled | 3 simultaneous `workflow_dispatch` on same ref | Sequential dispatch rule |
+| Dynamic env workflow trigger wrong | AGENTS.md had outdated `action=deploy` | Updated context |
+
+### Skipped (low confidence)
+- Potential rule about `dd bs=32 count=1` specifically being wrong — already covered by the `|| true` rule
+- Potential rule about SSO re-authentication URL — project-specific, user-managed, low value in config
+
+### Next Evolution Focus
+- Watch for: IRSA trust policy errors in new services (naming convention violations)
+- Watch for: CI shell script failures in apply-only steps across other modules
+
+---
+
+## 2026-04-17 — Evolution Run (via /evolve)
+
+### Sessions Analysed
+- 3 sessions from 2026-04-08 to 2026-04-17
+- `ses_264591a1dffeUPHPKGWidBamxN` (current session): system memory check, stale opencode process cleanup
+- `ses_290d3a957ffehBJ19mtTbWnGtx` (38 msgs, 2026-04-08): IRSA trust policy fixes, ghost ALB cleanup, sift dev deployment
+- `ses_29213b224ffelNXSXTleSLJou9` (27 msgs, 2026-04-08): AWS regions query, ulw-loop stuck on Oracle verification
+- opencode-mem memories: Slack MCP token expiry pattern (5 entries), infra pipeline patterns
+
+### Key Patterns Found
+
+| Pattern | Type | Source |
+|---|---|---|
+| Slack MCP `invalid_auth` from stale xoxc/xoxd tokens — fix requires browser DevTools token extraction | Missing context | opencode-mem memories (5 entries) |
+| `ps aux --sort=-%mem` fails on macOS (BSD ps, not GNU) | Missing rule | Current session — agent hit this error directly |
+| 11 stale opencode processes consuming 1+ GB RAM, some 14 days old — no command to clean them up | Friction | Current session |
+| ulw-loop gets stuck when Oracle verification required for trivial tasks (agent correctly refuses, loop never exits) | Config bug / rule gap | `ses_29213b224ffelNXSXTleSLJou9` — 8 loop iterations on a completed CLI query |
+| macOS `sort -h` not supported without coreutils | Missing rule | Prior session `ses_37474e86bffeEe5yBtnhDr7lk5` |
+
+### Changes Applied
+
+**`AGENTS.md`** — Added to `## MCP Architecture`:
+- Slack MCP token expiry: `invalid_auth` → extract fresh `d`/`d-s` cookies from browser DevTools at app.slack.com → update `SLACK_MCP_XOXC_TOKEN`/`SLACK_MCP_XOXD_TOKEN` → restart nvim/mcphub
+
+**`rules/global.md`** — Added `## macOS CLI Differences` section:
+- `ps aux --sort=-%mem` invalid on macOS — use `ps aux -m` (memory) or `ps aux -r` (CPU)
+- `du -d 1` not `--max-depth=1` on macOS
+- `sort -h` requires `gsort` from coreutils
+
+**`rules/global.md`** — Added rule to `## Self-Improvement`:
+- Do not call Oracle to verify trivial tasks — breaks ulw-loop verification and wastes tokens
+
+**`commands/cleanup-sessions.json`** — New `/cleanup-sessions` command:
+- Lists stale opencode processes, shows table with PID/uptime/version/memory, confirms with user, kills them, reports memory freed
+
+### Skipped (low confidence)
+- Potential rule about Terraform import blocks being idempotent — too project-specific, documented in code comments
+- Potential rule about sift UAT/prod GitHub env vars needing manual set — one-off deployment concern
+
+### Next Evolution Focus
+- Watch for: macOS CLI differences in other commands (grep, find, sed)
+- Watch for: ulw-loop stuck on other trivial tasks — may need broader fix in loop config

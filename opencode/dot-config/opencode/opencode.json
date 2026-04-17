@@ -34,7 +34,7 @@
     }
   },
   "plugin": [
-    "oh-my-opencode",
+    "oh-my-openagent",
     "@franlol/opencode-md-table-formatter",
     "opencode-mem",
     "opencode-rules"

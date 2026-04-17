@@ -14,7 +14,7 @@ You are running the **evolve loop**: a structured process to improve the opencod
 | `~/.config/opencode/AGENTS.md` | Global system prompt injected every session | New stack context, workflow preferences, recurring patterns |
 | `~/.config/opencode/rules/global.md` | Always-active coding rules | New anti-patterns discovered, rules that were violated |
 | `~/.config/opencode/rules/terraform.md` | Terraform-specific rules | New HCL patterns, module conventions |
-| `~/.config/opencode/oh-my-opencode.json` | Agent framework config | Tuning concurrency, timeouts, experimental features |
+| `~/.config/opencode/oh-my-openagent.json` | Agent framework config | Tuning concurrency, timeouts, experimental features |
 | `~/.config/opencode/opencode-mem.jsonc` | Memory system config | Memory quality issues, injection tuning |
 | `~/.config/opencode/commands/*.json` | Slash commands | New reusable workflows discovered |
 | `~/.config/opencode/skills/*/SKILL.md` | Agent skills | Skill gaps, outdated instructions |
@@ -138,7 +138,7 @@ Append to `~/.config/opencode/EVOLUTION_LOG.md`:
 
 - **Never commit** changes to git (user does that explicitly)
 - **Never delete** existing rules without explicit user approval
-- **Never modify** `opencode-mem.jsonc` or `oh-my-opencode.json` without showing full diff
+- **Never modify** `opencode-mem.jsonc` or `oh-my-openagent.json` without showing full diff
 - **Always** read the file before editing
 - **Always** log what was changed and why
 - **Stop and ask** if you find a contradiction between sessions (different users want different things)

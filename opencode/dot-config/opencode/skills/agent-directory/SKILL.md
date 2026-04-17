@@ -5,7 +5,7 @@ description: Discover and invoke specialist agents from the user's agent/ folder
 
 # Agent Directory
 
-You have access to a library of specialist agents beyond the standard oh-my-opencode roster. These live at `~/.config/opencode/agent/` (one `.md` file per agent).
+You have access to a library of specialist agents beyond the standard oh-my-openagent roster. These live at `~/.config/opencode/agent/` (one `.md` file per agent).
 
 ## How to Discover Available Agents
 

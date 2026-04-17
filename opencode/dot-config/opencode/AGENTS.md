@@ -53,8 +53,9 @@ Run `/evolve` to trigger a structured analysis of recent sessions and apply impr
 - Infra repo Terraform pipeline: **only triggers on PRs or manual `workflow_dispatch`** — pushing directly to `main` does NOT apply Terraform; always use a PR or trigger the workflow manually after pushing
 - AWS profile for dev: `bunch-2-dev` (SSO) — `aws sso login --profile bunch-2-dev` to authenticate
 - Dynamic environments: K8s namespace prefix is `preview-` (e.g. `preview-bun-1028`); external URL pattern is `{service}-{id}.{env}.the-bunch.co.uk` (e.g. `backoffice-bun-1028.dev.the-bunch.co.uk`)
-- Dynamic env deploy triggered by `workflow_dispatch` on `dynamic-environment.yml` with `action=deploy|destroy` and `id=<name>` inputs
+- Dynamic env deploy triggered by `workflow_dispatch` on `dynamic-environment.yml` with `action=create|destroy` and `namespace_id=<name>` inputs
 - Keycloak instance is shared across all dynamic envs within a base environment (dev/uat/prod); wildcard redirect URIs (`*.dev.the-bunch.co.uk`) are enabled via `ENABLE_DYNAMIC_ENV_REDIRECTS` template flag in `config/keycloak/*.json`
+- To trigger a specific Terraform component manually: `gh workflow run terraform.yml --field component=<name> --field action=apply --ref main` — valid component names include `dev`, `uat`, `prod`, `dev/rds-roles`, `uat/rds-roles`, `prod/rds-roles`, `global/02-scps`, etc.
 
 ## MCP Architecture
 
@@ -63,6 +64,7 @@ Run `/evolve` to trigger a structured analysis of recent sessions and apply impr
 - mcphub servers: fetch, time, tavily-remote, playwright, chrome-devtools, postgres, notion, linear, slack, datadog, pencil
 - **Never reference mcphub-specific tool names** (`mcp_hub_*`) in opencode agent configs — remove the `tools` field to grant all tools instead
 - Datadog OAuth: if tools stop working, run `~/.local/bin/datadog_mcp_cli login` to re-authenticate
+- Slack MCP tokens expire (xoxc/xoxd are session-based): if Slack tools return `invalid_auth`, extract fresh tokens from browser DevTools (app.slack.com → Application → Cookies → `d` and `d-s` values) and update `SLACK_MCP_XOXC_TOKEN`/`SLACK_MCP_XOXD_TOKEN` env vars, then restart nvim/mcphub
 
 ## Active Plugins & Rules
 
