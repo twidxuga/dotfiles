@@ -78,6 +78,22 @@ description: Global coding standards and workflow rules applied to all sessions
 - macOS uses BSD `du` — use `-d 1` for max-depth instead of GNU's `--max-depth=1`
 - macOS `sort` does not support `-h` (human-readable) by default — pipe through `gsort -h` (from coreutils) if needed
 
+## Notion Publishing
+- When publishing a report or document to a Notion page, always create a **child page** under the target page — never replace the content of an existing page
+- Use `mcp_hub_notion__notion-create-pages` with `parent: {page_id: "<target-page-id>"}` to create the child
+- First `fetch` the target page to confirm its ID and see its existing structure before publishing
+
+## Testing with Real Infrastructure
+- When testing CI/CD workflows, always create **new branches from main** for testing — never make edits on existing feature branches
+- Always clean up test namespaces (and their ingresses) immediately after testing — stale ingresses in a shared ALB ingress group (`alb.ingress.kubernetes.io/group.name`) block the group from reconciling for ALL environments until removed
+- Before adding Cognito or any auth annotation to an ALB ingress, **verify the feature is actually used** — invalid Cognito client IDs in a shared group cause 503s across all environments in the group
+
+## Bun Bundling (`--external`)
+- `bun build --external <pkg>` means `<pkg>` is NOT bundled — it must exist at runtime in `node_modules` of the production image
+- Services that only copy `dist/` to production (no `node_modules`) will crash with `Cannot find module` for any `--external` package that has a top-level import
+- Use **conditional `require()`** (not top-level `import`) for optional/external packages so the require only executes when the feature is actually enabled: `if (featureEnabled) { const lib = require('optional-pkg'); }`
+- ECR BuildKit cache uses a `:buildcache` tag per repo — add a lifecycle policy to expire it after 7 days to prevent accumulation
+
 ## Self-Improvement
 - Run `/evolve` after any session that revealed config gaps, repeated errors, or new patterns
 - Log what changed and why in `~/.config/opencode/EVOLUTION_LOG.md`

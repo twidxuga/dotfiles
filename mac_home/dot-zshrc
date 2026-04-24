@@ -135,3 +135,5 @@ export PATH="$PATH:/Users/ricardo.santos/.cache/lm-studio/bin"
 
 # bun completions
 [ -s "/Users/rs/.bun/_bun" ] && source "/Users/rs/.bun/_bun"
+
+alias claude-mem='bun "/Users/rs/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

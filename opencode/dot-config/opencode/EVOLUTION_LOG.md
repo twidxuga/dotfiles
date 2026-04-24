@@ -179,6 +179,66 @@ Tracks changes made by `/evolve` runs and manual configuration improvements.
 
 ---
 
+## 2026-04-24 — Evolution Run (via /evolve)
+
+### Sessions Analysed
+- 2 sessions from 2026-04-14 to 2026-04-24
+- `ses_273b7cda6ffeSZ5X0JPsxvYnRW` (815 msgs, April 14–24): CI/CD pipeline audit → inconsistency fixes → optimisations → Cognito bug investigation → Datadog observability setup → cluster health audit
+- `ses_2558987dbffe4Jf2AqS9sDz7em` (505 msgs, April 20–23): Datadog LLM Observability full implementation (sift-worker, quote-engine-worker, dd-trace bundling fix)
+
+### Key Patterns Found
+
+| Pattern | Type | Source |
+|---|---|---|
+| Agent made edits on existing feature branches for testing instead of new branches from main | Correction | "Please use new branches from main to test, don't make edits on existing branches" |
+| Agent replaced Notion page content instead of creating child page | Correction | "The page was supposed to be added under the pipelines page, not replacing the content!" |
+| Agent assumed prod hellobill URLs follow same `{env}.` pattern as dev/uat | Correction | "Production URLs don't use ${ENV} component" |
+| Agent enabled Cognito on dynamic env ingress without verifying it was used | Correction | "we do not use cognito at all! we use keycloak!" — caused 503s across all dynamic envs |
+| Agent introduced `steps.env-config.outputs.eks_cluster_name` in provision/destroy jobs that don't have `env-config` step | Bug introduced by agent | Surfaced in testing — required PRs #315–#317 to fix |
+| Top-level `import tracer from 'dd-trace'` in service-core crashed ALL services at startup | Critical mistake | All pods crash-looped; Helm timed out after 25min with `context deadline exceeded` |
+| `actions/checkout@v6` is not a real stable release | Missing context | Fixed in PR #310 — `@v4` is latest stable |
+| Dynamic envs exist in dev AND uat (not just dev) | Missing context | Discovered during DYN-8/DYN-9 fixes |
+| Invalid Cognito annotation in one namespace poisons entire shared ALB group | Missing context | Cognito bug in test namespaces caused 503s for preview-bun-1028 |
+| ECR buildcache tags accumulate without lifecycle policy | Missing context | Added lifecycle rule in infra PR #384 |
+| hellobill prod URLs don't use env subdomain | Missing context | `vars.HELLOBILL_PORTAL_URL` per-environment instead of constructed URL |
+
+### Changes Applied
+
+**`rules/global.md`** — Added 3 new sections:
+- `## Notion Publishing`: always create child page, never replace content; use `notion-create-pages` with parent; fetch first
+- `## Testing with Real Infrastructure`: use new branches from main for testing; clean up test namespaces immediately; verify auth features before adding annotations; invalid annotations in shared ALB group affect all environments
+- `## Bun Bundling (--external)`: `--external <pkg>` means pkg not bundled and must exist at runtime; use conditional `require()` not top-level `import` for optional packages; ECR buildcache lifecycle
+
+**`AGENTS.md`** — Extended `## Infrastructure Context`:
+- Dynamic environments exist in dev AND uat
+- ALB group poisoning: invalid ingress annotations in any namespace block entire group
+- **Project uses Keycloak, NOT Cognito** — explicit warning
+- `actions/checkout@v6` is not a real stable release
+- Datadog LLM Observability: conditional `require('dd-trace')` pattern, which services, how secret is synced
+- hellobill URLs are environment-specific (prod has no env subdomain) — use per-env GitHub vars
+
+### Root Causes That Generated These Rules
+
+| Bug | Root Cause | Rule Added |
+|-----|-----------|------------|
+| Cognito enabled on dynamic env ingresses | Agent saw `cognito.enabled: true` in values-dynamic.yaml and copied it without questioning | Explicit note that project uses Keycloak not Cognito |
+| ALB group 503s from test namespaces | Stale test ingresses with invalid Cognito client ID blocked the `bunch-preview` group | Rules about cleaning up test namespaces + ALB group poisoning warning |
+| `steps.env-config` reference in provision jobs | Agent replaced SSM blocks without checking if `env-config` step existed in each job | Added to session context; lesson about step references |
+| All services crashing on dd-trace import | Top-level `import tracer from 'dd-trace'` always executes, even in services without dd-trace installed | Explicit rule: use conditional `require()` for optional packages |
+| Notion page content replaced | Agent used `replace_content` on existing page instead of creating child | Clear rule: create child, never replace |
+| hellobill prod URL wrong | Agent constructed `${ENV}.the-bunch.co.uk` assuming prod has env subdomain | Per-environment GitHub vars, not constructed strings |
+
+### Skipped (low confidence)
+- Potential rule about `--wait` removal from dynamic env Helm — too specific to current cluster capacity issue; may not generalise
+- Potential rule about `user-mgmt-api` in dynamic env baselines — removed from mandatory, but this is project-specific config, not a universal rule
+
+### Next Evolution Focus
+- Watch for: more bun bundling issues (`--external` pattern in other services)
+- Watch for: ALB group annotation poisoning in future preview env work
+- Watch for: Notion publishing patterns (child vs. replace)
+
+---
+
 ## 2026-04-09 — Evolution Run (via /evolve) — Confirmation Run
 
 ### Sessions Analysed

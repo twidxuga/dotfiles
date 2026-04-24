@@ -54,8 +54,14 @@ Run `/evolve` to trigger a structured analysis of recent sessions and apply impr
 - AWS profile for dev: `bunch-2-dev` (SSO) — `aws sso login --profile bunch-2-dev` to authenticate
 - Dynamic environments: K8s namespace prefix is `preview-` (e.g. `preview-bun-1028`); external URL pattern is `{service}-{id}.{env}.the-bunch.co.uk` (e.g. `backoffice-bun-1028.dev.the-bunch.co.uk`)
 - Dynamic env deploy triggered by `workflow_dispatch` on `dynamic-environment.yml` with `action=create|destroy` and `namespace_id=<name>` inputs
+- Dynamic environments exist in both **dev and uat** (not just dev) — DYN-8/9 workflow fixes apply to both
+- Dynamic env workflows share a single ALB per environment via `alb.ingress.kubernetes.io/group.name: bunch-preview` — invalid annotations (e.g. bad Cognito config) in ANY namespace's ingress block the entire group from reconciling, causing 503s for all envs
 - Keycloak instance is shared across all dynamic envs within a base environment (dev/uat/prod); wildcard redirect URIs (`*.dev.the-bunch.co.uk`) are enabled via `ENABLE_DYNAMIC_ENV_REDIRECTS` template flag in `config/keycloak/*.json`
+- **Project uses Keycloak for auth — NOT Cognito.** Cognito is configured in AWS but not used for application auth. Never enable `platformIngress.cognito.enabled=true` in Helm deploys; `values-dynamic.yaml` should have `cognito.enabled: false`
 - To trigger a specific Terraform component manually: `gh workflow run terraform.yml --field component=<name> --field action=apply --ref main` — valid component names include `dev`, `uat`, `prod`, `dev/rds-roles`, `uat/rds-roles`, `prod/rds-roles`, `global/02-scps`, etc.
+- `actions/checkout@v6` does NOT exist as a stable release — latest stable is `@v4`; using `@v6` will pull an unstable or non-existent ref
+- Datadog LLM Observability: `dd-trace` is added to `service-core`; uses conditional `require('dd-trace')` (not top-level import) to avoid crashing services without dd-trace in their production image; `DD_LLMOBS_ENABLED=true` only on `sift-worker` and `quote-engine-worker`; `datadog/api-key` secret in AWS Secrets Manager synced via ExternalSecret
+- hellobill service URLs are environment-specific: dev/uat use `{service}.{env}.the-bunch.co.uk` but **prod does NOT use an env subdomain** — use per-environment GitHub variables (`vars.HELLOBILL_ONBOARDING_URL`, `vars.HELLOBILL_PORTAL_URL`) not constructed strings
 
 ## MCP Architecture
 
