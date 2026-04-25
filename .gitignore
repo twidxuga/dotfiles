@@ -7,3 +7,5 @@ pgcli/dot-config/pgcli/history
 pgcli/dot-config/pgcli/log
 
 opencode/dot-config/opencode/package-lock.json
+opencode/dot-config/opencode/bun.lock
+opencode/dot-config/opencode/node_modules/
