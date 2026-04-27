@@ -14,6 +14,7 @@ You are running the **evolve loop**: a structured process to improve the opencod
 | `~/.config/opencode/AGENTS.md` | Global system prompt injected every session | New stack context, workflow preferences, recurring patterns |
 | `~/.config/opencode/rules/global.md` | Always-active coding rules | New anti-patterns discovered, rules that were violated |
 | `~/.config/opencode/rules/terraform.md` | Terraform-specific rules | New HCL patterns, module conventions |
+| `~/.config/opencode/opencode.json` | Core opencode config: model, MCP, plugins, providers, compaction, watcher, inline agents | Model changes, new MCP servers, plugin additions, provider tuning, new inline agent definitions |
 | `~/.config/opencode/oh-my-openagent.json` | Agent framework config | Tuning concurrency, timeouts, experimental features |
 | `~/.config/opencode/opencode-mem.jsonc` | Memory system config | Memory quality issues, injection tuning |
 | `~/.config/opencode/commands/*.json` | Slash commands | New reusable workflows discovered |
@@ -109,6 +110,44 @@ New commands go in `~/.config/opencode/commands/<name>.json`:
 }
 ```
 
+### opencode.json Updates
+
+Read the file first. This is the highest-impact config — changes take effect on next session start.
+
+**Safe to tune autonomously** (show diff, then apply):
+- `model` / `small_model` — if sessions show consistent model-quality complaints or cost concerns
+- `compaction.auto` / `compaction.prune` — if context overflow is recurring
+- `watcher.ignore` — add noisy directories that keep appearing in irrelevant file-change events
+- `agent.<name>` inline agent definitions — add new simple agents (model + prompt only); update existing prompts if they're causing repeated failures
+- `provider.<name>.options.timeout` — if timeout errors appear in sessions
+
+**Require explicit user approval before touching**:
+- `plugin` array — adding/removing plugins changes session behaviour globally
+- `mcp` servers — adding/removing MCP endpoints affects tool availability
+- `provider` model lists — adding new models has cost implications
+- Any `$schema` or structural changes
+
+**Pattern signals → opencode.json actions**:
+| Signal in sessions | Action |
+|---|---|
+| "model too slow / expensive" | Propose `model` change |
+| "context limit hit" | Propose `compaction` tuning or context limit increase |
+| "tool X not available" | Check if MCP server is missing from `mcp` block |
+| "agent Y keeps failing" | Review inline `agent.<name>.prompt` |
+| "watcher noise" | Add path to `watcher.ignore` |
+| "need specialist for Z" | Add inline agent under `agent` block |
+
+**Inline agent definition format**:
+```json
+"agent": {
+  "<name>": {
+    "description": "<one line — shown in agent picker>",
+    "model": "<provider/model-id>",
+    "prompt": "<system prompt — be specific about role and constraints>"
+  }
+}
+```
+
 ### Skill Updates
 Edit the relevant `SKILL.md`. Add new sections for discovered patterns. Update outdated instructions. Never remove working sections.
 
@@ -138,7 +177,8 @@ Append to `~/.config/opencode/EVOLUTION_LOG.md`:
 
 - **Never commit** changes to git (user does that explicitly)
 - **Never delete** existing rules without explicit user approval
-- **Never modify** `opencode-mem.jsonc` or `oh-my-openagent.json` without showing full diff
+- **Never modify** `opencode.json`, `opencode-mem.jsonc`, or `oh-my-openagent.json` without showing full diff first
+- **Never touch** `plugin` array or `mcp` block in `opencode.json` without explicit user approval
 - **Always** read the file before editing
 - **Always** log what was changed and why
 - **Stop and ask** if you find a contradiction between sessions (different users want different things)
@@ -151,5 +191,6 @@ If `$ARGUMENTS` contains:
 - `--focus=agents` — only update AGENTS.md and agent definitions
 - `--focus=skills` — only update skills
 - `--focus=commands` — only create/update commands
+- `--focus=opencode` — only analyse and propose changes to `opencode.json`
 - `--since=YYYY-MM-DD` — only analyse sessions after this date
 - `--session=<id>` — analyse a specific session only

@@ -372,3 +372,36 @@ None — the April 8 evolution run captured all relevant patterns.
 ### Next Evolution Focus
 - Watch for: macOS CLI differences in other commands (grep, find, sed)
 - Watch for: ulw-loop stuck on other trivial tasks — may need broader fix in loop config
+
+---
+
+## 2026-04-27 — Evolution Run (via /evolve)
+
+### Sessions Analysed
+- 1 session in the 2-week window (`ses_2307716ddffeUSlcSJDqQ2iMtd`, 12 msgs, 2026-04-27): evolve skill improvement — added `opencode.json` coverage
+- opencode-mem memories scanned across all projects: no new cross-session patterns found
+- Pattern searches (don't/wrong/actually/remember/never/instead/always): all hits were boilerplate from system prompts, not user corrections
+
+### Assessment
+Very quiet 2-week window — only one session, which was itself a config improvement session. The session produced the `opencode.json` gap fix to the evolve skill (already applied). No new user corrections, friction patterns, or missing context items found.
+
+### Changes Applied
+
+**`skills/evolve/SKILL.md`** (both locations) — Added `opencode.json` coverage:
+- Added `opencode.json` row to "What You Are Improving" table
+- Added `### opencode.json Updates` section in Phase 4 with safe-to-tune vs approval-required split, signal→action table, and inline agent format reference
+- Added `--focus=opencode` flag to Arguments Handling
+- Updated safety constraints to explicitly list `opencode.json` alongside `opencode-mem.jsonc` and `oh-my-openagent.json`
+
+**`AGENTS.md`** — Added Oracle model note to `## Agent Usage`:
+- Added: "Oracle runs `claude-opus-4-7` (configured in `oh-my-openagent.json`) — use for architecture, debugging, and multi-system tradeoffs; not for trivial tasks"
+- Rationale: oh-my-openagent.json shows `claude-opus-4-7` but AGENTS.md didn't document this; agents need to know Oracle's capability tier when deciding whether to consult it
+
+### Skipped (low confidence)
+- Stale `.bak` files in config dirs — one-off cleanup, not a recurring pattern
+- SAA scraper 403 from EKS IPs — project-specific infrastructure issue, not a config rule
+- Oracle model memory discrepancy (memory said `4-6`, file has `4-7`) — memory is auto-managed; file is correct
+
+### Next Evolution Focus
+- Watch for: `opencode.json` tuning opportunities (model quality feedback, context overflow, watcher noise)
+- Watch for: new inline agent candidates emerging from repeated specialist patterns

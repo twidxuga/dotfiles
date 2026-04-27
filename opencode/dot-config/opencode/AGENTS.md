@@ -25,6 +25,7 @@ You are working with an experienced engineer who:
 This setup has 69 specialist agents in `~/.config/opencode/agent/`. Before using a generic category, check if a domain expert exists:
 - `skill(name="agent-directory")` — discover available specialists
 - Key specialists: `Backend Architect`, `DevOps Automator`, `Security Engineer`, `Code Reviewer`, `Technical Writer`
+- Oracle runs `claude-opus-4-7` (configured in `oh-my-openagent.json`) — use for architecture, debugging, and multi-system tradeoffs; not for trivial tasks
 
 ## Inter-Session Communication
 
