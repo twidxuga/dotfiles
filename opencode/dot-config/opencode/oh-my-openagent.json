@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "new_task_system_enabled": true,
   "agents": {
     "librarian": {
       "permission": {
@@ -11,7 +12,7 @@
     "explore": {
       "permission": {
         "edit": "deny",
-        "bash": "ask",
+        "bash": "allow",
         "webfetch": "allow"
       }
     },
@@ -35,12 +36,38 @@
     "sisyphus": {
       "model": "anthropic/claude-sonnet-4-6",
       "temperature": 0.3,
-      "prompt_append": "SPECIALIST AGENTS: You have 68+ domain-specific agents in ~/.config/opencode/agent/ beyond the standard oh-my-openagent roster. Before defaulting to a generic category, check if a domain expert exists. Load the discovery protocol with skill(name=\"agent-directory\") to see how to find and invoke them. Invoke via task(subagent_type=\"<name field>\", ...) — use the name: value from the agent's frontmatter (e.g. \"Senior Developer\", \"Backend Architect\"), NOT the filename.",
+      "prompt_append": "SPECIALIST AGENTS via pimp router \u2014 use ONLY when no oh-my-openagent built-in fits.\n\nBuilt-in agents always take priority:\n  explore, librarian, oracle, metis, momus, multimodal-looker, Sisyphus-Junior, plan\n\nWhen you need a domain specialist not covered by the above, route through pimp:\n  task(subagent_type=\"pimp\", load_skills=[], run_in_background=false,\n    description=\"<task>\",\n    prompt=\"Use specialist: <Name>. Task: <details>\")\n\nCommon domain specialists (via pimp):\n\u2022 \"Backend Architect\"         \u2192 system design, DB schema, APIs, microservices, AWS/K8s\n\u2022 \"DevOps Automator\"          \u2192 Terraform, Helm, K8s, GitHub Actions, ArgoCD, EKS, CI/CD\n\u2022 \"Security Engineer\"         \u2192 threat modeling, IAM, secrets, auth flows, vuln review\n\u2022 \"Code Reviewer\"             \u2192 PR review, code quality, pattern consistency, tech debt\n\u2022 \"Technical Writer\"          \u2192 docs, README, architecture docs, API reference, runbooks\n\u2022 \"Data Engineer\"             \u2192 ETL, pipelines, Postgres/SQL optimisation, schema design\n\u2022 \"Infrastructure Maintainer\" \u2192 reliability, monitoring, cost, performance analysis\n\u2022 \"Frontend Developer\"        \u2192 React, TypeScript, component architecture, state management\n\u2022 \"Senior Developer\"          \u2192 complex full-stack implementation\n\u2022 \"Performance Benchmarker\"   \u2192 profiling, bottlenecks, benchmark design\n\u2022 \"Legal Compliance Checker\"  \u2192 PCI DSS, GDPR, SOC2, ISO 27001\n\u2022 \"AI Engineer\"               \u2192 Bedrock/ML integration, AI-powered features\n\nFull catalog of all 69: skill(name=\"agent-directory\")",
       "permission": {
         "edit": "allow",
         "bash": "allow",
         "webfetch": "allow"
       }
+    }
+  },
+  "categories": {
+    "ultrabrain": {
+      "model": "openai/gpt-5.5",
+      "description": "Use ONLY for genuinely hard, logic-heavy tasks. Give clear goals only, not step-by-step instructions."
+    },
+    "deep": {
+      "model": "openai/gpt-5.5",
+      "description": "Goal-oriented autonomous problem-solving. Thorough research before action. For hairy problems requiring deep understanding."
+    },
+    "visual-engineering": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "description": "Frontend, UI/UX, design, styling, animation"
+    },
+    "artistry": {
+      "model": "anthropic/claude-opus-4-7",
+      "description": "Complex problem-solving with unconventional, creative approaches - beyond standard patterns"
+    },
+    "quick": {
+      "model": "anthropic/claude-haiku-4-5",
+      "description": "Trivial tasks - single file changes, typo fixes, simple modifications"
+    },
+    "writing": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "description": "Documentation, prose, technical writing"
     }
   },
   "sisyphus_agent": {
@@ -78,7 +105,8 @@
   "background_task": {
     "defaultConcurrency": 5,
     "providerConcurrency": {
-      "anthropic": 8
+      "anthropic": 8,
+      "openai": 4
     },
     "staleTimeoutMs": 300000
   },

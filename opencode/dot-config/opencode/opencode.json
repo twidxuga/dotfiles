@@ -10,12 +10,23 @@
   "watcher": {
     "ignore": [
       "node_modules/**",
+      "**/node_modules/**",
       "dist/**",
+      "**/dist/**",
       "build/**",
+      "**/build/**",
       ".git/**",
       "**/*.log",
       ".next/**",
+      "**/.next/**",
+      ".nuxt/**",
+      "**/.nuxt/**",
+      ".turbo/**",
+      "**/.turbo/**",
       ".cache/**",
+      "**/.cache/**",
+      "**/.output/**",
+      "**/coverage/**",
       "bun.lock",
       "package-lock.json"
     ]
@@ -23,7 +34,7 @@
   "agent": {
     "reflection": {
       "description": "Personal coach for career reflections, workplace challenges, professional growth, and all life challenges.",
-      "model": "google/gemini-3-pro-preview",
+      "model": "anthropic/claude-sonnet-4-6",
       "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject."
     }
   },
@@ -42,13 +53,12 @@
   "provider": {
     "openai": {
       "name": "OpenAI",
-      "api": "codex",
       "options": {
         "timeout": 300000
       },
       "models": {
-        "gpt-5.2": {
-          "name": "GPT-5.2"
+        "gpt-5.5": {
+          "name": "GPT-5.5"
         },
         "o3": {
           "name": "o3"
@@ -69,6 +79,13 @@
         }
       },
       "models": {
+        "claude-opus-4-7": {
+          "name": "Claude Opus 4.7 (1M)",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          }
+        },
         "claude-opus-4-6": {
           "name": "Claude Opus 4.6 (1M)",
           "limit": {

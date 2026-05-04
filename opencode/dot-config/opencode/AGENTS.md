@@ -22,10 +22,21 @@ You are working with an experienced engineer who:
 
 ## Agent Usage
 
-This setup has 69 specialist agents in `~/.config/opencode/agent/`. Before using a generic category, check if a domain expert exists:
-- `skill(name="agent-directory")` — discover available specialists
-- Key specialists: `Backend Architect`, `DevOps Automator`, `Security Engineer`, `Code Reviewer`, `Technical Writer`
-- Oracle runs `claude-opus-4-7` (configured in `oh-my-openagent.json`) — use for architecture, debugging, and multi-system tradeoffs; not for trivial tasks
+69 specialist agents are available on demand via the `pimp` router — none are loaded at startup except pimp itself.
+
+**Priority order:**
+1. oh-my-openagent built-ins first: `explore`, `librarian`, `oracle`, `metis`, `momus`, `multimodal-looker`, `Sisyphus-Junior`, `plan`
+2. Domain specialists via `pimp` only when no built-in fits:
+
+```
+task(subagent_type="pimp", load_skills=[], run_in_background=false,
+  description="<task>",
+  prompt="Use specialist: <Name>. Task: <details>")
+```
+
+- `skill(name="agent-directory")` — full catalog of all 69 specialists with use-cases
+- Common: `Backend Architect`, `DevOps Automator`, `Security Engineer`, `Code Reviewer`, `Technical Writer`, `Legal Compliance Checker`, `AI Engineer`
+- Oracle runs `claude-opus-4-7` — use for architecture, debugging, multi-system tradeoffs; not for trivial tasks
 
 ## Inter-Session Communication
 
