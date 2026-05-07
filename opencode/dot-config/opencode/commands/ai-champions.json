@@ -1,0 +1,5 @@
+{
+  "template": "Load the ai-champions skill with skill(name=\"ai-champions\") and run the full workflow. Arguments: $ARGUMENTS\n\nFollow the skill instructions precisely:\n1. Read #ai-champions Slack channel, find Simon's latest weekly brief\n2. Show the task to the user and confirm before proceeding\n3. Implement the task, asking for user feedback at key decision points\n4. Draft a succinct, human-readable Slack submission (one message, ~300 words max)\n5. Show the draft to the user and get approval before posting\n6. Post exactly one message to #ai-champions (channel ID: C0AJ3CLSGBX)\n\nDo not post to Slack without user confirmation. Do not send more than one message.",
+  "description": "Read Simon's latest AI Champions task, implement it with user feedback, and post a single succinct result to #ai-champions",
+  "agent": "Sisyphus"
+}
