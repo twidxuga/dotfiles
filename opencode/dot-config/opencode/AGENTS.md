@@ -50,30 +50,47 @@ To send messages to and receive replies from another running opencode session:
 
 opencode-mem is active and captures project memories automatically. Relevant past context is injected at session start. If you notice something important that should be remembered across sessions, it will be captured automatically.
 
+## Private Knowledge Base (off-repo)
+
+This `~/.config/opencode/` directory is published to a **public GitHub repository**. Anything project-specific, company-specific, or personally identifying must NOT be added here.
+
+A private knowledge base lives at `~/Documents/QuickAccess/kb/ai-agents/` (synced via Dropbox, mounted at the same path on all the user's machines). **Start by reading `~/Documents/QuickAccess/kb/ai-agents/AGENTS.md`** — it's a small TOC routing you to topic files. Read topic files on demand:
+
+| Entry point | When to read |
+|---|---|
+| `~/Documents/QuickAccess/kb/ai-agents/AGENTS.md` | Always read first — small TOC of private topic files |
+| Topic files (`company.md`, `aws.md`, `auth.md`, `dynamic-envs.md`, `terraform-conventions.md`, `observability.md`) | When session touches that domain — see the TOC for triggers |
+| `~/Documents/QuickAccess/kb/ai-agents/rules-terraform.md` | Any Terraform / IaC work — read alongside `~/.config/opencode/rules/terraform.md` |
+| `~/Documents/QuickAccess/kb/ai-agents/EVOLUTION_LOG.md` | When investigating "have we hit this before?" or reviewing past `/evolve` runs |
+| `~/Documents/QuickAccess/kb/ai-agents/QUICKACCESS-INDEX.md` | Index of `~/Documents/QuickAccess/` — read when you need to know what personal notes exist or where to add new content |
+
+**Operational rules:**
+- You MAY read, add, and edit files under `~/Documents/QuickAccess/` when relevant to the task
+- You **MUST NEVER** delete or rename files under `~/Documents/QuickAccess/` — if a file is stale, flag it in `QUICKACCESS-INDEX.md` and let the user decide
+- When `/evolve` finds a new pattern that names a company, internal hostname, AWS profile, internal repo path, or other private detail, write it to the private kb — not to public `AGENTS.md` / `rules/` / `EVOLUTION_LOG.md`
+- The private kb is plain Markdown — treat it the same way you treat this AGENTS.md when forming context
+
 ## Self-Improvement
 
-Run `/evolve` to trigger a structured analysis of recent sessions and apply improvements to this configuration. See `~/.config/opencode/EVOLUTION_LOG.md` for history of changes made.
+Run `/evolve` to trigger a structured analysis of recent sessions and apply improvements. Sensitive findings go to `~/Documents/QuickAccess/kb/ai-agents/`; generic findings go here.
 
-## Infrastructure Context
+## Infrastructure Context (generic)
 
 - Primary cloud: AWS (EKS, RDS PostgreSQL, S3, ALB)
 - IaC: Terraform with remote state
 - Container orchestration: Kubernetes via Helm
-- Auth: Keycloak (migrating from Cognito)
+- Auth: Keycloak
 - Observability: Datadog (MCP connected via `datadog_mcp_cli` at `~/.local/bin/datadog_mcp_cli`, OAuth token in `~/Library/Application Support/Datadog/`)
-- EKS access via SSM tunnel: `zsh ~/Bunch/code/ai-share/scripts/ssm-connect.sh --eks dev` — run in background (tmux), then kubectl works via localhost:8443
-- Infra repo Terraform pipeline: **only triggers on PRs or manual `workflow_dispatch`** — pushing directly to `main` does NOT apply Terraform; always use a PR or trigger the workflow manually after pushing
-- AWS profile for dev: `bunch-2-dev` (SSO) — `aws sso login --profile bunch-2-dev` to authenticate
-- Dynamic environments: K8s namespace prefix is `preview-` (e.g. `preview-bun-1028`); external URL pattern is `{service}-{id}.{env}.the-bunch.co.uk` (e.g. `backoffice-bun-1028.dev.the-bunch.co.uk`)
-- Dynamic env deploy triggered by `workflow_dispatch` on `dynamic-environment.yml` with `action=create|destroy` and `namespace_id=<name>` inputs
-- Dynamic environments exist in both **dev and uat** (not just dev) — DYN-8/9 workflow fixes apply to both
-- Dynamic env workflows share a single ALB per environment via `alb.ingress.kubernetes.io/group.name: bunch-preview` — invalid annotations (e.g. bad Cognito config) in ANY namespace's ingress block the entire group from reconciling, causing 503s for all envs
-- Keycloak instance is shared across all dynamic envs within a base environment (dev/uat/prod); wildcard redirect URIs (`*.dev.the-bunch.co.uk`) are enabled via `ENABLE_DYNAMIC_ENV_REDIRECTS` template flag in `config/keycloak/*.json`
-- **Project uses Keycloak for auth — NOT Cognito.** Cognito is configured in AWS but not used for application auth. Never enable `platformIngress.cognito.enabled=true` in Helm deploys; `values-dynamic.yaml` should have `cognito.enabled: false`
-- To trigger a specific Terraform component manually: `gh workflow run terraform.yml --field component=<name> --field action=apply --ref main` — valid component names include `dev`, `uat`, `prod`, `dev/rds-roles`, `uat/rds-roles`, `prod/rds-roles`, `global/02-scps`, etc.
-- `actions/checkout@v6` does NOT exist as a stable release — latest stable is `@v4`; using `@v6` will pull an unstable or non-existent ref
-- Datadog LLM Observability: `dd-trace` is added to `service-core`; uses conditional `require('dd-trace')` (not top-level import) to avoid crashing services without dd-trace in their production image; `DD_LLMOBS_ENABLED=true` only on `sift-worker` and `quote-engine-worker`; `datadog/api-key` secret in AWS Secrets Manager synced via ExternalSecret
-- hellobill service URLs are environment-specific: dev/uat use `{service}.{env}.the-bunch.co.uk` but **prod does NOT use an env subdomain** — use per-environment GitHub variables (`vars.HELLOBILL_ONBOARDING_URL`, `vars.HELLOBILL_PORTAL_URL`) not constructed strings
+
+Company-specific specifics (AWS profile names, account IDs, internal hostnames, internal repo paths, dynamic-env conventions, product / monorepo / namespace details, auth realm details) live in `~/Documents/QuickAccess/kb/ai-agents/AGENTS.md`.
+
+## Thinking Budget (Anthropic Extended Thinking)
+
+- Thinking budget for Sonnet agents is configured via `reasoningEffort` in oh-my-openagent.json (valid values: `"low"`, `"medium"`, `"high"`, `"max"`) — current setting across all Sonnet agents: `"high"`
+- Anthropic also supports manual budget mode: `thinking.type: "enabled"` + `thinking.budgetTokens: N` under `provider.anthropic.models.<model>.options` in opencode.json
+- Adaptive mode: `thinking.type: "adaptive"` + `effort: "low"|"medium"|"high"|"max"` for dynamic budget allocation
+- **Never combine `temperature != 1` with extended thinking** — Anthropic API rejects the combination; when thinking is enabled, temperature must be 1 (or omitted)
+- The status bar in opencode shows the current thinking level (e.g. `low`, `high`) — if it shows `low` after config changes, restart opencode to reload config
 
 ## MCP Architecture
 
@@ -88,7 +105,11 @@ Run `/evolve` to trigger a structured analysis of recent sessions and apply impr
 
 - `opencode-rules`: auto-injects markdown rules from `~/.config/opencode/rules/` into every session
 - `opencode-mem`: captures and injects project memories automatically
+- `opencode-subagent-statusline`: live TUI statusline showing active subagents
+- `@ramtinj95/opencode-tokenscope`: token usage analyzer, exposed as `/tokenscope` slash command
+- `@tarquinen/opencode-dcp`: dynamic context pruning — auto-creates `~/.config/opencode/dcp.jsonc` on first run; do not commit
 - Rules files: `rules/global.md` (always active), `rules/terraform.md` (active on .tf files)
+- **Slash-command directories** (distinct on purpose, do NOT merge): `~/.config/opencode/commands/*.json` for built-in JSON commands (e.g. `evolve.json`); `~/.config/opencode/command/*.md` for plugin-style markdown commands (e.g. `tokenscope.md`)
 
 ## Communication Style
 

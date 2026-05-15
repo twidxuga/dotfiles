@@ -28,13 +28,17 @@
       "**/.output/**",
       "**/coverage/**",
       "bun.lock",
-      "package-lock.json"
+      "package-lock.json",
+      "opencode-mem-*.tgz",
+      "**/opencode-mem-*.tgz",
+      "dcp.jsonc"
     ]
   },
   "agent": {
     "reflection": {
       "description": "Personal coach for career reflections, workplace challenges, professional growth, and all life challenges.",
       "model": "anthropic/claude-sonnet-4-6",
+      "reasoningEffort": "high",
       "prompt": "You are a thoughtful career coach and mentor specializing in software engineering careers. Help with workplace dynamics, career growth, performance concerns, and professional development. Provide empathetic but direct guidance. Beyond that you are an empathetic friend who genuinly wants to help, no matter the subject."
     }
   },
@@ -48,7 +52,10 @@
     "oh-my-openagent",
     "@franlol/opencode-md-table-formatter",
     "opencode-mem",
-    "opencode-rules"
+    "opencode-rules",
+    "opencode-subagent-statusline@latest",
+    "@ramtinj95/opencode-tokenscope@latest",
+    "@tarquinen/opencode-dcp@latest"
   ],
   "provider": {
     "openai": {
