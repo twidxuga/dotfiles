@@ -123,7 +123,7 @@ for (let turn = 1; turn <= N; turn++) {
 ```typescript
 // 1. Find Bot B's session
 session_list(limit=10)
-// → ses_2bff75c9 | "Bot B session" | /Users/rs
+// → ses_2bff75c9 | "Bot B session" | ~/projects/bot-b
 
 // 2. Confirm identity
 session_read(session_id="ses_2bff75c9", limit=4)
