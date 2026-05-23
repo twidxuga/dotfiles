@@ -53,7 +53,6 @@
     "@franlol/opencode-md-table-formatter",
     "opencode-mem",
     "opencode-rules",
-    "opencode-subagent-statusline@latest",
     "@ramtinj95/opencode-tokenscope@latest",
     "@tarquinen/opencode-dcp@latest"
   ],
