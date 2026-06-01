@@ -40,6 +40,12 @@ description: Global coding standards and workflow rules applied to all sessions
 - CI steps that only run on **apply** (post-merge) are invisible during PR plan runs — shell scripts in those steps must be tested locally with `set -euo pipefail` before merging; broken-pipe bugs and other runtime errors won't surface in PR CI
 - When generating passwords/random strings in `pipefail` shell scripts from `/dev/urandom`, always use `|| true` in the pipeline: `PASSWORD=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 32 || true)` — both `head` and `dd` cause SIGPIPE in `tr`, which `pipefail` treats as fatal
 - When triggering multiple `workflow_dispatch` runs on the same branch/ref simultaneously, they share the same concurrency group and cancel each other — trigger sequentially (wait for each to start before firing the next)
+- After EVERY merge to main, fire a background watcher on the post-merge main CI run before moving to the next task — silently-red main blocks all downstream PRs and is easy to miss when context shifts <!-- rule:r52c8b1 -->
+- Never write `if [ -n "$VAR" ]` to skip a verification step when the var is empty — that "skip when empty" branch IS the bug. Make the var required (`[ -z "$VAR" ] && exit 1`) and let the workflow refuse to ship without it <!-- rule:r08d040 -->
+- When verifying that a literal string appears in a file (e.g. an env value baked into HTML/JSON), use `grep -Fq` not `grep -qE` — production values often contain regex metacharacters (`*`, `.`, `+`, `[`) that ERE mis-handles <!-- rule:rfb0be1 -->
+- When merging a workflow-file change that's coupled to an infra IAM change, the apps push-event deploy will race terraform apply (apply takes 3-5 min, OIDC retry budget is ~40s) — prefer `workflow_dispatch` after both merges land, or remove the `push:` trigger entirely on prod deploy workflows <!-- rule:r39cbc2 -->
+- Turbo's hermetic env mode strips env vars not declared in `tasks.<task>.env` of `turbo.json` — when a workflow needs to pass new env to a build step (e.g. `ALLOWLIST`, `HB_API_BASE_URL`), update `turbo.json` BEFORE the workflow expects it to propagate <!-- rule:r9b3317 -->
+- A successful deploy returning HTTP 200 is NECESSARY but not SUFFICIENT — always verify the actual served content (correct allowlist baked in, correct env vars resolved, expected bundle hash) against a real surface check, not just status codes <!-- rule:r06289e -->
 
 ## Security
 - Never commit secrets, API keys, or credentials
@@ -101,3 +107,4 @@ description: Global coding standards and workflow rules applied to all sessions
 - Run `/evolve` after any session that revealed config gaps, repeated errors, or new patterns
 - Log what changed and why in `~/.config/opencode/EVOLUTION_LOG.md`
 - Do not call Oracle to verify trivial tasks (CLI queries, single-command lookups, factual lookups) — Oracle is for architecture, debugging, and multi-system tradeoffs; calling it for trivial tasks wastes tokens and breaks ulw-loop verification
+- When Oracle gives a high-confidence recommendation that involves a config change (resolve.conditions, package.json exports, build tool options), reproduce locally to verify before applying — Oracle reasons from spec/docs, not from your specific tool versions, and its recommendation can be correct-in-theory but wrong-in-your-setup <!-- rule:r0d29ec -->

@@ -99,3 +99,38 @@ Public `~/.config/opencode/` is published to `github.com/<user>/dotfiles` (publi
 ### Next focus
 - Continue watching for `[Category+Skill Reminder]` injection source
 - Monitor r-NEW-1..4 and r-RETRO-1..2 for first citations
+
+---
+
+## 2026-05-29 — Evolution Run [v2, applied]
+
+### Sessions Analysed
+- Today's prod-CDN deploy cascade session (primary; ~80min wall-clock, 5 PRs through CI, 2 deploys) — full details in private kb
+- 7 distinct learnings extracted from direct in-session observation
+
+### Applied (Public)
+- `rules/global.md` r52c8b1 → CI/CD: monitor post-merge main CI after EVERY merge via background watcher (correction, Value=125)
+- `rules/global.md` r0d29ec → Self-Improvement: reproduce Oracle config-change recommendations locally before applying (oracle-mis-invocation, Value=80)
+- `rules/global.md` r08d040 → CI/CD: never use `if [ -n "$VAR" ]` to skip a verify step; make the var required (correction, Value=100)
+- `rules/global.md` rfb0be1 → CI/CD: use `grep -Fq` not `grep -qE` when verifying a literal string in a file (correction, Value=75)
+- `rules/global.md` r39cbc2 → CI/CD: workflow push-event triggers race coupled infra IAM applies; prefer `workflow_dispatch` (tool-failure-pattern, Value=48)
+- `rules/global.md` r9b3317 → CI/CD: turbo hermetic mode strips env vars not declared in `tasks.<task>.env` of `turbo.json` (missing-context, Value=100)
+- `rules/global.md` r06289e → CI/CD: HTTP 200 is necessary but not sufficient; verify actual served content (correction, Value=125)
+
+### Queued
+- None this run — all 7 findings scored well above the >4 apply threshold
+
+### Reflexion (Phase 6a)
+- Skipped this run — focus was on capturing today's high-density signal; reflexion deferred to next scheduled `/evolve` (validates ~2 week window since May 16 run)
+
+### Privacy regressions (Phase 0)
+- None — clean pass on both term-list and regex-pack scans
+
+### Patterns observed this run
+- 4 of 7 findings were corrections (workflow safety: silent fallbacks, regex confusion, race conditions, surface verification)
+- Today's bug ("dev default leaked to prod") had a recognisable structural pattern: silent-fallback at one layer + skip-when-empty at the validation layer = both safety nets disabled
+- "Verify with real surface, not just CI" was already implicit in methodology but wasn't a written rule until this run
+
+### Next focus
+- Watch for first citations of r52c8b1 (post-merge monitoring) and r06289e (verify content not just HTTP) — both should fire on EVERY future merge + deploy cascade
+- If r52c8b1 isn't cited within 2 weeks but post-merge red-main incidents continue, the rule needs strengthening (e.g. promote to a hook)

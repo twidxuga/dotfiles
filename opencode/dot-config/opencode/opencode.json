@@ -87,6 +87,13 @@
         }
       },
       "models": {
+        "claude-opus-4-8": {
+          "name": "Claude Opus 4.8 (1M)",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          }
+        },
         "claude-opus-4-7": {
           "name": "Claude Opus 4.7 (1M)",
           "limit": {

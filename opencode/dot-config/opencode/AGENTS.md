@@ -36,7 +36,7 @@ task(subagent_type="pimp", load_skills=[], run_in_background=false,
 
 - `skill(name="agent-directory")` — full catalog of all 69 specialists with use-cases
 - Common: `Backend Architect`, `DevOps Automator`, `Security Engineer`, `Code Reviewer`, `Technical Writer`, `Legal Compliance Checker`, `AI Engineer`
-- Oracle runs `claude-opus-4-7` — use for architecture, debugging, multi-system tradeoffs; not for trivial tasks
+- Oracle runs `claude-opus-4-8` — use for architecture, debugging, multi-system tradeoffs; not for trivial tasks
 
 ## Inter-Session Communication
 
