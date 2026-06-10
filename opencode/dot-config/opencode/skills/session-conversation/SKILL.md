@@ -9,7 +9,16 @@ This skill enables one opencode session to send messages to and receive replies 
 
 ## How It Works
 
-The `task()` tool accepts a `session_id` to continue an existing session. This works not only for background subagents you spawned, but also for **any independently running session** — including sessions the user started separately. The target session processes the injected message as a normal user turn and returns its response synchronously.
+There are two ways to inject a message into another session. **Pick based on the target's agent:**
+
+| Method | Works with primary agents (e.g. Sisyphus)? | Use when |
+|---|---|---|
+| **A — `task(session_id=...)`** | ❌ No — errors `Cannot delegate to primary agent "..." via task` | Target runs a delegatable **subagent** you spawned |
+| **B — opencode web HTTP API** | ✅ Yes — no agent restriction | Target runs **any** agent, including primary Sisyphus (the common case) |
+
+Most interactive sessions run a primary agent (Sisyphus), so **Method B is the default**. Method A is only viable for subagent sessions.
+
+Both deliver the message as a normal user turn; the target processes it and returns its response. Method B is also cross-project: the opencode web server addresses **every** session by ID regardless of which project directory it lives in.
 
 ## Step 1 — Find the Target Session
 
@@ -45,6 +54,46 @@ Check the opening messages — the user typically sets the session's role/instru
 
 ## Step 2 — Send a Message
 
+### Method B — opencode web HTTP API (RECOMMENDED; works with Sisyphus)
+
+The `opencode web` server exposes a REST API that injects a message into any session by ID, with **no primary-agent restriction**. This is how the web UI itself sends messages, so it works for Sisyphus and every other agent.
+
+**1. Find the opencode web server port** (default `4096`; discover if not running there):
+
+```bash
+# Default is 4096. To discover: probe opencode listening ports for the one that serves /session.
+PORT=4096
+for p in 4096 $(lsof -nP -iTCP -sTCP:LISTEN 2>/dev/null | grep -i opencode \
+      | grep -oE '127\.0\.0\.1:[0-9]+' | cut -d: -f2 | sort -u); do
+  if curl -s -m 2 "http://127.0.0.1:$p/session" | grep -q '"id":"ses_'; then PORT=$p; break; fi
+done
+echo "opencode web port: $PORT"
+```
+
+**2. POST the message** — only `parts` is required; the session reuses its own agent + model:
+
+```bash
+SID=ses_abc123
+curl -s -m 180 -X POST "http://127.0.0.1:$PORT/session/$SID/message" \
+  -H 'content-type: application/json' \
+  -d '{"parts":[{"type":"text","text":"Your message here"}]}'
+```
+
+The call blocks until the target finishes its turn, then returns the full assistant message as JSON (text is in `.parts[].text`). Extract the reply:
+
+```bash
+curl -s -m 180 -X POST "http://127.0.0.1:$PORT/session/$SID/message" \
+  -H 'content-type: application/json' \
+  -d '{"parts":[{"type":"text","text":"Your message here"}]}' \
+  | python3 -c "import sys,json;print(''.join(p.get('text','') for p in json.load(sys.stdin)['parts'] if p.get('type')=='text'))"
+```
+
+Verify the target is reachable first with `GET /session/$SID` (returns its `title` and `agent`).
+
+### Method A — `task(session_id=...)` (subagent sessions only)
+
+Only works if the target runs a delegatable subagent. Against a primary agent (Sisyphus) it errors `Cannot delegate to primary agent "..." via task`.
+
 ```typescript
 task(
   session_id="ses_abc123",                  // target session ID
@@ -60,18 +109,13 @@ The call blocks until the target session responds. The full response text is ret
 
 ## Step 3 — Continue the Conversation
 
-Call `task()` again with the same `session_id` for each subsequent turn. The session retains its full context across calls — no re-introduction needed.
+Repeat the same call with the same `session_id` for each subsequent turn. The session retains full context across calls — no re-introduction needed.
 
-```typescript
-// Turn 1
-task(session_id="ses_abc123", subagent_type="Sisyphus (Ultraworker)",
-     load_skills=[], run_in_background=false,
-     description="Turn 1", prompt="Opening message")
-
-// Turn 2 — same session, full context preserved
-task(session_id="ses_abc123", subagent_type="Sisyphus (Ultraworker)",
-     load_skills=[], run_in_background=false,
-     description="Turn 2", prompt="Follow-up based on their reply")
+```bash
+# Method B — each POST to the same SID is one more turn; context is preserved
+curl -s -X POST "http://127.0.0.1:$PORT/session/$SID/message" \
+  -H 'content-type: application/json' \
+  -d '{"parts":[{"type":"text","text":"Follow-up based on their reply"}]}'
 ```
 
 ## Multi-Session Dialogue Pattern
@@ -87,66 +131,60 @@ User
        └─► ... repeat for N turns
 ```
 
-Each `task()` call is one conversational turn. You receive B's reply, generate A's next message, and send it back. Display both sides to the user as you go.
+Each POST (Method B) or `task()` call (Method A) is one conversational turn. You receive B's reply, generate A's next message, and send it back. Display both sides to the user as you go.
 
-```typescript
-for (let turn = 1; turn <= N; turn++) {
-  // Send A's message to B, get B's reply
-  const bReply = task(
-    session_id="ses_B",
-    subagent_type="Sisyphus (Ultraworker)",
-    load_skills=[], run_in_background=false,
-    description=`Turn ${turn}`,
-    prompt="<A's message>"
-  )
-
-  // Show both sides
-  // display("Bot A: <A's message>")
-  // display("Bot B: " + bReply)
-
-  // Formulate A's next message based on bReply, repeat
-}
+```bash
+# Method B relay — orchestrator drives each turn against Bot B's session
+SID_B=ses_B
+reply=$(curl -s -X POST "http://127.0.0.1:$PORT/session/$SID_B/message" \
+  -H 'content-type: application/json' \
+  -d '{"parts":[{"type":"text","text":"<A'\''s message>"}]}' \
+  | python3 -c "import sys,json;print(''.join(p.get('text','') for p in json.load(sys.stdin)['parts'] if p.get('type')=='text'))")
+# Show both sides, formulate A's next message from $reply, repeat for N turns
 ```
 
 ## Limitations
 
+### Method B (HTTP API)
+
 | Limitation | Detail |
 |---|---|
-| `run_in_background=true` fails | Error: "Task not found for session". Only works for sessions originally spawned as background tasks by the current session. Always use `run_in_background=false`. |
-| `subagent_type` must match | Must match the agent running in the target session. Check via `session_read` — look for the agent name in message metadata. Default is `"Sisyphus (Ultraworker)"`. |
-| Sequential turns only | Each `task()` call must complete before the next. No true async between sessions. |
-| No push/subscribe | You cannot listen for a session's output passively — you must drive each turn explicitly. |
-| Same process only | Both sessions must be running in the same opencode process/instance. Cross-machine is not supported. |
+| Requires `opencode web` running | The REST server must be up (default port `4096`). If no port serves `/session`, start it with `opencode web`. |
+| Sequential turns | The POST blocks until the target finishes its turn. No passive push/subscribe — drive each turn explicitly. |
+| Local only | Server binds to `127.0.0.1`. Cross-machine is not supported. |
+| Triggers a real turn | The target actually processes the message and incurs cost. Use `"noReply": true` in the body to inject a user message without triggering a response. |
 
-## Worked Example
+### Method A (`task(session_id=...)`)
 
-```typescript
-// 1. Find Bot B's session
-session_list(limit=10)
-// → ses_2bff75c9 | "Bot B session" | ~/projects/bot-b
+| Limitation | Detail |
+|---|---|
+| Primary agents blocked | Errors `Cannot delegate to primary agent "..." via task`. Sisyphus is primary, so Method A does **not** work for it — use Method B. |
+| `run_in_background=true` fails | Error: "Task not found for session". Always use `run_in_background=false`. |
+| `subagent_type` must match | Must match the subagent running in the target session. |
+| Same process only | Both sessions must be running in the same opencode process/instance. |
 
-// 2. Confirm identity
-session_read(session_id="ses_2bff75c9", limit=4)
-// → opening message confirms "You are session B (bot B)"
+## Worked Example (Method B — verified against a live Sisyphus session)
 
-// 3. Send opening message
-task(
-  session_id="ses_2bff75c9",
-  subagent_type="Sisyphus (Ultraworker)",
-  load_skills=[], run_in_background=false,
-  description="Turn 1 — opening",
-  prompt="What's your take on the best dog breed for someone who works from home?"
-)
-// → Bot B replies (trying to steer toward cats)
+```bash
+# 1. Find the target session (cross-project) via the find-session skill / SQLite
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT id, title, directory FROM session WHERE title LIKE '%sandbox%' ORDER BY time_updated DESC LIMIT 5;"
+# → ses_19eab2b32ffe0PftUbk85Lttj7 | sandbox | /Users/rs/Bunch/code/apps
 
-// 4. Continue for N turns
-task(
-  session_id="ses_2bff75c9",
-  subagent_type="Sisyphus (Ultraworker)",
-  load_skills=[], run_in_background=false,
-  description="Turn 2",
-  prompt="Nice try with the cat pivot — but I need the accountability of walks..."
-)
+# 2. Find the opencode web port and confirm identity (returns title + agent)
+PORT=4096
+SID=ses_19eab2b32ffe0PftUbk85Lttj7
+curl -s "http://127.0.0.1:$PORT/session/$SID" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['title'],'|',d['agent'])"
+# → sandbox | Sisyphus - ultraworker   (a PRIMARY agent — task() would refuse this)
+
+# 3. Inject the message — works despite the primary agent
+curl -s -X POST "http://127.0.0.1:$PORT/session/$SID/message" \
+  -H 'content-type: application/json' \
+  -d '{"parts":[{"type":"text","text":"test"}]}' \
+  | python3 -c "import sys,json;print(''.join(p.get('text','') for p in json.load(sys.stdin)['parts'] if p.get('type')=='text'))"
+# → test   (HTTP 200 — round-trip confirmed)
+
+# 4. Repeat step 3 with the same SID for each further turn; context is preserved.
 ```
 
 ## Related Skills

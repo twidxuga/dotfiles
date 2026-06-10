@@ -1,37 +1,37 @@
 return {
-  {
-    "Exafunction/windsurf.nvim",
-    -- enabled = (vim.fn.has('macunix') == 0),
-    enabled = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      -- "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/nvim-cmp",
-    },
-    -- opts = {
-    --   enable_chat = true,
-    --   -- enable_cmp_source = false -- virtual text only
-    -- },
-    config = function()
-      -- Dynamically check if nvim-cmp is available.
-      -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
-      local has_cmp, _ = pcall(require, "cmp")
-      require("codeium").setup({
-       enable_chat = true,
-        -- Only enable the cmp source if nvim-cmp is loaded.
-        enable_cmp_source = has_cmp,
-        -- If nvim-cmp is not available, use virtual text for suggestions.
-        virtual_text = {
-          enabled = not has_cmp,
-          -- key_bindings = {
-          --   accept = false, -- handled by nvim-cmp / blink.cmp
-          --   next = "<M-]>",
-          --   prev = "<M-[>",
-          -- },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "Exafunction/windsurf.nvim",
+  --   -- enabled = (vim.fn.has('macunix') == 0),
+  --   enabled = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     -- "hrsh7th/cmp-nvim-lsp",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   -- opts = {
+  --   --   enable_chat = true,
+  --   --   -- enable_cmp_source = false -- virtual text only
+  --   -- },
+  --   config = function()
+  --     -- Dynamically check if nvim-cmp is available.
+  --     -- This is to prevent errors when using a completion manager other than nvim-cmp, like blink.cmp.
+  --     local has_cmp, _ = pcall(require, "cmp")
+  --     require("codeium").setup({
+  --      enable_chat = true,
+  --       -- Only enable the cmp source if nvim-cmp is loaded.
+  --       enable_cmp_source = has_cmp,
+  --       -- If nvim-cmp is not available, use virtual text for suggestions.
+  --       virtual_text = {
+  --         enabled = not has_cmp,
+  --         -- key_bindings = {
+  --         --   accept = false, -- handled by nvim-cmp / blink.cmp
+  --         --   next = "<M-]>",
+  --         --   prev = "<M-[>",
+  --         -- },
+  --       },
+  --     })
+  --   end,
+  -- },
   -- {
   --   'NickvanDyke/opencode.nvim',
   --   dependencies = {
