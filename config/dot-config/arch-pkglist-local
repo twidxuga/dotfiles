@@ -27,10 +27,13 @@ gtkmm
 haskell-data-array-byte
 htop-vim-git
 http-parser
+lib32-gst-plugins-base-libs
+lib32-gstreamer
 lib32-libjpeg6-turbo
 lib32-openssl-1.1
 libcheese
 libjpeg6-turbo
+libsoup
 lmstudio-appimage
 mcphost
 messenger-nativefier
@@ -57,7 +60,7 @@ ocaml-ocplib-endian
 ocaml-react
 ocaml-sqlite3
 ocaml-yojson
-openclaw-git
+openclaw
 opencode-bin
 openrazer-meta-git
 openssl-1.1
@@ -72,6 +75,7 @@ python-async-timeout
 python-jupytext
 python-pytest-runner
 python-rchitect
+qt5-location
 qt5-remoteobjects
 qt5-webchannel
 qt5-webengine
@@ -81,6 +85,7 @@ r-renv
 razercommander-git
 rfc-reader-git
 ruby-xdg5
+shntool
 signal-desktop-beta-bin
 spotify
 sudachi-bin
@@ -90,7 +95,7 @@ v4l2loopback-dc-dkms
 vdhcoapp-bin
 vivify
 wakeup-triggers
-whatsapp-for-linux-git
+wlroots0.17
 xlunch-git
 youtube-music
 zoom
