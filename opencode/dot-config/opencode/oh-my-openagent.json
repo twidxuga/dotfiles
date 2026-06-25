@@ -111,7 +111,7 @@
       "anthropic": 8,
       "openai": 4
     },
-    "staleTimeoutMs": 300000
+    "staleTimeoutMs": 1800000
   },
   "ralph_loop": {
     "enabled": true,

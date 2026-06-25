@@ -1,0 +1,5 @@
+{
+  "template": "Load the heartbeat skill with skill(name=\"heartbeat\") and run the requested primitive. Arguments: $ARGUMENTS\n\nAvailable primitives:\n- heartbeat-deploy  — install the hourly cron + initialise task register\n- heartbeat-add     — add a new task to the task register\n- heartbeat-remove  — remove a task from the task register\n- heartbeat-uninstall — remove the cron entry (preserves task register + logs)\n- heartbeat-read    — display the heartbeat output log (and optionally the Datadog alerts log)\n\nIf no primitive is specified in $ARGUMENTS, ask the user which primitive they want.",
+  "description": "Manage the opencode heartbeat system (hourly cron-driven task runner)",
+  "agent": "Sisyphus"
+}

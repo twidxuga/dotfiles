@@ -134,3 +134,26 @@ Public `~/.config/opencode/` is published to `github.com/<user>/dotfiles` (publi
 ### Next focus
 - Watch for first citations of r52c8b1 (post-merge monitoring) and r06289e (verify content not just HTTP) — both should fire on EVERY future merge + deploy cascade
 - If r52c8b1 isn't cited within 2 weeks but post-merge red-main incidents continue, the rule needs strengthening (e.g. promote to a hook)
+
+## 2026-06-25 — Evolution Run [v2]
+
+### Sessions Analysed
+- 1 primary session (opencode/macOS maintenance & energy troubleshooting); mem + 15 recent sessions scanned. Most mem memories were company-specific (routed private/by-association).
+
+### Applied (Public)
+- `rules/global.md` rule:r7c1e4a → "opencode caches `@latest` plugins and does NOT re-resolve on launch; plugins drift behind an auto-upgraded core and break SDK-coupled features (background-task completion notifications → sub-agent hang). Force re-resolve by clearing the cache dir + shared node_modules + bun.lock after a core upgrade."
+- `rules/global.md` rule:r2d9b88 → "VACUUM on opencode.db while opencode is running (WAL mode) doesn't reclaim space — quit first, then wal_checkpoint(TRUNCATE)+VACUUM."
+
+### Queued
+- qd1f3a2 "AGENTS.md lists @tarquinen/opencode-dcp as active but it's absent from every plugin array" (outdated-context) → confirm intent before editing docs
+- qr2b7e9 "rule r-RETRO-2 'never pin plugin versions' contradicted by evidence — @latest auto-update is the mechanism behind the sub-agent-hang drift" (overfitting) → user decides refinement
+
+### Demoted / Flagged
+- r-RETRO-2: `recurrence_detected` — its "always auto-update, never pin" stance is the root mechanism of the drift bug. Not auto-rewritten (contradiction surfaced to user).
+
+### Privacy regressions (Phase 0)
+- None — public files clean against PRIVATE-TERMS + SENSITIVITY-REGEX.
+
+### Next focus
+- Resolve the r-RETRO-2 contradiction (auto-update vs periodic forced re-resolve vs major-version pin).
+- Decide dcp's fate: re-register in plugin array or remove from AGENTS.md.
