@@ -1,5 +1,84 @@
 {
   "mcpServers": {
+    "chrome-devtools": {
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--headless"
+      ],
+      "autoApprove": [
+        "click",
+        "close_page",
+        "drag",
+        "emulate",
+        "evaluate_script",
+        "fill",
+        "fill_form",
+        "get_console_message",
+        "get_network_request",
+        "handle_dialog",
+        "hover",
+        "lighthouse_audit",
+        "list_console_messages",
+        "list_network_requests",
+        "list_pages",
+        "navigate_page",
+        "new_page",
+        "performance_analyze_insight",
+        "performance_start_trace",
+        "performance_stop_trace",
+        "press_key",
+        "resize_page",
+        "select_page",
+        "take_heapsnapshot",
+        "take_screenshot",
+        "take_snapshot",
+        "type_text",
+        "upload_file",
+        "wait_for"
+      ],
+      "command": "npx",
+      "disabled": false
+    },
+    "datadog": {
+      "args": [
+        "--site",
+        "eu1"
+      ],
+      "autoApprove": [
+        "aggregate_events",
+        "aggregate_rum_events",
+        "aggregate_spans",
+        "analyze_datadog_logs",
+        "create_datadog_notebook",
+        "edit_datadog_notebook",
+        "get_change_stories",
+        "get_datadog_dashboard",
+        "get_datadog_incident",
+        "get_datadog_metric",
+        "get_datadog_metric_context",
+        "get_datadog_notebook",
+        "get_datadog_trace",
+        "get_widget_reference",
+        "list_datadog_skills",
+        "load_datadog_skill",
+        "search_datadog_dashboards",
+        "search_datadog_events",
+        "search_datadog_hosts",
+        "search_datadog_incidents",
+        "search_datadog_logs",
+        "search_datadog_metrics",
+        "search_datadog_monitors",
+        "search_datadog_notebooks",
+        "search_datadog_rum_events",
+        "search_datadog_service_dependencies",
+        "search_datadog_services",
+        "search_datadog_spans",
+        "upsert_datadog_dashboard"
+      ],
+      "command": "/Users/rs/.local/bin/datadog_mcp_cli",
+      "disabled": false
+    },
     "fetch": {
       "args": [
         "run",
@@ -8,6 +87,186 @@
         "mcp/fetch"
       ],
       "command": "docker",
+      "disabled": false
+    },
+    "linear": {
+      "autoApprove": [
+        "get_attachment",
+        "prepare_attachment_upload",
+        "create_attachment_from_upload",
+        "create_attachment",
+        "delete_attachment",
+        "list_comments",
+        "save_comment",
+        "delete_comment",
+        "list_cycles",
+        "get_document",
+        "list_documents",
+        "save_document",
+        "extract_images",
+        "get_issue",
+        "list_issues",
+        "save_issue",
+        "list_issue_statuses",
+        "get_issue_status",
+        "list_issue_labels",
+        "create_issue_label",
+        "list_projects",
+        "get_project",
+        "save_project",
+        "list_project_labels",
+        "get_diff",
+        "list_diffs",
+        "get_diff_threads",
+        "list_milestones",
+        "get_milestone",
+        "save_milestone",
+        "list_teams",
+        "get_team",
+        "list_users",
+        "get_user",
+        "search_documentation",
+        "list_customers",
+        "save_customer",
+        "delete_customer",
+        "save_customer_need",
+        "delete_customer_need",
+        "list_initiatives",
+        "get_initiative",
+        "save_initiative",
+        "get_status_updates",
+        "save_status_update",
+        "delete_status_update"
+      ],
+      "disabled": false,
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "notion": {
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.notion.com/sse",
+        "--transport",
+        "sse-only"
+      ],
+      "autoApprove": [
+        "notion-search",
+        "notion-fetch",
+        "notion-create-pages",
+        "notion-update-page",
+        "notion-move-pages",
+        "notion-duplicate-page",
+        "notion-create-database",
+        "notion-update-data-source",
+        "notion-create-comment",
+        "notion-get-comments",
+        "notion-get-teams",
+        "notion-get-users",
+        "notion-query-data-sources",
+        "notion-query-database-view",
+        "notion-query-meeting-notes",
+        "notion-create-view",
+        "notion-update-view"
+      ],
+      "command": "npx",
+      "disabled": false
+    },
+    "pencil": {
+      "args": [
+        "--app",
+        "desktop"
+      ],
+      "autoApprove": [
+        "batch_design",
+        "batch_get",
+        "find_empty_space_on_canvas",
+        "get_editor_state",
+        "get_guidelines",
+        "get_screenshot",
+        "get_style_guide",
+        "get_style_guide_tags",
+        "get_variables",
+        "open_document",
+        "replace_all_matching_properties",
+        "search_all_unique_properties",
+        "set_variables",
+        "snapshot_layout"
+      ],
+      "command": "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+      "disabled": false
+    },
+    "playwright": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "--pull=always",
+        "mcr.microsoft.com/playwright/mcp"
+      ],
+      "command": "docker",
+      "disabled": false
+    },
+    "postgres": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "${POSTGRESQL_URL}"
+      ],
+      "command": "docker"
+    },
+    "slack": {
+      "args": [
+        "-y",
+        "slack-mcp-server@latest",
+        "--transport",
+        "stdio"
+      ],
+      "autoApprove": [
+        "channels_list",
+        "channels_me",
+        "conversations_add_message",
+        "conversations_history",
+        "conversations_join",
+        "conversations_leave",
+        "conversations_mark",
+        "conversations_replies",
+        "conversations_search_messages",
+        "conversations_unreads",
+        "saved_clear_completed",
+        "saved_list",
+        "saved_update",
+        "usergroups_create",
+        "usergroups_list",
+        "usergroups_me",
+        "usergroups_update",
+        "usergroups_users_update",
+        "users_search"
+      ],
+      "command": "npx",
+      "disabled": false,
+      "env": {
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "true",
+        "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
+        "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}"
+      }
+    },
+    "tavily-remote": {
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}"
+      ],
+      "autoApprove": [
+        "tavily_search",
+        "tavily_extract",
+        "tavily_crawl",
+        "tavily_map",
+        "tavily_research"
+      ],
+      "command": "npx",
       "disabled": false
     },
     "time": {
@@ -19,65 +278,6 @@
       ],
       "command": "docker",
       "disabled": false
-    },
-    "tavily-remote": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}"
-      ],
-      "disabled": false
-    },
-    "playwright": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "--init", "--pull=always", "mcr.microsoft.com/playwright/mcp"],
-      "disabled": false
-    },
-    "chrome-devtools": {
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest","--headless"],
-      "disabled": false
-    },
-    "postgres": {
-      "command": "docker",
-      "args": [  
-        "run",  
-        "-i",  
-        "--rm",  
-        "mcp/postgres",  
-        "${POSTGRESQL_URL}"
-      ]
-    },
-    "notion": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp", "--transport", "http-first"],
-      "disabled": false
-    },
-    "linear": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.linear.app/sse"],
-      "disabled": false
-    },
-    "slack": {
-      "command": "npx",
-      "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
-        "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}",
-        "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
-      },
-      "disabled": false
-    },
-    "datadog": {
-      "command": "/Users/rs/.local/bin/datadog_mcp_cli",
-      "args": ["--site", "eu1"],
-      "disabled": false
-    },
-    "pencil": {
-      "command": "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
-      "args": ["--app", "desktop"],
-      "disabled": false
     }
   },
   "nativeMCPServers": {
@@ -85,7 +285,7 @@
       "autoApprove": [],
       "custom_instructions": {
         "disabled": false
-     },
+      },
       "disabled_tools": []
     }
   }

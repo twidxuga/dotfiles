@@ -1,7 +1,10 @@
 {
   "$schema": "https://opencode.ai/tui.json",
   "theme": "nord",
-  "plugin": ["opencode-subagent-statusline"],
+  "plugin": [
+    "opencode-subagent-statusline",
+    "oh-my-openagent"
+  ],
   "plugin_enabled": {
     "internal:sidebar-lsp": false
   }
