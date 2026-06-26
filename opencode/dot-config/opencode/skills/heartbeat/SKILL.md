@@ -10,16 +10,17 @@ The heartbeat system runs a headless opencode session on a cron schedule (hourly
 ## Paths (all systems)
 
 ```
-HEARTBEAT_DIR  = ~/Documents/QuickAccess/kb/ai-agents/
-TASK_REGISTER  = ~/Documents/QuickAccess/kb/ai-agents/heartbeat-tasks.json
-SESSION_ID     = ~/Documents/QuickAccess/kb/ai-agents/heartbeat-session.id
-OUTPUT_LOG     = ~/Documents/QuickAccess/kb/ai-agents/heartbeat-output.log
+HEARTBEAT_DIR  = ~/.local/share/heartbeat/
+TASK_REGISTER  = ~/.local/share/heartbeat/heartbeat-tasks.json
+SESSION_ID     = ~/.local/share/heartbeat/heartbeat-session.id
+OUTPUT_LOG     = ~/.local/share/heartbeat/heartbeat-output.log
+CRON_LOG       = ~/.local/share/heartbeat/heartbeat-cron.log
 RUNNER         = ~/.config/opencode/skills/heartbeat/heartbeat-runner.sh
 SKILL_DIR      = ~/.config/opencode/skills/heartbeat/
 ```
 
 The session in opencode is titled **"heartbeat"** and uses model **`anthropic/claude-sonnet-4-6`**.  
-Working directory for the heartbeat opencode session: `~/Documents/QuickAccess/kb/ai-agents/`.
+Working directory for the heartbeat opencode session: `~/.local/share/heartbeat/`.
 
 ---
 
@@ -36,20 +37,20 @@ Working directory for the heartbeat opencode session: `~/Documents/QuickAccess/k
 3. Ensure the runner is executable: `chmod +x "${RUNNER}"`
 4. Ensure HEARTBEAT_DIR exists: `mkdir -p "${HOME}/Documents/QuickAccess/kb/ai-agents"`
 5. Initialise task register if missing (see schema below).
-6. Install the cron entry:
+6. Install the cron entry (with timestamped log output):
 
 ```bash
-# The cron line to install (runs at minute 0 of every hour):
-CRON_LINE="0 * * * * ${HOME}/.config/opencode/skills/heartbeat/heartbeat-runner.sh >> ${HOME}/Documents/QuickAccess/kb/ai-agents/heartbeat-cron.log 2>&1"
+RUNNER="${HOME}/.config/opencode/skills/heartbeat/heartbeat-runner.sh"
+HEARTBEAT_DIR="${HOME}/.local/share/heartbeat"
+CRON_LINE="0 * * * * { ${RUNNER} 2>&1; } | while IFS= read -r line; do echo \"\$(date '+%Y-%m-%d %H:%M:%S') \$line\"; done >> ${HEARTBEAT_DIR}/heartbeat-cron.log"
 
-# Install:
 ( crontab -l 2>/dev/null | grep -v "heartbeat-runner.sh" ; echo "${CRON_LINE}" ) | crontab -
 ```
 
 7. Verify installation: `crontab -l | grep heartbeat-runner`
 8. Report: print the installed cron line and the path to the task register.
 
-**macOS note:** crontab works fine on macOS. launchd is NOT required — use crontab for portability.
+**macOS note:** crontab works fine on macOS. `~/.local/share/heartbeat/` is used for all data files to avoid macOS TCC/SIP restrictions on `~/Documents/`. launchd is NOT required.
 
 **Task register initial schema (if creating from scratch):**
 ```json
@@ -70,7 +71,12 @@ CRON_LINE="0 * * * * ${HOME}/.config/opencode/skills/heartbeat/heartbeat-runner.
 **Required fields to collect from user (ask if not provided):**
 - `name` — unique short identifier (snake_case, no spaces)
 - `description` — human-readable description
-- `frequency_hours` — how often to run (integer, minimum 1, default 1)
+- `frequency_hours` — how often to run. The cron fires every hour; tasks only execute when `(now - last_run) >= frequency_hours`. Use any integer ≥ 1:
+  - `1` — every hour
+  - `6` — every 6 hours
+  - `24` — daily
+  - `168` — weekly
+  - `720` — monthly (approx 30 days)
 - `enabled` — boolean, default true
 - ONE of:
   - `script` — absolute path to a shell script to execute (script-based tasks)
@@ -79,7 +85,7 @@ CRON_LINE="0 * * * * ${HOME}/.config/opencode/skills/heartbeat/heartbeat-runner.
 **Steps to execute:**
 
 ```bash
-TASK_REGISTER="${HOME}/Documents/QuickAccess/kb/ai-agents/heartbeat-tasks.json"
+TASK_REGISTER="${HOME}/.local/share/heartbeat/heartbeat-tasks.json"
 ```
 
 1. Read the current register.
@@ -216,8 +222,8 @@ Monitors Datadog for CRITICAL and HIGH severity alerts. Logs only changes (new, 
 }
 ```
 
-Output log: `~/Documents/QuickAccess/kb/ai-agents/heartbeat-datadog-alerts.log`  
-State file: `~/Documents/QuickAccess/kb/ai-agents/heartbeat-datadog-alerts.state.json`
+Output log: `~/.local/share/heartbeat/heartbeat-datadog-alerts.log`  
+State file: `~/.local/share/heartbeat/heartbeat-datadog-alerts.state.json`
 
 Requires: `DD_API_KEY` and `DD_APP_KEY` environment variables, OR a Datadog config file at `~/Library/Application Support/Datadog/config.json` containing `api_key` and `app_key` fields.
 
@@ -246,8 +252,7 @@ cron (every hour)
 
 **Cron not firing:**
 - Check `crontab -l` for the entry.
-- Check `~/Documents/QuickAccess/kb/ai-agents/heartbeat-cron.log` for raw cron output.
-- On macOS, ensure "Full Disk Access" is granted to `/usr/sbin/cron` in System Preferences → Privacy & Security.
+- Check `~/.local/share/heartbeat/heartbeat-cron.log` for raw cron output.
 
 **Session not resuming:**
 - Delete `heartbeat-session.id` to force creation of a new session next run.

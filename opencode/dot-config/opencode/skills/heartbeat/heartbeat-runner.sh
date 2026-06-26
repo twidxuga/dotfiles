@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # ── Paths ──────────────────────────────────────────────────────────────────
-HEARTBEAT_DIR="${HOME}/Documents/QuickAccess/kb/ai-agents"
+HEARTBEAT_DIR="${HOME}/.local/share/heartbeat"
 TASK_REGISTER="${HEARTBEAT_DIR}/heartbeat-tasks.json"
 SESSION_ID_FILE="${HEARTBEAT_DIR}/heartbeat-session.id"
 OUTPUT_LOG="${HEARTBEAT_DIR}/heartbeat-output.log"
