@@ -2,6 +2,24 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- Under SSH, mirror every yank into the + register so it reaches the OSC 52
+-- provider (set in options.lua) and syncs to the local machine's clipboard.
+-- This deliberately does NOT touch the `clipboard` option: LazyVim sets
+-- clipboard="" under SSH_CONNECTION and saves/clears/restores it around
+-- VeryLazy, so a TextYankPost mirror is immune to that dance. Deletes are
+-- excluded (operator == "y" only) so d/x keep their normal register behaviour.
+if vim.env.SSH_CONNECTION or vim.env.SSH_TTY or vim.env.SSH_CLIENT then
+  vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("osc52_yank_mirror", { clear = true }),
+    callback = function()
+      local ev = vim.v.event
+      if ev.operator == "y" and (ev.regname == "" or ev.regname == "+") then
+        vim.fn.setreg("+", ev.regcontents, ev.regtype)
+      end
+    end,
+  })
+end
+
 -- This function is taken from https://github.com/norcalli/nvim_utils
 -- Creates augroups automatially
 local function nvim_create_augroups(definitions)
