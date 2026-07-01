@@ -2,22 +2,27 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- Under SSH, mirror every yank into the + register so it reaches the OSC 52
--- provider (set in options.lua) and syncs to the local machine's clipboard.
--- This deliberately does NOT touch the `clipboard` option: LazyVim sets
--- clipboard="" under SSH_CONNECTION and saves/clears/restores it around
--- VeryLazy, so a TextYankPost mirror is immune to that dance. Deletes are
--- excluded (operator == "y" only) so d/x keep their normal register behaviour.
+-- Under SSH, emit an OSC 52 escape on every yank so the yanked text syncs to
+-- the LOCAL machine's clipboard. We call the osc52 provider's copy closure
+-- directly (it unconditionally writes the escape to the tty) rather than going
+-- through the `clipboard` option: LazyVim sets clipboard="" under SSH and
+-- saves/clears/restores it around VeryLazy, and a plain setreg("+") never
+-- invokes the provider - only a real yank-to-+ does. Calling copy() directly
+-- sidesteps both problems. Deletes are excluded (operator == "y" only).
 if vim.env.SSH_CONNECTION or vim.env.SSH_TTY or vim.env.SSH_CLIENT then
-  vim.api.nvim_create_autocmd("TextYankPost", {
-    group = vim.api.nvim_create_augroup("osc52_yank_mirror", { clear = true }),
-    callback = function()
-      local ev = vim.v.event
-      if ev.operator == "y" and (ev.regname == "" or ev.regname == "+") then
-        vim.fn.setreg("+", ev.regcontents, ev.regtype)
-      end
-    end,
-  })
+  local ok, osc52 = pcall(require, "vim.ui.clipboard.osc52")
+  if ok then
+    local copy_plus = osc52.copy("+")
+    vim.api.nvim_create_autocmd("TextYankPost", {
+      group = vim.api.nvim_create_augroup("osc52_yank", { clear = true }),
+      callback = function()
+        local ev = vim.v.event
+        if ev.operator == "y" and (ev.regname == "" or ev.regname == "+") then
+          copy_plus(ev.regcontents)
+        end
+      end,
+    })
+  end
 end
 
 -- This function is taken from https://github.com/norcalli/nvim_utils
