@@ -32,6 +32,23 @@ alias nix-refresh='nix run nix-darwin -- switch --flake ~/.config/nix-darwi'
 alias cpwd='pwd | tr -d "\r\n" | pbcopy'
 alias pcd='cd "$(pbpaste)"'
 
+# Copy stdin to the clipboard of whatever machine the terminal is on, via an
+# OSC 52 escape. Over ssh this reaches the LOCAL machine's clipboard (the
+# escape rides ssh -> tmux -> wezterm). base64 is BSD here so newlines are
+# stripped with tr (no -w0). The byte is written to /dev/tty so it still works
+# when stdout is piped/redirected. Inside tmux the sequence must be wrapped in
+# tmux's DCS passthrough (ESC Ptmux; ... ESC \) with the inner ESC doubled,
+# otherwise tmux swallows it. Usage: some-command | osc52-copy
+function osc52-copy() {
+  local b64
+  b64=$(base64 | tr -d '\n') || return
+  if [[ -n "$TMUX" ]]; then
+    printf '\ePtmux;\e\e]52;c;%s\a\e\\' "$b64" > /dev/tty
+  else
+    printf '\e]52;c;%s\a' "$b64" > /dev/tty
+  fi
+}
+
 # tmux aliases
 alias mux='tmuxinator'
 function tma() {
