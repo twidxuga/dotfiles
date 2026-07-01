@@ -270,6 +270,11 @@ exec --no-startup-id i3-msg "workspace 7; exec firefox; exec wezterm start ~/Scr
 exec --no-startup-id i3-msg workspace 7
 
 # custom shortcuts
+# Global Alt+C / Alt+V copy & paste. --release so Alt is freed before xdotool
+# runs; the wrapper routes by focused window (wezterm gets Ctrl+Shift+C/V,
+# every other app gets Ctrl+C/V). See ~/Scripts/gui-copy-paste.sh.
+bindsym --release Mod1+c exec --no-startup-id ~/Scripts/gui-copy-paste.sh copy
+bindsym --release Mod1+v exec --no-startup-id ~/Scripts/gui-copy-paste.sh paste
 bindsym $mod+x exec --no-startup-id thunar
 bindsym $mod+p exec --no-startup-id pavucontrol
 bindsym --release Print exec --no-startup-id "scrot -s - | xclip -selection clipboard -target image/png"
