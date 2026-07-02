@@ -23,7 +23,7 @@ alias psx='ps aux'
 alias ra='ranger'
 alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias ol='ollama'
-alias sshgrok="ssh ${NGROKTCPADDR} -p ${NGROKTCPPORT} -l rs -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o TCPKeepAlive=yes"
+alias sshgrok="ssh ${NGROKTCPADDR} -p ${NGROKTCPPORT} -l rs -L 8091:localhost:8090 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o TCPKeepAlive=yes"
 alias mountmac="sshfs -p ${NGROKTCPPORT} ${MACUSER}@${NGROKTCPADDR}:/Users/${MACUSER} ~/Mac"
 
 # tmux aliases
