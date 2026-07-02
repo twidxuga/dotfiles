@@ -1,0 +1,31 @@
+#!/bin/sh
+# url-forward - open a URL in the browser on the machine running wezterm.
+#
+# Emits an OSC 1337 SetUserVar=open-url escape carrying the base64-encoded URL.
+# wezterm's user-var-changed handler (on the laptop) catches it and launches
+# Chrome. The escape rides the terminal stream (ssh -> tmux -> wezterm), so no
+# port forwarding is needed. Inside tmux the sequence is wrapped in tmux's DCS
+# passthrough (ESC Ptmux; ... ESC \) with the inner ESC doubled, else tmux eats
+# it. Written to /dev/tty so it works even when the caller redirected stdout.
+#
+# Used as $BROWSER / $GH_BROWSER / git web.browser AND by the `open` shadow, so
+# it must be a real executable on PATH (shell functions are invisible to the
+# tools that exec $BROWSER). Only http(s) URLs are forwarded; anything else is
+# ignored so non-URL arguments never produce a stray escape.
+#
+# Usage: url-forward <url> [<url> ...]
+
+for url do
+  case "$url" in
+    http://*|https://*) ;;
+    *) continue ;;
+  esac
+
+  b64=$(printf '%s' "$url" | base64 | tr -d '\n') || continue
+
+  if [ -n "${TMUX-}" ]; then
+    printf '\033Ptmux;\033\033]1337;SetUserVar=open-url=%s\007\033\\' "$b64" > /dev/tty
+  else
+    printf '\033]1337;SetUserVar=open-url=%s\007' "$b64" > /dev/tty
+  fi
+done

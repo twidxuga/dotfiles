@@ -49,6 +49,30 @@ function osc52-copy() {
   fi
 }
 
+# Under SSH, redirect browser opens to the laptop (via ~/Scripts/url-forward,
+# which emits the wezterm SetUserVar escape). macOS `open` ignores $BROWSER (it
+# uses LaunchServices), so we shadow it: a lone http(s) url is forwarded to the
+# laptop; everything else (files, `open .`, `open -a App`, any flag) falls
+# through to the real /usr/bin/open. $BROWSER/$GH_BROWSER cover the tools that
+# DO honour them (gh, python webbrowser, npm's open); git is covered via its own
+# web.browser config. The absolute path is used because ~/Scripts is not on PATH
+# and $BROWSER-consumers exec their value (a shell function would be invisible).
+# All guarded by SSH so local Mac use is intact.
+if [[ -n "$SSH_CONNECTION" ]]; then
+  function open() {
+    if [[ $# -eq 1 ]]; then
+      case "$1" in
+        http://*|https://*) "$HOME/Scripts/url-forward" "$1"; return ;;
+      esac
+    fi
+    command open "$@"
+  }
+  export BROWSER="$HOME/Scripts/url-forward"
+  export GH_BROWSER="$HOME/Scripts/url-forward"
+  git config --global web.browser url-forward 2>/dev/null
+  git config --global browser.url-forward.cmd "$HOME/Scripts/url-forward %s" 2>/dev/null
+fi
+
 # tmux aliases
 alias mux='tmuxinator'
 function tma() {
