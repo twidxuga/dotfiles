@@ -3,6 +3,7 @@ bashmount
 bridge-utils
 brn2-git
 bun-bin
+caffeine-ng
 camlidl
 cheese
 clutter
@@ -72,7 +73,9 @@ postman-bin
 proton-ge-custom-bin
 pulseaudio-ctl
 python-async-timeout
+python-ewmh
 python-jupytext
+python-pulsectl
 python-pytest-runner
 python-rchitect
 qt5-location
