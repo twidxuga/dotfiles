@@ -83,7 +83,6 @@ echo "$TERMS" | grep -inFf /dev/stdin \
   ~/.config/opencode/agent/*.md \
   ~/.config/opencode/opencode.json \
   ~/.config/opencode/oh-my-openagent.json \
-  ~/.config/opencode/dcp.jsonc \
   2>/dev/null
 
 # 0b. Scan against the regex pack
@@ -96,7 +95,6 @@ echo "$REGEXES" | grep -nEf /dev/stdin \
   ~/.config/opencode/commands/*.json \
   ~/.config/opencode/command/*.md \
   ~/.config/opencode/agent/*.md \
-  ~/.config/opencode/dcp.jsonc \
   2>/dev/null
 ```
 

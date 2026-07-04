@@ -107,7 +107,6 @@ Company-specific specifics (AWS profile names, account IDs, internal hostnames, 
 - `opencode-mem`: captures and injects project memories automatically
 - `opencode-subagent-statusline`: live TUI statusline showing active subagents
 - `@ramtinj95/opencode-tokenscope`: token usage analyzer, exposed as `/tokenscope` slash command
-- `@tarquinen/opencode-dcp`: dynamic context pruning — auto-creates `~/.config/opencode/dcp.jsonc` on first run; do not commit
 - Rules files: `rules/global.md` (always active), `rules/terraform.md` (active on .tf files)
 - **Slash-command directories** (distinct on purpose, do NOT merge): `~/.config/opencode/commands/*.json` for built-in JSON commands (e.g. `evolve.json`); `~/.config/opencode/command/*.md` for plugin-style markdown commands (e.g. `tokenscope.md`)
 

@@ -30,8 +30,7 @@
       "bun.lock",
       "package-lock.json",
       "opencode-mem-*.tgz",
-      "**/opencode-mem-*.tgz",
-      "dcp.jsonc"
+      "**/opencode-mem-*.tgz"
     ]
   },
   "agent": {
