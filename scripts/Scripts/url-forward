@@ -6,14 +6,46 @@
 # Chrome. The escape rides the terminal stream (ssh -> tmux -> wezterm), so no
 # port forwarding is needed. Inside tmux the sequence is wrapped in tmux's DCS
 # passthrough (ESC Ptmux; ... ESC \) with the inner ESC doubled, else tmux eats
-# it. Written to /dev/tty so it works even when the caller redirected stdout.
+# it.
 #
 # Used as $BROWSER / $GH_BROWSER / git web.browser AND by the `open` shadow, so
 # it must be a real executable on PATH (shell functions are invisible to the
-# tools that exec $BROWSER). Only http(s) URLs are forwarded; anything else is
-# ignored so non-URL arguments never produce a stray escape.
+# tools that exec $BROWSER). Only http(s) URLs are forwarded.
+#
+# CONTRACT: this script MUST ALWAYS exit 0. Python's webbrowser module (used by
+# `aws sso login`, python -m webbrowser, etc.) treats a non-zero $BROWSER exit
+# as failure and FALLS BACK to the local machine's default browser - which is
+# exactly the bug we're avoiding (the URL opening on the Mac instead of the
+# laptop). So every write is guarded and the script unconditionally exits 0.
+#
+# The controlling terminal (/dev/tty) is the correct target when we have one,
+# but tools like aws-cli invoke us as a subprocess that may lack a controlling
+# tty. In that case we ask tmux directly for the attached client's tty and
+# write there - the DCS-wrapped OSC52 still flows through tmux's parser to
+# wezterm. If nothing works we fail silently (never open the wrong browser).
 #
 # Usage: url-forward <url> [<url> ...]
+
+emit() {
+  # $1 = fully-built escape sequence. Try the controlling terminal, then the
+  # tmux client tty, then stderr. Every write is guarded so a failure never
+  # changes the exit status.
+  seq=$1
+
+  if { printf '%s' "$seq" >/dev/tty; } 2>/dev/null; then
+    return 0
+  fi
+
+  if [ -n "${TMUX-}" ]; then
+    ctty=$(tmux display-message -p '#{client_tty}' 2>/dev/null)
+    if [ -n "$ctty" ] && { printf '%s' "$seq" >"$ctty"; } 2>/dev/null; then
+      return 0
+    fi
+  fi
+
+  { printf '%s' "$seq" >&2; } 2>/dev/null || true
+  return 0
+}
 
 for url do
   case "$url" in
@@ -24,8 +56,12 @@ for url do
   b64=$(printf '%s' "$url" | base64 | tr -d '\n') || continue
 
   if [ -n "${TMUX-}" ]; then
-    printf '\033Ptmux;\033\033]1337;SetUserVar=open-url=%s\007\033\\' "$b64" > /dev/tty
+    seq=$(printf '\033Ptmux;\033\033]1337;SetUserVar=open-url=%s\007\033\\' "$b64")
   else
-    printf '\033]1337;SetUserVar=open-url=%s\007' "$b64" > /dev/tty
+    seq=$(printf '\033]1337;SetUserVar=open-url=%s\007' "$b64")
   fi
+
+  emit "$seq"
 done
+
+exit 0
