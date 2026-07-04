@@ -25,6 +25,7 @@ from dataclasses import dataclass, field
 LEAK_MB_HR = float(os.environ.get("MEMMON_LEAK_MB_HR", "60"))   # ~1 MiB/min
 SLOW_MB_HR = float(os.environ.get("MEMMON_SLOW_MB_HR", "6"))    # mild drift
 MIN_SAMPLES = int(os.environ.get("MEMMON_MIN_SAMPLES", "3"))
+MIN_LEAK_SAMPLES = int(os.environ.get("MEMMON_MIN_LEAK_SAMPLES", "8"))
 WINDOW = int(os.environ.get("MEMMON_WINDOW", "3"))
 
 
@@ -93,19 +94,23 @@ def non_decreasing_tail(vals: list[int], k: int) -> bool:
 
 def verdict(s: Series) -> tuple[str, float]:
     n = len(s.rss_kb)
-    if n < MIN_SAMPLES:
+    if n < MIN_LEAK_SAMPLES:
         return "TRANSIENT", 0.0
     wmin = window_min(s.rss_kb, WINDOW)
-    wmin_epochs = s.epochs[: len(wmin)] if len(wmin) == len(s.epochs) else s.epochs[WINDOW - 1 :]
-    if len(wmin_epochs) != len(wmin):
-        wmin_epochs = s.epochs[-len(wmin) :]
+    if len(wmin) < 2:
+        return "TRANSIENT", 0.0
+    wmin_epochs = s.epochs[-len(wmin):]
     slope = ols_slope_per_hr(wmin_epochs, wmin)
-    if slope > LEAK_MB_HR and non_decreasing_tail(wmin, min(3, len(wmin))):
+    # A real leak needs a rising FLOOR, not a spiky raw slope. Require the
+    # window-min to actually end well above where it started (in MiB), which
+    # rejects PID-reuse noise and one-sample spikes that inflate OLS slope.
+    span_hr = (wmin_epochs[-1] - wmin_epochs[0]) / 3600.0
+    floor_rise_mb = (wmin[-1] - min(wmin)) / 1024.0
+    rising = slope > 0 and non_decreasing_tail(wmin, min(3, len(wmin)))
+    if slope > LEAK_MB_HR and rising and floor_rise_mb > LEAK_MB_HR * max(span_hr, 0.5) * 0.5:
         return "LEAK", slope
-    if slope > SLOW_MB_HR:
+    if slope > SLOW_MB_HR and floor_rise_mb > SLOW_MB_HR:
         return "SLOW", slope
-    if abs(slope) <= SLOW_MB_HR:
-        return "PLATEAU", slope
     return "PLATEAU", slope
 
 

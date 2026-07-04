@@ -35,7 +35,7 @@ Working directory for the heartbeat opencode session: `~/.local/share/heartbeat/
 1. Detect OS: `uname -s`
 2. Resolve the runner path: `RUNNER="${HOME}/.config/opencode/skills/heartbeat/heartbeat-runner.sh"`
 3. Ensure the runner is executable: `chmod +x "${RUNNER}"`
-4. Ensure HEARTBEAT_DIR exists: `mkdir -p "${HOME}/Documents/QuickAccess/kb/ai-agents"`
+4. Ensure HEARTBEAT_DIR exists: `mkdir -p "${HOME}/.local/share/heartbeat"`
 5. Initialise task register if missing (see schema below).
 6. Install the cron entry (with timestamped log output):
 
@@ -145,7 +145,7 @@ else
 fi
 ```
 
-Report: "Heartbeat cron uninstalled. Task register and logs preserved at ${HOME}/Documents/QuickAccess/kb/ai-agents/."
+Report: "Heartbeat cron uninstalled. Task register and logs preserved at ${HOME}/.local/share/heartbeat/."
 
 ---
 
@@ -158,8 +158,8 @@ Report: "Heartbeat cron uninstalled. Task register and logs preserved at ${HOME}
 **Steps to execute:**
 
 ```bash
-OUTPUT_LOG="${HOME}/Documents/QuickAccess/kb/ai-agents/heartbeat-output.log"
-ALERTS_LOG="${HOME}/Documents/QuickAccess/kb/ai-agents/heartbeat-datadog-alerts.log"
+OUTPUT_LOG="${HOME}/.local/share/heartbeat/heartbeat-output.log"
+ALERTS_LOG="${HOME}/.local/share/heartbeat/heartbeat-datadog-alerts.log"
 ```
 
 1. Check if `OUTPUT_LOG` exists. If not: "No heartbeat runs recorded yet."

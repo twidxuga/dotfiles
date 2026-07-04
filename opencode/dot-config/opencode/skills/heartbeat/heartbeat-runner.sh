@@ -20,7 +20,7 @@ if [[ -z "${OPENCODE_BIN}" ]]; then
   OPENCODE_BIN="$(command -v opencode 2>/dev/null || ls /opt/homebrew/bin/opencode 2>/dev/null || true)"
 fi
 if [[ -z "${OPENCODE_BIN}" || ! -x "${OPENCODE_BIN}" ]]; then
-  echo "ERROR: opencode binary not found" >&2
+  echo "heartbeat $(date '+%Y-%m-%d %H:%M:%S') — ERROR: opencode binary not found" >&2
   exit 1
 fi
 
@@ -56,10 +56,13 @@ log_task() {
   } >> "${OUTPUT_LOG}"
 }
 
+summary() {
+  echo "heartbeat ${RUN_TS} — ${1}"
+}
+
 # ── Ensure task register exists ─────────────────────────────────────────────
 if [[ ! -f "${TASK_REGISTER}" ]]; then
-  echo "ERROR: Task register not found at ${TASK_REGISTER}" >&2
-  echo "Run /heartbeat heartbeat-deploy to initialise." >&2
+  echo "heartbeat ${RUN_TS} — ERROR: task register not found at ${TASK_REGISTER} (run /heartbeat heartbeat-deploy)" >&2
   exit 1
 fi
 
@@ -173,6 +176,7 @@ due_count="$(python3 -c "import json,sys; print(len(json.loads(sys.argv[1])))" "
 if [[ "${due_count}" -eq 0 ]]; then
   log_task "scheduler" "No tasks due this run."
   log_run_footer "OK (no tasks due)"
+  summary "no tasks due"
   exit 0
 fi
 
@@ -181,6 +185,7 @@ SESSION_ID=""
 
 # Execute each due task
 run_iso="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+RESULTS_TMP="$(mktemp)"
 
 # Emit one JSON object per line for safe field extraction (avoids TSV empty-field bugs)
 python3 -c "
@@ -228,6 +233,13 @@ for t in tasks:
   log_task "${task_name}" "${task_output}"
   update_last_run "${task_name}" "${run_iso}"
 
+  first_line="$(printf '%s\n' "${task_output}" | grep -v '^[[:space:]]*$' | tail -1)"
+  echo "${task_name}: ${first_line}" >> "${RESULTS_TMP}"
+
 done
 
 log_run_footer "OK"
+
+ran_summary="$(paste -sd '; ' "${RESULTS_TMP}" 2>/dev/null || true)"
+rm -f "${RESULTS_TMP}"
+summary "ran ${due_count} task(s) — ${ran_summary:-done}"
