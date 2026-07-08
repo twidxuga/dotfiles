@@ -2,27 +2,35 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- Under SSH, emit an OSC 52 escape on every yank so the yanked text syncs to
--- the LOCAL machine's clipboard. We call the osc52 provider's copy closure
--- directly (it unconditionally writes the escape to the tty) rather than going
--- through the `clipboard` option: LazyVim sets clipboard="" under SSH and
--- saves/clears/restores it around VeryLazy, and a plain setreg("+") never
--- invokes the provider - only a real yank-to-+ does. Calling copy() directly
--- sidesteps both problems. Deletes are excluded (operator == "y" only).
+-- Under SSH, route ALL clipboard-affecting operations (yank AND delete/change/
+-- put) through the + register so they emit OSC 52 to the local machine. The
+-- only mechanism that captures deletes is clipboard=unnamedplus (there is no
+-- TextDeletePost autocmd), combined with the OSC 52 provider set in
+-- options.lua whose copy['+'] fires on every + register write.
+--
+-- The catch: LazyVim sets clipboard="" under SSH_CONNECTION and saves/clears/
+-- restores it around VeryLazy, clobbering anything we set in options.lua. So
+-- we re-assert it on LazyVimStarted, which fires AFTER that restore. The
+-- OptionSet guard re-applies it once if any later plugin clears it again.
 if vim.env.SSH_CONNECTION or vim.env.SSH_TTY or vim.env.SSH_CLIENT then
-  local ok, osc52 = pcall(require, "vim.ui.clipboard.osc52")
-  if ok then
-    local copy_plus = osc52.copy("+")
-    vim.api.nvim_create_autocmd("TextYankPost", {
-      group = vim.api.nvim_create_augroup("osc52_yank", { clear = true }),
-      callback = function()
-        local ev = vim.v.event
-        if ev.operator == "y" and (ev.regname == "" or ev.regname == "+") then
-          copy_plus(ev.regcontents)
-        end
-      end,
-    })
-  end
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimStarted",
+    once = true,
+    callback = function()
+      vim.opt.clipboard = "unnamedplus"
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "clipboard",
+    callback = function()
+      if vim.o.clipboard == "" then
+        vim.schedule(function()
+          vim.opt.clipboard = "unnamedplus"
+        end)
+      end
+    end,
+  })
 end
 
 -- This function is taken from https://github.com/norcalli/nvim_utils
