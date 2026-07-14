@@ -31,6 +31,8 @@ alias nix-refresh='nix run nix-darwin -- switch --flake ~/.config/nix-darwi'
 # mac copy/paste current path 
 alias cpwd='pwd | tr -d "\r\n" | pbcopy'
 alias pcd='cd "$(pbpaste)"'
+# alias to allow showing RSS in htop - best served with visudo + %admin ALL=(ALL) NOPASSWD: /opt/homebrew/bin/htop
+alias htop='sudo htop'
 
 # Copy stdin to the clipboard of whatever machine the terminal is on, via an
 # OSC 52 escape. Over ssh this reaches the LOCAL machine's clipboard (the

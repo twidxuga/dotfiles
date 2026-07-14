@@ -46,16 +46,16 @@ root: ~/Bunch
 
 windows:
   - nvim:
-      layout: db19,192x54,0,0[192x36,0,0,1,192x8,0,37{96x8,0,37,2,95x8,97,37,3},192x8,0,46{96x8,0,46,4,95x8,97,46,5}]
+      layout: 1f8d,212x58,0,0{153x58,0,0,25,58x58,154,0[58x21,154,0,2,58x13,154,22,3,58x6,154,36,4,58x15,154,43,5]}
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - nvim -S ~/Bunch/Session.vim
-        - pushd ~/Bunch/code && clear 
-        - pushd ~/Bunch/code && clear
-        - pushd ~/Bunch/code && clear
-        - pushd ~/Bunch/code && clear 
+        - ngrud
+        - opencode web
+        - caffeinate
+        -  
         # - guard
   # - server: bundle exec rails s
   # - logs: tail -f log/development.log

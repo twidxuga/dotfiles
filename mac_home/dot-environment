@@ -13,6 +13,8 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="$PATH:/usr/local/share/dotnet"
 export PATH="$PATH:/Users/rs/.dotnet/tools"
 export PATH="$PATH:/Users/rs/.go/bin"
+# opencode
+export PATH=/Users/rs/.opencode/bin:$PATH
 
 export GOPATH=~/.go
 
