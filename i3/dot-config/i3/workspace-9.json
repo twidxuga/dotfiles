@@ -68,7 +68,8 @@
                     "percent": null,
                     "swallows": [
                        {
-                       "class": "^Signal\\ Beta$"
+                       "class": "^signal\\ beta$"
+                       //"class": "^Signal\\ Beta$"
                        // "instance": "^signal\\ beta$",
                        // "machine": "^twidarch$",
                        // "title": "^Signal\\ Beta$",
