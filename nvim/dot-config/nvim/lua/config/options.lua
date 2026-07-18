@@ -20,56 +20,76 @@ vim.opt.wrap = true
 -- Create a custom highlight for Flash 
 vim.api.nvim_set_hl(0, 'FlashAlternative',  { foreground = '#ffffff', background = '#0000ff' })
 
--- Unconditional OSC 52 clipboard provider. This file is shared across the
--- local Linux laptop and the remote Mac, and the terminal on BOTH is wezterm,
--- which honours OSC 52 whether nvim is local or reached over ssh. So a single
--- OSC 52 path is correct everywhere:
---   * physically at a machine: the local wezterm receives the escape and
---     writes that machine's system clipboard;
---   * over ssh: the escape rides the tmux -> ssh -> tmux -> wezterm chain and
---     lands in the LOCAL (client) machine's clipboard.
--- We deliberately do NOT gate this on SSH_CONNECTION/SSH_TTY: those describe
--- how the process was started, not which terminal is receiving output, and
--- tmux leaks a stale SSH_CONNECTION into panes (breaking a physical-at-Mac
--- yank when the pane once had an ssh client attached).
+-- Hybrid clipboard: OSC 52 for COPY, the native tool for PASTE. Shared across
+-- the local Linux laptop and the remote Mac (terminal is wezterm on both).
 --
--- paste is served from an in-process cache populated by the copy wrapper, not
--- from an OSC 52 read query (which blocks until the terminal replies and hangs
--- when it never does). Note: `p`/`"+p` return the last value copied THROUGH
--- this provider, not arbitrary external clipboard content; terminal paste
--- (Cmd+V / Ctrl+Shift+V) is unaffected. This asymmetry is inherent to a
--- write-only OSC 52 path and is the price of one robust code path.
+-- COPY is unconditional OSC 52 - correct everywhere because wezterm honours it
+-- whether nvim is local or over ssh:
+--   * physically at a machine: local wezterm writes that machine's clipboard;
+--   * over ssh: the escape rides tmux -> ssh -> tmux -> wezterm to the LOCAL
+--     (client) machine's clipboard.
+-- We deliberately do NOT gate copy on SSH_CONNECTION/SSH_TTY: those describe
+-- how the process started, not which terminal receives output, and tmux leaks
+-- a stale SSH_CONNECTION into panes (which would break a physical-at-Mac yank).
+--
+-- PASTE reads the REAL system clipboard of the machine RUNNING nvim, via the
+-- native tool (pbpaste on macOS, xclip/xsel under X11). We can't use OSC 52
+-- READ: wezterm ignores clipboard query escapes, so nvim's osc52.paste() would
+-- hang ~10s then return nothing. Consequence over ssh: `p`/`"+p` read the
+-- MAC's clipboard (the nvim host), while copy still lands on the LINUX client.
+-- To paste the Linux clipboard into remote nvim, use wezterm paste
+-- (Cmd+V / Ctrl+Shift+V); `"0p` puts the latest nvim yank specifically.
+-- Plain tty (no DISPLAY, no pbpaste) falls back to an in-process cache so
+-- paste never errors; that cache is why copy still mirrors into `cache`.
 local osc52 = require("vim.ui.clipboard.osc52")
 
-local clipboard_cache = {
+local cache = {
   ["+"] = { {}, "v" },
   ["*"] = { {}, "v" },
 }
 
-local function osc52_copy(reg)
-  local inner = osc52.copy(reg)
+local function copy(reg)
+  local osc52_copy = osc52.copy(reg)
   return function(lines, regtype)
-    clipboard_cache[reg] = { vim.deepcopy(lines), regtype }
-    inner(lines, regtype)
+    cache[reg] = { vim.deepcopy(lines), regtype }
+    osc52_copy(lines, regtype)
   end
 end
 
 local function cached_paste(reg)
   return function()
-    return clipboard_cache[reg]
+    return cache[reg]
+  end
+end
+
+local paste = {}
+
+if vim.fn.has("mac") == 1 and vim.fn.executable("pbpaste") == 1 then
+  paste["+"] = { "pbpaste" }
+  paste["*"] = { "pbpaste" }
+else
+  local has_display = vim.env.DISPLAY ~= nil and vim.env.DISPLAY ~= ""
+
+  if has_display and vim.fn.executable("xclip") == 1 then
+    paste["+"] = { "xclip", "-selection", "clipboard", "-o" }
+    paste["*"] = { "xclip", "-selection", "primary", "-o" }
+  elseif has_display and vim.fn.executable("xsel") == 1 then
+    paste["+"] = { "xsel", "--clipboard", "--output" }
+    paste["*"] = { "xsel", "--primary", "--output" }
   end
 end
 
 vim.g.clipboard = {
-  name = "OSC 52",
+  name = "OSC52 copy / native paste",
   copy = {
-    ["+"] = osc52_copy("+"),
-    ["*"] = osc52_copy("*"),
+    ["+"] = copy("+"),
+    ["*"] = copy("*"),
   },
   paste = {
-    ["+"] = cached_paste("+"),
-    ["*"] = cached_paste("*"),
+    ["+"] = paste["+"] or cached_paste("+"),
+    ["*"] = paste["*"] or cached_paste("*"),
   },
+  cache_enabled = 0,
 }
 
 vim.opt.clipboard = "unnamedplus"
