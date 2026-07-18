@@ -2,36 +2,10 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- Under SSH, route ALL clipboard-affecting operations (yank AND delete/change/
--- put) through the + register so they emit OSC 52 to the local machine. The
--- only mechanism that captures deletes is clipboard=unnamedplus (there is no
--- TextDeletePost autocmd), combined with the OSC 52 provider set in
--- options.lua whose copy['+'] fires on every + register write.
---
--- The catch: LazyVim sets clipboard="" under SSH_CONNECTION and saves/clears/
--- restores it around VeryLazy, clobbering anything we set in options.lua. So
--- we re-assert it on LazyVimStarted, which fires AFTER that restore. The
--- OptionSet guard re-applies it once if any later plugin clears it again.
-if vim.env.SSH_CONNECTION or vim.env.SSH_TTY or vim.env.SSH_CLIENT then
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "LazyVimStarted",
-    once = true,
-    callback = function()
-      vim.opt.clipboard = "unnamedplus"
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("OptionSet", {
-    pattern = "clipboard",
-    callback = function()
-      if vim.o.clipboard == "" then
-        vim.schedule(function()
-          vim.opt.clipboard = "unnamedplus"
-        end)
-      end
-    end,
-  })
-end
+-- Clipboard handling lives in options.lua: an unconditional OSC 52 provider
+-- plus clipboard=unnamedplus. LazyVim clears clipboard under SSH, but its
+-- default options run BEFORE this config's options.lua, so our unnamedplus
+-- assignment there is the final word - no LazyVimStarted re-assert needed.
 
 -- This function is taken from https://github.com/norcalli/nvim_utils
 -- Creates augroups automatially
