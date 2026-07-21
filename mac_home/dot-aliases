@@ -33,6 +33,7 @@ alias cpwd='pwd | tr -d "\r\n" | pbcopy'
 alias pcd='cd "$(pbpaste)"'
 # alias to allow showing RSS in htop - best served with visudo + %admin ALL=(ALL) NOPASSWD: /opt/homebrew/bin/htop
 alias htop='sudo htop'
+alias localip="echo $(ifconfig | grep 'inet 192.168' | awk '{print $2}')"
 
 # Copy stdin to the clipboard of whatever machine the terminal is on, via an
 # OSC 52 escape. Over ssh this reaches the LOCAL machine's clipboard (the
