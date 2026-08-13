@@ -25,7 +25,7 @@
       "reasoningEffort": "xhigh"
     },
     "metis": {
-      "model": "anthropic/claude-sonnet-5",
+      "model": "openai/gpt-5.6-luna",
       "reasoningEffort": "high"
     },
     "momus": {
@@ -33,7 +33,7 @@
       "reasoningEffort": "xhigh"
     },
     "multimodal-looker": {
-      "model": "anthropic/claude-sonnet-5",
+      "model": "openai/gpt-5.6-luna",
       "reasoningEffort": "high",
       "permission": {
         "edit": "deny",
@@ -46,7 +46,7 @@
       "reasoningEffort": "xhigh",
       "fallback_models": [
         {
-          "model": "anthropic/claude-opus-4-8",
+          "model": "openai/gpt-5.6-sol",
           "reasoningEffort": "high"
         }
       ],
@@ -57,11 +57,11 @@
       }
     },
     "sisyphus": {
-      "model": "anthropic/claude-opus-4-8",
+      "model": "openai/gpt-5.6-sol",
       "reasoningEffort": "high",
       "fallback_models": [
         {
-          "model": "anthropic/claude-opus-4-7",
+          "model": "openai/gpt-5.6-sol",
           "reasoningEffort": "high"
         }
       ],
@@ -85,21 +85,21 @@
       "description": "Goal-oriented autonomous problem-solving. Thorough research before action. For hairy problems requiring deep understanding."
     },
     "visual-engineering": {
-      "model": "anthropic/claude-sonnet-5",
+      "model": "openai/gpt-5.6-luna",
       "reasoningEffort": "high",
       "description": "Frontend, UI/UX, design, styling, animation"
     },
     "artistry": {
-      "model": "anthropic/claude-opus-4-8",
+      "model": "openai/gpt-5.6-sol",
       "reasoningEffort": "high",
       "description": "Complex problem-solving with unconventional, creative approaches - beyond standard patterns"
     },
     "quick": {
-      "model": "anthropic/claude-haiku-4-5",
+      "model": "openai/gpt-5.5",
       "description": "Trivial tasks - single file changes, typo fixes, simple modifications"
     },
     "writing": {
-      "model": "anthropic/claude-sonnet-5",
+      "model": "openai/gpt-5.6-luna",
       "reasoningEffort": "high",
       "description": "Documentation, prose, technical writing"
     },
@@ -109,7 +109,7 @@
       "description": "Tasks that don't fit other categories, low effort required"
     },
     "unspecified-high": {
-      "model": "anthropic/claude-opus-4-8",
+      "model": "openai/gpt-5.6-sol",
       "reasoningEffort": "high",
       "description": "Tasks that don't fit other categories, high effort required"
     }
@@ -148,13 +148,11 @@
   "background_task": {
     "defaultConcurrency": 5,
     "providerConcurrency": {
-      "anthropic": 8,
       "openai": 4
     },
     "modelConcurrency": {
-      "anthropic/claude-fable-5": 1,
-      "anthropic/claude-opus-4-8": 2,
-      "openai/gpt-5.6-sol": 2
+      "openai/gpt-5.6-sol": 2,
+      "openai/gpt-5.6-luna": 2
     },
     "staleTimeoutMs": 1800000
   },
