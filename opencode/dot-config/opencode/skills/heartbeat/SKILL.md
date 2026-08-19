@@ -19,7 +19,7 @@ RUNNER         = ~/.config/opencode/skills/heartbeat/heartbeat-runner.sh
 SKILL_DIR      = ~/.config/opencode/skills/heartbeat/
 ```
 
-The session in opencode is titled **"heartbeat"** and uses model **`anthropic/claude-sonnet-4-6`**.  
+The session in opencode is titled **"heartbeat"** and uses model **`openai/gpt-5.6-luna`**.  
 Working directory for the heartbeat opencode session: `~/.local/share/heartbeat/`.
 
 ---

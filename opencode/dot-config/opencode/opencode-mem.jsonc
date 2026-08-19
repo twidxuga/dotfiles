@@ -18,10 +18,9 @@
   "showErrorToasts": true,
 
   // AI provider for memory analysis
-  // Using opencode's built-in Anthropic provider (faster, avoids OpenAI timeout issues)
-  // Previous: openai-chat / gpt-4.1-mini was causing "API request timeout (30000ms)" errors
-  "opencodeProvider": "anthropic",
-  "opencodeModel": "claude-haiku-4-5",
+  // Using direct OpenAI provider for memory analysis
+  "opencodeProvider": "openai",
+  "opencodeModel": "gpt-4o-mini",
 
   // User profile analysis interval (analyze every N prompts)
   "userProfileAnalysisInterval": 5,

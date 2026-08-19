@@ -53,7 +53,6 @@
   "plugin": [
     "oh-my-openagent",
     "@franlol/opencode-md-table-formatter",
-    "opencode-mem",
     "opencode-rules",
     "@ramtinj95/opencode-tokenscope@latest"
   ],

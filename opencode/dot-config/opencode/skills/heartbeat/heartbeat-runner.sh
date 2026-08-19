@@ -8,7 +8,7 @@ HEARTBEAT_DIR="${HOME}/.local/share/heartbeat"
 TASK_REGISTER="${HEARTBEAT_DIR}/heartbeat-tasks.json"
 SESSION_ID_FILE="${HEARTBEAT_DIR}/heartbeat-session.id"
 OUTPUT_LOG="${HEARTBEAT_DIR}/heartbeat-output.log"
-MODEL="anthropic/claude-sonnet-4-6"
+MODEL="openai/gpt-5.6-luna"
 
 # Resolve opencode binary: check well-known install location, then PATH
 OPENCODE_BIN="${HOME}/.local/share/opencode/bin/opencode"
