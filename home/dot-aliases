@@ -25,6 +25,27 @@ alias cv='cd ~/Documents/CV/; xdg-open cv.pdf'
 alias ol='ollama'
 alias sshgrok="ssh ${NGROKTCPADDR} -p ${NGROKTCPPORT} -l rs -L 8091:localhost:8090 -L 3010:localhost:3010 -L 3011:localhost:3011 -L 3021:localhost:3021 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o TCPKeepAlive=yes"
 alias mountmac="sshfs -p ${NGROKTCPPORT} ${MACUSER}@${NGROKTCPADDR}:/Users/${MACUSER} ~/Mac"
+function mountlmac() {
+  if [[ "$#" -eq 1 ]]
+  then
+    sshfs -p 22 ${MACUSER}@${1}:/Users/${MACUSER} ~/Mac
+  else
+    echo "First argument must be local mac IP address"
+  fi
+  return
+}
+function sshlmac() {
+  if [[ "$#" -eq 1 ]]
+  then
+    ssh ${1} -p 22 -l rs \
+      -o ControlMaster=no -o ExitOnForwardFailure=yes \
+      -L 8091:localhost:8090 -L 3010:localhost:3010 -L 3011:localhost:3011 -L 3021:localhost:3021 \
+      -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o TCPKeepAlive=yes
+  else
+    echo "First argument must be local mac IP address"
+  fi
+  return
+}
 
 # tmux aliases
 alias mux='tmuxinator'

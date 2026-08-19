@@ -98,5 +98,17 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Custom Avante keymap for input buffer",
 })
 
+-- Reclaim K for scroll-up after any LSP attaches (LazyVim binds buffer-local K to hover)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.keymap.set({ "n", "x" }, "K", "<c-u>", {
+      buffer = args.buf,
+      silent = true,
+      desc = "Scroll up",
+    })
+  end,
+  desc = "Keep K as scroll-up in LSP buffers",
+})
+
 -- autocommands END
 
