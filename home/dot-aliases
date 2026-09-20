@@ -105,6 +105,9 @@ alias st='stow -d ~/.dotfiles --dotfiles -v'
 # VM aliases
 alias macos="quickemu --vm ~/.config/quickemu//macos-sonoma.conf --mouse usb"
 
+# Claude code
+alias claude='env -u ANTHROPIC_API_KEY /home/twidxuga/.local/bin/claude --dangerously-skip-permissions'
+
 #===============================================================================
 
 # Monadd's aliases
