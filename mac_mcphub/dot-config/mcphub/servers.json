@@ -40,6 +40,11 @@
       "command": "npx",
       "disabled": false
     },
+    "customer-io": {
+      "autoApprove": [],
+      "disabled": false,
+      "url": "https://mcp-eu.customer.io/mcp"
+    },
     "datadog": {
       "args": [
         "--site",
@@ -58,6 +63,23 @@
       ],
       "command": "docker",
       "disabled": false
+    },
+    "gmail": {
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://gmailmcp.googleapis.com/mcp/v1",
+        "9696",
+        "--transport",
+        "http-only",
+        "--static-oauth-client-info",
+        "@/Users/rs/.config/mcphub-secrets/gmail-oauth-client.json",
+        "--static-oauth-client-metadata",
+        "@/Users/rs/.config/mcphub-secrets/gmail-oauth-metadata.json"
+      ],
+      "autoApprove": [],
+      "command": "npx",
+      "disabled": true
     },
     "linear": {
       "autoApprove": [
@@ -175,7 +197,7 @@
         "mcr.microsoft.com/playwright/mcp"
       ],
       "command": "docker",
-      "disabled": false
+      "disabled": true
     },
     "postgres": {
       "args": [
@@ -185,7 +207,8 @@
         "mcp/postgres",
         "${POSTGRESQL_URL}"
       ],
-      "command": "docker"
+      "command": "docker",
+      "disabled": true
     },
     "slack": {
       "args": [
@@ -194,27 +217,7 @@
         "--transport",
         "stdio"
       ],
-      "autoApprove": [
-        "channels_list",
-        "channels_me",
-        "conversations_add_message",
-        "conversations_history",
-        "conversations_join",
-        "conversations_leave",
-        "conversations_mark",
-        "conversations_replies",
-        "conversations_search_messages",
-        "conversations_unreads",
-        "saved_clear_completed",
-        "saved_list",
-        "saved_update",
-        "usergroups_create",
-        "usergroups_list",
-        "usergroups_me",
-        "usergroups_update",
-        "usergroups_users_update",
-        "users_search"
-      ],
+      "autoApprove": [],
       "command": "npx",
       "disabled": false,
       "env": {
@@ -247,7 +250,7 @@
         "mcp/time"
       ],
       "command": "docker",
-      "disabled": false
+      "disabled": true
     }
   },
   "nativeMCPServers": {

@@ -90,7 +90,7 @@ description: Global coding standards and workflow rules applied to all sessions
 
 ## Notion Publishing
 - When publishing a report or document to a Notion page, always create a **child page** under the target page — never replace the content of an existing page
-- Use `mcp_hub_notion__notion-create-pages` with `parent: {page_id: "<target-page-id>"}` to create the child
+- Use `mcp_hub_notion__notion-create-pages` (OpenCode) or `mcp__mcp_hub__notion__notion-create-pages` (Claude Code) with `parent: {page_id: "<target-page-id>"}` to create the child
 - First `fetch` the target page to confirm its ID and see its existing structure before publishing
 
 ## Testing with Real Infrastructure

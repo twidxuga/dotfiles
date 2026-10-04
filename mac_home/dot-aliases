@@ -34,7 +34,14 @@ alias pcd='cd "$(pbpaste)"'
 # alias to allow showing RSS in htop - best served with visudo + %admin ALL=(ALL) NOPASSWD: /opt/homebrew/bin/htop
 alias htop='sudo htop'
 alias localip="echo $(ifconfig | grep 'inet 192.168' | awk '{print $2}')"
-alias claude='env -u ANTHROPIC_API_KEY /opt/homebrew/bin/claude --dangerously-skip-permissions'
+alias claude='env -u ANTHROPIC_API_KEY ~/.local/bin/claude --dangerously-skip-permissions'
+
+function ssoall {
+   aws sso login --profile bunch-2-dev && aws sso login --profile bunch-2-uat && aws sso login --profile bunch-2-prod
+}
+alias ssodev='aws sso login --profile bunch-2-dev'
+alias ssouat='aws sso login --profile bunch-2-uat'
+alias ssoprod='aws sso login --profile bunch-2-prod'
 
 # Copy stdin to the clipboard of whatever machine the terminal is on, via an
 # OSC 52 escape. Over ssh this reaches the LOCAL machine's clipboard (the
